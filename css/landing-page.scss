@@ -1,0 +1,227 @@
+$primary-color: white;
+$secondary-color:#4C3DFF;
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.header{
+    box-shadow: inset 10px 80px 80px 0 rgb(61, 61, 61);
+    background-image:url('../imgs/mercado.png');
+    background-size: cover;
+    color: $primary-color;
+    background-repeat: no-repeat;
+    &__des__title{
+        margin-bottom: 5px;
+        font-weight: bolder;
+    }
+    &__main{
+        display: grid;
+        grid-template-columns: auto 30px;
+        padding: 20px;
+        &-logo{
+            font-size: 2.5rem;
+        }
+        &-bars, &-cart{
+            font-size: 1.8rem;
+        }
+    }
+    &__ul{
+        z-index: 10;
+        transform:translate(-100%,0);
+        transition: transform .3s ease;
+        background-color:#897ff1;
+        position:absolute;
+        width: 100%;
+        &--show{
+            transform:translate(0,0)
+        }
+    }
+    &__li{
+        list-style-type: none;
+        padding:20px;
+        text-align: center;
+        font-size: 1.2rem;
+        border-bottom: 0.3px solid;
+    }
+    &__li:hover{
+        background-color: $secondary-color;
+    }
+}
+.header__des{
+    margin-left: 20px;
+    margin-right: 20px;
+    &__d{
+        margin: 5px 0 20px 0;
+        background-color:#fff;
+        width:230px;
+        border-radius: 70px;
+        &__input{
+            border: none;
+            height: 30px;
+            outline: none;
+            border-radius: 70px;
+            margin-left: 5px;
+        }
+    }
+    &__d__fa{
+        width: 28px;
+        color: black;
+        text-align:right;
+    }
+    &__sell, &__buy, &__market{
+        border:2px solid $primary-color;
+        padding: 6px;
+        margin-top: 10px;
+        border-radius: 60px;
+        text-align: center;
+        font-size: 0.96rem;
+    }
+    &__sell, &__buy{
+        display: inline;
+    }
+    &__market{
+        width: 235px;
+        margin-top: 15px;
+        background-color: $secondary-color;
+    }
+    
+}
+.background{
+    background-color: rgba(0, 0, 0, .7);
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    z-index: 5;
+    transform:translate(-100%,0);
+    &--show{
+        transform:translate(0,0)
+    }
+}
+.main__title{
+    margin:20px 15px;
+}
+.main__container{
+    display: flex;
+    margin:0 5px;
+    &__left, &__right{
+        border: none;
+        cursor: pointer;
+        background-color:$primary-color;
+    }
+}
+.carousel__element{
+    padding: 5px;
+}
+.desta{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    &__title{
+        margin:20px 10px;
+    }
+    &__item{
+        width: 140px;
+        padding-left: 5px;
+        padding-bottom: 10px;
+    }
+    &__img{
+        border-radius: 30%;
+        text-align: center;
+        width: 130px;
+    }
+}
+.footer{
+    border-top: 1px solid black;
+    padding: 30px 20px;
+    display: grid;
+    grid-template-columns: 60% auto auto auto;
+    margin-top: 20px;
+    &__item{
+        font-size: 33px;
+        color:#2714f8;
+        font-weight: bolder;
+    }
+}
+@media(min-width:992px){
+    .header__ul{
+        transform:translate(0,0);
+        display: flex;
+        width: 40%;
+        top: 20px;
+        left: 60%;
+        background-color:transparent;
+    }
+    .header__li{
+        font-size: 20px;
+        border-bottom: none;
+    }
+    .header__main-bars{
+        z-index: -30;
+    }
+    .header{
+        height: 600px;
+        &__main-logo{
+            font-size: 2rem;
+            margin-top: 35px;
+            margin-left: 30px;
+        }
+    }
+    .header__des{
+        padding: 100px 60px;
+        &__d{
+            width: 500px;
+            margin-top: 20px;
+        }
+        &__d__input{
+            height: 40px;
+            width: 450px;
+        }
+        &__title{
+            width: 600px;
+            font-size: 45px;
+        }
+        &__market, &__sell, &__buy{
+            display: inline;
+            font-size: 1.2rem;
+        }
+    }
+    
+    .main__container{
+        margin:0 30px;
+        &__left, &__right{
+            font-size: 40px;
+            text-align: center;
+            background-color:$primary-color;
+        }
+        &__left{
+            margin-right: 10px;
+        }
+        &__right{
+            margin-left: 10px;
+        }
+    }
+    
+    .desta{
+        margin: 40px 150px;
+        &__subtitle{
+            font-weight:lighter;  
+            font-size: 1.1rem;          
+        }
+        &__price{
+            font-size: 1.1rem;
+            font-weight: bolder;
+        }
+    }
+    .main__title, .desta__title{
+        margin-top:50px;
+        font-size: 1.7rem;
+    }
+    .desta__title{
+        margin-left: 240px;
+    }
+}
