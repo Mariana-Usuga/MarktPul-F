@@ -102,23 +102,12 @@ li a {
     }
 .filter__container {
     height: auto;
-    background-color:white;
+    background-color:#ffffff;
     margin : 20px 10px; 
 }
 
 .filter__title {
-    padding : 30px;
-    background : #2d2f31; 
-    color : white;
-    font-size : 1.2em;
-    font-variant : small-caps;
-    cursor : pointer;
-    display: block;
-}
-.sub-menu-list:after {
-    float: right;
-    right: 10%;
-    content: "+";
+    font-weight: bold;
 }
 .slide {
     clear:both;
@@ -140,6 +129,20 @@ li a {
         color:#2714f8;
         font-weight: bolder;
     }
+}
+.card-body p{
+    height: 30px;
+}
+.card-body__tag{
+    text-decoration: none;
+    color:black;
+    padding: 5px 10px;
+}
+.card-body__tag:hover{
+    color:white;
+    background-color: #4C3DFF;;
+    padding: 5px 10px;
+    border-radius: 70px;
 }
 @media(min-width:992px){
     header{
@@ -181,14 +184,10 @@ li a {
         }
     }
     .filter{
-        display: block;  
-        width: 18%;
-    }
-    .filter span{
-        padding-left: 120px;
-        font-weight: bold;
-        color:black;
-        font-size: 20px;
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+        width: 15%;
     }
     .container{
         width:80%;
