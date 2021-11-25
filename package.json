@@ -1,5 +1,4 @@
 {
-  "name": "sticker-buzz-top-v17-frontend",
   "version": "0.1.0",
   "private": false,
   "scripts": {
@@ -37,21 +36,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/khriztianmoreno/top-v17-frontend.git"
+    "url": 
   },
   "keywords": [
-    "React.js",
-    "khriztianmoreno",
-    "make it real",
-    "bootcamp",
-    "sticker-buzz"
   ],
-  "author": "CRISTIAN MORENO <khriztianmoreno@gmail.com>",
+  "author": ">",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/khriztianmoreno/top-v17-frontend/issues"
+    "url": ""
   },
-  "homepage": "https://github.com/khriztianmoreno",
+  "homepage": "",
   "browserslist": {
     "production": [
       ">0.2%",
