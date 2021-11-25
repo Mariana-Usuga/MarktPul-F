@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.scss';
+import './styles/components/app.scss';
 
 const App = () => {
   return (
@@ -12,7 +12,7 @@ const App = () => {
           {''}
           <code>src/App.js</code>
           {''}
-          Hola esta funcionando
+          Hola esta funcionando 22
         </p>
         <a
           className="App-link"
