@@ -1,29 +1,13 @@
 import React from 'react';
-import logo from './logo.svg';
 import './styles/components/app.scss';
+import Register from './pages/Register';
 
 const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit
-          {''}
-          <code>src/App.js</code>
-          {''}
-          Hola esta funcionando 22
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+    <Register />
     </div>
+
   );
 }
 
