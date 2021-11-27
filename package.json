@@ -1,5 +1,5 @@
 {
-  "name": "sticker-buzz-top-v17-frontend",
+  "name": "marktpul-f",
   "version": "0.1.0",
   "private": false,
   "scripts": {
@@ -35,23 +35,12 @@
     "eslint-plugin-testing-library": "^3.10.2",
     "sass": "^1.43.4"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/khriztianmoreno/top-v17-frontend.git"
-  },
   "keywords": [
     "React.js",
-    "khriztianmoreno",
     "make it real",
-    "bootcamp",
-    "sticker-buzz"
+    "bootcamp"
   ],
-  "author": "CRISTIAN MORENO <khriztianmoreno@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/khriztianmoreno/top-v17-frontend/issues"
-  },
-  "homepage": "https://github.com/khriztianmoreno",
   "browserslist": {
     "production": [
       ">0.2%",
