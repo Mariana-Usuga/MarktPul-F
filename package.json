@@ -15,7 +15,7 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "react-scripts": "4.0.3",
+    "react-scripts": "^3.4.4",
     "web-vitals": "^1.0.1"
   },
   "devDependencies": {
@@ -36,14 +36,13 @@
   },
   "repository": {
     "type": "git",
-    "url": 
+    "url": "https://github.com/Mariana-Usuga/MarktPul-F"
   },
-  "keywords": [
-  ],
+  "keywords": [],
   "author": ">",
   "license": "MIT",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/Mariana-Usuga/MarktPul-F/issues"
   },
   "homepage": "",
   "browserslist": {
