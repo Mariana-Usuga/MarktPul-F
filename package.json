@@ -1,5 +1,4 @@
 {
-  "name": "marktpul-f",
   "version": "0.1.0",
   "private": false,
   "scripts": {
@@ -35,12 +34,18 @@
     "eslint-plugin-testing-library": "^3.10.2",
     "sass": "^1.43.4"
   },
+  "repository": {
+    "type": "git",
+    "url": 
+  },
   "keywords": [
-    "React.js",
-    "make it real",
-    "bootcamp"
   ],
+  "author": ">",
   "license": "MIT",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
   "browserslist": {
     "production": [
       ">0.2%",
