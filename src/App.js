@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './styles/components/app.scss';
+import './App.scss';
 
 const App = () => {
   return (
@@ -13,7 +13,7 @@ const App = () => {
           <code>src/App.js</code>
           {''}
           Hola esta funcionando 22
-        </p>
+ </p>
         <a
           className="App-link"
           href="https://reactjs.org"
