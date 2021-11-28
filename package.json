@@ -35,8 +35,7 @@
     "sass": "^1.43.4"
   },
   "repository": {
-    "type": "git",
-    "url": 
+    "type": "git"
   },
   "keywords": [
   ],
