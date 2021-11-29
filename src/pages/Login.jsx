@@ -18,19 +18,27 @@ function Login () {
         <section className='login__form'>
             <h1 className="login__form--title">Inicio de sesión</h1>
             <form action='submit' onSubmit={handlingForm} method="post" className="login__form--form">
-                <label for="email">Correo Electrónico</label>
-                <input type="email" name="email" id="email" placeholder="email@direccion.com" />
-                <label for="password">Contraseña</label>
-                <input
+                <label htmlFor="email">
+                  Correo Electrónico
+                  <input type="email" name="email" id="email" placeholder="email@direccion.com" required/>
+                </label>
+                <label htmlFor="password">
+                  Contraseña
+                  <input
                   type={passwordShown ? "text" : "password"}
                   name="password"
                   id="password"
-                  placeholder="&#9679;&#9679;&#9679;&#9679;&#9679; " />
+                  placeholder="&#9679;&#9679;&#9679;&#9679;&#9679; "
+                  minlength="8"
+                  required/>
+                </label>
                 <div className="checkbox">
                  <input id='checkbox' type="checkbox" onClick={togglePasswordVisiblity}/>
-                  <label for='checkbox'> Mostrar Contrasena</label>
+                  <label htmlFor='checkbox'> Mostrar Contrasena</label>
                 </div>
-                <input type="button" value="Iniciar Sesión" className="login__button" />
+                <label>
+                  <input type="button" value="Iniciar Sesión" className="login__button" />
+                </label>
             </form>
             <h4>¿No tienes cuenta?, <a href="/login" id='login__form--registro'>Registrate</a> ó ingrese con:</h4>
             <SocialMediaButton media='Google'/>

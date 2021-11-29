@@ -40,19 +40,23 @@ body{
     align-items: center;
   }
   &--form>label{
-    text-align: left;
-    width: 20%;
+    text-align: center;
+    display: contents;
+    width: 100%;
   }
-  &--form>input{
+  &--form>label>input{
     width: 20%;
     padding: 1em 2em;
     margin: 1em;
     border: 1px #c0c0c0 solid;
     border-radius: 10px;
   }
-  &--form>input:focus{
+  &--form>label>input:focus{
     outline: none;
     border: 1px #4C3DFF solid;
+  }
+  input:invalid{
+    border: 1px solid red;
   }
 
   .passWrapper {
