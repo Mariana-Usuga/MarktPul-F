@@ -1,9 +1,6 @@
 import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import LoginImage  from './../imgs/philippe-tinembart-AECyP4zx5Y0-unsplash.jpg'
 import SocialMediaButton from "../components/SocialMediaButton";
-import { faEye } from "@fortawesome/free-solid-svg-icons";
-const eye = <FontAwesomeIcon icon={faEye} />;
 
 function Login () {
   const handlingForm = (event) =>{
@@ -35,7 +32,7 @@ function Login () {
                 </div>
                 <input type="button" value="Iniciar Sesión" className="login__button" />
             </form>
-            <h4>¿No tienes cuenta?, <a href="#" id='login__form--registro'>Registrate</a> ó ingrese con:</h4>
+            <h4>¿No tienes cuenta?, <a href="/login" id='login__form--registro'>Registrate</a> ó ingrese con:</h4>
             <SocialMediaButton media='Google'/>
             <SocialMediaButton media='Facebook'/>
         </section>
