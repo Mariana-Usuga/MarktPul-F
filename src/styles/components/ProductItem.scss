@@ -1,14 +1,19 @@
-.card-body p{
-    height: 30px;
-}
-.card-body__tag{
-    text-decoration: none;
-    color:black;
-    padding: 5px 10px;
-}
-.card-body__tag:hover{
-    color:white;
-    background-color: #4C3DFF;;
-    padding: 5px 10px;
-    border-radius: 70px;
+.card-body{
+    p{
+        height: 30px;
+    }
+    a{
+        text-decoration: none;
+    }
+    &__tag{
+        text-decoration: none;
+        color:black;
+        padding: 5px 10px;
+        :hover{
+            color:white;
+            background-color: #4C3DFF;;
+            padding: 5px 10px;
+            border-radius: 70px;
+        }
+    }
 }

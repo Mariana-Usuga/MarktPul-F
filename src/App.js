@@ -1,11 +1,10 @@
 import React from 'react';
-import {Search} from './pages/Search'
-const App = () => {
-  return (
-    <div className="App">
-      <Search></Search>
-    </div>
-  );
-}
+import Search from './pages/Search';
+
+const App = () => (
+  <div className="App">
+    <Search />
+  </div>
+);
 
 export default App;
