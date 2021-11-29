@@ -1,7 +1,7 @@
 /* eslint-disable */
 import React from 'react';
 import { useState, useEffect } from 'react';
-const sideImg = require('../imgs/tanya-pro-dYtLnwlETDg-unsplash.jpg');
+import sideImg from '../imgs/tanya-pro-dYtLnwlETDg-unsplash.jpg';
 import '../css/register.css';
 
 function validateEmail(email) {
