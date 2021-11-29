@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import './index.css';
-import App from './App';
+// import './index.css';
 import PublicRoutes from './routes/PublicRoutes';
 // import reportWebVitals from './reportWebVitals';
 

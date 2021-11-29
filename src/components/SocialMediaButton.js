@@ -1,16 +1,24 @@
-import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGoogle, faFacebook } from '@fortawesome/free-brands-svg-icons';
 
-function SocialMediaButton (props) {
-  const icon = props.media==='Google'?faGoogle:faFacebook
-  const iconClass = props.media==='Google'?'user__form--google':'user__form--facebook'
+const SocialMediaButton = ({ media }) => {
+  const icon = media === 'Google' ? faGoogle : faFacebook;
+  const iconClass = media === 'Google' ? 'user__form--google' : 'user__form--facebook';
   return (
-    <button class={iconClass}>
+    <button type="button" className={iconClass}>
       <FontAwesomeIcon icon={icon} />
-      <p>Inicia con {props.media}</p>
+      <p>
+        Inicia con
+        {media}
+      </p>
     </button>
-  )
-}
+  );
+};
 
-export default SocialMediaButton
+SocialMediaButton.propTypes = {
+  media: PropTypes.string.isRequired,
+};
+
+export default SocialMediaButton;
