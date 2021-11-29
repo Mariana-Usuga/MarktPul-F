@@ -1,11 +1,11 @@
-/* eslint-disable */
-import React from 'react';
-import { useState, useEffect } from 'react';
+/* eslint-disable no-unused-expressions */
+import React, { useState, useEffect } from 'react';
 import sideImg from '../imgs/tanya-pro-dYtLnwlETDg-unsplash.jpg';
-import '../css/register.css';
+import '../styles/components/register.css';
 
 function validateEmail(email) {
-  return /[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(email);
+  return (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(email)
+   && email.length>0);
 }
 
 function validateUsername(uname) {
@@ -26,7 +26,7 @@ function validatePassword(password) {
   );
 }
 
-let formErrors = {
+const formErrors = {
   username: '',
   email: '',
   password: 'empty',
@@ -39,52 +39,45 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [repassword, setRepassword] = useState('');
   const [errors, setErrors] = useState(formErrors);
-  // const [showErrors, setShowErrors] = useState(false);
 
   const handleEmail = ({ target }) => {
-    const { value: email } = target;
-    !validateEmail(email)
+    !validateEmail(target.value)
       ? setErrors({ ...errors, email: 'Not a valid email' })
       : setErrors({ ...errors, email: '' });
-    setEmail(email);
+    setEmail(target.value);
   };
 
   const handleUsername = ({ target }) => {
-    const { value: username } = target;
-    !validateUsername(username)
+    !validateUsername(target.value)
       ? setErrors({
-          ...errors,
-          username: 'Username lenght needs to be 5+ chars',
-        })
+        ...errors,
+        username: 'Username lenght needs to be 5+ chars',
+      })
       : setErrors({ ...errors, username: '' });
-    setUsername(username);
+    return setUsername(target.value);
   };
 
   const handlePassword = ({ target }) => {
-    const { value: password } = target;
-    !validatePassword(password)
+    !validatePassword(target.value)
       ? setErrors({
-          ...errors,
-          password: 'password lenght must be 8+ chars, with numbers',
-        })
+        ...errors,
+        password: 'password lenght must be 8+ chars, with numbers',
+      })
       : setErrors({ ...errors, password: '' });
-    setPassword(password);
+    setPassword(target.value);
   };
 
   const handleRepassword = ({ target }) => {
-    const { value: repassword } = target;
-    !validatePassword(repassword) &&
-    !(password === repassword) &&
-    repassword.length > 0
+    !validatePassword(target.value) &&
+    !(password === target.value) &&
+    target.value.length > 0
       ? setErrors({ ...errors, repassword: 'passwords do not match' })
       : setErrors({ ...errors, repassword: '' });
-    setRepassword(repassword);
+    setRepassword(target.value);
   };
 
   useEffect(() => {
-    Object.keys(errors).length > 0
-      ? console.log(validateSubmit(errors), errors)
-      : null;
+    Object.keys(errors).length > 0 ? validateSubmit(errors) : null;
   }, [errors]);
 
   return (
@@ -96,7 +89,7 @@ const Register = () => {
         <h1 className="register__form--title">Regístrate</h1>
 
         <form action="" method="post" className="register__form--form">
-          <label htmlFor="email">Correo electrónico</label>
+          <label htmlFor="email">Correo electrónico
           <input
             value={email}
             onChange={handleEmail}
@@ -104,10 +97,11 @@ const Register = () => {
             name="email"
             id="email"
             title="email con dominio válido"
-            required={true}
+            required
           />
+          </label>
 
-          <label htmlFor="username">Nombre de usuario</label>
+          <label htmlFor="username">Nombre de usuario
           <input
             type="text"
             name="username"
@@ -117,9 +111,10 @@ const Register = () => {
             title="Usuario de la plataforma"
             required
             onChange={handleUsername}
-          />
+          /></label>
 
-          <label htmlFor="password">Contraseña</label>
+
+          <label htmlFor="password">Contraseña
           <input
             type="password"
             name="password"
@@ -129,9 +124,10 @@ const Register = () => {
             title="Debe tener 8 carácteres al menos un número y una letra"
             required
             placeholder=""
-          />
+          /></label>
 
-          <label htmlFor="password">Confirma tu contraseña</label>
+
+          <label htmlFor="password">Confirma tu contraseña
           <input
             type="password"
             name="password"
@@ -141,23 +137,26 @@ const Register = () => {
             onChange={handleRepassword}
             required
             placeholder=""
-          />
+          /></label>
 
-          <input
+        <label htmlFor="register__button">
+        <input
             type="submit"
             disabled={validateSubmit(errors)}
             value="Registrarse"
             className="register__buttonasdf"
             id="register__button"
           />
+        </label>
+
         </form>
         <h2>¿Ya tienes cuenta?</h2>
         <section className="login__social">
-          <button className="login__form--google">
+          <button type="submit" className="login__form--google">
             <img src="https://freesvg.org/img/1534129544.png" alt="" />
             Inicia con Google
           </button>
-          <button className="login__form--facebook">
+          <button type="submit" className="login__form--facebook">
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg"
               alt=""
