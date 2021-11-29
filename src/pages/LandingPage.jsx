@@ -2,7 +2,6 @@ import Carousel from 'react-elastic-carousel';
 import HeaderMain from '../components/HeaderMain';
 import MarketCard from '../components/MarketCard';
 import ProductCard from '../components/ProductCard';
-import '../styles/pages/landingPage.scss';
 import mercado from '../styles/image/mercado1.png';
 import mercado2 from '../styles/image/mercado2.png';
 import mercado3 from '../styles/image/mercado3.png';
@@ -11,6 +10,8 @@ import product2 from '../styles/image/product2.png';
 import product3 from '../styles/image/product3.png';
 import product4 from '../styles/image/product4.png';
 import product5 from '../styles/image/product5.png';
+
+import '../styles/pages/landingPage.scss';
 
 const LandingPage = () => {
   const breakPoints = [

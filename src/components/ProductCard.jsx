@@ -1,5 +1,6 @@
-import '../styles/components/productCard.scss';
 import PropTypes from 'prop-types';
+
+import '../styles/components/productCard.scss';
 
 const ProductCard = ({ src, title, price }) => (
   <div className="productCard__item">

@@ -1,5 +1,6 @@
-import '../styles/components/marketCard.scss';
 import PropTypes from 'prop-types';
+
+import '../styles/components/marketCard.scss';
 
 const MarketCard = ({ src, title, places }) => (
   <div className="carousel__element">
