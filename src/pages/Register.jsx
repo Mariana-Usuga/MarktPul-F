@@ -1,30 +1,11 @@
-/* eslint-disable no-unused-expressions */
+
 import React, { useState, useEffect } from 'react';
 import sideImg from '../imgs/tanya-pro-dYtLnwlETDg-unsplash.jpg';
 import '../styles/components/register.css';
-
-function validateEmail(email) {
-  return (/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(email)
-   && email.length>0);
-}
-
-function validateUsername(uname) {
-  return uname.length > 4;
-}
-
-function validateSubmit(errors) {
-  const isValid = Object.keys(errors).filter(
-    (key) => errors[key].length > 0,
-  ).length;
-  return isValid;
-}
-
-function validatePassword(password) {
-  return (
-    /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(password) &&
-    password.length > 0
-  );
-}
+import {validateEmail,
+  validatePassword,
+  validateSubmit,
+  validateUsername} from '../utils/form-validation'
 
 const formErrors = {
   username: '',
@@ -41,43 +22,53 @@ const Register = () => {
   const [errors, setErrors] = useState(formErrors);
 
   const handleEmail = ({ target }) => {
-    !validateEmail(target.value)
-      ? setErrors({ ...errors, email: 'Not a valid email' })
-      : setErrors({ ...errors, email: '' });
+    if (!validateEmail(target.value)){
+      setErrors({ ...errors, email: 'Not a valid email' })
+    } else {
+      setErrors({ ...errors, email: '' });
+    }
     setEmail(target.value);
   };
 
   const handleUsername = ({ target }) => {
-    !validateUsername(target.value)
-      ? setErrors({
+    if (!validateUsername(target.value)) {
+      setErrors({
         ...errors,
         username: 'Username lenght needs to be 5+ chars',
       })
-      : setErrors({ ...errors, username: '' });
+    }else{
+      setErrors({ ...errors, username: '' });
+    }
     return setUsername(target.value);
   };
 
   const handlePassword = ({ target }) => {
-    !validatePassword(target.value)
-      ? setErrors({
-        ...errors,
-        password: 'password lenght must be 8+ chars, with numbers',
-      })
-      : setErrors({ ...errors, password: '' });
+      if (!validatePassword(target.value)) {
+        setErrors({
+          ...errors,
+          password: 'password lenght must be 8+ chars, with numbers',
+        })
+      } else {
+        setErrors({ ...errors, password: '' })
+      }
     setPassword(target.value);
   };
 
   const handleRepassword = ({ target }) => {
-    !validatePassword(target.value) &&
-    !(password === target.value) &&
-    target.value.length > 0
-      ? setErrors({ ...errors, repassword: 'passwords do not match' })
-      : setErrors({ ...errors, repassword: '' });
+    if (!validatePassword(target.value)
+     && !(password === target.value)
+     && target.value.length > 0) {
+      setErrors({ ...errors, repassword: 'passwords do not match' })
+    } else {
+      setErrors({ ...errors, repassword: '' });
+    }
     setRepassword(target.value);
   };
 
   useEffect(() => {
-    Object.keys(errors).length > 0 ? validateSubmit(errors) : null;
+    if (Object.keys(errors).length > 0) {
+      validateSubmit(errors)
+    }
   }, [errors]);
 
   return (
