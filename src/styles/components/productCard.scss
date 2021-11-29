@@ -1,0 +1,28 @@
+.productCard{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  &__img{
+    border-radius: 30%;
+    text-align: center;
+    width: 130px;
+}
+  &__item{
+      width: 140px;
+      padding-left: 5px;
+      padding-bottom: 10px;
+  }
+  &__price{
+    font-weight: bolder;
+  }
+}
+@media(min-width:992px){
+  .productCard__item{
+    width: 170px;
+  }
+  .productCard__img{
+    width: 160px;
+  }
+}
+
+

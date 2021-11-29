@@ -1,0 +1,16 @@
+
+.titleMarket, .titleProductCard{
+  margin:20px 10px 10px 10px;
+}
+@media(min-width:992px){
+  .titleMarket{
+    margin: 30px 0 20px 50px;
+  }
+  .productCard{
+    margin:0 100px;
+  }
+  .titleProductCard{
+    margin:30px 0 20px 115px;
+  }
+}
+
