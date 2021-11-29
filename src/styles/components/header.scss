@@ -1,10 +1,6 @@
 $primary-color: white;
 $secondary-color:#4C3DFF;
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+
 header{
     height: 200px;
 }
@@ -54,6 +50,7 @@ header{
             background-color:#fff;
             width: 375px;
             border-radius: 70px;
+            margin-left: 15px;
             &__input{
                 padding-left: 15px;
                 width: 80%;

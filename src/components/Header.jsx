@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/components/header.scss';
 export const Header = () => {
   const handleMenu=(e) =>{
-    const iconoMenu = document.querySelector('.header__main-bars');
+    //const iconoMenu = document.querySelector('.header__main-bars');
     const menu = document.querySelector('.header__ul');
     menu.classList.toggle('header__ul--show');
   }    
