@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import sideImg from '../imgs/tanya-pro-dYtLnwlETDg-unsplash.jpg';
-import '../styles/components/register.css';
+import '../styles/pages/register.css';
 import { validateEmail,
   validatePassword,
   validateSubmit,
