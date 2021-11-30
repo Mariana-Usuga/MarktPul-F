@@ -67,10 +67,12 @@ const Register = () => {
   };
 
   useEffect(() => {
-    if (Object.keys(errors).length > 0) {
-      validateSubmit(errors);
+    if (password !== repassword) {
+      setErrors({ ...errors, repassword: 'passwords do not match' });
+    } else {
+      setErrors({ ...errors, repassword: '' });
     }
-  }, [errors]);
+  }, [password, repassword]);
 
   return (
     <div className="register">
