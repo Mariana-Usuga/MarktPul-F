@@ -4,7 +4,7 @@ $secondary-color:#4C3DFF;
 header{
     height: 200px;
 }
-.header{
+.search-header{
     color: $primary-color;
     &__nav{
         display: flex;
@@ -73,7 +73,7 @@ header{
     header{
         height: 90px;
     }
-    .header{
+    .search-header{
         &__nav{
             flex-direction: row;
             align-items: center;
@@ -93,6 +93,7 @@ header{
             width: 40%;
             top: 20px;
             left: 60%;
+            //position: static;
             background-color:transparent;
         }
         &__li{
