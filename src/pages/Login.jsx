@@ -66,11 +66,12 @@ const Login = () => {
           <a href="/login" id="login__form--registro">
             Registrate
           </a>
-          {' '}
           ó ingrese con:
         </h4>
-        <SocialMediaButton media="Google" />
-        <SocialMediaButton media="Facebook" />
+        <div className="login__social">
+          <SocialMediaButton media="Google" />
+          <SocialMediaButton media="Facebook" />
+        </div>
       </section>
     </div>
   );
