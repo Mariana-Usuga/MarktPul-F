@@ -56,10 +56,12 @@ body {
 }
 
 .register__form--form > label {
-  text-align: left;
+  display: flex;
+  flex-flow: column wrap;
+  text-align: center;
   margin-top: 1em;
 }
-.register__form--form > input {
+.register__form--form > label > input {
   padding: 0.5em 2em;
   margin: 0.5em;
   border: 1px #c0c0c0 solid;
@@ -74,7 +76,7 @@ body {
   border: 1px #4c3dff solid;
 }
 
-input:invalid {
+label > input:invalid {
   border: 2px solid red;
 }
 
