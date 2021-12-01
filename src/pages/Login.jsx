@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import LoginImage from '../imgs/philippe-tinembart-AECyP4zx5Y0-unsplash.jpg';
 import SocialMediaButton from '../components/SocialMediaButton';
+import '../styles/styles.scss';
 
 const Login = () => {
   const handlingForm = (event) => {
