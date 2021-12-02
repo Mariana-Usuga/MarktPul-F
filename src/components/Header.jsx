@@ -31,7 +31,9 @@ const Header = () => {
         </div>
         <ul className="search-header__ul">
           <li className="search-header__li">Inicio</li>
-          <li className="search-header__li"><a href="/register">Registro</a></li>
+          <li className="search-header__li">
+            <a href="/register">Registro</a>
+          </li>
           <li className="search-header__li">Mi cuenta</li>
           <li className="search-header__li">
             <i className="search-header__mobile-cart fas fa-shopping-cart" />
