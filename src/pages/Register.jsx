@@ -25,7 +25,10 @@ const Register = () => {
 
   const handleEmail = ({ target }) => {
     if (!validateEmail(target.value)) {
-      setErrors({ ...errors, email: 'Not a valid email' });
+      setErrors({
+        ...errors,
+        email: 'Not a valid email',
+      });
     } else {
       setErrors({ ...errors, email: '' });
     }
@@ -62,7 +65,10 @@ const Register = () => {
       !(password === target.value) &&
       target.value.length > 0
     ) {
-      setErrors({ ...errors, repassword: 'passwords do not match' });
+      setErrors({
+        ...errors,
+        repassword: 'passwords do not match',
+      });
     } else {
       setErrors({ ...errors, repassword: '' });
     }
@@ -71,7 +77,10 @@ const Register = () => {
 
   useEffect(() => {
     if (password !== repassword) {
-      setErrors({ ...errors, repassword: 'passwords do not match' });
+      setErrors({
+        ...errors,
+        repassword: 'passwords do not match',
+      });
     } else {
       setErrors({ ...errors, repassword: '' });
     }
