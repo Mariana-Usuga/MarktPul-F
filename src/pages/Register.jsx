@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import sideImg from '../imgs/tanya-pro-dYtLnwlETDg-unsplash.jpg';
-import '../styles/pages/register.css';
 import {
   validateEmail,
   validatePassword,
   validateSubmit,
   validateUsername,
 } from '../utils/form-validation';
+import sideImg from '../imgs/tanya-pro-dYtLnwlETDg-unsplash.jpg';
+import '../styles/pages/register.css';
 
 const formErrors = {
   username: '',
@@ -24,7 +24,10 @@ const Register = () => {
 
   const handleEmail = ({ target }) => {
     if (!validateEmail(target.value)) {
-      setErrors({ ...errors, email: 'Not a valid email' });
+      setErrors({
+        ...errors,
+        email: 'Not a valid email',
+      });
     } else {
       setErrors({ ...errors, email: '' });
     }
@@ -57,11 +60,14 @@ const Register = () => {
 
   const handleRepassword = ({ target }) => {
     if (
-      !validatePassword(target.value)
-      && !(password === target.value)
-      && target.value.length > 0
+      !validatePassword(target.value) &&
+      !(password === target.value) &&
+      target.value.length > 0
     ) {
-      setErrors({ ...errors, repassword: 'passwords do not match' });
+      setErrors({
+        ...errors,
+        repassword: 'passwords do not match',
+      });
     } else {
       setErrors({ ...errors, repassword: '' });
     }
@@ -70,7 +76,10 @@ const Register = () => {
 
   useEffect(() => {
     if (password !== repassword) {
-      setErrors({ ...errors, repassword: 'passwords do not match' });
+      setErrors({
+        ...errors,
+        repassword: 'passwords do not match',
+      });
     } else {
       setErrors({ ...errors, repassword: '' });
     }
