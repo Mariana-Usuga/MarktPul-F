@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaShoppingCart, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import '../styles/components/headerMain.scss';
 
@@ -20,9 +21,9 @@ const HeaderMain = () => {
           className={!show ? 'header__ul' : 'header__ul--show background--show'}
         >
           <li className="header__li">Inicio</li>
-          <a href="./register">
+          <Link to="register">
             <li className="header__li">Registro</li>
-          </a>
+          </Link>
           <li className="header__li">Mi cuenta</li>
           <li className="header__li">
             <FaShoppingCart />
