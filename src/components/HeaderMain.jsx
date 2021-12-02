@@ -20,7 +20,9 @@ const HeaderMain = () => {
           className={!show ? 'header__ul' : 'header__ul--show background--show'}
         >
           <li className="header__li">Inicio</li>
-          <li className="header__li">Registro</li>
+          <a href="/.register">
+            <li className="header__li">Registro</li>
+          </a>
           <li className="header__li">Mi cuenta</li>
           <li className="header__li">
             <FaShoppingCart />
