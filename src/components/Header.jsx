@@ -35,7 +35,7 @@ const Header = () => {
             <Link to="/register">Registro</Link>
           </li>
           <li className="search-header__li">
-            <Link to="/register">Mi cuenta</Link>
+            <Link to="/login">Mi cuenta</Link>
           </li>
           <li className="search-header__li">
             <i className="search-header__mobile-cart fas fa-shopping-cart" />
