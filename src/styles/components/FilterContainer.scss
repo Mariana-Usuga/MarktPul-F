@@ -15,6 +15,9 @@
 .sub_menu__ul{
         display: none;
         transition: display 1s;
+        &--show{
+            display: block ;
+        }
 }
 .sub-menu ul li{
     list-style-type: none;

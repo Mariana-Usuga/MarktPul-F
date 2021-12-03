@@ -24,6 +24,7 @@ export default ProductItem;
 ProductItem.propTypes = {
   tipoMercado: Proptypes.string.isRequired,
   infoMercado: Proptypes.string.isRequired,
-  tagMercado: Proptypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  tagMercado: Proptypes.array.isRequired,
   img: Proptypes.string.isRequired,
 };

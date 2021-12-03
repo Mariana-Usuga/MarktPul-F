@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/components/FilterContainer.scss';
 
 const FilterContainer = () => {
+  const [showProducts, setShowProducts] = useState(false);
+  const [showEvents, setShowEvents] = useState(false);
+  const [showMarkets, setShowMarkets] = useState(false);
   const desplegar = (e) => {
     e.preventDefault();
-    const lista = document.querySelectorAll('.sub-menu ul');
+    //     const lista = document.querySelectorAll('.sub-menu ul');
     if (e.target.text === 'Productos') {
-      lista[0].classList.toggle('sub_menu__ul');
+      if (!showProducts) {
+        setShowProducts(true);
+      } else {
+        setShowProducts(false);
+      }
     }
     if (e.target.text === 'Mercados') {
-      lista[1].classList.toggle('sub_menu__ul');
+      if (!showMarkets) {
+        setShowMarkets(true);
+      } else {
+        setShowMarkets(false);
+      }
     }
     if (e.target.text === 'Eventos') {
-      lista[2].classList.toggle('sub_menu__ul');
+      if (!showEvents) {
+        setShowEvents(true);
+      } else {
+        setShowEvents(false);
+      }
     }
   };
   return (
@@ -27,7 +42,9 @@ const FilterContainer = () => {
               Productos
             </a>
             <i className="fas fa-angle-down"> </i>
-            <ul className="sub_menu__ul">
+            <ul
+              className={!showProducts ? 'sub_menu__ul' : 'sub_menu__ul--show'}
+            >
               <li>
                 <a href="/">Lorem Ipsum</a>
               </li>
@@ -44,7 +61,9 @@ const FilterContainer = () => {
               Mercados
             </a>
             <i className="fas fa-angle-down"> </i>
-            <ul className="sub_menu__ul">
+            <ul
+              className={!showMarkets ? 'sub_menu__ul' : 'sub_menu__ul--show'}
+            >
               <li>
                 <a href="/">Fisicos</a>
               </li>
@@ -59,7 +78,7 @@ const FilterContainer = () => {
               <i className="fas fa-angle-down" />
             </a>
 
-            <ul className="sub_menu__ul">
+            <ul className={!showEvents ? 'sub_menu__ul' : 'sub_menu__ul--show'}>
               <li>
                 <a href="/">Lorem Ipsum</a>
               </li>

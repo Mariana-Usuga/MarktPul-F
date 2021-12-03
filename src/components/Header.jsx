@@ -1,13 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../styles/components/header.scss';
 import { Link } from 'react-router-dom';
 
 const Header = () => {
-  const handleMenu = () => {
-    // const iconoMenu = document.querySelector('.header__main-bars');
-    const menu = document.querySelector('.search-header__ul');
-    menu.classList.toggle('search-header__ul--show');
-  };
+  const [show, setShow] = useState(false);
+  const showMenu = () => (!show ? setShow(true) : setShow(false));
   return (
     <header>
       <nav className="search-header__nav">
@@ -16,8 +13,8 @@ const Header = () => {
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <i
             className="search-header__main-bars fas fa-bars"
-            onClick={handleMenu}
-            onKeyPress={handleMenu}
+            onClick={showMenu}
+            onKeyPress={showMenu}
             role="button"
             tabIndex="0"
           />
@@ -30,14 +27,16 @@ const Header = () => {
           />
           <i className="search-header__des__d__fa fas fa-search" />
         </div>
-        <ul className="search-header__ul">
+        <ul className={!show ? 'search-header__ul' : 'search-header__ul--show'}>
           <li className="search-header__li">
             <Link to="/">Inicio</Link>
           </li>
           <li className="search-header__li">
             <Link to="/register">Registro</Link>
           </li>
-          <li className="search-header__li">Mi cuenta</li>
+          <li className="search-header__li">
+            <Link to="/register">Mi cuenta</Link>
+          </li>
           <li className="search-header__li">
             <i className="search-header__mobile-cart fas fa-shopping-cart" />
           </li>
