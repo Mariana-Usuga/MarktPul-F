@@ -9,7 +9,7 @@ const SocialMediaButton = ({ media }) => {
     media === 'Google' ? 'user__form--google' : 'user__form--facebook';
   return (
     <button type="button" className={iconClass}>
-      { icon }
+      {icon}
       <p>
         Inicia con
         {media}
