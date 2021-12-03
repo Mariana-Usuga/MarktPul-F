@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/components/header.scss';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const handleMenu = () => {
@@ -30,9 +31,11 @@ const Header = () => {
           <i className="search-header__des__d__fa fas fa-search" />
         </div>
         <ul className="search-header__ul">
-          <li className="search-header__li">Inicio</li>
           <li className="search-header__li">
-            <a href="/register">Registro</a>
+            <Link to="/">Inicio</Link>
+          </li>
+          <li className="search-header__li">
+            <Link to="/register">Registro</Link>
           </li>
           <li className="search-header__li">Mi cuenta</li>
           <li className="search-header__li">
