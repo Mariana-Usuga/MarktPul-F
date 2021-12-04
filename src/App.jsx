@@ -1,7 +1,8 @@
 import React from 'react';
-import LandingPage from './pages/LandingPage';
 import './App.scss';
+// import ItemDetail from './pages/ItemDetail';
+import Probando from './pages/probando';
 
-const App = () => <LandingPage />;
+const App = () => <Probando />;
 
 export default App;

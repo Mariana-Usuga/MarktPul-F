@@ -1,11 +1,29 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import './index.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import App from './App';
+import Navegacion from './components/Navegacion';
+import ItemDetail from './pages/ItemDetail';
+// import probando from './pages/probando';
 // import reportWebVitals from './reportWebVitals';
+
+const Routing = () => (
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Navegacion />}>
+        <Route path="app" element={<App />}>
+          <Route path=":id" element={<ItemDetail />} />
+        </Route>
+        <Route path="*" element={<p>Hay algo aqui</p>} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
+);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Routing />
   </React.StrictMode>,
   document.getElementById('root'),
 );
