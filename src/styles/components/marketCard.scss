@@ -1,8 +1,13 @@
-.carousel__element, img{
+
+.carousel__item{
+  color: black;
+}
+.carousel__item img{
   width: 160px;
 }
 @media(min-width:992px){
-  .carousel__element, img{
-    width: 300px;
+  .carousel__item img{
+    width: 280px;
   }
+
 }

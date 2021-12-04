@@ -59,9 +59,9 @@ body{
   height: 300%;
   width: 100%;
 }
-.header__des{
+.header__info{
     margin-left: 20px;
-  &__d{
+  &__des{
       margin: 5px 0 20px 0;
       background-color:#fff;
       width:200px;
@@ -118,15 +118,15 @@ body{
       display: none;
     }
   }
-  .header__des{
+  .header__info{
         padding: 100px 60px;
-        &__d{
+        &__des{
             width: 500px;
             margin-top: 20px;
-        }
-        &__d__input{
-            height: 40px;
-            width: 470px;
+            &__input{
+              height: 40px;
+              width: 470px;
+            }
         }
         &__title{
             width: 600px;
