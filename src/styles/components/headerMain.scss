@@ -39,9 +39,16 @@ body{
     text-align: center;
     font-size: 1.2rem;
     border-bottom: 0.3px solid;
+    a{
+      color:white;
+    }
 }
 &__li:hover{
     background-color: $secondary-color;
+    color:white;
+    a{
+      color:white;
+    }
 }
 &__bars{
   font-size: 25px;

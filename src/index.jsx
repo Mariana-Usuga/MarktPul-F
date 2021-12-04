@@ -1,21 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+import './index.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from './App';
-import ItemDetail from './pages/ItemDetail';
-import MarketDetail from './pages/MarketDetail';
-// import probando from './pages/probando';
-// import reportWebVitals from './reportWebVitals';
+import LandingPage from './pages/LandingPage';
+import Search from './pages/Search';
+import Register from './pages/Register';
+import Login from './pages/Login';
 
 const Routing = () => (
   <BrowserRouter>
     <Routes>
-      {/* <Route path="/nose" element={<ItemDetail />} /> */}
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<LandingPage />} />
       <Route path="product/:id" element={<ItemDetail />} />
       <Route path="market/:id" element={<MarketDetail />} />
-      {/* <Route path="*" element={<p>Hay algo aqui</p>} /> */}
+      <Route path="/search" element={<Search />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   </BrowserRouter>
 );
