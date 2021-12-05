@@ -2,11 +2,11 @@
 .carousel__item{
   color: black;
 }
-.carousel__item img{
+.carousel__item, .carousel__item img{
   width: 160px;
 }
 @media(min-width:992px){
-  .carousel__item img{
+  .carousel__item, .carousel__item img{
     width: 280px;
   }
 

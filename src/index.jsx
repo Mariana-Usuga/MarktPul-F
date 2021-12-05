@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import LandingPage from './pages/LandingPage';
+import MarketDetail from './pages/MarketDetail';
+import ItemDetail from './pages/ItemDetail';
 import Search from './pages/Search';
 import Register from './pages/Register';
 import Login from './pages/Login';

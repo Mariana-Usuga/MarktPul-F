@@ -8,13 +8,7 @@ import '../styles/pages/itemDetail.scss';
 
 const ItemDetail = () => {
   const [product, setProduct] = useState({});
-  const breakPoints = [
-    // { width: 400, itemsToShow: 1 },
-    // { width: 500, itemsToShow: 3 },
-    // { width: 1200, itemsToShow: 4 },
-    // { width: 50, itemsToShow: 1 },
-    { width: 100, itemsToShow: 2 },
-  ];
+  const breakPoints = [{ width: 100, itemsToShow: 2 }];
 
   const { id } = useParams();
   useEffect(() => {

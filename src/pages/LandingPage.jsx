@@ -65,7 +65,7 @@ const LandingPage = () => {
           .slice(0, 5)
           .map((product) => (
             <Link
-              to={`/${product.id}`}
+              to={`/product/${product.id}`}
               key={product.id}
               style={{ textDecoration: 'none' }}
             >
