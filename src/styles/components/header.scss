@@ -1,0 +1,119 @@
+$primary-color: white;
+$secondary-color:#4C3DFF;
+
+header{
+    height: 200px;
+}
+.search-header{
+    color: $primary-color;
+    &__nav{
+        display: flex;
+        flex-direction: column;
+    }
+    &__main{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px;
+        &-logo{
+            font-size: 2.5rem;
+        }
+        &-bars, &-cart{
+            font-size: 1.8rem;
+        }
+    }
+    &__ul{
+        z-index: 10;
+        transform:translate(-100%,0);
+        transition: transform .4s ease;
+        background-color:#897ff1;
+        /* position:absolute; */
+        width: 100%;
+        &--show{
+            transform:translate(0,0);
+            transition: transform .4s ease;
+        }
+    }
+    &__li{
+        background-color:#897ff1;
+        list-style-type: none;
+        padding:20px;
+        text-align: center;
+        font-size: 1.2rem;
+        border-bottom: 0.3px solid;
+    }
+    &__li:hover{
+        background-color: $secondary-color;
+        color:white;
+        a{
+            color:white;
+        }
+    }
+    &__des{
+        margin-left: 20px;
+        margin-right: 20px;
+        &__d{
+            background-color:#fff;
+            width: 375px;
+            border-radius: 70px;
+            margin-left: 15px;
+            &__input{
+                padding-left: 15px;
+                width: 80%;
+                border: none;
+                height: 30px;
+                outline: none;
+                border-radius: 70px;
+                margin-left: 5px;
+                background-color: #eaeaee;
+            }
+            &__fa{
+                width: 28px;
+                color: black;
+                text-align:right;
+            }
+        }
+    }    
+}
+@media(min-width:768px){
+    header{
+        height: 90px;
+    }
+    .search-header{
+        &__nav{
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        &__main-logo{
+            width: 150px;
+        }
+        &__des__d{
+            display: inline-block;
+            width: 1000px;
+        }
+        &__ul{
+            transform:translate(0,0);
+            display: flex;
+            justify-content: flex-start;
+            width: 40%;
+            top: 20px;
+            left: 60%;
+            //position: static;
+            background-color:transparent;
+        }
+        &__li{
+            background-color: white;
+            font-size: 20px;
+            border-bottom: none;
+        }
+        &__main-bars{
+            display: none;
+        }
+        &__main-logo{
+            font-size: 2rem;
+            margin-top: 0px;
+            margin-left: 30px;
+        }
+    }
+}

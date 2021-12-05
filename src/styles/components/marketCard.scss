@@ -1,0 +1,8 @@
+.carousel__element, img{
+  width: 160px;
+}
+@media(min-width:992px){
+  .carousel__element, img{
+    width: 300px;
+  }
+}
