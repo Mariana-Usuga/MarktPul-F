@@ -6,16 +6,14 @@ import LandingPage from './pages/LandingPage';
 import Search from './pages/Search';
 import Register from './pages/Register';
 import Login from './pages/Login';
-// import Footer from './components/Footer';
-// import Header from './components/Header';
 import Layout from './components/Layout';
 
 const Routing = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/main" element={<LandingPage />} />
+      <Route path="/" element={<LandingPage />} />
 
-      <Route path="/" element={<Layout />}>
+      <Route path="/main/" element={<Layout />}>
         <Route path="search" element={<Search />} />
       </Route>
 
