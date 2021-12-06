@@ -10,6 +10,7 @@ import product2 from '../styles/image/product2.png';
 import product3 from '../styles/image/product3.png';
 import product4 from '../styles/image/product4.png';
 import product5 from '../styles/image/product5.png';
+import Footer from '../components/Footer';
 
 import '../styles/pages/landingPage.scss';
 
@@ -94,6 +95,7 @@ const LandingPage = () => {
         <ProductCard src={product5} title="Frasco" price="$20.000" />
         <ProductCard src={product4} title="Cajon rosado" price="$20.000" />
       </div>
+      <Footer />
     </>
   );
 };

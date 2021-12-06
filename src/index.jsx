@@ -21,7 +21,6 @@ const Routing = () => (
 
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
-      {/* <Route path="/footer" element={<Footer />} /> */}
     </Routes>
   </BrowserRouter>
 );
