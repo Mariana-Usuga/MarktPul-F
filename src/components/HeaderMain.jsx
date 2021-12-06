@@ -42,7 +42,10 @@ const HeaderMain = () => {
         <div className="header__des__d">
           <input className="header__des__d__input" type="text" />
           <div className="header__des__d__fa">
-            <FaSearch />
+            <Link to="/main/search">
+              {' '}
+              <FaSearch />
+            </Link>
           </div>
         </div>
         <div className="header__des__sell">Quiero vender</div>
