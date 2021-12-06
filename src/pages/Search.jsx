@@ -1,18 +1,18 @@
 import React from 'react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+// import Header from '../components/Header';
+// import Footer from '../components/Footer';
 import MainProductGrid from '../components/MainProductGrid';
 import FilterContainer from '../components/FilterContainer';
 import '../styles/components/search.scss';
 
 const Search = () => (
   <div>
-    <Header />
+    {/* <Header /> */}
     <main>
       <FilterContainer />
       <MainProductGrid />
     </main>
-    <Footer />
+    {/* <Footer /> */}
   </div>
 );
 export default Search;
