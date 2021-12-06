@@ -29,7 +29,7 @@ const Header = () => {
         </div>
         <ul className={!show ? 'search-header__ul' : 'search-header__ul--show'}>
           <li className="search-header__li">
-            <Link to="/">Inicio</Link>
+            <Link to="/main">Inicio</Link>
           </li>
           <li className="search-header__li">
             <Link to="/register">Registro</Link>
