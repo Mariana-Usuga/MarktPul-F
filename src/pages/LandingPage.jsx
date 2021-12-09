@@ -19,12 +19,8 @@ const LandingPage = () => {
   ];
   useEffect(() => {
     const getProducts = async () => {
-      try {
-        const res = await axios.get('https://fakestoreapi.com/products');
-        setProducts(res.data);
-      } catch (err) {
-        console.warn(err);
-      }
+      const res = await axios.get('https://fakestoreapi.com/products');
+      setProducts(res.data);
     };
     getProducts();
   }, []);

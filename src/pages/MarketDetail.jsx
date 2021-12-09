@@ -10,11 +10,7 @@ const MarketDetail = () => {
   const { id } = useParams();
   useEffect(() => {
     const getMarketshow = async () => {
-      try {
-        await setMarket(getMarket(id));
-      } catch (err) {
-        console.log(err);
-      }
+      await setMarket(getMarket(id));
     };
     getMarketshow();
   }, []);

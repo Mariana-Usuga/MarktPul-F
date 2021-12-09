@@ -13,12 +13,8 @@ const ItemDetail = () => {
   const { id } = useParams();
   useEffect(() => {
     const getProduct = async () => {
-      try {
-        const res = await axios.get(`https://fakestoreapi.com/products/${id}`);
-        setProduct(res.data);
-      } catch (err) {
-        console.log(err);
-      }
+      const res = await axios.get(`https://fakestoreapi.com/products/${id}`);
+      setProduct(res.data);
     };
     getProduct();
   }, []);
