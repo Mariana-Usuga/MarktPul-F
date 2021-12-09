@@ -8,14 +8,17 @@ import ItemDetail from './pages/ItemDetail';
 import Search from './pages/Search';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Layout from './components/Layout';
 
 const Routing = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<LandingPage />} />
-      <Route path="product/:id" element={<ItemDetail />} />
-      <Route path="market/:id" element={<MarketDetail />} />
-      <Route path="/search" element={<Search />} />
+
+      <Route path="/main/" element={<Layout />}>
+        <Route path="search" element={<Search />} />
+      </Route>
+
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
     </Routes>
