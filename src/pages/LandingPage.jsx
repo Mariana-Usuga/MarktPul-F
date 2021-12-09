@@ -1,6 +1,6 @@
 import Carousel from 'react-elastic-carousel';
 import { useState, useEffect } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import HeaderMain from '../components/HeaderMain';
 import MarketCard from '../components/MarketCard';
@@ -35,7 +35,7 @@ const LandingPage = () => {
       <Carousel className="carousel" breakPoints={breakPoints}>
         {markets.map((market) => (
           <Link
-            to={`/market/${market.id}`}
+            to={`/main/marketDetail/${market.id}`}
             key={market.id}
             style={{ textDecoration: 'none' }}
           >
@@ -50,7 +50,7 @@ const LandingPage = () => {
           .slice(0, 5)
           .map((product) => (
             <Link
-              to={`/product/${product.id}`}
+              to={`/main/itemDetail/${product.id}`}
               key={product.id}
               style={{ textDecoration: 'none' }}
             >
@@ -65,7 +65,7 @@ const LandingPage = () => {
           .slice(0, 5)
           .map((product) => (
             <Link
-              to={`/product/${product.id}`}
+              to={`/main/itemDetail/${product.id}`}
               key={product.id}
               style={{ textDecoration: 'none' }}
             >
@@ -73,7 +73,6 @@ const LandingPage = () => {
             </Link>
           ))}
       </div>
-      <Outlet />
     </>
   );
 };
