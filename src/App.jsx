@@ -1,8 +1,6 @@
 import React from 'react';
-// import LandingPage from './pages/LandingPage';
-import './App.scss';
-import Footer from './components/Footer';
+import LandingPage from './pages/LandingPage';
 
-const App = () => <Footer />;
+const App = () => <LandingPage />;
 
 export default App;

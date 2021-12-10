@@ -1,0 +1,9 @@
+
+.product img{
+  width: 75px;
+}
+@media(min-width:992px){
+  .product__img{
+    width: 135px;
+  }
+}

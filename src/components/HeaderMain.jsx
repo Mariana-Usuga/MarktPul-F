@@ -35,22 +35,21 @@ const HeaderMain = () => {
         </ul>
         <div className="background" />
       </nav>
-      <div className="header__des">
-        <h1 className="header__des__title">
+      <div className="header__info">
+        <h1 className="header__info__title">
           Encuentra lo que necesitas, vende lo que no
         </h1>
-        <div className="header__des__d">
-          <input className="header__des__d__input" type="text" />
-          <div className="header__des__d__fa">
+        <div className="header__info__des">
+          <input className="header__info__des__input" type="text" />
+          <div className="header__info__des__fa">
             <Link to="/main/search">
-              {' '}
               <FaSearch />
             </Link>
           </div>
         </div>
-        <div className="header__des__sell">Quiero vender</div>
-        <div className="header__des__buy">Quiero comprar</div>
-        <div className="header__des__market">Quiero realizar un mercado</div>
+        <div className="header__info__sell">Quiero vender</div>
+        <div className="header__info__buy">Quiero comprar</div>
+        <div className="header__info__market">Quiero realizar un mercado</div>
       </div>
     </header>
   );
