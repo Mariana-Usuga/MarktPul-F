@@ -1,5 +1,150 @@
+$main-color: #4C3DFF;
+$main-font-color: #000;
+$secondary-color: #c0c0c0;
+$font-color: #555;
+
 #shopping-cart{
   display: flex;
   flex-direction: row;
-  margin: 2em;
+  margin: 5vh 5vw;
+  gap: 2em;
+  font-family: "Nunito Sans";
+}
+.cart__table{
+  width: 100%;
+  border: 1px solid $secondary-color;
+  border-collapse: collapse;
+  &--thead{
+    background-color: $main-color;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.3rem;
+    th{
+      padding: .2em 0;
+    }
+  }
+  &--row{
+    td{
+      text-align: center;
+      justify-content: space-around;
+      margin: auto;
+      padding: 1em 0;
+      p{
+        display: inline;
+        margin-right: .5em;
+      }
+      .cart--image{
+        max-width: 5em;
+        border-radius: 50%;
+      }
+    }
+  }
+  &--tbody{
+    text-align: center;
+  }
+  &--item{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    p{
+      margin-left: 1em;
+      font-weight: 800;
+      font-size: 16px;
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  #shopping-cart{
+    flex-direction: column;
+  }
+  .cart__table{
+    display: block;
+  }
+}
+
+//Cart Summary
+
+.cart__summary {
+  border: 1px solid $secondary-color;
+  margin-top: 0;
+  color: $font-color;
+  > * {
+    padding: 0 1rem;
+  }
+  &--title{
+    background-color: $main-color;
+    color: #fff;
+    padding-bottom: .5rem;
+    h1{
+      margin: 0 auto;
+      padding: .5rem 0;
+      font-size: 26px;
+    }
+    h4{
+      margin: .5rem 0;
+    }
+  }
+  &--total{
+    margin: 2rem 0;
+  }
+  &--value{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 1rem 1rem;
+    p{
+      font-weight: 900;
+    }
+  }
+  &--terms{
+    margin: 2rem 1rem;
+  }
+  .cupon{
+    margin: 0 1rem;
+    label>p{
+      display: block;
+    }
+    input:focus{
+      outline: none;
+    }
+    #descuento{
+      font-size: 90%;
+      margin-top: 1rem;
+      width: 75%;
+      border: 1px solid $secondary-color;
+      border-radius: 5px 0 0 5px;
+      padding: .3rem;
+    }
+    #aplicar{
+      width: 25%;
+      background-color: $secondary-color;
+      color: #fff;
+      border-style: none;
+      border-radius: 0 5px 5px 0;
+      padding: .3rem .5rem;
+    }
+    #aplicar:active{
+      transform: scale(.98);
+    }
+  }
+  &--button{
+    background-color: $main-color;
+    color: #fff;
+    margin: 2rem 0;
+    width: 100%;
+    position: relative;
+    border-style: none;
+    padding: .5rem 0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 900;
+    line-height: 16px;
+    &:focus{
+      outline: none;
+    }
+    &:active{
+      transform: scale(.98);
+    }
+  }
 }
