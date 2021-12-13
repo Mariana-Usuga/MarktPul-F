@@ -5,6 +5,7 @@ import axios from 'axios';
 import HeaderMain from '../components/HeaderMain';
 import MarketCard from '../components/MarketCard';
 import ProductCard from '../components/ProductCard';
+import Footer from '../components/Footer';
 import { getMarkets } from './marketsData';
 
 import '../styles/pages/landingPage.scss';
@@ -69,6 +70,7 @@ const LandingPage = () => {
             </Link>
           ))}
       </div>
+      <Footer />
     </>
   );
 };
