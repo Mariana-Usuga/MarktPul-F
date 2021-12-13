@@ -34,7 +34,9 @@ const ShoppingCart = () => (
     <thead className="cart__table--thead">
       <tr className="cart__table--row">
         <th>Productos</th>
-        <th>Cantidad</th>
+        <th>
+          <span>Cantidad</span>
+        </th>
         <th>Precio Unitario</th>
         <th>Precio Total</th>
       </tr>
