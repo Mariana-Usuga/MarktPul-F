@@ -1,0 +1,46 @@
+.addressTitle{
+  margin:0 0 0 20px;
+  background-color: lightgreen;
+}
+.shipmentSummary{
+  // margin:10px;
+  &__title{
+    background-color:rgba(239, 239, 239, 1);
+    padding: 10px;
+    text-align: center;
+  }
+}
+.containerDiv{
+  margin:20px;
+}
+.itemDiv{
+  background-color:rgba(239, 239, 239, 1);
+  display: flex;
+  &__change{
+    display:block;
+    text-align: right;
+  }
+  &__address{
+    font-size: 17px;
+  }
+  &__place{
+    width: 100px;
+    text-align: center;
+    padding: 5px;
+    // background-color: lightcoral;
+  }
+}
+.totalShipping{
+  // width: 100px;
+  padding: 10px;
+  // background-color: lightcoral;
+  &__total{
+    // width: 100px;
+    margin-right: 80px;
+  }
+  &__price{
+    font-size: 17px;
+    // background-color: lightgreen;
+    // background-color: lightcoral;
+  }
+}

@@ -1,0 +1,41 @@
+// *{
+//   margin:0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+body{
+  font-family: 'Nunito Sans', sans-serif;
+}
+.notRegistered{
+  background-color: #BCF8B7;
+  position: absolute;
+  padding: 8px;
+  border: 1px solid #EFEFEF;
+  border-radius: 10px;
+  position: relative;
+  z-index:-1;
+  margin:0 5px 5px 5px;
+}
+.paymentMethod{
+  z-index:-1;
+  text-align: center;
+  font-weight: bolder;
+  margin:0 5px 5px 5px;
+  background-color: #EFEFEF;
+  position: relative;
+  padding: 10px;
+  border: 1px solid #EFEFEF;
+  box-sizing: border-box;
+}
+.btnPay{
+  margin:0 5px 5px 5px;
+  text-align: center;
+  width: 270px;
+  height: 45px;
+  border: none;
+  font-family: Nunito;
+  font-size: 20px;
+  color: #FFFFFF;
+  background: #4C3DFF;
+  border-radius: 10px;
+}

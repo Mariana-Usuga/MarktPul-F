@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../styles/components/header.scss';
-import { Link, Outlet } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const [show, setShow] = useState(false);
@@ -42,7 +42,6 @@ const Header = () => {
           </li>
         </ul>
       </nav>
-      <Outlet />
     </header>
   );
 };
