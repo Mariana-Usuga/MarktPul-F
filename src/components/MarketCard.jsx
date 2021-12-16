@@ -1,19 +1,16 @@
 import PropTypes from 'prop-types';
-
 import '../styles/components/marketCard.scss';
 
-const MarketCard = ({ src, title, places }) => (
-  <div className="carousel__element">
-    <img src={src} alt="Market" />
-    <h3>{title}</h3>
-    <p>{places}</p>
+const MarketCard = ({ market }) => (
+  <div className="carousel__item">
+    <img clasName="carousel__img" src={market.image} alt="Market" />
+    <h3 clasName="carousel__title">{market.title}</h3>
+    <p clasName="carousel__place">{market.place}</p>
   </div>
 );
 
 MarketCard.propTypes = {
-  src: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  places: PropTypes.string.isRequired,
+  market: PropTypes.arrayOf([]).isRequired,
 };
 
 export default MarketCard;
