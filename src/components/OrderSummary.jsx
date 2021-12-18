@@ -1,22 +1,36 @@
+import ProductsBuy from './ProductsBuy';
+
 import '../styles/components/orderSummary.scss';
 
 const OrderSummary = () => (
-  <>
+  <div>
     <div>
-      <h2>Resumen de la compra</h2>
+      <h2 className="titleOrder">Resumen de la compra</h2>
     </div>
-    <div className="shippingProducts">
-      <div className="itemProduct">
-        <img
-          className="itemProduct__img"
-          src="https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg"
-          alt=""
-        />
-        <div className="itemProduct__title">Blusa blanca de mujer</div>
-        <span className="itemProduct__price">$ 20 000</span>
-      </div>
-    </div>
-  </>
+    <ProductsBuy title="Blusa blanca de mujer" price="$ 20 000" />
+    <ProductsBuy title="Blusa blanca de mujer" price="$ 20 000" />
+    <ul className="total">
+      <li className="total__li">
+        <span className="total__subTotal">Sub Total</span>
+        <span className="total__subTotal__item__value">$ 40.00</span>
+      </li>
+      <li className="total__li">
+        <span className="total__discount">Descuentos</span>
+        <span className="total__item__value">0</span>
+      </li>
+      <li className="total__li">
+        <span className="total__send">Envio</span>
+        <span className="total__item__value">$ 5.00</span>
+      </li>
+      <li className="total__li">
+        <span className="total__estimatedAmount">Total Estimado</span>
+        <span className="total__estimatedAmount__item__value">$ 45.00</span>
+      </li>
+    </ul>
+    <button className="btn" type="button">
+      Volver a la bolsa
+    </button>
+  </div>
 );
 
 export default OrderSummary;

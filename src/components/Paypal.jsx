@@ -1,6 +1,5 @@
 const Paypal = () => (
-  <div className="containerPay">
-    <input type="radio" />
+  <div className="Paypal">
     <h3>Paypal</h3>
   </div>
 );

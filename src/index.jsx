@@ -2,29 +2,29 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import LandingPage from './pages/LandingPage';
-// import MarketDetail from './pages/MarketDetail';
+import LandingPage from './pages/LandingPage';
+import MarketDetail from './pages/MarketDetail';
 import ItemDetail from './pages/ItemDetail';
 import Search from './pages/Search';
-// import Register from './pages/Register';
-// import Login from './pages/Login';
+import Register from './pages/Register';
+import Login from './pages/Login';
 import Layout from './components/Layout';
-// import Pay from './pages/Pay';
+import Pay from './pages/Pay';
 
 const Routing = () => (
   <BrowserRouter>
     <Routes>
-      {/* <Route path="/" element={<LandingPage />} /> */}
+      <Route path="/" element={<LandingPage />} />
 
       <Route path="main" element={<Layout />}>
         <Route path="search" element={<Search />} />
-        {/* <Route path="marketDetail/:id" element={<MarketDetail />} /> */}
+        <Route path="marketDetail/:id" element={<MarketDetail />} />
         <Route path="itemDetail/:id" element={<ItemDetail />} />
-        {/* <Route path="pay" element={<Pay />} /> */}
+        <Route path="pay" element={<Pay />} />
       </Route>
-      {/* <Route path="/pay" element={<Pay />} /> */}
-      {/* <Route path="/register" element={<Register />} /> */}
-      {/* <Route path="/login" element={<Login />} /> */}
+
+      <Route path="/register" element={<Register />} />
+      <Route path="/login" element={<Login />} />
     </Routes>
   </BrowserRouter>
 );

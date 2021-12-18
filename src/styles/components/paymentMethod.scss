@@ -8,3 +8,12 @@
     margin-right: 10px;
   }
 }
+.hide{
+  transform:translate(-110%,0);
+  transition: transform .3s ease;
+  position: absolute;
+  display: none;
+}
+.show{
+  transition: transform .3s ease;
+}

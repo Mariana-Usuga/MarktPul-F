@@ -1,9 +1,7 @@
 .addressTitle{
-  margin:0 0 0 20px;
-  background-color: lightgreen;
+  margin:10px 0 0 20px;
 }
 .shipmentSummary{
-  // margin:10px;
   &__title{
     background-color:rgba(239, 239, 239, 1);
     padding: 10px;
@@ -11,11 +9,12 @@
   }
 }
 .containerDiv{
-  margin:20px;
+  margin: 0 20px 20px 20px;
 }
 .itemDiv{
   background-color:rgba(239, 239, 239, 1);
   display: flex;
+  padding: 10px;
   &__change{
     display:block;
     text-align: right;
@@ -25,22 +24,27 @@
   }
   &__place{
     width: 100px;
-    text-align: center;
-    padding: 5px;
-    // background-color: lightcoral;
+    padding-right: 11px;
   }
 }
 .totalShipping{
-  // width: 100px;
   padding: 10px;
-  // background-color: lightcoral;
+  margin-top:10px;
   &__total{
-    // width: 100px;
-    margin-right: 80px;
+    margin-right: 70px;
   }
   &__price{
     font-size: 17px;
-    // background-color: lightgreen;
-    // background-color: lightcoral;
   }
+}
+.btn{
+  margin:0 40px 10px 40px;
+  width: 200px;
+  height: 35px;
+  border: none;
+  font-family: Nunito;
+  font-size: 20px;
+  color: #FFFFFF;
+  border-radius: 10px;
+  background: #65CB6F;
 }

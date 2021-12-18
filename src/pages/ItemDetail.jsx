@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import Carousel from 'react-elastic-carousel';
@@ -39,7 +39,9 @@ const ItemDetail = () => {
           <p className="container__info__description">{product.description}</p>
           <p className="container__info__price">{`$ ${product.price}`}</p>
           <button className="btn__buy" type="button">
-            Comprar
+            <Link to="/main/pay" className="btn__buy__link">
+              Comprar
+            </Link>
           </button>
           <button className="btn__addCart" type="button">
             Añadir al carrito
