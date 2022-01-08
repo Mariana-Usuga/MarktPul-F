@@ -11,27 +11,31 @@ const ItemDetail = () => {
   const breakPoints = [{ width: 100, itemsToShow: 2 }];
 
   const { id } = useParams();
+
   useEffect(() => {
     const getProduct = async () => {
-      const res = await axios.get(`https://fakestoreapi.com/products/${id}`);
+      const res = await axios.get(
+        `https://marktpul-bk.herokuapp.com/api/product/${id}`,
+      );
       setProduct(res.data);
     };
     getProduct();
   }, []);
+
   return (
     <>
       <div className="container">
         <div className="container__main">
           <img
             className="container__main__img"
-            src={product.image}
+            src={product.imageMain}
             alt="product"
           />
           <Carousel className="carousel" breakPoints={breakPoints}>
-            <ProductPhoto image={product.image} />
-            <ProductPhoto image={product.image} />
-            <ProductPhoto image={product.image} />
-            <ProductPhoto image={product.image} />
+            <ProductPhoto image={product.imageMain} />
+            <ProductPhoto image={product.imageMain} />
+            <ProductPhoto image={product.imageMain} />
+            <ProductPhoto image={product.imageMain} />
           </Carousel>
         </div>
         <div className="container__info">
@@ -52,11 +56,11 @@ const ItemDetail = () => {
       <div>
         <h2 className="titleInterest">Tambien te podria interesar</h2>
         <div className="interestPhotos">
-          <InterestPhoto image={product.image} />
-          <InterestPhoto image={product.image} />
-          <InterestPhoto image={product.image} />
-          <InterestPhoto image={product.image} />
-          <InterestPhoto image={product.image} />
+          <InterestPhoto image={product.imageMain} />
+          <InterestPhoto image={product.imageMain} />
+          <InterestPhoto image={product.imageMain} />
+          <InterestPhoto image={product.imageMain} />
+          <InterestPhoto image={product.imageMain} />
         </div>
       </div>
     </>
