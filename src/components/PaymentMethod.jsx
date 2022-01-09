@@ -35,22 +35,19 @@ const PaymentMethod = ({ method }) => {
         <input
           className="containerPay__radio"
           type="radio"
+          name="choosePaymentMethod"
           onClick={showCardPay}
         />
         <label htmlFor="contactChoice1">{method}</label>
       </div>
       <div
-        className={
-          showMethod === 'Pago contraentrega' && show ? 'show' : 'hide'
-        }
+        className={showMethod === 'Pago contraentrega' && show ? null : 'hide'}
       >
         <PaymentOnDelivery />
       </div>
       <div
         className={
-          showMethod === 'Pago Tarjeta débito o crédito' && show
-            ? 'show'
-            : 'hide'
+          showMethod === 'Pago Tarjeta débito o crédito' && show ? null : 'hide'
         }
       >
         <CardPayment />
