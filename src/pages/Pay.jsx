@@ -1,7 +1,7 @@
+import { Link } from 'react-router-dom';
 import ShipmentSummary from '../components/ShipmentSummary';
 import PaymentMethod from '../components/PaymentMethod';
 import OrderSummary from '../components/OrderSummary';
-
 import '../styles/pages/pay.scss';
 
 const Pay = () => (
@@ -18,7 +18,9 @@ const Pay = () => (
       <PaymentMethod method="Paypal" />
       <PaymentMethod method="ePayco" />
       <button className="btnPay" type="button">
-        Pagar
+        <Link to="/main/succesfulPurchase" className="btnPay__link">
+          Pagar
+        </Link>
       </button>
     </div>
     <div className="payContainer__item">
