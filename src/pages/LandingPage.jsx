@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import '../styles/pages/landingPage.scss';
 
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
+console.log('url', URL_BASE);
 
 const LandingPage = () => {
   const [products, setProducts] = useState([]);
@@ -23,9 +24,13 @@ const LandingPage = () => {
 
   useEffect(() => {
     const getProductsAndGetMarkets = async () => {
-      const resProducts = await axios.get(`${URL_BASE}/api/product`);
+      const resProducts = await axios.get(
+        'https://marktpul-bk.herokuapp.com/api/product',
+      );
       setProducts(resProducts.data);
-      const resMarkets = await axios.get(`${URL_BASE}/api/market`);
+      const resMarkets = await axios.get(
+        'https://marktpul-bk.herokuapp.com/api/market',
+      );
       setMarkets(resMarkets.data);
     };
     getProductsAndGetMarkets();
