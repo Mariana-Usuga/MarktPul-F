@@ -10,6 +10,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Layout from './components/Layout';
 import Pay from './pages/Pay';
+import SuccesfulPurchase from './pages/SuccessfulPurchase';
 
 const Routing = () => (
   <BrowserRouter>
@@ -21,6 +22,7 @@ const Routing = () => (
         <Route path="marketDetail/:id" element={<MarketDetail />} />
         <Route path="itemDetail/:id" element={<ItemDetail />} />
         <Route path="pay" element={<Pay />} />
+        <Route path="succesfulPurchase" element={<SuccesfulPurchase />} />
       </Route>
 
       <Route path="/register" element={<Register />} />

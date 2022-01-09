@@ -1,5 +1,7 @@
 import ShipmentSummary from '../components/ShipmentSummary';
 import PaymentMethod from '../components/PaymentMethod';
+import OrderSummary from '../components/OrderSummary';
+
 import '../styles/pages/pay.scss';
 
 const Pay = () => (
@@ -21,6 +23,13 @@ const Pay = () => (
     </div>
     <div className="payContainer__item">
       <ShipmentSummary />
+      <button className="btn" type="button">
+        Volver al envio
+      </button>
+      <OrderSummary />
+      <button className="btn" type="button">
+        Volver a la bolsa
+      </button>
     </div>
   </div>
 );
