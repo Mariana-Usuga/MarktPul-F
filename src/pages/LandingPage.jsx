@@ -9,9 +9,6 @@ import Footer from '../components/Footer';
 
 import '../styles/pages/landingPage.scss';
 
-const URL_BASE = process.env.REACT_APP_API_URL_BASE;
-console.log('url', URL_BASE);
-
 const LandingPage = () => {
   const [products, setProducts] = useState([]);
   const [markets, setMarkets] = useState([]);
