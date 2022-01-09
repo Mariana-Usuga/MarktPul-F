@@ -27,9 +27,6 @@ const OrderSummary = () => (
         <span className="total__estimatedAmount__item__value">$ 45.00</span>
       </li>
     </ul>
-    <button className="btn" type="button">
-      Volver a la bolsa
-    </button>
   </div>
 );
 
