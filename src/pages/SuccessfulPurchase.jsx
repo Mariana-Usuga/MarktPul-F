@@ -3,9 +3,7 @@ import OrderSummary from '../components/OrderSummary';
 
 import '../styles/pages/successfulPurchase.scss';
 
-const SuccessfulPurchase = () => {
-  console.log('noo');
-  return (
+const SuccessfulPurchase = () => (
     <div className="purchaseSummary">
       <img
         className="purchaseSummary__img"
@@ -25,6 +23,5 @@ const SuccessfulPurchase = () => {
       </button>
     </div>
   );
-};
 
 export default SuccessfulPurchase;
