@@ -4,10 +4,9 @@ import '../styles/components/productCard.scss';
 
 const ProductCard = ({ product }) => {
   const title = product.title.slice(0, 20);
-
   return (
     <div className="productCard__item">
-      <img className="productCard__img" src={product.image} alt="Product" />
+      <img className="productCard__img" src={product.imageMain} alt="Product" />
       <div className="productCard__info">
         <h3 className="productCard__subtitle">{`${title}...`}</h3>
         <p className="productCard__price">
@@ -18,7 +17,6 @@ const ProductCard = ({ product }) => {
     </div>
   );
 };
-
 ProductCard.propTypes = {
   product: PropTypes.arrayOf([]).isRequired,
 };
