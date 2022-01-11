@@ -10,6 +10,7 @@ import Footer from '../components/Footer';
 import '../styles/pages/landingPage.scss';
 
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
+
 const LandingPage = () => {
   const [products, setProducts] = useState([]);
   const [markets, setMarkets] = useState([]);
@@ -47,7 +48,7 @@ const LandingPage = () => {
       <h2 className="titleProductCard">Ropa y accesorios</h2>
       <div className="productCard">
         {products
-          // .filter((p) => p.category === 'accesorio' || p.category === 'ropa')
+          .filter((p) => p.category == 'accesorio' || p.category == 'ropa')
           .slice(0, 5)
           .map((product) => (
             <Link
@@ -62,9 +63,9 @@ const LandingPage = () => {
       <h2 className="titleProductCard">Hogar y electrodomesticos</h2>
       <div className="productCard">
         {products
-          // .filter(
-          // (p) => p.category === 'hogar' || p.category === 'electrodomestico',
-          // )
+          .filter(
+            (p) => p.category == 'hogar' || p.category == 'electrodomestico',
+          )
           .slice(0, 5)
           .map((product) => (
             <Link
