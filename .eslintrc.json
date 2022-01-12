@@ -22,6 +22,8 @@
     "jest"
   ],
   "rules": {
+    "eqeqeq": "off",
+    "no-underscore-dangle": "off",
     "react/jsx-filename-extension": [
       1,
       {
