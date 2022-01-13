@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import cards from '../styles/image/cards.png';
 
 import '../styles/components/cardPayment.scss';
@@ -25,51 +26,85 @@ const CardPayment = () => {
     { year: '39' },
     { year: '40' },
   ];
+  const [form, setForm] = useState({
+    holdersName: '',
+    number: '',
+    month: '',
+    year: '',
+  });
+  const handleChange = (e) => {
+    const { name } = e.target;
+    const { value } = e.target;
+    const newState = { ...form };
+    newState[name] = value;
+    setForm(newState);
+  };
+
+  const sendForm = (e) => {
+    e.preventDefault();
+  };
+
   return (
-    <form className="form">
+    <form onSubmit={sendForm} className="form">
       <div className="cardsImages">
         <img src={cards} alt="" />
       </div>
       <div className="dataContainer">
-        <label className="dataContainer__label" htmlFor="name">
+        <label className="dataContainer__label" htmlFor="holdersName">
           Nombre del titular de la cuenta
           <input
+            onChange={handleChange}
             className="dataContainer__input"
             id="name"
             type="text"
-            name="name"
+            name="holdersName"
           />
         </label>
       </div>
       <div className="dataContainer">
-        <label className="dataContainer__label" htmlFor="uname">
+        <label className="dataContainer__label" htmlFor="number">
           Número de la tarjeta
           <input
+            onChange={handleChange}
             className="dataContainer__input"
             id="uname"
-            type="text"
-            name="name"
+            type="number"
+            name="number"
           />
         </label>
       </div>
       <div className="date">
-        <label className="date__label" htmlFor="uname">
+        <label className="date__label" htmlFor="month">
           Fecha de expiración
-          <select className="date__select" name="month" id="month">
+          <select
+            onChange={handleChange}
+            className="date__select"
+            name="month"
+            id="month"
+          >
             <option value="mes">Mes</option>
-            {months.map((month) => (
-              <option value={month.month}>{month.month}</option>
+            {months.map((month, index) => (
+              <option value={month.month} key={month[index]}>
+                {month.month}
+              </option>
             ))}
           </select>
-          <select className="date__select" name="month" id="month">
+          <select
+            onChange={handleChange}
+            className="date__select"
+            name="year"
+            id="year"
+          >
             <option value="año">Año</option>
-            {months.map((year) => (
-              <option value={year.year}>{year.year}</option>
+            {months.map((year, index) => (
+              <option value={year.year} key={year[index]}>
+                {year.year}
+              </option>
             ))}
           </select>
         </label>
       </div>
-      <button className="btnCard" type="button">
+      <button className="btnCard" type="submit">
         Usar esta tarjeta
       </button>
     </form>
