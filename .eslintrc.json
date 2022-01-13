@@ -22,6 +22,10 @@
     "jest"
   ],
   "rules": {
+    "default-param-last": "off",
+    "import/prefer-default-export": "off",
+    "eqeqeq": "off",
+    "no-underscore-dangle": "off",
     "react/jsx-filename-extension": [
       1,
       {
