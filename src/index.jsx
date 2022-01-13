@@ -10,6 +10,7 @@ import Search from './pages/Search';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Layout from './components/Layout';
+import CreateProduct from './pages/CreateProduct';
 import store from './store/index';
 
 const Routing = () => (
@@ -21,6 +22,7 @@ const Routing = () => (
         <Route path="search" element={<Search />} />
         <Route path="marketDetail/:id" element={<MarketDetail />} />
         <Route path="itemDetail/:id" element={<ItemDetail />} />
+        <Route path="createProduct" element={<CreateProduct />} />
       </Route>
 
       <Route path="/register" element={<Register />} />
