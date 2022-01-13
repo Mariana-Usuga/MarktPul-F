@@ -11,14 +11,12 @@ export const loadProducts = (products) => ({
   payload: products.data,
 });
 
-export const fetchMarkets = () => (dispatch) => {
-  getMarkets().then((marketsData) => {
-    dispatch(loadMarkets(marketsData));
-  });
+export const fetchMarkets = () => async (dispatch) => {
+  const markets = await getMarkets();
+  dispatch(loadMarkets(markets));
 };
 
-export const fetchProducts = () => (dispatch) => {
-  getProducts().then((products) => {
-    dispatch(loadProducts(products));
-  });
+export const fetchProducts = () => async (dispatch) => {
+  const products = await getProducts();
+  dispatch(loadProducts(products));
 };
