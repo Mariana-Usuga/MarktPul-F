@@ -6,7 +6,6 @@ const initialState = {
 };
 
 const landingPageReducer = (state = initialState, action) => {
-  console.log('action payload', action.payload);
   switch (action.type) {
     case LOAD_MARKETS:
       return { ...state, markets: action.payload };
