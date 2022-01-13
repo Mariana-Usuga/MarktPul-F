@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const CartItem = ({ src, producto, cantidad, precioUnitario }) => (
+const CartItem = ({ src, producto, cantidad, precioUnitario = 0 }) => (
   <tr className="cart__table--row">
     <td className="cart__table--item">
       <img src={src} alt={producto} className="cart--image" />

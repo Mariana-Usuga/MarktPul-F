@@ -5,11 +5,12 @@ import Carousel from 'react-elastic-carousel';
 import ProductPhoto from '../components/ProductPhoto';
 import InterestPhoto from '../components/InterestPhoto';
 import '../styles/pages/itemDetail.scss';
+// import { useCartState } from '../context/CartContext';
 
 const ItemDetail = () => {
   const [product, setProduct] = useState({});
   const breakPoints = [{ width: 100, itemsToShow: 2 }];
-
+  const [cart, setCart] = useState([]);
   const { id } = useParams();
   useEffect(() => {
     const getProduct = async () => {
@@ -18,6 +19,27 @@ const ItemDetail = () => {
     };
     getProduct();
   }, []);
+  const saveCallback = (cartElement) => {
+    window.localStorage.setItem('cartProduct', [JSON.stringify(cartElement)]);
+  };
+  /* eslint-disable */
+  const handleCarrito =  () => {
+    const cartPrev = JSON.parse(localStorage.getItem('cartProduct')) || [];
+    const exists = cartPrev.find((element) => element.id === product.id);
+    if (exists) {
+      setCart(
+        cartPrev.map((element) => (element.id === product.id)
+        ? { ...exists, quantity: exists.quantity + 1 }
+        : element)
+      )
+      saveCallback(cart);
+    }
+    else {
+      setCart([...cartPrev, {...product, quantity : 1}]);
+      saveCallback(cart);
+    }
+  };
+  /* eslint-enable */
   return (
     <>
       <div className="container">
@@ -41,7 +63,11 @@ const ItemDetail = () => {
           <button className="btn__buy" type="button">
             Comprar
           </button>
-          <button className="btn__addCart" type="button">
+          <button
+            className="btn__addCart"
+            type="button"
+            onClick={handleCarrito}
+          >
             Añadir al carrito
           </button>
           <button className="btn__seller" type="button">

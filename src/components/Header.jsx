@@ -38,7 +38,9 @@ const Header = () => {
             <Link to="/login">Mi cuenta</Link>
           </li>
           <li className="search-header__li">
-            <i className="search-header__mobile-cart fas fa-shopping-cart" />
+            <Link to="/cart">
+              <i className="search-header__mobile-cart fas fa-shopping-cart" />
+            </Link>
           </li>
         </ul>
       </nav>

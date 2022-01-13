@@ -10,6 +10,8 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
 import Layout from './components/Layout';
+import { CartContext } from './context/CartContext';
+import Shipping from './components/Shipping';
 
 const Routing = () => (
   <BrowserRouter>
@@ -25,13 +27,16 @@ const Routing = () => (
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/ship" element={<Shipping />} />
     </Routes>
   </BrowserRouter>
 );
 
 ReactDOM.render(
   <React.StrictMode>
-    <Routing />
+    <CartContext>
+      <Routing />
+    </CartContext>
   </React.StrictMode>,
   document.getElementById('root'),
 );
