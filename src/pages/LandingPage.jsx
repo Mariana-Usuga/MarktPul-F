@@ -1,19 +1,27 @@
 import Carousel from 'react-elastic-carousel';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
 import HeaderMain from '../components/HeaderMain';
 import MarketCard from '../components/MarketCard';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
+// import { fetchMarkets } from '../utils/landingPageServices';
+import {
+  fetchMarkets,
+  fetchProducts,
+} from '../store/actions/landingPageActionsCreator';
+// import {
+//   loadMarkets,
+//   loadProducts,
+// } from '../store/actions/landingPageActionsCreator';
 
 import '../styles/pages/landingPage.scss';
 
-const URL_BASE = process.env.REACT_APP_API_URL_BASE;
-
 const LandingPage = () => {
-  const [products, setProducts] = useState([]);
-  const [markets, setMarkets] = useState([]);
+  const dispatch = useDispatch();
+  const markets = useSelector((state) => state.markets);
+  const products = useSelector((state) => state.products);
 
   const breakPoints = [
     { width: 400, itemsToShow: 1 },
@@ -22,14 +30,10 @@ const LandingPage = () => {
   ];
 
   useEffect(() => {
-    const getProductsAndGetMarkets = async () => {
-      const resProducts = await axios.get(`${URL_BASE}/api/product`);
-      setProducts(resProducts.data);
-      const resMarkets = await axios.get(`${URL_BASE}/api/market`);
-      setMarkets(resMarkets.data);
-    };
-    getProductsAndGetMarkets();
+    dispatch(fetchMarkets());
+    dispatch(fetchProducts());
   }, []);
+
   return (
     <>
       <HeaderMain />
