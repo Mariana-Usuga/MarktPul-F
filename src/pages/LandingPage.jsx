@@ -6,15 +6,10 @@ import HeaderMain from '../components/HeaderMain';
 import MarketCard from '../components/MarketCard';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
-// import { fetchMarkets } from '../utils/landingPageServices';
 import {
   fetchMarkets,
   fetchProducts,
 } from '../store/actions/landingPageActionsCreator';
-// import {
-//   loadMarkets,
-//   loadProducts,
-// } from '../store/actions/landingPageActionsCreator';
 
 import '../styles/pages/landingPage.scss';
 

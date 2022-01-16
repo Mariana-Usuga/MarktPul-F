@@ -1,0 +1,143 @@
+
+.createProductContainer{
+  margin-top: 0;
+  display: flex;
+  justify-content:space-evenly;
+  flex-wrap: wrap;
+  &__item{
+    &__images{
+      position: relative;
+      &__update{
+        color: rgb(83, 83, 248);
+        color: transparent;
+        display: block;
+        position: relative;
+        top: 20px;
+      }
+      &__inputImg{
+        // opacity: 0.3;
+        width: 200px;
+        height: 30px;
+      }
+    }
+    &__img{
+      text-align: center;
+    }
+    &__img img{
+        width: 270px;
+    }
+    &__data{
+      margin-top: 20px;
+      &__title{
+        margin-bottom: 20px;
+        text-align: left;
+        margin-left: 10px;
+      }
+    }
+  }
+}
+
+.form{
+  &__input{
+    margin: 10px;
+    padding: 10px;
+    width: 260px;
+    height: 260px;
+    background: #F0F0F0;
+    border-radius: 25px;
+  }
+  &__btn{
+    font-weight: bolder;
+    font-size: 1.2rem ;
+    margin-top: 20px;
+    color: white;
+    border: none;
+    width: 200px;
+    height: 50px;
+    background: #4C3DFF;
+    border-radius: 10px;
+  }
+}
+
+.inputProduct{
+  margin-top: 10px;
+  margin-left: 20px;
+  &__category{
+    margin-left: 20px;
+  }
+  &__label{
+    margin-right: 20px;
+  }
+  &__input{
+    width: 150px;
+    height: 30px;
+    background: #FFFFFF;
+    border: 1px solid #C7C5C5;
+    border-radius: 18px;
+    &__category{
+      background-color: blueviolet;
+      width: 90px;
+      height: 30px;
+      background: #FFFFFF;
+      border: 1px solid #C7C5C5;
+      border-radius: 25px;
+    }
+    &__description{
+      width: 140px;
+      height: 80px;
+      background: #FFFFFF;
+      border: 1px solid #C7C5C5;
+      border-radius: 25px;
+    }
+  }
+  &__category{
+    margin-top: 10px;
+  }
+}
+
+@media(min-width:992px){
+  .form{
+    &__input{
+      padding: 10px;
+      width: 800px;
+      height: 530px;
+    }
+  }
+  .inputProduct{
+      margin-top: 30px;
+    &__label{
+      font-size: 1.4rem;
+    }
+    &__input{
+      width: 550px;
+       height: 50px;
+      &__category{
+       height: 50px;
+        margin-top: 30px;
+        width: 200px;
+        margin-right: 360px;
+      }
+      &__description{
+        width: 550px;
+        height: 140px;
+      }
+    }
+  }
+  .createProductContainer{
+    &__item__data__title{
+      font-size: 2rem;
+    }
+  }
+  .createProductContainer{
+    &__item{
+      margin-top: 30px;
+    }
+    &__item__img img{
+      width: 400px;
+    }
+    &__item__images__update{
+      font-size: 1.5rem;
+    }
+  }
+}
+

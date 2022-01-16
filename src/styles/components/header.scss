@@ -2,7 +2,7 @@ $primary-color: white;
 $secondary-color:#4C3DFF;
 
 header{
-    height: 200px;
+    height: 140px;
 }
 .search-header{
     color: $primary-color;
@@ -73,7 +73,7 @@ header{
                 text-align:right;
             }
         }
-    }    
+    }
 }
 @media(min-width:768px){
     header{

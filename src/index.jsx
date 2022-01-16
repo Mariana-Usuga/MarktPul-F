@@ -11,6 +11,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Layout from './components/Layout';
 import CreateProduct from './pages/CreateProduct';
+import CreateMarket from './pages/CreateMarket';
 import store from './store/index';
 
 const Routing = () => (
@@ -23,6 +24,7 @@ const Routing = () => (
         <Route path="marketDetail/:id" element={<MarketDetail />} />
         <Route path="itemDetail/:id" element={<ItemDetail />} />
         <Route path="createProduct" element={<CreateProduct />} />
+        <Route path="createMarket" element={<CreateMarket />} />
       </Route>
 
       <Route path="/register" element={<Register />} />
