@@ -1,30 +1,39 @@
 import Carousel from 'react-elastic-carousel';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
 import HeaderMain from '../components/HeaderMain';
 import MarketCard from '../components/MarketCard';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
-import { getMarkets } from './marketsData';
+// import { fetchMarkets } from '../utils/landingPageServices';
+import {
+  fetchMarkets,
+  fetchProducts,
+} from '../store/actions/landingPageActionsCreator';
+// import {
+//   loadMarkets,
+//   loadProducts,
+// } from '../store/actions/landingPageActionsCreator';
 
 import '../styles/pages/landingPage.scss';
 
 const LandingPage = () => {
-  const [products, setProducts] = useState([]);
-  const markets = getMarkets();
+  const dispatch = useDispatch();
+  const markets = useSelector((state) => state.landingPageReducer.markets);
+  const products = useSelector((state) => state.landingPageReducer.products);
+
   const breakPoints = [
     { width: 400, itemsToShow: 1 },
     { width: 500, itemsToShow: 3 },
     { width: 1200, itemsToShow: 4 },
   ];
+
   useEffect(() => {
-    const getProducts = async () => {
-      const res = await axios.get('https://fakestoreapi.com/products');
-      setProducts(res.data);
-    };
-    getProducts();
+    dispatch(fetchMarkets());
+    dispatch(fetchProducts());
   }, []);
+
   return (
     <>
       <HeaderMain />
@@ -32,8 +41,8 @@ const LandingPage = () => {
       <Carousel className="carousel" breakPoints={breakPoints}>
         {markets.map((market) => (
           <Link
-            to={`/main/marketDetail/${market.id}`}
-            key={market.id}
+            to={`/main/marketDetail/${market._id}`}
+            key={market._id}
             style={{ textDecoration: 'none' }}
           >
             <MarketCard market={market} />
@@ -43,12 +52,12 @@ const LandingPage = () => {
       <h2 className="titleProductCard">Ropa y accesorios</h2>
       <div className="productCard">
         {products
-          .filter((p) => p.category.includes("men's clothing"))
+          .filter((p) => p.category == 'accesorio' || p.category == 'ropa')
           .slice(0, 5)
           .map((product) => (
             <Link
-              to={`/main/itemDetail/${product.id}`}
-              key={product.id}
+              to={`/main/itemDetail/${product._id}`}
+              key={product._id}
               style={{ textDecoration: 'none' }}
             >
               <ProductCard product={product} />
@@ -58,12 +67,14 @@ const LandingPage = () => {
       <h2 className="titleProductCard">Hogar y electrodomesticos</h2>
       <div className="productCard">
         {products
-          .filter((p) => p.category.includes('electronics'))
+          .filter(
+            (p) => p.category == 'hogar' || p.category == 'electrodomestico',
+          )
           .slice(0, 5)
           .map((product) => (
             <Link
-              to={`/main/itemDetail/${product.id}`}
-              key={product.id}
+              to={`/main/itemDetail/${product._id}`}
+              key={product._id}
               style={{ textDecoration: 'none' }}
             >
               <ProductCard product={product} />

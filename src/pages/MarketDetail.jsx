@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { getMarket } from './marketsData';
+import axios from 'axios';
 import InterestPhoto from '../components/InterestPhoto';
 
 import '../styles/pages/marketDetail.scss';
@@ -8,12 +8,17 @@ import '../styles/pages/marketDetail.scss';
 const MarketDetail = () => {
   const [market, setMarket] = useState({});
   const { id } = useParams();
+
   useEffect(() => {
     const getMarketshow = async () => {
-      await setMarket(getMarket(id));
+      const getMarket = await axios.get(
+        `https://marktpul-bk.herokuapp.com/api/market/${id}`,
+      );
+      setMarket(getMarket.data);
     };
     getMarketshow();
   }, []);
+
   return (
     <>
       <div className="market">

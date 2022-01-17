@@ -1,42 +1,43 @@
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-elastic-carousel';
 import ProductPhoto from '../components/ProductPhoto';
 import InterestPhoto from '../components/InterestPhoto';
 import '../styles/pages/itemDetail.scss';
+import {
+  addProductToCart,
+  updateProductToCart,
+} from '../store/actions/cartActions';
 // import { useCartState } from '../context/CartContext';
 
 const ItemDetail = () => {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cartReducer.cart);
   const [product, setProduct] = useState({});
   const breakPoints = [{ width: 100, itemsToShow: 2 }];
-  const [cart, setCart] = useState([]);
   const { id } = useParams();
+
   useEffect(() => {
     const getProduct = async () => {
-      const res = await axios.get(`https://fakestoreapi.com/products/${id}`);
+      const res = await axios.get(`http://127.0.0.1:3002/api/product/${id}`);
       setProduct(res.data);
     };
     getProduct();
   }, []);
-  const saveCallback = (cartElement) => {
-    window.localStorage.setItem('cartProduct', [JSON.stringify(cartElement)]);
-  };
+  useEffect(() => {
+    window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
+  }, [cart]);
   /* eslint-disable */
   const handleCarrito =  () => {
     const cartPrev = JSON.parse(localStorage.getItem('cartProduct')) || [];
-    const exists = cartPrev.find((element) => element.id === product.id);
+    const exists = cartPrev.find((element) => element._id === product._id);
     if (exists) {
-      setCart(
-        cartPrev.map((element) => (element.id === product.id)
-        ? { ...exists, quantity: exists.quantity + 1 }
-        : element)
-      )
-      saveCallback(cart);
+      dispatch(updateProductToCart(exists));
     }
     else {
-      setCart([...cartPrev, {...product, quantity : 1}]);
-      saveCallback(cart);
+      dispatch(addProductToCart(product));
     }
   };
   /* eslint-enable */
@@ -46,14 +47,14 @@ const ItemDetail = () => {
         <div className="container__main">
           <img
             className="container__main__img"
-            src={product.image}
+            src={product.imageMain}
             alt="product"
           />
           <Carousel className="carousel" breakPoints={breakPoints}>
-            <ProductPhoto image={product.image} />
-            <ProductPhoto image={product.image} />
-            <ProductPhoto image={product.image} />
-            <ProductPhoto image={product.image} />
+            <ProductPhoto image={product.imageMain} />
+            <ProductPhoto image={product.imageMain} />
+            <ProductPhoto image={product.imageMain} />
+            <ProductPhoto image={product.imageMain} />
           </Carousel>
         </div>
         <div className="container__info">
@@ -78,11 +79,11 @@ const ItemDetail = () => {
       <div>
         <h2 className="titleInterest">Tambien te podria interesar</h2>
         <div className="interestPhotos">
-          <InterestPhoto image={product.image} />
-          <InterestPhoto image={product.image} />
-          <InterestPhoto image={product.image} />
-          <InterestPhoto image={product.image} />
-          <InterestPhoto image={product.image} />
+          <InterestPhoto image={product.imageMain} />
+          <InterestPhoto image={product.imageMain} />
+          <InterestPhoto image={product.imageMain} />
+          <InterestPhoto image={product.imageMain} />
+          <InterestPhoto image={product.imageMain} />
         </div>
       </div>
     </>

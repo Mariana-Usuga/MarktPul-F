@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import LandingPage from './pages/LandingPage';
 import MarketDetail from './pages/MarketDetail';
 import ItemDetail from './pages/ItemDetail';
@@ -10,8 +11,8 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
 import Layout from './components/Layout';
-import { CartContext } from './context/CartContext';
 import Shipping from './components/Shipping';
+import store from './store/index';
 
 const Routing = () => (
   <BrowserRouter>
@@ -34,9 +35,9 @@ const Routing = () => (
 
 ReactDOM.render(
   <React.StrictMode>
-    <CartContext>
+    <Provider store={store}>
       <Routing />
-    </CartContext>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );

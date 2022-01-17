@@ -1,14 +1,15 @@
 /* eslint-disable array-callback-return */
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import CartItem from './CartItem';
-import { useCartState } from '../context/CartContext';
+import { fetchCart } from '../store/actions/cartActions';
 
 const ShoppingCart = () => {
-  const { cart } = useCartState();
-  const [item, setItem] = useState([]);
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cartReducer.cart);
   useEffect(() => {
-    setItem(cart);
-  });
+    dispatch(fetchCart());
+  }, []);
   return (
     <table className="cart__table">
       <thead className="cart__table--thead">
@@ -22,12 +23,12 @@ const ShoppingCart = () => {
         </tr>
       </thead>
       <tbody className="cart__table--tbody">
-        {item.map((element) => (
+        {cart.map((element) => (
           // eslint-disable-next-line react/jsx-indent
           <CartItem
-            src={element.image}
+            src={element.imageMain}
             producto={element.title}
-            cantidad={element.quantity}
+            cantidad={element.qty}
             precioUnitario={element.price}
             key={element.id}
           />
