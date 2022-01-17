@@ -4,7 +4,7 @@ import '../styles/components/interestPhoto.scss';
 
 const InterestPhoto = ({ image }) => (
   <div className="interest">
-    <img clasName="interest__img" src={image} alt="product" />
+    <img className="interest__img" src={image} alt="product" />
   </div>
 );
 
