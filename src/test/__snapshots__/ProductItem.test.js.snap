@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` Pruebas en ProductItem debe mostrar el componente correctamente 1`] = `
+<div
+  className="card-product"
+>
+  <img
+    alt="titulo de prueba"
+    src="http:/localhost/prueba.jpg"
+  />
+  <div
+    className="card-body"
+  >
+    <h3
+      className="card-title"
+    >
+      titulo de prueba
+    </h3>
+    <p
+      className="card-description"
+    >
+      descripcion de prueba
+    </p>
+    <p
+      className="card-place"
+    >
+      direccion de prueba
+    </p>
+  </div>
+</div>
+`;
