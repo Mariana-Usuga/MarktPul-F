@@ -11,8 +11,8 @@ import '../styles/pages/register.css';
 const formErrors = {
   username: '',
   email: '',
-  password: 'empty',
-  repassword: 'empty',
+  password: '',
+  repassword: '',
 };
 
 const Register = () => {
@@ -50,7 +50,7 @@ const Register = () => {
     if (!validatePassword(target.value)) {
       setErrors({
         ...errors,
-        password: 'password lenght must be 8+ chars, with numbers',
+        password: 'password length must be 8+ chars, with numbers',
       });
     } else {
       setErrors({ ...errors, password: '' });
@@ -101,11 +101,20 @@ const Register = () => {
               onChange={handleEmail}
               type="email"
               name="email"
+              data-testid="email-input"
               id="email"
               title="email con dominio válido"
               required
             />
           </label>
+          {errors.email !== '' || undefined ? (
+            <span
+              data-testid="error-email"
+              style={{ color: 'red', fontSize: '6' }}
+            >
+              {`Error: ${errors.email}`}
+            </span>
+          ) : null}
 
           <label htmlFor="username">
             Nombre de usuario
@@ -113,6 +122,7 @@ const Register = () => {
               type="text"
               name="username"
               id="username"
+              data-testid="username-input"
               placeholder=""
               value={username}
               title="Usuario de la plataforma"
@@ -120,6 +130,14 @@ const Register = () => {
               onChange={handleUsername}
             />
           </label>
+          {errors.username !== '' || undefined ? (
+            <span
+              data-testid="error-username"
+              style={{ color: 'red', fontSize: '6' }}
+            >
+              {`Error: ${errors.username}`}
+            </span>
+          ) : null}
 
           <label htmlFor="password">
             Contraseña
@@ -127,6 +145,7 @@ const Register = () => {
               type="password"
               name="password"
               id="password"
+              data-testid="password-input"
               value={password}
               onChange={handlePassword}
               title="Debe tener 8 carácteres al menos un número y una letra"
@@ -134,13 +153,22 @@ const Register = () => {
               placeholder=""
             />
           </label>
+          {errors.password !== '' ? (
+            <span
+              data-testid="error-password"
+              style={{ color: 'red', fontSize: '6' }}
+            >
+              {`Error: ${errors.password}`}
+            </span>
+          ) : null}
 
-          <label htmlFor="password">
+          <label htmlFor="repassword">
             Confirma tu contraseña
             <input
-              type="password"
-              name="password"
+              type="repassword"
+              name="repassword"
               id="repassword"
+              data-testid="repassword-input"
               title="Debe ser igual al password"
               value={repassword}
               onChange={handleRepassword}
@@ -148,13 +176,21 @@ const Register = () => {
               placeholder=""
             />
           </label>
+          {errors.repassword !== '' ? (
+            <span
+              data-testid="error-repassword"
+              style={{ color: 'red', fontSize: '6' }}
+            >
+              {`Error: ${errors.repassword}`}
+            </span>
+          ) : null}
 
           <label htmlFor="register__button">
             <input
               type="submit"
               disabled={validateSubmit(errors)}
               value="Registrarse"
-              className="register__buttonasdf"
+              className="register__button"
               id="register__button"
             />
           </label>
