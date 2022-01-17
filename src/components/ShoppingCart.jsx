@@ -27,7 +27,6 @@ const ShoppingCart = () => {
       </thead>
       <tbody className="cart__table--tbody">
         {cart.map((element) => (
-          // eslint-disable-next-line react/jsx-indent
           <CartItem
             src={element.imageMain}
             producto={element.title}
