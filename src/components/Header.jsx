@@ -1,14 +1,17 @@
+/* eslint-disable no-unused-vars */
 import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
 import '../styles/components/header.scss';
 import useFormProduct from '../hooks/useFormProduct';
 import getMarketSearch from '../utils/getMarketSearch';
+import useFetchMarkets from '../hooks/useFetchMarkets';
 
 const Header = () => {
   const [show, setShow] = useState(false);
+  const [products, setProducts] = useState({});
   const showMenu = () => (!show ? setShow(true) : setShow(false));
-  const { data } = useFetchProducts();
+  const { data } = useFetchMarkets();
   const navigate = useNavigate();
   const location = useLocation();
   const { q = '' } = queryString.parse(location.search);

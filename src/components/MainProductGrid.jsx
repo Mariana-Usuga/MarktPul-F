@@ -1,20 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import ProductItem from './ProductItem';
 import '../styles/components/MainProductGrid.scss';
+import { getMarkets } from '../utils/landingPageServices';
 
 const MainProductGrid = () => {
   const [markets, setMarkets] = useState([]);
   useEffect(() => {
     const getMarketshow = async () => {
-      const getMarket = await axios.get(
-        'https://marktpul-bk.herokuapp.com/api/market',
-      );
+      const getMarket = await getMarkets();
       setMarkets(getMarket.data);
     };
     getMarketshow();
-  }, []);
+  }, [markets]);
   return (
     <div className="container">
       {markets.map((market) => {

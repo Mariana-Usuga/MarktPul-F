@@ -4,12 +4,12 @@ import '../styles/components/ProductItem.scss';
 
 const ProductItem = ({ place, description, image, title }) => (
   <div className="card-product">
-    <img src={image} alt="" />
+    <img src={image} alt={title} />
     <div className="card-body">
       {/* <a href="/">{tipoMercado}</a> */}
-      <h3>{title}</h3>
-      <p>{description}</p>
-      <p>{place}</p>
+      <h3 className="card-title">{title}</h3>
+      <p className="card-description">{description}</p>
+      <p className="card-place">{place}</p>
       {/* <a className="card-body__tag" href="/">
         {tagMercado[0]}
       </a>
