@@ -21,7 +21,9 @@ const ItemDetail = () => {
 
   useEffect(() => {
     const getProduct = async () => {
-      const res = await axios.get(`http://127.0.0.1:3002/api/product/${id}`);
+      const res = await axios.get(
+        `https://marktpul-bk.herokuapp.com/api/product/${id}`,
+      );
       setProduct(res.data);
     };
     getProduct();

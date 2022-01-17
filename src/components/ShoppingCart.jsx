@@ -8,8 +8,11 @@ const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer.cart);
   useEffect(() => {
-    dispatch(fetchCart());
+    window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
   }, []);
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, [cart]);
   return (
     <table className="cart__table">
       <thead className="cart__table--thead">
