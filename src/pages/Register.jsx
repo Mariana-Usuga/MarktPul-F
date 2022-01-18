@@ -26,7 +26,7 @@ const Register = () => {
     if (!validateEmail(target.value)) {
       setErrors({
         ...errors,
-        email: 'Not a valid email',
+        email: 'No es un email válido',
       });
     } else {
       setErrors({ ...errors, email: '' });
@@ -38,7 +38,7 @@ const Register = () => {
     if (!validateUsername(target.value)) {
       setErrors({
         ...errors,
-        username: 'Username lenght needs to be 5+ chars',
+        username: 'El nombre de usuario debe tener 5+ chars',
       });
     } else {
       setErrors({ ...errors, username: '' });
@@ -50,7 +50,7 @@ const Register = () => {
     if (!validatePassword(target.value)) {
       setErrors({
         ...errors,
-        password: 'password length must be 8+ chars, with numbers',
+        password: 'La constraseña debe tener 8+ carácters alfanuméricos',
       });
     } else {
       setErrors({ ...errors, password: '' });
@@ -66,7 +66,7 @@ const Register = () => {
     ) {
       setErrors({
         ...errors,
-        repassword: 'passwords do not match',
+        repassword: 'Las conraseñas no coinciden',
       });
     } else {
       setErrors({ ...errors, repassword: '' });
@@ -112,7 +112,7 @@ const Register = () => {
               data-testid="error-email"
               style={{ color: 'red', fontSize: '6' }}
             >
-              {`Error: ${errors.email}`}
+              {`${errors.email}`}
             </span>
           ) : null}
 
@@ -135,7 +135,7 @@ const Register = () => {
               data-testid="error-username"
               style={{ color: 'red', fontSize: '6' }}
             >
-              {`Error: ${errors.username}`}
+              {`${errors.username}`}
             </span>
           ) : null}
 
@@ -158,7 +158,7 @@ const Register = () => {
               data-testid="error-password"
               style={{ color: 'red', fontSize: '6' }}
             >
-              {`Error: ${errors.password}`}
+              {`${errors.password}`}
             </span>
           ) : null}
 
@@ -181,7 +181,7 @@ const Register = () => {
               data-testid="error-repassword"
               style={{ color: 'red', fontSize: '6' }}
             >
-              {`Error: ${errors.repassword}`}
+              {`${errors.repassword}`}
             </span>
           ) : null}
 
