@@ -1,0 +1,19 @@
+.interestPhotos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.interest img {
+  border-radius: 20%;
+  text-align: center;
+  width: 160px;
+  height: 170px;
+}
+.titleInterest {
+  margin: 20px 10px;
+}
+@media (min-width: 992px) {
+  .titleInterest {
+    margin: 20px 90px;
+  }
+}
