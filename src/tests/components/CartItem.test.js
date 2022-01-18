@@ -1,6 +1,5 @@
 import { render } from '@testing-library/react';
 import CartItem from '../../components/CartItem';
-import '@testing-library/jest-dom';
 
 test('Imagenes en Carrito compras', () => {
   const arrayMock = {
