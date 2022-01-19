@@ -11,7 +11,7 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
 import Layout from './components/Layout';
-import Shipping from './components/Shipping';
+import Shipping from './pages/Shipping';
 import store from './store/index';
 
 const Routing = () => (

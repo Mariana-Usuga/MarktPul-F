@@ -1,5 +1,5 @@
 import { LOAD_CART, ADD_TO_CART, UPDATE_CART } from '../types/cartTypes';
-import { getCart, getProduct } from '../../utils/cartServices';
+import { getCart, getProduct } from '../../pages/Cart/cartServices';
 
 export const loadCart = (cart) => ({
   type: LOAD_CART,
