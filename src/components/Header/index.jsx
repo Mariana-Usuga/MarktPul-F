@@ -1,10 +1,22 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './Header.scss';
 import { Link } from 'react-router-dom';
+import CartPreview from '../CartPreview';
+import { fetchCart } from '../../store/actions/cartActions';
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const cart = useSelector((state) => state.cartReducer.cart);
   const showMenu = () => (!show ? setShow(true) : setShow(false));
+  const cartPreview = () => {
+    dispatch(fetchCart());
+    document.getElementById('cartPrev').style.display = 'initial';
+  };
+  const cartPreviewLeave = () => {
+    document.getElementById('cartPrev').style.display = 'none';
+  };
   return (
     <header>
       <nav className="search-header__nav">
@@ -37,10 +49,31 @@ const Header = () => {
           <li className="search-header__li">
             <Link to="/login">Mi cuenta</Link>
           </li>
-          <li className="search-header__li">
+          <li
+            className="search-header__li"
+            onMouseOver={cartPreview}
+            onMouseLeave={cartPreviewLeave}
+            onFocus={cartPreview}
+          >
             <Link to="/cart">
-              <i className="search-header__mobile-cart fas fa-shopping-cart" />
+              <i className="search-header__mobile-cart fas fa-shopping-cart">
+                <div className="header--cartLength">{cart.length}</div>
+              </i>
             </Link>
+            <table className="header--cartPrev" id="cartPrev">
+              <thead>
+                <th>Producto</th>
+                <th>Cantidad</th>
+              </thead>
+              {cart.map((element) => (
+                <CartPreview
+                  src={element.imageMain}
+                  producto={element.title}
+                  cantidad={element.qty}
+                  key={element.id}
+                />
+              ))}
+            </table>
           </li>
         </ul>
       </nav>

@@ -12,7 +12,7 @@ const ShoppingCart = () => {
   }, []);
   useEffect(() => {
     dispatch(fetchCart());
-  }, [cart]);
+  }, []);
   return (
     <table className="cart__table">
       <thead className="cart__table--thead">

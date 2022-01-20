@@ -2,7 +2,7 @@
 import { LOAD_CART, ADD_TO_CART, UPDATE_CART } from '../types/cartTypes';
 
 const initialState = {
-  cart: [],
+  cart: JSON.parse(localStorage.getItem('cartProduct')) || [],
 };
 
 const cartReducer = (state = initialState, action) => {
