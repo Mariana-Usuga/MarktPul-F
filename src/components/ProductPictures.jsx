@@ -1,14 +1,11 @@
 import PropTypes from 'prop-types';
 
-const ProductPictures = ({ onChangeFile, img }) => (
+const ProductPictures = ({ onChangeFile, img, title }) => (
   <>
     <div className="createProductContainer__item__img">
       <img src={img} alt="" />
     </div>
     <div className="createProductContainer__item__images">
-      <span className="createProductContainer__item__images__update">
-        Subir foto principal del producto
-      </span>
       <input
         className="createProductContainer__item__images__inputImg"
         onChange={onChangeFile}
@@ -17,6 +14,12 @@ const ProductPictures = ({ onChangeFile, img }) => (
         id="product"
         accept="image/*"
       />
+      <label
+        className="createProductContainer__item__images__update"
+        htmlFor="product"
+      >
+        {title}
+      </label>
     </div>
   </>
 );
@@ -24,6 +27,7 @@ const ProductPictures = ({ onChangeFile, img }) => (
 ProductPictures.propTypes = {
   onChangeFile: PropTypes.func.isRequired,
   img: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
 };
 
 export default ProductPictures;

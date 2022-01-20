@@ -14,6 +14,8 @@ import CreateProduct from './pages/CreateProduct';
 import CreateMarket from './pages/CreateMarket';
 import store from './store/index';
 
+// console.log('store', store);
+
 const Routing = () => (
   <BrowserRouter>
     <Routes>

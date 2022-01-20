@@ -3,10 +3,10 @@ import { postProduct } from '../../utils/productServices';
 
 export const createProduct = (product) => ({
   type: CREATE_PRODUCT,
-  payload: product.data,
+  payload: product,
 });
 
 export const sendProduct = (formProduct) => async (dispatch) => {
-  await postProduct(formProduct);
-  dispatch(createProduct(formProduct));
+  const responseProduct = await postProduct(formProduct);
+  dispatch(createProduct(responseProduct));
 };

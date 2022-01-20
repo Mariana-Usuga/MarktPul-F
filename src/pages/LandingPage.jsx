@@ -17,7 +17,7 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.markets);
   const products = useSelector((state) => state.products);
-
+  console.log('markets', markets);
   const breakPoints = [
     { width: 400, itemsToShow: 1 },
     { width: 500, itemsToShow: 3 },

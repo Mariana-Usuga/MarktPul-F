@@ -1,0 +1,52 @@
+.hide{
+  opacity: 0;
+  background-color:crimson;
+  transform:translate(0,-100%);
+}
+.container{
+  // display:inline-block;
+}
+.containerPay{
+  display: inline-block;
+  // margin-top: 10px;
+  // position:absolute;
+  // margin-bottom: 30px;
+  &__label{
+    margin-right: 5px;
+    margin-left: 20px;
+  }
+  // background-color:cadetblue
+}
+
+.show{
+  transform:translate(0,0);
+  // opacity:25;
+}
+.item{
+  position: absolute;
+}
+.nose{
+  // position: absolute;
+  // position: relative;
+}
+.form{
+  // position:relative;
+}
+.inputMarket__category{
+  // position: relative;
+  // position:absolute;
+  // margin-top: 50px;
+  // position:absolute;
+}
+.formAddressMarket{
+  position:absolute;
+  // width: 180px;
+  &__div{
+    // margin-top:10px;
+  }
+  // position:absolute;
+  // background-color: crimson;
+}
+.dataContainer__input{
+  // margin-top:10px;
+}
