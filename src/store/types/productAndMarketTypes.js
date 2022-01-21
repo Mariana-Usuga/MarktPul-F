@@ -1,2 +1,4 @@
+export const LOAD_MARKETS = 'LOAD_MARKETS';
+export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const CREATE_MARKET = 'CREATE_MARKET';

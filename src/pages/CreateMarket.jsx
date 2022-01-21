@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import InputCreateProduct from '../components/InputCreateProduct';
-import { sendMarket } from '../store/actions/productActionsCreator';
+import { sendMarket } from '../store/actions/productAndMarketActions';
 import ProductPictures from '../components/ProductPictures';
 import IsVirtual from '../components/IsVirtual';
 

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import InputCreateProduct from '../components/InputCreateProduct';
-import { sendProduct } from '../store/actions/productActionsCreator';
+import { sendProduct } from '../store/actions/productAndMarketActions';
 import ProductPictures from '../components/ProductPictures';
 
 import '../styles/pages/createProduct.scss';

@@ -7,9 +7,9 @@ import MarketCard from '../components/MarketCard';
 import ProductCard from '../components/ProductCard';
 import Footer from '../components/Footer';
 import {
-  fetchMarkets,
   fetchProducts,
-} from '../store/actions/landingPageActionsCreator';
+  fetchMarkets,
+} from '../store/actions/productAndMarketActions';
 
 import '../styles/pages/landingPage.scss';
 
