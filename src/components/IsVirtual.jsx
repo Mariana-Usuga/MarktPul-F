@@ -6,31 +6,12 @@ import '../styles/components/IsVirtual.scss';
 
 const IsVirtual = ({ handleChange }) => {
   const [showPlace, setShowPlace] = useState('');
-  // const [show, setShow] = useState(false);
-  // const showAddress = () => {
-  //   setShowPlace('Fisico');
-  // };
   return (
     <>
-      <div className="containerPay">
-        <label className="containerPay__label" htmlFor="Fisico">
+      <div className="virtual">
+        <label className="virtual__label" htmlFor="virtual">
           <input
-            className="containerPay__radio"
-            id="Fisico"
-            type="radio"
-            name="choosePaymentMethod"
-            onClick={() => setShowPlace('Fisico')}
-          />
-          Fisico
-        </label>
-        <div className={showPlace === 'Fisico' ? 'item show' : 'item hide'}>
-          <AddressMarket handleChange={handleChange} />
-        </div>
-      </div>
-      <div className="containerPay">
-        <label className="containerPay__label" htmlFor="virtual">
-          <input
-            className="containerPay__radio"
+            className="virtual__radio"
             id="virtual"
             type="radio"
             name="choosePaymentMethod"
@@ -38,6 +19,31 @@ const IsVirtual = ({ handleChange }) => {
           />
           Virtual
         </label>
+        <div className={showPlace === 'Virtual' ? null : 'hide'}>
+          <label htmlFor="virtual">Ingresa el link del evento</label>
+          <input
+            className="formAddressMarket__input"
+            onChange={handleChange}
+            name="virtual"
+            type="text"
+            id="virtual"
+          />
+        </div>
+      </div>
+      <div className="location">
+        <label className="containerPay__label" htmlFor="fisico">
+          <input
+            className="containerPay__radio"
+            id="fisico"
+            type="radio"
+            name="fisico"
+            onClick={() => setShowPlace('Fisico')}
+          />
+          Fisico
+        </label>
+        <div className={showPlace === 'Fisico' ? null : 'hide'}>
+          <AddressMarket handleChange={handleChange} />
+        </div>
       </div>
     </>
   );

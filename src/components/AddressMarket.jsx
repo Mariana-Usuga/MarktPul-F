@@ -5,52 +5,52 @@ import '../styles/components/IsVirtual.scss';
 const AddressMarket = ({ handleChange }) => (
   <form className="formAddressMarket">
     <div className="formAddressMarket__div">
-      <label className="formAddressMarket__label" htmlFor="number">
+      <label className="formAddressMarket__label" htmlFor="adress">
         Dirección
-        <input
-          onChange={handleChange}
-          className="dataContainer__input"
-          id="address"
-          type="text"
-          name="address"
-        />
       </label>
+      <input
+        onChange={handleChange}
+        className="formAddressMarket__input"
+        id="address"
+        type="text"
+        name="address"
+      />
     </div>
     <div className="formAddressMarket__div">
-      <label className="formAddressMarket__label" htmlFor="number">
+      <label className="formAddressMarket__label" htmlFor="country">
         Pais
-        <input
-          onChange={handleChange}
-          className="dataContainer__input"
-          id="address"
-          type="text"
-          name="address"
-        />
       </label>
+      <input
+        onChange={handleChange}
+        className="formAddressMarket__input"
+        id="country"
+        type="text"
+        name="country"
+      />
     </div>
     <div className="formAddressMarket__div">
-      <label className="formAddressMarket__label" htmlFor="number">
+      <label className="formAddressMarket__label" htmlFor="moreDetails">
         Mas Detalles
-        <input
-          onChange={handleChange}
-          className="dataContainer__input"
-          id="address"
-          type="text"
-          name="address"
-        />
       </label>
+      <input
+        onChange={handleChange}
+        className="formAddressMarket__input__moreDetail"
+        id="moreDetails"
+        type="text"
+        name="moreDetails"
+      />
     </div>
     <div className="formAddressMarket__div">
-      <label className="formAddressMarket__label" htmlFor="number">
+      <label className="formAddressMarket__label" htmlFor="city">
         Ciudad
-        <input
-          onChange={handleChange}
-          className="dataContainer__input"
-          id="address"
-          type="text"
-          name="address"
-        />
       </label>
+      <input
+        onChange={handleChange}
+        className="formAddressMarket__input"
+        id="city"
+        type="text"
+        name="city"
+      />
     </div>
   </form>
 );

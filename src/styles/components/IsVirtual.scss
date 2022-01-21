@@ -1,52 +1,59 @@
 .hide{
-  opacity: 0;
-  background-color:crimson;
-  transform:translate(0,-100%);
-}
-.container{
-  // display:inline-block;
-}
-.containerPay{
-  display: inline-block;
-  // margin-top: 10px;
-  // position:absolute;
-  // margin-bottom: 30px;
-  &__label{
-    margin-right: 5px;
-    margin-left: 20px;
-  }
-  // background-color:cadetblue
-}
-
-.show{
-  transform:translate(0,0);
-  // opacity:25;
-}
-.item{
+  transform:translate(-110%,0);
+  transition: transform .3s ease;
   position: absolute;
-}
-.nose{
-  // position: absolute;
-  // position: relative;
-}
-.form{
-  // position:relative;
-}
-.inputMarket__category{
-  // position: relative;
-  // position:absolute;
-  // margin-top: 50px;
-  // position:absolute;
+  display: none;
 }
 .formAddressMarket{
-  position:absolute;
-  // width: 180px;
+  border:1px solid rgb(207, 205, 205);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content:space-evenly;
+  flex-wrap: wrap;
   &__div{
-    // margin-top:10px;
+    margin-top: 7px;
+    display: inline-block;
   }
-  // position:absolute;
-  // background-color: crimson;
+  &__input, &__input__moreDetail{
+    background: #FFFFFF;
+    border: 1px solid #C7C5C5;
+    border-radius: 18px;
+    &__moreDetail{
+      height: 50px;
+    }
+  }
+  &__input{
+    height: 30px;
+  }
+  &__label{
+    margin-right: 10px;
+  }
 }
-.dataContainer__input{
-  // margin-top:10px;
+.location{
+  margin-top:8px;
 }
+
+@media(min-width:992px){
+  .formAddressMarket{
+    font-size: 1.2rem;
+    &__input{
+      width: 300px;
+       height: 40px;
+      &__moreDetail{
+        height: 100px;
+      }
+    }
+  }
+  .virtual{
+    font-size:1.3rem;
+  }
+  .location{
+    font-size: 1.3rem;
+  }
+  .form__input{
+    height: 600px;
+  }
+}
+
+
