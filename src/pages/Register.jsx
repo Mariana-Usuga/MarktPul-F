@@ -165,7 +165,7 @@ const Register = () => {
           <label htmlFor="repassword">
             Confirma tu contraseña
             <input
-              type="repassword"
+              type="password"
               name="repassword"
               id="repassword"
               data-testid="repassword-input"
