@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   validateEmail,
   validatePassword,
-  validateSubmit,
+  /* validateSubmit, */
   validateUsername,
 } from './form-validation';
 import sideImg from '../../imgs/tanya-pro-dYtLnwlETDg-unsplash.jpg';
@@ -84,7 +85,36 @@ const Register = () => {
       setErrors({ ...errors, repassword: '' });
     }
   }, [password, repassword]);
-
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const data = {
+      email,
+      password,
+      username,
+    };
+    const url = 'http://localhost:8080/api/user';
+    const config = {
+      method: 'post',
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data,
+    };
+    axios(config)
+      .then((response) => {
+        console.log(
+          '🚀 ~ file: index.jsx ~ line 106 ~ .then ~ response',
+          response,
+        );
+        // console.log(JSON.stringify(response.data));
+        // setAlert('Te has registrado Satisfactoriamente, dirígete a Login');
+      })
+      .catch((error) => {
+        console.log(error);
+        // setAlert(error.response.data.message);
+      });
+  };
   return (
     <div className="register">
       <figure className="register__image">
@@ -93,7 +123,12 @@ const Register = () => {
       <section className="register__form">
         <h1 className="register__form--title">Regístrate</h1>
 
-        <form action="" method="post" className="register__form--form">
+        <form
+          /*  action=""
+          method="post" */
+          className="register__form--form"
+          onSubmit={handleSignUp}
+        >
           <label htmlFor="email">
             Correo electrónico
             <input
@@ -185,7 +220,7 @@ const Register = () => {
             </span>
           ) : null}
 
-          <label htmlFor="register__button">
+          {/* <label htmlFor="register__button">
             <input
               type="submit"
               disabled={validateSubmit(errors)}
@@ -193,7 +228,8 @@ const Register = () => {
               className="register__button"
               id="register__button"
             />
-          </label>
+          </label> */}
+          <button type="submit">Sign Up</button>
         </form>
         <h2>¿Ya tienes cuenta?</h2>
         <section className="login__social">
