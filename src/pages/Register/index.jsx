@@ -5,7 +5,6 @@ import {
   validateSubmit,
   validateUsername,
 } from './form-validation';
-import sideImg from '../../imgs/tanya-pro-dYtLnwlETDg-unsplash.jpg';
 import './Register.scss';
 
 const formErrors = {
@@ -88,7 +87,10 @@ const Register = () => {
   return (
     <div className="register">
       <figure className="register__image">
-        <img src={sideImg} alt="Flea Market" />
+        <img
+          src="https://res.cloudinary.com/db3njhxi0/image/upload/v1642973938/tanya-pro-dYtLnwlETDg-unsplash_tihkwi.jpg"
+          alt="Flea Market"
+        />
       </figure>
       <section className="register__form">
         <h1 className="register__form--title">Regístrate</h1>
