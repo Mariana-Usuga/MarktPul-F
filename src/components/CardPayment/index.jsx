@@ -6,26 +6,26 @@ import './CardPayment.scss';
 
 const CardPayment = () => {
   const months = [
-    { month: '01', year: '21' },
-    { month: '02', year: '22' },
-    { month: '03', year: '23' },
-    { month: '04', year: '24' },
-    { month: '05', year: '25' },
-    { month: '06', year: '26' },
-    { month: '07', year: '27' },
-    { month: '08', year: '28' },
-    { month: '09', year: '29' },
-    { month: '10', year: '30' },
-    { month: '11', year: '31' },
-    { month: '12', year: '32' },
-    { year: '33' },
-    { year: '34' },
-    { year: '35' },
-    { year: '36' },
-    { year: '37' },
-    { year: '38' },
-    { year: '39' },
-    { year: '40' },
+    { id: '1', month: '01', year: '21' },
+    { id: '2', month: '02', year: '22' },
+    { id: '3', month: '03', year: '23' },
+    { id: '4', month: '04', year: '24' },
+    { id: '5', month: '05', year: '25' },
+    { id: '6', month: '06', year: '26' },
+    { id: '7', month: '07', year: '27' },
+    { id: '8', month: '08', year: '28' },
+    { id: '9', month: '09', year: '29' },
+    { id: '10', month: '10', year: '30' },
+    { id: '11', month: '11', year: '31' },
+    { id: '12', month: '12', year: '32' },
+    { id: '13', year: '33' },
+    { id: '14', year: '34' },
+    { id: '15', year: '35' },
+    { id: '16', year: '36' },
+    { id: '17', year: '37' },
+    { id: '18', year: '38' },
+    { id: '19', year: '39' },
+    { id: '20', year: '40' },
   ];
   const [form, setForm] = useState({
     holdersName: '',
@@ -48,7 +48,7 @@ const CardPayment = () => {
       form,
     );
     setForm(payForm.data);
-    console.log('pay', payForm.data);
+    // console.log('pay', payForm.data);
   };
 
   return (
@@ -90,8 +90,8 @@ const CardPayment = () => {
             id="month"
           >
             <option value="mes">Mes</option>
-            {months.map((month, index) => (
-              <option value={month.month} key={month[index]}>
+            {months.map((month) => (
+              <option value={month.month} key={month.id}>
                 {month.month}
               </option>
             ))}
@@ -103,8 +103,8 @@ const CardPayment = () => {
             id="year"
           >
             <option value="año">Año</option>
-            {months.map((year, index) => (
-              <option value={year.year} key={year[index]}>
+            {months.map((year) => (
+              <option value={year.year} key={year.id}>
                 {year.year}
               </option>
             ))}
