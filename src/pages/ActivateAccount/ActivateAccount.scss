@@ -4,3 +4,18 @@
   display: flex;
   justify-content: center;
 }
+.activate__login-button {
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  background-color: #4c3dff;
+  color: #fff;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  line-height: 20px;
+  width: 150px;
+  height: auto;
+  cursor: pointer;
+}
