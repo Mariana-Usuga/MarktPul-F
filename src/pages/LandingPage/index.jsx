@@ -11,6 +11,7 @@ import {
   fetchMarkets,
   fetchProducts,
 } from '../../store/actions/landingPageActionsCreator';
+import { fetchUser } from '../../store/actions/userActionsCreator';
 // import {
 //   loadMarkets,
 //   loadProducts,
@@ -22,8 +23,8 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.landing.markets);
   const products = useSelector((state) => state.landing.products);
-  // const token = useSelector((state) => state.auth.token);
-
+  const user = useSelector((state) => state.user);
+  const token = useSelector((state) => state.auth.token);
   const breakPoints = [
     { width: 400, itemsToShow: 1 },
     { width: 500, itemsToShow: 3 },
@@ -33,6 +34,8 @@ const LandingPage = () => {
   useEffect(() => {
     dispatch(fetchMarkets());
     dispatch(fetchProducts());
+    dispatch(fetchUser(token));
+    console.log(user);
   }, []);
 
   return (
