@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 
-import '../styles/components/IsVirtual.scss';
+import '../IsVirtual/IsVirtual.scss';
 
 const AddressMarket = ({ handleChange }) => (
   <form className="formAddressMarket">

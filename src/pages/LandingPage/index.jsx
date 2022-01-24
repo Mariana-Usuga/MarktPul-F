@@ -8,7 +8,8 @@ import ProductCard from '../../components/ProductCard';
 import Footer from '../../components/Footer';
 import {
   fetchProducts,
-} from '../../store/actions/landingPageActionsCreator';
+  fetchMarkets,
+} from '../../store/actions/productAndMarketActions';
 
 import './LandingPage.scss';
 

@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import AddressMarket from './AddressMarket';
+import AddressMarket from '../AddressMarket/index';
 
-import '../styles/components/IsVirtual.scss';
+import './IsVirtual.scss';
 
 const IsVirtual = ({ handleChange }) => {
   const [showPlace, setShowPlace] = useState('');

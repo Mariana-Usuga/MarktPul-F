@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import InputCreateProduct from '../components/InputCreateProduct';
-import { sendProduct } from '../store/actions/productAndMarketActions';
-import ProductPictures from '../components/ProductPictures';
+import InputCreateProduct from '../../components/InputCreateProduct/index';
+import { sendProduct } from '../../store/actions/productAndMarketActions';
+import ProductPictures from '../../components/ProductPictures/index';
 
-import '../styles/pages/createProduct.scss';
+import './CreateProduct.scss';
 
 const CreateProduct = () => {
   const [mainImage, setMainImage] = useState(null);
@@ -18,7 +18,6 @@ const CreateProduct = () => {
     mainImage: '',
     description: '',
     category: '',
-    marketId: ['61d9a8f16928b378ca731d74', '61d9a8f16928b378ca731d74'],
     images: [],
   });
   const handleChange = (e) => {
@@ -69,12 +68,13 @@ const CreateProduct = () => {
       'http://localhost:3002/api/upload/file',
       formDataImageMain,
     );
-    const responsee = await axios.post(
+    console.log('mainImage', responseImageMain.data.url);
+    const responseImage = await axios.post(
       'http://localhost:3002/api/upload/files',
       formDataImages,
     );
     const responseImages = [];
-    for (const image of responsee.data) {
+    for (const image of responseImage.data) {
       responseImages.push(image.url);
     }
     const newFormProduct = {
@@ -83,7 +83,6 @@ const CreateProduct = () => {
       imageMain: responseImageMain.data.url,
       description: formProduct.description,
       category: formProduct.category,
-      marketId: formProduct.marketId,
       images: responseImages,
     };
     dispatch(sendProduct(newFormProduct));

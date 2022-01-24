@@ -10,11 +10,9 @@ import Search from './pages/Search';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Layout from './components/Layout';
-import CreateProduct from './pages/CreateProduct';
-import CreateMarket from './pages/CreateMarket';
+import CreateProduct from './pages/CreateProduct/index';
+import CreateMarket from './pages/CreateMarket/index';
 import store from './store/index';
-
-// console.log('store', store);
 
 const Routing = () => (
   <BrowserRouter>

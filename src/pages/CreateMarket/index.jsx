@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import InputCreateProduct from '../components/InputCreateProduct';
-import { sendMarket } from '../store/actions/productAndMarketActions';
-import ProductPictures from '../components/ProductPictures';
-import IsVirtual from '../components/IsVirtual';
+import InputCreateProduct from '../../components/InputCreateProduct/index';
+import { sendMarket } from '../../store/actions/productAndMarketActions';
+import ProductPictures from '../../components/ProductPictures/index';
+import IsVirtual from '../../components/IsVirtual/index';
 
 const CreateMarket = () => {
   const [mainImage, setMainImage] = useState(null);
