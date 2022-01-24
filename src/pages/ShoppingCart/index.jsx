@@ -4,12 +4,14 @@ import { useSelector, useDispatch } from 'react-redux';
 import CartItem from '../../components/CartItem';
 import { fetchCart } from '../../store/actions/cartActions';
 
+const generateKey = (pre) => `${pre}_${new Date().getTime()}`;
+
 const ShoppingCart = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer.cart);
   useEffect(() => {
     window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
-  }, []);
+  }, [cart]);
   useEffect(() => {
     dispatch(fetchCart());
   }, []);
@@ -28,11 +30,13 @@ const ShoppingCart = () => {
       <tbody className="cart__table--tbody">
         {cart.map((element) => (
           <CartItem
+            product={element}
             src={element.imageMain}
             producto={element.title}
             cantidad={element.qty}
             precioUnitario={element.price}
-            key={element.id}
+            id={element._id}
+            key={generateKey(element.title)}
           />
         ))}
       </tbody>

@@ -8,7 +8,7 @@ import InterestPhoto from '../../components/InterestPhoto';
 import './ItemDetail.scss';
 import {
   addProductToCart,
-  updateProductToCart,
+  addQtyProductToCart,
 } from '../../store/actions/cartActions';
 
 const ItemDetail = () => {
@@ -35,7 +35,7 @@ const ItemDetail = () => {
     const cartPrev = JSON.parse(localStorage.getItem('cartProduct')) || [];
     const exists = cartPrev.find((element) => element._id === product._id);
     if (exists) {
-      dispatch(updateProductToCart(exists));
+      dispatch(addQtyProductToCart(exists));
     }
     else {
       dispatch(addProductToCart(product));
