@@ -2,29 +2,25 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import './ProductItem.scss';
 
-const ProductItem = ({ tipoMercado, infoMercado, tagMercado, img }) => (
+const ProductItem = ({ title, image, place }) => (
   <div className="card">
-    <img src={img} alt="" />
+    <img src={image} alt="" />
     <div className="card-body">
-      <a href="/">{tipoMercado}</a>
-      <p>{infoMercado}</p>
-      <a className="card-body__tag" href="/">
-        {tagMercado[0]}
-      </a>
-      <a className="card-body__tag" href="/">
-        {tagMercado[1]}
-      </a>
-      <a className="card-body__tag" href="/">
-        {tagMercado[2]}
-      </a>
+      <h1>{title}</h1>
+      <p>
+        {'Direccion: '}
+        {place}
+      </p>
+      {/* <a className="card-body__tag" href="/">
+{tagMercado[0]}
+</a> */}
     </div>
   </div>
 );
 export default ProductItem;
 ProductItem.propTypes = {
-  tipoMercado: Proptypes.string.isRequired,
-  infoMercado: Proptypes.string.isRequired,
+  title: Proptypes.string.isRequired,
+  place: Proptypes.string.isRequired,
   // eslint-disable-next-line react/forbid-prop-types
-  tagMercado: Proptypes.array.isRequired,
-  img: Proptypes.string.isRequired,
+  image: Proptypes.string.isRequired,
 };

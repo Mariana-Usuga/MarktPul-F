@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import Carousel from 'react-elastic-carousel';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -11,6 +12,7 @@ import {
   fetchMarkets,
   fetchProducts,
 } from '../../store/actions/landingPageActionsCreator';
+import { fetchUser } from '../../store/actions/userActionsCreator';
 // import {
 //   loadMarkets,
 //   loadProducts,
@@ -20,9 +22,11 @@ import './LandingPage.scss';
 
 const LandingPage = () => {
   const dispatch = useDispatch();
-  const markets = useSelector((state) => state.markets);
-  const products = useSelector((state) => state.products);
-
+  const markets = useSelector((state) => state.landing.markets);
+  const products = useSelector((state) => state.landing.products);
+  // eslint-disable-next-line no-unused-vars
+  const user = useSelector((state) => state.user);
+  const token = useSelector((state) => state.auth.token);
   const breakPoints = [
     { width: 400, itemsToShow: 1 },
     { width: 500, itemsToShow: 3 },
@@ -33,6 +37,11 @@ const LandingPage = () => {
     dispatch(fetchMarkets());
     dispatch(fetchProducts());
   }, []);
+  useEffect(() => {
+    if (token.length) {
+      dispatch(fetchUser(token));
+    }
+  }, [token]);
 
   return (
     <>

@@ -1,5 +1,5 @@
 import React from 'react';
-import MainProductGrid from '../../components/MainProductGrid';
+import MainMarketGrid from '../../components/MainMarketGrid';
 import FilterContainer from '../../components/FilterContainer';
 import './Search.css';
 
@@ -7,7 +7,7 @@ const Search = () => (
   <div>
     <main>
       <FilterContainer />
-      <MainProductGrid />
+      <MainMarketGrid />
     </main>
   </div>
 );
