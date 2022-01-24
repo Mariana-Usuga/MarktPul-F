@@ -1,4 +1,4 @@
-import '../styles/components/shipmentSummary.scss';
+import './ShipmentSummary.scss';
 
 const ShipmentSummary = () => (
   <div className="shipmentSummary">

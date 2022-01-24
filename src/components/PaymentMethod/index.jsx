@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-import CardPayment from './CardPayment';
-import PaymentOnDelivery from './PaymentOnDelivery';
-import Paypal from './Paypal';
-import Epayco from './Epayco';
+import CardPayment from '../CardPayment/index';
+// import PaymentOnDelivery from './PaymentOnDelivery';
+// import Paypal from './Paypal';
+// import Epayco from './Epayco';
 
-import '../styles/components/paymentMethod.scss';
+import './PaymentMethod.scss';
 
 const PaymentMethod = ({ method }) => {
   const [showMethod, setShowMethod] = useState('');
@@ -43,7 +43,7 @@ const PaymentMethod = ({ method }) => {
       <div
         className={showMethod === 'Pago contraentrega' && show ? null : 'hide'}
       >
-        <PaymentOnDelivery />
+        {/* <PaymentOnDelivery /> */}
       </div>
       <div
         className={
@@ -53,10 +53,10 @@ const PaymentMethod = ({ method }) => {
         <CardPayment />
       </div>
       <div className={showMethod === 'Paypal' && show ? 'show' : 'hide'}>
-        <Paypal />
+        {/* <Paypal /> */}
       </div>
       <div className={showMethod === 'ePayco' && show ? 'show' : 'hide'}>
-        <Epayco />
+        {/* <Epayco /> */}
       </div>
     </>
   );

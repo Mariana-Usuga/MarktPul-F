@@ -10,8 +10,8 @@ import Search from './pages/Search';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Layout from './components/Layout';
-import Pay from './pages/Pay';
-import SuccesfulPurchase from './pages/SuccessfulPurchase';
+import Pay from './pages/Pay/index';
+import SuccesfulPurchase from './pages/SuccessfulPurchase/index';
 import store from './store/index';
 
 const Routing = () => (

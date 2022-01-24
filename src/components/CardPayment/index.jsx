@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import cards from '../styles/image/cards.png';
+// import cards from '../styles/image/cards.png';
+import axios from 'axios';
 
-import '../styles/components/cardPayment.scss';
+import './CardPayment.scss';
 
 const CardPayment = () => {
   const months = [
@@ -40,15 +41,21 @@ const CardPayment = () => {
     setForm(newState);
   };
 
-  const sendForm = (e) => {
+  const sendForm = async (e) => {
     e.preventDefault();
+    const payForm = await axios.post(
+      'http://localhost:3002/api/payments/make-payment',
+      form,
+    );
+    setForm(payForm.data);
+    console.log('pay', payForm.data);
   };
 
   return (
     <form onSubmit={sendForm} className="form">
-      <div className="cardsImages">
-        <img src={cards} alt="" />
-      </div>
+      {/* <div className="cardsImages"> */}
+      {/* <img src={cards} alt="" /> */}
+      {/* </div> */}
       <div className="dataContainer">
         <label className="dataContainer__label" htmlFor="holdersName">
           Nombre del titular de la cuenta

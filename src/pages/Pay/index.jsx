@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import ShipmentSummary from '../components/ShipmentSummary';
-import PaymentMethod from '../components/PaymentMethod';
-import OrderSummary from '../components/OrderSummary';
-import '../styles/pages/pay.scss';
+// import ShipmentSummary from '../components/ShipmentSummary';
+// import PaymentMethod from '../components/PaymentMethod';
+// import OrderSummary from '../components/OrderSummary';
+import PaymentMethod from '../../components/PaymentMethod/index';
+import './Pay.scss';
 
 const Pay = () => (
   <div className="payContainer">
@@ -24,11 +25,11 @@ const Pay = () => (
       </button>
     </div>
     <div className="payContainer__item">
-      <ShipmentSummary />
+      {/* <ShipmentSummary /> */}
       <button className="btn" type="button">
         Volver al envio
       </button>
-      <OrderSummary />
+      {/* <OrderSummary /> */}
       <button className="btn" type="button">
         Volver a la bolsa
       </button>

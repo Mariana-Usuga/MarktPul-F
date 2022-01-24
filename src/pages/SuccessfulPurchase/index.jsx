@@ -1,7 +1,7 @@
-import ShipmentSummary from '../components/ShipmentSummary';
-import OrderSummary from '../components/OrderSummary';
+// import ShipmentSummary from '../components/ShipmentSummary';
+// import OrderSummary from '../components/OrderSummary';
 
-import '../styles/pages/successfulPurchase.scss';
+import './SuccessfulPurchase.scss';
 
 const SuccessfulPurchase = () => (
   <div className="purchaseSummary">
@@ -14,8 +14,8 @@ const SuccessfulPurchase = () => (
     <div>
       <h2 className="purchaseSummary__title">Resumen de la orden</h2>
       <div className="purchaseSummary__container">
-        <OrderSummary />
-        <ShipmentSummary />
+        {/* <OrderSummary /> */}
+        {/* <ShipmentSummary /> */}
       </div>
     </div>
     <button className="purchaseSummary__btn" type="button">
