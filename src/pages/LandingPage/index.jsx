@@ -23,6 +23,7 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.landing.markets);
   const products = useSelector((state) => state.landing.products);
+  // eslint-disable-next-line no-unused-vars
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.auth.token);
   const breakPoints = [
@@ -34,8 +35,11 @@ const LandingPage = () => {
   useEffect(() => {
     dispatch(fetchMarkets());
     dispatch(fetchProducts());
-    dispatch(fetchUser(token));
-    console.log(user);
+  }, []);
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUser(token));
+    }
   }, []);
 
   return (

@@ -1,9 +1,10 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchLogin } from '../../store/actions/authActionsCreator';
-import LoginImage from '../../imgs/philippe-tinembart-AECyP4zx5Y0-unsplash.jpg';
+// import LoginImage from '../../imgs/philippe-tinembart-AECyP4zx5Y0-unsplash.jpg';
 import SocialMediaButton from '../../components/SocialMediaButton';
 import './Login.scss';
 
@@ -14,7 +15,7 @@ const Login = () => {
   const token = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
   const handlingForm = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     dispatch(fetchLogin(email, password));
     localStorage.setItem('token', JSON.stringify(token.JWT));
     navigate('/', { replace: true });
@@ -32,7 +33,10 @@ const Login = () => {
   return (
     <div className="login">
       <figure className="login__image">
-        <img src={LoginImage} alt="Flea Market" />
+        <img
+          src="https://res.cloudinary.com/db3njhxi0/image/upload/v1642973939/philippe-tinembart-AECyP4zx5Y0-unsplash_gvdude.jpg"
+          alt="Flea Market"
+        />
       </figure>
       <section className="login__form">
         <h1 className="login__form--title">Inicio de sesión</h1>
