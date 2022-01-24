@@ -7,7 +7,7 @@ import './MainMarketGrid.scss';
 
 const MainProductGrid = () => {
   const dispatch = useDispatch();
-  const markets = useSelector((state) => state.markets);
+  const markets = useSelector((state) => state.landing.markets);
   useEffect(() => {
     dispatch(fetchMarkets());
   }, []);

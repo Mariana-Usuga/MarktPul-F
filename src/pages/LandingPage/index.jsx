@@ -20,8 +20,9 @@ import './LandingPage.scss';
 
 const LandingPage = () => {
   const dispatch = useDispatch();
-  const markets = useSelector((state) => state.markets);
-  const products = useSelector((state) => state.products);
+  const markets = useSelector((state) => state.landing.markets);
+  const products = useSelector((state) => state.landing.products);
+  // const token = useSelector((state) => state.auth.token);
 
   const breakPoints = [
     { width: 400, itemsToShow: 1 },

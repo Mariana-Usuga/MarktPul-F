@@ -1,16 +1,33 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { fetchLogin } from '../../store/actions/authActionsCreator';
 import LoginImage from '../../imgs/philippe-tinembart-AECyP4zx5Y0-unsplash.jpg';
 import SocialMediaButton from '../../components/SocialMediaButton';
 import './Login.scss';
 
 const Login = () => {
-  const handlingForm = (event) => {
-    event.preventDefault();
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const token = useSelector((state) => state.auth.token);
+  const navigate = useNavigate();
+  const handlingForm = (e) => {
+    e.preventDefault();
+    dispatch(fetchLogin(email, password));
+    localStorage.setItem('token', JSON.stringify(token.JWT));
+    navigate('/', { replace: true });
   };
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
     setPasswordShown(!passwordShown);
+  };
+  const handleEmail = ({ target }) => {
+    setEmail(target.value);
+  };
+  const handlePassword = ({ target }) => {
+    setPassword(target.value);
   };
   return (
     <div className="login">
@@ -33,6 +50,8 @@ const Login = () => {
               id="email"
               placeholder="email@direccion.com"
               required
+              value={email}
+              onChange={handleEmail}
             />
           </label>
           <label htmlFor="password">
@@ -44,6 +63,8 @@ const Login = () => {
               placeholder="&#9679;&#9679;&#9679;&#9679;&#9679; "
               minLength="8"
               required
+              value={password}
+              onChange={handlePassword}
             />
           </label>
           <div className="checkbox">
@@ -56,7 +77,7 @@ const Login = () => {
           </div>
           <label>
             <input
-              type="button"
+              type="submit"
               value="Iniciar Sesión"
               className="login__button"
             />

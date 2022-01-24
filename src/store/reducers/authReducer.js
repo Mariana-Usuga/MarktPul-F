@@ -1,14 +1,13 @@
 import { LOGIN, LOGOUT } from '../types/authTypes';
 
 const initialState = {
-  user: {},
+  token: JSON.parse(localStorage.getItem('token')) || '',
 };
-export const authReducer = (state = initialState, action) => {
+const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN:
       return {
-        ...state,
-        user: action.payload,
+        token: action.payload,
       };
     case LOGOUT:
       return {};
@@ -16,3 +15,5 @@ export const authReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default authReducer;

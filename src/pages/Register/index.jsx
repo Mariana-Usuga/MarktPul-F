@@ -3,7 +3,7 @@ import axios from 'axios';
 import {
   validateEmail,
   validatePassword,
-  /* validateSubmit, */
+  validateSubmit,
   validateUsername,
 } from './form-validation';
 import sideImg from '../../imgs/tanya-pro-dYtLnwlETDg-unsplash.jpg';
@@ -220,7 +220,7 @@ const Register = () => {
             </span>
           ) : null}
 
-          {/* <label htmlFor="register__button">
+          <label htmlFor="register__button">
             <input
               type="submit"
               disabled={validateSubmit(errors)}
@@ -228,8 +228,7 @@ const Register = () => {
               className="register__button"
               id="register__button"
             />
-          </label> */}
-          <button type="submit">Sign Up</button>
+          </label>
         </form>
         <h2>¿Ya tienes cuenta?</h2>
         <section className="login__social">
