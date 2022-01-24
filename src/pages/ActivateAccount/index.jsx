@@ -1,13 +1,14 @@
 /* eslint-disable consistent-return */
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 
 import './ActivateAccount.scss';
 
 const ActivateAcount = () => {
   const { hash } = useParams();
-  const { apiResponse, setApiResponse } = useState(null);
+  const [apiResponse, setApiResponse] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const activateAccount = async () => {
@@ -18,7 +19,6 @@ const ActivateAcount = () => {
         },
       );
       setApiResponse(res.data);
-      console.log(res.data);
     };
     activateAccount();
   }, []);
@@ -28,7 +28,9 @@ const ActivateAcount = () => {
     if (timer == 0) {
       setTimer(null);
     }
-    if (!timer) return;
+    if (!timer) {
+      return navigate('/');
+    }
 
     const intervalId = setInterval(() => {
       setTimer(timer - 1);
@@ -41,7 +43,7 @@ const ActivateAcount = () => {
 
   return (
     <div className="ActivateAccount">
-      {!apiResponse ? (
+      {apiResponse.JWT ? (
         <div>
           <h1>¡Muchas Gracias por activar tu cuenta!</h1>
           <p>{`Serás redirigido al inicio en ${timer || 0} segundos...`}</p>
@@ -50,7 +52,7 @@ const ActivateAcount = () => {
       ) : (
         <div>
           <h1>Algo malo ha sucedido...</h1>
-          <p>Algo malo ha sucedido, token inválido?</p>
+          <p>Token inválido o ha expirado</p>
         </div>
       )}
     </div>
