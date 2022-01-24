@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import Carousel from 'react-elastic-carousel';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -37,10 +38,10 @@ const LandingPage = () => {
     dispatch(fetchProducts());
   }, []);
   useEffect(() => {
-    if (token) {
+    if (token.length) {
       dispatch(fetchUser(token));
     }
-  }, []);
+  }, [token]);
 
   return (
     <>
