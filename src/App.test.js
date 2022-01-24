@@ -1,0 +1,1 @@
+test('Naive test', () => {});

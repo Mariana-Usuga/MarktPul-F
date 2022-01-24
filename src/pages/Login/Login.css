@@ -1,114 +1,114 @@
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&family=Nunito&family=Space+Mono&display=swap');
 
-body {
-  margin: 0;
+body{
+    margin: 0;
 }
-.login {
-  display: flex;
-  max-height: 100vh;
+.login{
+    display: flex;
+    max-height: 100vh;
 }
-.login__image {
-  margin: 0;
+.login__image{
+    margin: 0;
 }
-.login__image > img {
-  z-index: 0;
-  width: auto;
-  height: 100vh;
+.login__image>img{
+    z-index: 0;
+    width: auto;
+    height: 100vh;
 }
-.login__image--caption {
-  z-index: 1;
-  position: absolute;
-  border: 1px red solid;
+.login__image--caption{
+    z-index: 1;
+    position: absolute;
+    border: 1px red solid;
 }
 @media (max-width: 600px) {
-  .login__image {
-    display: none;
-  }
+    .login__image{
+        display: none;
+    }
 }
 
 /*LOGIN FORM*/
-.login__form {
-  font-family: 'Nunito', sans-serif;
-  width: 100%;
-  text-align: center;
-  margin: auto;
+.login__form{
+    font-family: 'Nunito', sans-serif;
+    width: 100%;
+    text-align: center;
+    margin: auto;
 }
-.login__form--title {
-  font-size: 28px;
+.login__form--title{
+    font-size: 28px;
 }
-.login__form--form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.login__form--form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-.login__form--form > label {
-  text-align: left;
-  width: 20%;
+.login__form--form>label{
+    text-align: left;
+    width: 20%;
 }
-.login__form--form > input {
-  width: 20%;
-  padding: 1em 2em;
-  margin: 1em;
-  border: 1px #c0c0c0 solid;
-  border-radius: 10px;
+.login__form--form>input{
+    width: 20%;
+    padding: 1em 2em;
+    margin: 1em;
+    border: 1px #c0c0c0 solid;
+    border-radius: 10px;
 }
-.login__form--form > input:focus {
-  outline: none;
-  border: 1px #4c3dff solid;
+.login__form--form>input:focus{
+    outline: none;
+    border: 1px #4C3DFF solid;
 }
-#login__form--registro {
-  color: #4c3dff;
+#login__form--registro{
+    color: #4C3DFF;
 }
-#login__form--registro:visited {
-  color: #4c3dff;
+#login__form--registro:visited{
+    color: #4C3DFF;
 }
-.login__button {
-  border: none;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  background-color: #4c3dff;
-  color: #fff;
+.login__button{
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: .8px;
+    background-color: #4C3DFF;
+    color: #fff;
 }
-.login__button:active {
-  transform: scale(0.98);
+.login__button:active{
+    transform: scale(.98);
 }
 @media (max-width: 600px) {
-  .login__form--form > label {
-    width: 80%;
-  }
-  .login__form--form > input {
-    width: 70%;
-  }
+    .login__form--form>label{
+        width: 80%;
+    }
+    .login__form--form>input{
+        width: 70%;
+    }
 }
 
 /*SOCIAL MEDIA BUTTONS*/
-.login__form > button {
-  padding: 1em;
-  border-radius: 15px;
-  border-style: none;
-  margin: 0.5em;
-  font-weight: 700;
-  box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+.login__form>button{
+    padding: 1em;
+    border-radius: 15px;
+    border-style: none;
+    margin: .5em ;
+    font-weight: 700;
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
 }
-.login__form > button:focus {
-  outline: none;
+.login__form>button:focus{
+    outline: none;
 }
-.login__form > button:active {
-  transform: scale(0.98);
+.login__form>button:active{
+    transform: scale(.98);
 }
-.login__form > button > img {
-  margin-bottom: -0.15em;
-  width: 1.2em;
-  height: auto;
-  margin-right: 0.5em;
+.login__form>button>img{
+    margin-bottom: -.15em;
+    width: 1.2em;
+    height: auto;
+    margin-right: .5em;
 }
-.login__form--google {
-  color: gray;
-  background-color: #fff;
+.login__form--google{
+    color: gray;
+    background-color: #fff;
 }
-.login__form--facebook {
-  color: #fff;
-  background-color: #1877f2;
+.login__form--facebook{
+    color: #fff;
+    background-color: #1877F2;
 }
