@@ -1,0 +1,125 @@
+$main-color: #4c3dff;
+.shipping {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  * {
+    margin: 1rem 0;
+  }
+  .notRegistered {
+    background-color: #c3f8be;
+    text-align: center;
+    padding: 0 1rem;
+    border-radius: 10px;
+  }
+  .paymentMethod {
+    background-color: #efefef;
+    text-align: center;
+    border-radius: 10px;
+    padding: 0 1rem;
+  }
+  .radio-div {
+    width: 40%;
+    border-radius: 50px;
+    display: block;
+    input {
+      margin: 1rem;
+    }
+  }
+  .saved-address {
+    width: 40%;
+  }
+  .saved-address__container {
+    background-color: #efefef;
+    display: flex;
+    justify-content: space-around;
+  }
+  .new-address {
+    width: 40%;
+  }
+  .new-address__container {
+    display: flex;
+    justify-content: left;
+    &--left {
+      display: flex;
+      flex-direction: column;
+      width: 50%;
+      :nth-child(n) {
+        display: block;
+      }
+    }
+    &--right {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  .shipping--border {
+    border: 1px solid $main-color;
+    border-radius: 10px;
+    padding: 0rem 2rem;
+  }
+  .shipping--button {
+    width: 20%;
+    border: none;
+    border-radius: 10px;
+    background-color: $main-color;
+    color: white;
+    padding: 0.5rem;
+    font-weight: 700;
+  }
+  .new-address__container--left {
+    width: 100%;
+    input,
+    textarea {
+      padding: 0.5rem;
+      border-radius: 10px;
+      border: none;
+      box-shadow: 1px 1px 5px 3px #efefef;
+      width: 80%;
+      resize: vertical;
+    }
+  }
+  .new-address__container--right {
+    width: 50%;
+    label {
+      display: flex;
+      flex-direction: column;
+      select {
+        width: 100%;
+        padding: 0.5rem;
+        border-radius: 10px;
+        border: none;
+        box-shadow: 1px 1px 5px 3px #efefef;
+        :visited {
+          outline: none;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 1025px) {
+  .shipping {
+    .new-address,
+    .saved-address,
+    .radio-div {
+      width: 80%;
+    }
+  }
+}
+@media screen and (max-width: 769px) {
+  .new-address__container {
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 380px) {
+  .shipping {
+    .new-address,
+    .saved-address,
+    .radio-div {
+      width: 90%;
+    }
+    .shipping--button {
+      width: 40%;
+    }
+  }
+}
