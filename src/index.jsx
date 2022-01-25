@@ -9,7 +9,9 @@ import ItemDetail from './pages/ItemDetail';
 import Search from './pages/Search';
 import Register from './pages/Register';
 import Login from './pages/Login';
+import Cart from './pages/Cart';
 import Layout from './components/Layout';
+import Shipping from './pages/Shipping';
 import store from './store/index';
 import ActivateAcount from './pages/ActivateAccount';
 
@@ -26,6 +28,8 @@ const Routing = () => (
 
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/ship" element={<Shipping />} />
       <Route path="/activate/:hash" element={<ActivateAcount />} />
     </Routes>
   </BrowserRouter>

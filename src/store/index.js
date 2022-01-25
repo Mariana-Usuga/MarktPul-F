@@ -2,6 +2,7 @@ import { createStore, applyMiddleware, combineReducers } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
 import landingPageReducer from './reducers/landingPageReducer';
+import cartReducer from './reducers/cartReducer';
 import authReducer from './reducers/authReducer';
 import userReducer from './reducers/userReducer';
 import SearchReducer from './reducers/searchReducer';
@@ -12,10 +13,10 @@ const storeCombined = combineReducers({
   auth: authReducer,
   user: userReducer,
   search: SearchReducer,
+  cartReducer,
 });
 const store = createStore(
   storeCombined,
   composeWithDevTools(applyMiddleware(thunk)),
 );
-
 export default store;
