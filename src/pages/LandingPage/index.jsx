@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import Carousel from 'react-elastic-carousel';
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
@@ -24,17 +25,16 @@ const LandingPage = () => {
     { width: 500, itemsToShow: 3 },
     { width: 1200, itemsToShow: 4 },
   ];
-
+  /* const getUser = () => {}; */
   useEffect(() => {
     dispatch(fetchMarkets());
     dispatch(fetchProducts());
   }, []);
   useEffect(() => {
-    if (token) {
-      dispatch(fetchUser(token));
+    if (token.JWT) {
+      dispatch(fetchUser(token.JWT));
     }
-  }, []);
-
+  }, [token.JWT]);
   return (
     <>
       <HeaderMain />

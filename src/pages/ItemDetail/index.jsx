@@ -1,15 +1,21 @@
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-elastic-carousel';
 import ProductPhoto from '../../components/ProductPhoto';
 import InterestPhoto from '../../components/InterestPhoto';
 import './ItemDetail.scss';
+import {
+  addProductToCart,
+  addQtyProductToCart,
+} from '../../store/actions/cartActions';
 
 const ItemDetail = () => {
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cartReducer.cart);
   const [product, setProduct] = useState({});
   const breakPoints = [{ width: 100, itemsToShow: 2 }];
-
   const { id } = useParams();
 
   useEffect(() => {
@@ -21,7 +27,21 @@ const ItemDetail = () => {
     };
     getProduct();
   }, []);
-
+  useEffect(() => {
+    window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
+  }, [cart]);
+  /* eslint-disable */
+  const handleCarrito =  () => {
+    const cartPrev = JSON.parse(localStorage.getItem('cartProduct')) || [];
+    const exists = cartPrev.find((element) => element._id === product._id);
+    if (exists) {
+      dispatch(addQtyProductToCart(exists));
+    }
+    else {
+      dispatch(addProductToCart(product));
+    }
+  };
+  /* eslint-enable */
   return (
     <>
       <div className="container">
@@ -47,7 +67,11 @@ const ItemDetail = () => {
               Comprar
             </Link>
           </button>
-          <button className="btn__addCart" type="button">
+          <button
+            className="btn__addCart"
+            type="button"
+            onClick={handleCarrito}
+          >
             Añadir al carrito
           </button>
           <button className="btn__seller" type="button">
