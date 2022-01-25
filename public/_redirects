@@ -1,9 +1,9 @@
 /*  /index.html  200
 # Redirects from what the browser requests to what we serve
 /            /
-/main
-/main/search
-/main/marketDetail/
-/main/itemDetail/
-/register
-/login
+/main       /main
+/main/search /main/search
+/main/marketDetail/   /main/marketDetail/
+/main/itemDetail/ /main/itemDetail/
+/register /register
+/login  /login
