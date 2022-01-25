@@ -1,0 +1,1 @@
+export const LOAD_MARKETS_FILTER = '[Search] LOAD_MARKETS_FILTER';
