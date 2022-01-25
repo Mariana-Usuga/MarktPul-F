@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import {
   validateEmail,
   validatePassword,
@@ -83,7 +84,26 @@ const Register = () => {
       setErrors({ ...errors, repassword: '' });
     }
   }, [password, repassword]);
-
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const data = {
+      email,
+      password,
+      username,
+    };
+    const url = 'http://localhost:8080/api/user';
+    const config = {
+      method: 'post',
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data,
+    };
+    axios(config)
+      .then((response) => response.data)
+      .catch((error) => error.response.data);
+  };
   return (
     <div className="register">
       <figure className="register__image">
@@ -95,7 +115,12 @@ const Register = () => {
       <section className="register__form">
         <h1 className="register__form--title">Regístrate</h1>
 
-        <form action="" method="post" className="register__form--form">
+        <form
+          /*  action=""
+          method="post" */
+          className="register__form--form"
+          onSubmit={handleSignUp}
+        >
           <label htmlFor="email">
             Correo electrónico
             <input
