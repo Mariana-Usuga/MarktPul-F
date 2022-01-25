@@ -18,7 +18,6 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.landing.markets);
   const products = useSelector((state) => state.landing.products);
-  // const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.auth.token);
   const breakPoints = [
     { width: 400, itemsToShow: 1 },

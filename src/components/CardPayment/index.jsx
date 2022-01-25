@@ -1,8 +1,12 @@
+/* eslint-disable no-nested-ternary */
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import cards from '../styles/image/cards.png';
-import { postPay } from '../../store/services/payServices';
-
+import { FaCheckCircle } from 'react-icons/fa';
+import {
+  fetchDoPay,
+  showLoader,
+  hideLoader,
+} from '../../store/actions/payActionsCreator';
 import './CardPayment.scss';
 
 const CardPayment = () => {
@@ -29,8 +33,10 @@ const CardPayment = () => {
     { id: '20', year: '40' },
   ];
   const token = useSelector((state) => state.auth.token);
+  const pay = useSelector((state) => state.pay.dataPay);
+  const isLoading = useSelector((state) => state.pay.isLoading);
+  const [showLoaderState, setShowLoaderState] = useState(false);
   const dispatch = useDispatch();
-  // const [loading, setLoading] = useState(true);
   const [form, setForm] = useState({
     holdersName: '',
     number: '',
@@ -59,17 +65,25 @@ const CardPayment = () => {
       cardExpMonth: form.month,
       cardCVC: form.cvc,
     };
-    dispatch(postPay(paymentData, token));
-    // if (response) {
-    //   setLoading(true);
-    // }
+
+    if (pay && !isLoading) {
+      dispatch(showLoader());
+      const response = await dispatch(fetchDoPay(paymentData, token));
+      if (response) {
+        setShowLoaderState(true);
+        dispatch(hideLoader());
+      }
+    }
   };
 
   return (
     <form onSubmit={sendForm} className="form">
-      {/* <div className="cardsImages"> */}
-      {/* <img src={cards} alt="" /> */}
-      {/* </div> */}
+      <div className="cardsImages">
+        <img
+          src="https://res.cloudinary.com/db3njhxi0/image/upload/v1643132763/cards_makxmy.png"
+          alt=""
+        />
+      </div>
       <div className="dataContainer">
         <label className="dataContainer__label" htmlFor="holdersName">
           Nombre del titular de la cuenta
@@ -138,7 +152,19 @@ const CardPayment = () => {
         </label>
       </div>
       <button className="btnCard" type="submit">
-        Usar esta tarjeta
+        {!isLoading && !showLoaderState ? (
+          'Usar esta tarjeta'
+        ) : !showLoaderState ? (
+          <img
+            className="loading"
+            src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
+            alt="loading content"
+          />
+        ) : (
+          <div>
+            <FaCheckCircle />
+          </div>
+        )}
       </button>
     </form>
   );

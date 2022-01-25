@@ -13,6 +13,7 @@ import Layout from './components/Layout';
 import Pay from './pages/Pay/index';
 import SuccesfulPurchase from './pages/SuccessfulPurchase/index';
 import store from './store/index';
+import Stepper from './components/Stepper/index';
 
 const Routing = () => (
   <BrowserRouter>
@@ -25,6 +26,7 @@ const Routing = () => (
         <Route path="itemDetail/:id" element={<ItemDetail />} />
         <Route path="pay" element={<Pay />} />
         <Route path="succesfulPurchase" element={<SuccesfulPurchase />} />
+        <Route path="stepper" element={<Stepper />} />
       </Route>
 
       <Route path="/register" element={<Register />} />

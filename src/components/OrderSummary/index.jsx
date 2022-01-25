@@ -1,4 +1,4 @@
-// import ProductsBuy from './ProductsBuy';
+import ProductsBuy from '../ProductsBuy/index';
 
 import './OrderSummary.scss';
 
@@ -7,8 +7,8 @@ const OrderSummary = () => (
     <div>
       <h2 className="titleOrder">Resumen de la compra</h2>
     </div>
-    {/* <ProductsBuy title="Blusa blanca de mujer" price="$ 20 000" /> */}
-    {/* <ProductsBuy title="Blusa blanca de mujer" price="$ 20 000" /> */}
+    <ProductsBuy title="Blusa blanca de mujer" price="$ 20 000" />
+    <ProductsBuy title="Blusa blanca de mujer" price="$ 20 000" />
     <ul className="total">
       <li className="total__li">
         <span className="total__subTotal">Sub Total</span>

@@ -1,56 +1,56 @@
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-body{
+body {
   font-family: 'Nunito Sans', sans-serif;
 }
-.notRegistered{
-  background-color: #BCF8B7;
+.notRegistered {
+  background-color: #bcf8b7;
   position: absolute;
   padding: 8px;
-  border: 1px solid #EFEFEF;
+  border: 1px solid #efefef;
   border-radius: 10px;
   position: relative;
-  z-index:-1;
-  margin:0 5px 5px 5px;
+  z-index: -1;
+  margin: 0 5px 5px 5px;
 }
-.paymentMethod{
-  z-index:-1;
+.paymentMethod {
+  z-index: -1;
   text-align: center;
   font-weight: bolder;
-  margin:0 5px 5px 5px;
-  background-color: #EFEFEF;
+  margin: 0 5px 5px 5px;
+  background-color: #efefef;
   position: relative;
   padding: 10px;
-  border: 1px solid #EFEFEF;
+  border: 1px solid #efefef;
   box-sizing: border-box;
 }
-.btnPay{
-  margin:0 5px 5px 5px;
+.btnPay {
+  margin: 0 5px 5px 5px;
   text-align: center;
   width: 270px;
   height: 50px;
   border: none;
   font-family: Nunito;
   font-size: 20px;
-  color: #FFFFFF;
-  background: #4C3DFF;
+  color: #ffffff;
+  background: #4c3dff;
   border-radius: 10px;
-  &__link{
+  &__link {
     color: white;
     text-decoration: none;
   }
 }
 
-@media(min-width:992px){
-  .payContainer{
+@media (min-width: 992px) {
+  .payContainer {
     display: grid;
     grid-template-columns: 60% 40%;
-    margin:10px 50px;
+    margin: 10px 50px;
   }
-  .btnPay{
-    margin:0 250px;
+  .btnPay {
+    margin: 0 250px;
   }
 }
