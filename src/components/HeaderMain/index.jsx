@@ -1,13 +1,26 @@
-import { useState } from 'react';
-import { FaShoppingCart, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
+import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
+import CartPreview from '../CartPreview';
+import { fetchCart } from '../../store/actions/cartActions';
 import './HeaderMain.scss';
 
 const HeaderMain = () => {
   const [show, setShow] = useState(false);
-
+  const generateKey = (pre) => `${pre}_${new Date().getTime()}`;
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cartReducer.cart);
   const showMenu = () => (!show ? setShow(true) : setShow(false));
+  const cartPreview = () => {
+    document.getElementById('cartPrev').style.display = 'initial';
+  };
+  const cartPreviewLeave = () => {
+    document.getElementById('cartPrev').style.display = 'none';
+  };
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, []);
   return (
     <header className="header">
       <nav className="header__nav">
@@ -29,8 +42,34 @@ const HeaderMain = () => {
           <li className="header__li">
             <Link to="/login">Mi cuenta</Link>
           </li>
-          <li className="header__li">
-            <FaShoppingCart />
+          <li
+            className="header__li"
+            onMouseOver={cartPreview}
+            onMouseLeave={cartPreviewLeave}
+            onFocus={cartPreview}
+          >
+            <Link to="/cart">
+              <i className="search-header__mobile-cart fas fa-shopping-cart">
+                <div className="header--cartLength">{cart.length}</div>
+              </i>
+            </Link>
+            <div className="header--cartPrev" id="cartPrev">
+              {cart.map((element) => (
+                <CartPreview
+                  src={element.imageMain}
+                  producto={element.title}
+                  cantidad={element.qty}
+                  precio={element.price}
+                  id={element._id}
+                  key={generateKey(element.title)}
+                />
+              ))}
+              <Link to="/cart">
+                <button type="button" className="cartPrev--button">
+                  Ir al Carrito
+                </button>
+              </Link>
+            </div>
           </li>
         </ul>
         <div className="background" />
