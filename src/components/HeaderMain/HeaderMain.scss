@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+$primary-color: white;
+$secondary-color: #4c3dff;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+.header {
+  box-shadow: inset 10px 80px 80px 0 rgb(61, 61, 61);
+  background-image: url('https://res.cloudinary.com/db3njhxi0/image/upload/v1642973340/mercado_zdunfi.png');
+  background-size: cover;
+  color: $primary-color;
+  height: 330px;
+  &__main {
+    display: grid;
+    grid-template-columns: auto 30px;
+    padding: 20px;
+    &-logo {
+      font-size: 2rem;
+    }
+  }
+  &__ul {
+    transform: translate(-100%, 0);
+  }
+  &__ul,
+  &__ul--show {
+    z-index: 10;
+    transition: transform 0.3s ease;
+    position: absolute;
+    width: 100%;
+  }
+  &__li {
+    background-color: #897ff1;
+    list-style-type: none;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.2rem;
+    border-bottom: 0.3px solid;
+    a {
+      color: white;
+    }
+  }
+  &__li:hover {
+    background-color: $secondary-color;
+    color: white;
+    a {
+      color: white;
+    }
+  }
+  &__bars {
+    font-size: 25px;
+    margin-top: 8px;
+    border: none;
+    background-color: transparent;
+    color: $primary-color;
+  }
+}
+.background {
+  transform: translate(-100%, 0);
+}
+.background,
+.background--show {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 300%;
+  width: 100%;
+}
+.header__info {
+  margin-left: 20px;
+  &__des {
+    margin: 5px 0 20px 0;
+    background-color: #fff;
+    width: 200px;
+    border-radius: 70px;
+    &__input {
+      border: none;
+      height: 30px;
+      outline: none;
+      border-radius: 70px;
+      width: 180px;
+    }
+    &__fa {
+      display: inline;
+      color: black;
+    }
+  }
+  &__sell,
+  &__buy,
+  &__market {
+    border: 2px solid $primary-color;
+    padding: 6px;
+    border-radius: 60px;
+    text-align: center;
+    font-size: 1rem;
+  }
+  &__sell,
+  &__buy {
+    display: inline;
+  }
+  &__market {
+    width: 235px;
+    margin-top: 15px;
+    background-color: $secondary-color;
+  }
+}
+@media (min-width: 992px) {
+  .header {
+    height: 600px;
+    &__main-logo {
+      margin-top: 25px;
+      margin-left: 30px;
+    }
+    &__ul {
+      transform: translate(0, 0);
+      display: flex;
+      width: 40%;
+      top: 20px;
+      left: 60%;
+    }
+    &__li {
+      font-size: 20px;
+      border-bottom: none;
+      background-color: transparent;
+    }
+    &__bars {
+      display: none;
+    }
+  }
+  .header__info {
+    padding: 100px 60px;
+    &__des {
+      width: 500px;
+      margin-top: 20px;
+      &__input {
+        height: 40px;
+        width: 470px;
+      }
+    }
+    &__title {
+      width: 600px;
+      font-size: 45px;
+    }
+    &__market,
+    &__sell,
+    &__buy {
+      display: inline;
+      margin-right: 5px;
+      font-size: 1.2rem;
+    }
+  }
+}

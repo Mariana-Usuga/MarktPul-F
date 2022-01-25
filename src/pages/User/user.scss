@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+$primary-color: white;
+$secondary-color: #4c3dff;
+body {
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bolder;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
