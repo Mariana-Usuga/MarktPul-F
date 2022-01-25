@@ -3,6 +3,7 @@ import { LOAD_USER } from '../types/userTypes';
 const initialState = {
   user: {},
 };
+
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_USER:

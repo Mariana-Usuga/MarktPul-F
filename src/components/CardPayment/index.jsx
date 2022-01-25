@@ -1,8 +1,11 @@
 import { useState } from 'react';
 // import cards from '../styles/image/cards.png';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 import './CardPayment.scss';
+
+const URL_BASE = 'http://localhost:8080' || process.env.REACT_APP_API_URL_BASE;
 
 const CardPayment = () => {
   const months = [
@@ -27,11 +30,14 @@ const CardPayment = () => {
     { id: '19', year: '39' },
     { id: '20', year: '40' },
   ];
+  const token = useSelector((state) => state.auth.token);
+  // const [loading, setLoading] = useState(true);
   const [form, setForm] = useState({
     holdersName: '',
     number: '',
     month: '',
     year: '',
+    cvc: '',
   });
   const handleChange = (e) => {
     const { name } = e.target;
@@ -43,12 +49,27 @@ const CardPayment = () => {
 
   const sendForm = async (e) => {
     e.preventDefault();
-    const payForm = await axios.post(
-      'http://localhost:3002/api/payments/make-payment',
-      form,
-    );
-    setForm(payForm.data);
-    // console.log('pay', payForm.data);
+    const paymentData = {
+      docType: 'CC',
+      docNumber: '10358519',
+      value: '116000',
+      currency: 'COP',
+      description: 'Product Payment',
+      cardNumber: form.number,
+      cardExpYear: form.year,
+      cardExpMonth: form.month,
+      cardCVC: form.cvc,
+    };
+
+    await axios.post(`${URL_BASE}/api/payments/make-payment`, paymentData, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    // if (response) {
+    //   setLoading(true);
+    // }
   };
 
   return (
@@ -77,6 +98,18 @@ const CardPayment = () => {
             id="uname"
             type="number"
             name="number"
+          />
+        </label>
+      </div>
+      <div className="dataContainer">
+        <label className="dataContainer__label" htmlFor="cvc">
+          CVC
+          <input
+            onChange={handleChange}
+            className="dataContainer__input"
+            id="cvc"
+            type="number"
+            name="cvc"
           />
         </label>
       </div>

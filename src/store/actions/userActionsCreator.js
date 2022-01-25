@@ -5,8 +5,10 @@ export const loadUser = (user) => ({
   type: LOAD_USER,
   payload: user.data,
 });
+
 export const fetchUser = (token) => async (dispatch) => {
   const user = await getUser(token);
+  console.log('user', user);
   localStorage.setItem('user', JSON.stringify(user.data));
   dispatch(loadUser(user));
 };
