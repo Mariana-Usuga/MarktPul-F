@@ -101,18 +101,8 @@ const Register = () => {
       data,
     };
     axios(config)
-      .then((response) => {
-        console.log(
-          '🚀 ~ file: index.jsx ~ line 106 ~ .then ~ response',
-          response,
-        );
-        // console.log(JSON.stringify(response.data));
-        // setAlert('Te has registrado Satisfactoriamente, dirígete a Login');
-      })
-      .catch((error) => {
-        console.log(error);
-        // setAlert(error.response.data.message);
-      });
+      .then((response) => response.data)
+      .catch((error) => error.response.data);
   };
   return (
     <div className="register">
