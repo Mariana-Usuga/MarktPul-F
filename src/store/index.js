@@ -4,11 +4,14 @@ import thunk from 'redux-thunk';
 import landingPageReducer from './reducers/landingPageReducer';
 import authReducer from './reducers/authReducer';
 import userReducer from './reducers/userReducer';
+import SearchReducer from './reducers/searchReducer';
+
 // eslint-disable-next-line no-unused-vars
 const storeCombined = combineReducers({
   landing: landingPageReducer,
   auth: authReducer,
   user: userReducer,
+  search: SearchReducer,
 });
 const store = createStore(
   storeCombined,

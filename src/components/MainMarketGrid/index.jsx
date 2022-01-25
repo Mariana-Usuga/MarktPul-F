@@ -7,13 +7,14 @@ import './MainMarketGrid.scss';
 
 const MainProductGrid = () => {
   const dispatch = useDispatch();
-  const markets = useSelector((state) => state.landing.markets);
+  // const markets = useSelector((state) => state.landing.markets);
+  const marketsFilter = useSelector((state) => state.search.markets_filter);
   useEffect(() => {
     dispatch(fetchMarkets());
   }, []);
   return (
     <div className="container">
-      {markets.map((market) => {
+      {marketsFilter.map((market) => {
         const { title, place, image, _id: id } = market;
         return (
           <Link to={`/main/marketDetail/${id}`} key={id}>
