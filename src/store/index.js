@@ -4,11 +4,13 @@ import thunk from 'redux-thunk';
 import landingPageReducer from './reducers/landingPageReducer';
 import authReducer from './reducers/authReducer';
 import userReducer from './reducers/userReducer';
+import payReducer from './reducers/payReducer';
 
 const storeCombined = combineReducers({
   landing: landingPageReducer,
   auth: authReducer,
   user: userReducer,
+  pay: payReducer,
 });
 
 const store = createStore(

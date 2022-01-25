@@ -1,14 +1,12 @@
 import { PAY } from '../types/payTypes';
 import { getMarkets } from '../services/landingPageServices';
 
-export const loadMarkets = (markets) => ({
+export const doPay = (markets) => ({
   type: PAY,
   payload: markets.data,
 });
 
-export const fetchMarkets = () => async (dispatch) => {
+export const fetchdoPay = () => async (dispatch) => {
   const markets = await getMarkets();
-  dispatch(loadMarkets(markets));
+  dispatch(doPay(markets));
 };
-
-

@@ -1,11 +1,9 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 // import cards from '../styles/image/cards.png';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { postPay } from '../../store/services/payServices';
 
 import './CardPayment.scss';
-
-const URL_BASE = 'http://localhost:8080' || process.env.REACT_APP_API_URL_BASE;
 
 const CardPayment = () => {
   const months = [
@@ -31,6 +29,7 @@ const CardPayment = () => {
     { id: '20', year: '40' },
   ];
   const token = useSelector((state) => state.auth.token);
+  const dispatch = useDispatch();
   // const [loading, setLoading] = useState(true);
   const [form, setForm] = useState({
     holdersName: '',
@@ -60,13 +59,7 @@ const CardPayment = () => {
       cardExpMonth: form.month,
       cardCVC: form.cvc,
     };
-
-    await axios.post(`${URL_BASE}/api/payments/make-payment`, paymentData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    });
+    dispatch(postPay(paymentData, token));
     // if (response) {
     //   setLoading(true);
     // }
