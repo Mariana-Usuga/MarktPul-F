@@ -35,6 +35,7 @@ const LandingPage = () => {
       dispatch(fetchUser(token.JWT));
     }
   }, [token.JWT]);
+
   useEffect(() => {
     window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
   }, [cart]);

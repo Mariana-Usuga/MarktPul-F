@@ -1,11 +1,16 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FaShoppingCart, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-
+import { useSelector } from 'react-redux';
 import './HeaderMain.scss';
 
 const HeaderMain = () => {
+  const cart = useSelector((state) => state.cartReducer.cart);
+
   const [show, setShow] = useState(false);
+  useEffect(() => {
+    window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
+  }, [cart]);
 
   const showMenu = () => (!show ? setShow(true) : setShow(false));
   return (
