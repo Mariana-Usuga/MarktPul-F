@@ -11,12 +11,10 @@ import Register from './pages/Register';
 import Login from './pages/Login';
 import Cart from './pages/Cart';
 import Layout from './components/Layout';
-import Pay from './pages/Pay/index';
 import SuccesfulPurchase from './pages/SuccessfulPurchase/index';
 import store from './store/index';
 import Stepper from './components/Stepper/index';
-import Shipping from './pages/Shipping';
-import ActivateAcount from './pages/ActivateAccount';
+// import ActivateAcount from './pages/ActivateAccount';
 
 const Routing = () => (
   <BrowserRouter>
@@ -27,7 +25,6 @@ const Routing = () => (
         <Route path="search" element={<Search />} />
         <Route path="marketDetail/:id" element={<MarketDetail />} />
         <Route path="itemDetail/:id" element={<ItemDetail />} />
-        <Route path="pay" element={<Pay />} />
         <Route path="succesfulPurchase" element={<SuccesfulPurchase />} />
         <Route path="stepper" element={<Stepper />} />
       </Route>
@@ -35,8 +32,7 @@ const Routing = () => (
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/ship" element={<Shipping />} />
-      <Route path="/activate/:hash" element={<ActivateAcount />} />
+      {/* <Route path="/activate/:hash" element={<ActivateAcount />} /> */}
     </Routes>
   </BrowserRouter>
 );

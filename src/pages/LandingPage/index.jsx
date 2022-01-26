@@ -20,12 +20,12 @@ const LandingPage = () => {
   const markets = useSelector((state) => state.landing.markets);
   const products = useSelector((state) => state.landing.products);
   const token = useSelector((state) => state.auth.token);
+  const cart = useSelector((state) => state.cartReducer.cart);
   const breakPoints = [
     { width: 400, itemsToShow: 1 },
     { width: 500, itemsToShow: 3 },
     { width: 1200, itemsToShow: 4 },
   ];
-  /* const getUser = () => {}; */
   useEffect(() => {
     dispatch(fetchMarkets());
     dispatch(fetchProducts());
@@ -35,6 +35,9 @@ const LandingPage = () => {
       dispatch(fetchUser(token.JWT));
     }
   }, [token.JWT]);
+  useEffect(() => {
+    window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
+  }, [cart]);
   return (
     <>
       <HeaderMain />

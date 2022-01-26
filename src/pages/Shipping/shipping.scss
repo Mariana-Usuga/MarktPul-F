@@ -84,7 +84,7 @@ $main-color: #4c3dff;
     label {
       display: flex;
       flex-direction: column;
-      select {
+      input {
         width: 100%;
         padding: 0.5rem;
         border-radius: 10px;
@@ -96,6 +96,16 @@ $main-color: #4c3dff;
       }
     }
   }
+}
+.btn__changeAddress {
+  background: #4c3dff;
+  border-radius: 10px;
+  height: 60px;
+  font-size: 1.2rem;
+  color: white;
+  border: none;
+  font-weight: bolder;
+  width: 170px;
 }
 @media screen and (max-width: 1025px) {
   .shipping {

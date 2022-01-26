@@ -33,6 +33,7 @@ export const updateCurrentRemoveQty = (product) => ({
 
 export const fetchCart = () => async (dispatch) => {
   const cart = await getCart();
+  console.log('cart', cart);
   dispatch(loadCart(cart));
 };
 export const addProductToCart = (product) => async (dispatch) => {

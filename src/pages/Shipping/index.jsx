@@ -1,11 +1,36 @@
-import React from 'react';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchAddress } from '../../store/actions/chageAddressActionsCreator';
+// import { fetchUser } from '../../store/actions/userActionsCreator';
+
 import './shipping.scss';
 
-const Shipping = () => (
-  <>
-    <Header />
+const Shipping = () => {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.user);
+  const [form, setForm] = useState({
+    location: {
+      address: '',
+      country: '',
+      city: '',
+      moreDetail: '',
+      state: '',
+    },
+  });
+  const handleChange = (e) => {
+    const { name } = e.target;
+    const { value } = e.target;
+    const newState = { ...form };
+    newState[name] = value;
+    setForm(newState);
+  };
+  const sendData = (e) => {
+    e.preventDefault();
+    // console.log('token', user._id);
+    // console.log('form', form);
+    dispatch(fetchAddress(form, user._id));
+  };
+  return (
     <section className="shipping">
       <div className="notRegistered">
         <h3>¿No estas registrado? ¡Registrate!</h3>
@@ -37,42 +62,58 @@ const Shipping = () => (
           <div className="new-address__container--left">
             <label htmlFor="new-address__address">
               Direccion
-              <input type="text" name="new-address__address" id="address" />
+              <input
+                onChange={handleChange}
+                type="text"
+                name="address"
+                id="new-address__address"
+              />
             </label>
             <label htmlFor="new-address__details">
               Mas Detalles
-              <textarea type="text" name="new-address__details" id="details" />
+              <textarea
+                onChange={handleChange}
+                type="text"
+                name="moreDetail"
+                id="new-address__details"
+              />
             </label>
           </div>
           <div className="new-address__container--right">
-            <label htmlFor="country">
-              Pais:
-              <select id="country">
-                <option>Colombia</option>
-                <option>Peru</option>
-              </select>
+            <label htmlFor="new-address__country">
+              Pais
+              <input
+                onChange={handleChange}
+                type="text"
+                name="country"
+                id="new-address__country"
+              />
             </label>
-            <label htmlFor="state">
-              Estado o Distrito:
-              <select>
-                <option>Antoquia</option>
-              </select>
+            <label htmlFor="new-address__state">
+              Estado o Distrito
+              <input
+                onChange={handleChange}
+                type="text"
+                name="state"
+                id="new-address__state"
+              />
             </label>
-            <label htmlFor="city">
-              Ciudad:
-              <select>
-                <option>Medellin</option>
-              </select>
+            <label htmlFor="new-address__city">
+              Ciudad
+              <input
+                onChange={handleChange}
+                type="text"
+                name="city"
+                id="new-address__city"
+              />
             </label>
           </div>
         </div>
+        <button onClick={sendData} className="btn__changeAddress" type="button">
+          Cambiar direccion
+        </button>
       </div>
-      <button className="shipping--button" type="button">
-        Proceder al pago
-      </button>
     </section>
-    <Footer />
-  </>
-);
-
+  );
+};
 export default Shipping;

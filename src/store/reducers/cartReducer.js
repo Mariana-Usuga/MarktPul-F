@@ -6,6 +6,7 @@ const initialState = {
 };
 
 const cartReducer = (state = initialState, action) => {
+  console.log('cart', state.cart);
   const cart = [...state.cart, action.payload];
   switch (action.type) {
     case LOAD_CART:
