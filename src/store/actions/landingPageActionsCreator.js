@@ -1,5 +1,8 @@
 import { LOAD_MARKETS, LOAD_PRODUCTS } from '../types/landingPageTypes';
-import { getMarkets, getProducts } from '../services/landingPageServices';
+import {
+  getMarkets,
+  getProducts,
+} from '../../pages/LandingPage/landingPageServices';
 
 export const loadMarkets = (markets) => ({
   type: LOAD_MARKETS,

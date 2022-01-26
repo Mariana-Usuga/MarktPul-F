@@ -1,10 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import './Header.scss';
 import { Link } from 'react-router-dom';
+import CartPreview from '../CartPreview';
+import { fetchCart } from '../../store/actions/cartActions';
+
+const generateKey = (pre) => `${pre}_${new Date().getTime()}`;
 
 const Header = () => {
+  const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const cart = useSelector((state) => state.cartReducer.cart);
   const showMenu = () => (!show ? setShow(true) : setShow(false));
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, []);
+  const cartPreview = () => {
+    document.getElementById('cartPrev').style.display = 'initial';
+  };
+  const cartPreviewLeave = () => {
+    document.getElementById('cartPrev').style.display = 'none';
+  };
   return (
     <header>
       <nav className="search-header__nav">
@@ -37,8 +53,34 @@ const Header = () => {
           <li className="search-header__li">
             <Link to="/login">Mi cuenta</Link>
           </li>
-          <li className="search-header__li">
-            <i className="search-header__mobile-cart fas fa-shopping-cart" />
+          <li
+            className="search-header__li"
+            onMouseOver={cartPreview}
+            onMouseLeave={cartPreviewLeave}
+            onFocus={cartPreview}
+          >
+            <Link to="/cart">
+              <i className="search-header__mobile-cart fas fa-shopping-cart">
+                <div className="header--cartLength">{cart.length}</div>
+              </i>
+            </Link>
+            <div className="header--cartPrev" id="cartPrev">
+              {cart.map((element) => (
+                <CartPreview
+                  src={element.imageMain}
+                  producto={element.title}
+                  cantidad={element.qty}
+                  precio={element.price}
+                  id={element._id}
+                  key={generateKey(element.title)}
+                />
+              ))}
+              <Link to="/cart">
+                <button type="button" className="cartPrev--button">
+                  Ir al Carrito
+                </button>
+              </Link>
+            </div>
           </li>
         </ul>
       </nav>

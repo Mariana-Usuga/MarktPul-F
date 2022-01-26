@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable no-alert */
 import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   validateEmail,
   validatePassword,
@@ -21,6 +23,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [repassword, setRepassword] = useState('');
   const [errors, setErrors] = useState(formErrors);
+  const navigate = useNavigate();
 
   const handleEmail = ({ target }) => {
     if (!validateEmail(target.value)) {
@@ -100,9 +103,10 @@ const Register = () => {
       },
       data,
     };
-    axios(config)
-      .then((response) => response.data)
-      .catch((error) => error.response.data);
+    axios(config).then(() => {
+      alert('Gracias por registrarte! (este alert es feo y lo sabemos)');
+      navigate('/');
+    });
   };
   return (
     <div className="register">

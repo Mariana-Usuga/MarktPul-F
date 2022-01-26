@@ -1,0 +1,275 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.header {
+  -webkit-box-shadow: inset 10px 80px 80px 0 #3d3d3d;
+          box-shadow: inset 10px 80px 80px 0 #3d3d3d;
+  background-image: url("../imgs/mercado.png");
+  background-size: cover;
+  color: white;
+  background-repeat: no-repeat;
+}
+
+.header__des__title {
+  margin-bottom: 5px;
+  font-weight: bolder;
+}
+
+.header__main {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: auto 30px;
+      grid-template-columns: auto 30px;
+  padding: 20px;
+}
+
+.header__main-logo {
+  font-size: 2.5rem;
+}
+
+.header__main-bars, .header__main-cart {
+  font-size: 1.8rem;
+}
+
+.header__ul {
+  z-index: 10;
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
+  -webkit-transition: -webkit-transform .3s ease;
+  transition: -webkit-transform .3s ease;
+  transition: transform .3s ease;
+  transition: transform .3s ease, -webkit-transform .3s ease;
+  background-color: #897ff1;
+  position: absolute;
+  width: 100%;
+}
+
+.header__ul--show {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.header__li {
+  list-style-type: none;
+  padding: 20px;
+  text-align: center;
+  font-size: 1.2rem;
+  border-bottom: 0.3px solid;
+}
+
+.header__li:hover {
+  background-color: #4C3DFF;
+}
+
+.header__des {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.header__des__d {
+  margin: 5px 0 20px 0;
+  background-color: #fff;
+  width: 230px;
+  border-radius: 70px;
+}
+
+.header__des__d__input {
+  border: none;
+  height: 30px;
+  outline: none;
+  border-radius: 70px;
+  margin-left: 5px;
+}
+
+.header__des__d__fa {
+  width: 28px;
+  color: black;
+  text-align: right;
+}
+
+.header__des__sell, .header__des__buy, .header__des__market {
+  border: 2px solid white;
+  padding: 6px;
+  margin-top: 10px;
+  border-radius: 60px;
+  text-align: center;
+  font-size: 0.96rem;
+}
+
+.header__des__sell, .header__des__buy {
+  display: inline;
+}
+
+.header__des__market {
+  width: 235px;
+  margin-top: 15px;
+  background-color: #4C3DFF;
+}
+
+.background {
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+  -webkit-transform: translate(-100%, 0);
+          transform: translate(-100%, 0);
+}
+
+.background--show {
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
+}
+
+.main__title {
+  margin: 20px 15px;
+}
+
+.main__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 0 5px;
+}
+
+.main__container__left, .main__container__right {
+  border: none;
+  cursor: pointer;
+  background-color: white;
+}
+
+.carousel__element {
+  padding: 5px;
+}
+
+.desta {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.desta__title {
+  margin: 20px 10px;
+}
+
+.desta__item {
+  width: 140px;
+  padding-left: 5px;
+  padding-bottom: 10px;
+}
+
+.desta__img {
+  border-radius: 30%;
+  text-align: center;
+  width: 130px;
+}
+
+.footer {
+  border-top: 1px solid black;
+  padding: 30px 20px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 60% auto auto auto;
+      grid-template-columns: 60% auto auto auto;
+  margin-top: 20px;
+}
+
+.footer__item {
+  font-size: 33px;
+  color: #2714f8;
+  font-weight: bolder;
+}
+
+@media (min-width: 992px) {
+  .header__ul {
+    -webkit-transform: translate(0, 0);
+            transform: translate(0, 0);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    width: 40%;
+    top: 20px;
+    left: 60%;
+    background-color: transparent;
+  }
+  .header__li {
+    font-size: 20px;
+    border-bottom: none;
+  }
+  .header__main-bars {
+    z-index: -30;
+  }
+  .header {
+    height: 600px;
+  }
+  .header__main-logo {
+    font-size: 2rem;
+    margin-top: 35px;
+    margin-left: 30px;
+  }
+  .header__des {
+    padding: 100px 60px;
+  }
+  .header__des__d {
+    width: 500px;
+    margin-top: 20px;
+  }
+  .header__des__d__input {
+    height: 40px;
+    width: 450px;
+  }
+  .header__des__title {
+    width: 600px;
+    font-size: 45px;
+  }
+  .header__des__market, .header__des__sell, .header__des__buy {
+    display: inline;
+    font-size: 1.2rem;
+  }
+  .main__container {
+    margin: 0 30px;
+  }
+  .main__container__left, .main__container__right {
+    font-size: 40px;
+    text-align: center;
+    background-color: white;
+  }
+  .main__container__left {
+    margin-right: 10px;
+  }
+  .main__container__right {
+    margin-left: 10px;
+  }
+  .desta {
+    margin: 40px 150px;
+  }
+  .desta__subtitle {
+    font-weight: lighter;
+    font-size: 1.1rem;
+  }
+  .desta__price {
+    font-size: 1.1rem;
+    font-weight: bolder;
+  }
+  .main__title, .desta__title {
+    margin-top: 50px;
+    font-size: 1.7rem;
+  }
+  .desta__title {
+    margin-left: 240px;
+  }
+}
+/*# sourceMappingURL=landing-page.css.map */
