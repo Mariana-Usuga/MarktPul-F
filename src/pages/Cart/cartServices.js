@@ -5,7 +5,7 @@ const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 export const getCart = () => {
   const cart = localStorage.getItem('cartProduct')
     ? JSON.parse(localStorage.getItem('cartProduct'))
-    : {};
+    : [];
   return cart;
 };
 // eslint-disable-next-line prettier/prettier
