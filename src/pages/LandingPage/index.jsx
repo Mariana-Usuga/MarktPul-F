@@ -47,7 +47,7 @@ const LandingPage = () => {
       <HeaderMain />
       <h2 className="titleMarket">Mercados Destacados</h2>
       <Carousel className="carousel" breakPoints={breakPoints}>
-        {markets.map((market) => (
+        {markets.items.map((market) => (
           <Link
             to={`/main/marketDetail/${market._id}`}
             key={market._id}

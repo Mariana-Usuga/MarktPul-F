@@ -4,9 +4,7 @@ const getMarketFilter = (markets, search = '') => {
   if (search === '') {
     return markets;
   }
-  const nameMinuscula = search.toLowerCase();
-  return markets.filter((market) =>
-    market.title.toLowerCase().includes(nameMinuscula),
-  );
+  const name = search.toLowerCase();
+  return markets.filter((market) => market.title.toLowerCase().includes(name));
 };
 export default getMarketFilter;

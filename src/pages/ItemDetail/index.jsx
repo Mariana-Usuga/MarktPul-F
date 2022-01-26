@@ -31,13 +31,12 @@ const ItemDetail = () => {
     window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
   }, [cart]);
   /* eslint-disable */
-  const handleCarrito =  () => {
+  const handleCarrito = () => {
     const cartPrev = JSON.parse(localStorage.getItem('cartProduct')) || [];
     const exists = cartPrev.find((element) => element._id === product._id);
     if (exists) {
       dispatch(addQtyProductToCart(exists));
-    }
-    else {
+    } else {
       dispatch(addProductToCart(product));
     }
   };

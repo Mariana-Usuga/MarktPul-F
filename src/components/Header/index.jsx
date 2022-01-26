@@ -18,23 +18,27 @@ const Header = () => {
   const cart = useSelector((state) => state.cartReducer.cart);
   // const marketsFilter = useSelector((state) => state.search.markets_filter);
   const [show, setShow] = useState(false);
-  const [Search, setSearch] = useState('');
+  const [search, setSearch] = useState('');
+  const { q = '' } = queryString.parse(location.search);
+
   useEffect(() => {
     dispatch(fetchMarkets());
+    // dispatch(fetchMarketFilter(markets, q));
   }, []);
   useEffect(() => {
-    dispatch(fetchMarketFilter(markets, Search));
-  }, [markets]);
-  const { q = '' } = queryString.parse(location.search);
+    dispatch(fetchMarketFilter(markets.items, q));
+  }, [markets.loaded]);
+
   const handleFilter = (e) => {
     e.preventDefault();
-    dispatch(fetchMarketFilter(markets, Search));
-    navigate(`search/?q=${Search}`);
+    dispatch(fetchMarketFilter(markets.items, search));
+    navigate(`../main/search/?q=${search}`);
     e.target.value = '';
   };
   const handleSearch = ({ target }) => {
     setSearch(target.value);
   };
+
   const showMenu = () => (!show ? setShow(true) : setShow(false));
   useEffect(() => {
     dispatch(fetchCart());
@@ -65,7 +69,7 @@ const Header = () => {
               className="search-header__des__d__input"
               type="text"
               placeholder="search for anything"
-              value={Search}
+              value={search}
               onChange={handleSearch}
             />
           </form>

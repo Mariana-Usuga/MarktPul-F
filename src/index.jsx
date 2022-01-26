@@ -25,7 +25,6 @@ const Routing = () => (
         <Route path="marketDetail/:id" element={<MarketDetail />} />
         <Route path="itemDetail/:id" element={<ItemDetail />} />
       </Route>
-
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/cart" element={<Cart />} />

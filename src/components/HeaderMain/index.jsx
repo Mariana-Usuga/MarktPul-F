@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { FaSearch, FaBars, FaTimes } from 'react-icons/fa';
@@ -54,7 +55,7 @@ const HeaderMain = () => {
               </i>
             </Link>
             <div className="header--cartPrev" id="cartPrev">
-              {cart.map((element) => (
+              {/* {cart.map((element) => (
                 <CartPreview
                   src={element.imageMain}
                   producto={element.title}
@@ -63,7 +64,7 @@ const HeaderMain = () => {
                   id={element._id}
                   key={generateKey(element.title)}
                 />
-              ))}
+              ))} */}
               <Link to="/cart">
                 <button type="button" className="cartPrev--button">
                   Ir al Carrito

@@ -5,7 +5,7 @@ export const loadMarketsFilter = (markets) => ({
   type: LOAD_MARKETS_FILTER,
   payload: markets,
 });
-export const fetchMarketFilter = (markets, search) => async (dispatch) => {
-  const marketFilter = await getMarketFilter(markets, search);
+export const fetchMarketFilter = (markets, search) => (dispatch) => {
+  const marketFilter = getMarketFilter(markets, search);
   dispatch(loadMarketsFilter(marketFilter));
 };
