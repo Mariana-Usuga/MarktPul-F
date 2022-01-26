@@ -13,15 +13,18 @@ const HeaderMain = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer.cart);
   const showMenu = () => (!show ? setShow(true) : setShow(false));
+  useEffect(() => {
+    window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
+  }, [cart]);
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, []);
   const cartPreview = () => {
     document.getElementById('cartPrev').style.display = 'initial';
   };
   const cartPreviewLeave = () => {
     document.getElementById('cartPrev').style.display = 'none';
   };
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, []);
   return (
     <header className="header">
       <nav className="header__nav">
@@ -55,7 +58,7 @@ const HeaderMain = () => {
               </i>
             </Link>
             <div className="header--cartPrev" id="cartPrev">
-              {/* {cart.map((element) => (
+              {cart.map((element) => (
                 <CartPreview
                   src={element.imageMain}
                   producto={element.title}
@@ -64,7 +67,7 @@ const HeaderMain = () => {
                   id={element._id}
                   key={generateKey(element.title)}
                 />
-              ))} */}
+              ))}
               <Link to="/cart">
                 <button type="button" className="cartPrev--button">
                   Ir al Carrito
