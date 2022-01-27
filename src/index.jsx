@@ -14,18 +14,23 @@ import Layout from './components/Layout';
 import Shipping from './pages/Shipping';
 import store from './store/index';
 import ActivateAcount from './pages/ActivateAccount';
+import NotFound from './pages/NotFound';
+import About from './pages/About';
 
 const Routing = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="*" element={<NotFound />} />
+      <Route path="/about" element={<Layout />}>
+        <Route path="" element={<About />} />
+      </Route>
 
       <Route path="/main/" element={<Layout />}>
         <Route path="search" element={<Search />} />
         <Route path="marketDetail/:id" element={<MarketDetail />} />
         <Route path="itemDetail/:id" element={<ItemDetail />} />
       </Route>
-
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/cart" element={<Cart />} />
