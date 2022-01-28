@@ -1,0 +1,14 @@
+.containerBuyProduct {
+  display: flex;
+  justify-content: space-evenly;
+  border: 2px solid rgba(239, 239, 239, 1);
+  &__img img {
+    width: 120px;
+  }
+  &__title {
+    margin-top: 30px;
+  }
+  &__price {
+    margin-top: 30px;
+  }
+}

@@ -1,0 +1,49 @@
+.form{
+  // transform:translate(-100%,0);
+  border: 1px solid #000000;
+  border-radius: 20px;
+  padding: 20px;
+  margin:0 5px 5px 5px;
+}
+.cardsImages{
+  text-align: right;
+}
+.dataContainer{
+  margin-bottom: 20px;
+  &__input{
+    border: 0px solid;
+    border-bottom:1px solid #e0e0e0;
+    width: 100%;
+    height: 40px;
+  }
+  &__input:focus{
+    outline: none;
+  }
+}
+.date{
+  &__label{
+    // margin-right: 20px;
+    // background-color: hotpink;
+  }
+  &__select{
+    width: 100%;
+    border: 0px solid;
+    border-bottom:1px solid #e0e0e0;
+    height: 40px;
+  }
+}
+.btnCard{
+  width: 230px;
+  height: 35px;
+  background: #65CB6F;
+  border-radius: 10px;
+  border: none;
+  font-family: Nunito;
+  font-size: 20px;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+}
+
+.loading{
+  width: 30px;
+}
