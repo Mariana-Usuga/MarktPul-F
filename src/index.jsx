@@ -14,6 +14,7 @@ import Layout from './components/Layout';
 import Shipping from './pages/Shipping';
 import store from './store/index';
 import ActivateAcount from './pages/ActivateAccount';
+import User from './pages/User';
 
 const Routing = () => (
   <BrowserRouter>
@@ -29,6 +30,7 @@ const Routing = () => (
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/user" element={<User />} />
       <Route path="/ship" element={<Shipping />} />
       <Route path="/activate/:hash" element={<ActivateAcount />} />
     </Routes>
