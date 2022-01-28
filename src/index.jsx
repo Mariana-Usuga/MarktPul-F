@@ -13,26 +13,26 @@ import Cart from './pages/Cart';
 import Layout from './components/Layout';
 import SuccesfulPurchase from './pages/SuccessfulPurchase/index';
 import store from './store/index';
-import Stepper from './components/Stepper/index';
-// import ActivateAcount from './pages/ActivateAccount';
+import PaymentProcess from './components/PaymentProcess/index';
+import ActivateAcount from './pages/ActivateAccount';
 
 const Routing = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<LandingPage />} />
 
-      <Route path="main" element={<Layout />}>
+      <Route path="pages" element={<Layout />}>
         <Route path="search" element={<Search />} />
         <Route path="marketDetail/:id" element={<MarketDetail />} />
         <Route path="itemDetail/:id" element={<ItemDetail />} />
         <Route path="succesfulPurchase" element={<SuccesfulPurchase />} />
-        <Route path="stepper" element={<Stepper />} />
+        <Route path="paymentProcess" element={<PaymentProcess />} />
       </Route>
 
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/cart" element={<Cart />} />
-      {/* <Route path="/activate/:hash" element={<ActivateAcount />} /> */}
+      <Route path="/activate/:hash" element={<ActivateAcount />} />
     </Routes>
   </BrowserRouter>
 );

@@ -1,12 +1,12 @@
-import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import ShipmentSummary from '../../components/ShipmentSummary/index';
 import PaymentMethod from '../../components/PaymentMethod/index';
-import OrderSummary from '../../components/OrderSummary/index';
+import ShoppingCart from '../ShoppingCart';
+import ShipmentSummary from '../../components/ShipmentSummary';
+import BuyAproduct from '../../components/BuyAproduct/index';
 import './Pay.scss';
 
 const Pay = () => {
-  const isLoading = useSelector((state) => state.pay.isLoading);
+  const aProduct = useSelector((state) => state.pay.aProduct);
   return (
     <div className="payContainer">
       <div className="payContainer__item">
@@ -17,28 +17,17 @@ const Pay = () => {
           <h3>Elige tu medio de pago</h3>
         </div>
         <PaymentMethod method="Pago Tarjeta débito o crédito" />
-        <button className="btnPay" type="button">
-          {!isLoading ? (
-            <Link to="/main/succesfulPurchase" className="btnPay__link">
-              Pagar
-            </Link>
-          ) : (
-            'Pagar'
-          )}
-        </button>
       </div>
       <div className="payContainer__item">
         <ShipmentSummary />
-        <button className="btn" type="button">
-          Volver al envio
-        </button>
-        <OrderSummary />
-        <button className="btn" type="button">
-          Volver a la bolsa
-        </button>
+        <div className="orderSummary">
+          <div>
+            <h2 className="titleOrder">Resumen de la compra</h2>
+          </div>
+          {aProduct ? <BuyAproduct /> : <ShoppingCart />}
+        </div>
       </div>
     </div>
   );
 };
-
 export default Pay;

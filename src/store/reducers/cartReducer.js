@@ -1,12 +1,15 @@
 /* eslint-disable prettier/prettier */
-import { LOAD_CART, ADD_TO_CART, ADD_ONE_CART, REMOVE_ONE_CART, DELETE_FROM_CART } from '../types/cartTypes';
+import {
+  LOAD_CART,
+  ADD_TO_CART, ADD_ONE_CART, REMOVE_ONE_CART, DELETE_FROM_CART, ESTIMATED_TOTAL,
+} from '../types/cartTypes';
 
 const initialState = {
   cart: JSON.parse(localStorage.getItem('cartProduct')) || [],
+  estimatedTotal: 0,
 };
 
 const cartReducer = (state = initialState, action) => {
-  console.log('cart', state.cart);
   const cart = [...state.cart, action.payload];
   switch (action.type) {
     case LOAD_CART:
@@ -41,6 +44,8 @@ const cartReducer = (state = initialState, action) => {
         ...state,
         cart: state.cart.filter((product) => (product._id !== action.payload)),
       };
+    case ESTIMATED_TOTAL:
+      return { ...state, estimatedTotal: action.payload };
     default:
       return state;
   }

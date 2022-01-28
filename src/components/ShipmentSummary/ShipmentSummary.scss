@@ -1,50 +1,51 @@
-.addressTitle{
-  margin:10px 0 0 20px;
+.addressTitle {
+  margin: 10px 0 0 20px;
 }
-.shipmentSummary{
-  &__title{
-    background-color:rgba(239, 239, 239, 1);
+.shipmentSummary {
+  &__title {
+    background-color: rgba(239, 239, 239, 1);
     padding: 10px;
     text-align: center;
   }
 }
-.containerDiv{
+.containerDiv {
   margin: 0 20px 20px 20px;
 }
-.itemDiv{
-  background-color:rgba(239, 239, 239, 1);
+.itemDiv {
+  background-color: rgba(239, 239, 239, 1);
   display: flex;
   padding: 10px;
-  &__change{
-    display:block;
+  &__change {
+    display: block;
     text-align: right;
   }
-  &__address{
+  &__address {
     font-size: 17px;
+    margin-right: 80px;
   }
-  &__place{
+  &__place {
     width: 100px;
     padding-right: 11px;
   }
 }
-.totalShipping{
+.totalShipping {
   padding: 10px;
-  margin-top:10px;
-  &__total{
+  margin-top: 10px;
+  &__total {
     margin-right: 70px;
   }
-  &__price{
+  &__price {
     font-size: 17px;
   }
 }
-.btn{
-  margin:0 40px 10px 40px;
+.btn {
+  margin: 0 40px 10px 40px;
   width: 200px;
   height: 35px;
   border: none;
   font-family: Nunito;
   font-size: 20px;
-  color: #FFFFFF;
+  color: #ffffff;
   border-radius: 10px;
-  background: #65CB6F;
+  background: #65cb6f;
 }

@@ -1,4 +1,10 @@
-import { PAY, SHOW_LOADER, HIDE_LOADER } from '../types/payTypes';
+import {
+  PAY,
+  SHOW_LOADER,
+  HIDE_LOADER,
+  A_PRODUCT,
+  BUY_CART,
+} from '../types/payTypes';
 import { postPay } from '../services/payServices';
 
 export const doPay = (pay) => ({
@@ -20,4 +26,12 @@ export const fetchDoPay = (paymentData, token) => async (dispatch) => {
   const pay = await postPay(paymentData, token);
   dispatch(doPay(pay));
   return pay;
+};
+
+export const fetchAPay = () => async (dispatch) => {
+  dispatch({ type: A_PRODUCT, payload: true });
+};
+
+export const fetchBuyCart = () => async (dispatch) => {
+  dispatch({ type: BUY_CART, payload: false });
 };

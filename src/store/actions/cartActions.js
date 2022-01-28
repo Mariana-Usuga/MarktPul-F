@@ -4,6 +4,7 @@ import {
   ADD_ONE_CART,
   REMOVE_ONE_CART,
   DELETE_FROM_CART,
+  ESTIMATED_TOTAL,
 } from '../types/cartTypes';
 import { getCart, getProduct } from '../../pages/Cart/cartServices';
 
@@ -31,9 +32,13 @@ export const updateCurrentRemoveQty = (product) => ({
   payload: product,
 });
 
+export const estimatedTotal = (product) => ({
+  type: ESTIMATED_TOTAL,
+  payload: product,
+});
+
 export const fetchCart = () => async (dispatch) => {
   const cart = await getCart();
-  console.log('cart', cart);
   dispatch(loadCart(cart));
 };
 export const addProductToCart = (product) => async (dispatch) => {
@@ -51,4 +56,8 @@ export const removeQtyProductToCart = (product) => async (dispatch) => {
 };
 export const deleteProductFromCart = (productId) => async (dispatch) => {
   dispatch(deleteFromCart(productId));
+};
+
+export const fetchEstimatedTotal = (productId) => async (dispatch) => {
+  dispatch(estimatedTotal(productId));
 };

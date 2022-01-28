@@ -1,8 +1,15 @@
-import { PAY, SHOW_LOADER, HIDE_LOADER } from '../types/payTypes';
+import {
+  PAY,
+  SHOW_LOADER,
+  HIDE_LOADER,
+  A_PRODUCT,
+  BUY_CART,
+} from '../types/payTypes';
 
 const initialState = {
   dataPay: {},
   isLoading: false,
+  aProduct: false,
 };
 
 const landingPageReducer = (state = initialState, action) => {
@@ -11,10 +18,10 @@ const landingPageReducer = (state = initialState, action) => {
       return { ...state, dataPay: action.payload };
     case SHOW_LOADER:
     case HIDE_LOADER:
-      return {
-        ...state,
-        isLoading: action.payload,
-      };
+      return { ...state, isLoading: action.payload };
+    case A_PRODUCT:
+    case BUY_CART:
+      return { ...state, aProduct: action.payload };
     default:
       return state;
   }

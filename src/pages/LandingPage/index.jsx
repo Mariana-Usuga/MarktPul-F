@@ -46,7 +46,7 @@ const LandingPage = () => {
       <Carousel className="carousel" breakPoints={breakPoints}>
         {markets.map((market) => (
           <Link
-            to={`/main/marketDetail/${market._id}`}
+            to={`/pages/marketDetail/${market._id}`}
             key={market._id}
             style={{ textDecoration: 'none' }}
           >
@@ -61,7 +61,7 @@ const LandingPage = () => {
           .slice(0, 5)
           .map((product) => (
             <Link
-              to={`/main/itemDetail/${product._id}`}
+              to={`/pages/itemDetail/${product._id}`}
               key={product._id}
               style={{ textDecoration: 'none' }}
             >
@@ -78,7 +78,7 @@ const LandingPage = () => {
           .slice(0, 5)
           .map((product) => (
             <Link
-              to={`/main/itemDetail/${product._id}`}
+              to={`/pages/itemDetail/${product._id}`}
               key={product._id}
               style={{ textDecoration: 'none' }}
             >

@@ -1,34 +1,61 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAddress } from '../../store/actions/chageAddressActionsCreator';
-// import { fetchUser } from '../../store/actions/userActionsCreator';
+import { FaCheckCircle } from 'react-icons/fa';
+import {
+  fetchAddress,
+  existingAddressTrue,
+  existingAddressFalse,
+} from '../../store/actions/changeAddressActionsCreator';
+import { showLoader, hideLoader } from '../../store/actions/payActionsCreator';
 
 import './shipping.scss';
 
 const Shipping = () => {
+  const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
+  const isLoading = useSelector((state) => state.pay.isLoading);
+  const [showLoaderState, setShowLoaderState] = useState(false);
   const user = useSelector((state) => state.user.user);
   const [form, setForm] = useState({
-    location: {
-      address: '',
-      country: '',
-      city: '',
-      moreDetail: '',
-      state: '',
-    },
+    address: '',
+    country: '',
+    city: '',
+    moreDetail: '',
+    state: '',
   });
   const handleChange = (e) => {
+    if (e.target.id === 'exists') {
+      dispatch(existingAddressTrue());
+    } else if (e.target.id === 'new') {
+      dispatch(existingAddressFalse());
+    }
     const { name } = e.target;
     const { value } = e.target;
     const newState = { ...form };
     newState[name] = value;
     setForm(newState);
   };
-  const sendData = (e) => {
+  const sendData = async (e) => {
     e.preventDefault();
-    // console.log('token', user._id);
-    // console.log('form', form);
-    dispatch(fetchAddress(form, user._id));
+    const locationN = {
+      location: {
+        address: form.address,
+        country: form.country,
+        city: form.city,
+        moreDetail: form.moreDetail,
+        state: form.state,
+      },
+    };
+
+    if (!isLoading) {
+      dispatch(showLoader());
+      const response = await dispatch(fetchAddress(locationN, user._id, token));
+      if (response) {
+        setShowLoaderState(true);
+        dispatch(hideLoader());
+      }
+    }
   };
   return (
     <section className="shipping">
@@ -38,23 +65,23 @@ const Shipping = () => {
       <div className="paymentMethod">
         <h3>Pero antes... Elige tu direccion de envio</h3>
       </div>
-      <label className="radio-div shipping--border" htmlFor="saved">
-        <input type="radio" name="address" id="saved" />
+      <label className="radio-div shipping--border" htmlFor="exists">
+        <input onClick={handleChange} name="address" type="radio" id="exists" />
         Utiliza una direccion ya existente
       </label>
       <div className="saved-address shipping--border">
-        <h4>Direccion de envio</h4>
+        <h4>Dirección de envio</h4>
         <div className="saved-address__container">
-          <div className="saved-address__description">Mi casa</div>
-          <div className="saved-address__address">
-            Calle Falsa 123, Barrio Siempre viva
+          <div className="saved-address__description">Direccion registrada</div>
+          <div className="saved-address__address">{user.location?.address}</div>
+          <div className="saved-address__place">
+            {`${user.location?.city}, ${user.location?.country}`}
           </div>
-          <div className="saved-address__place">Medellín, Colombia</div>
         </div>
       </div>
       <label className="radio-div shipping--border" htmlFor="new">
-        <input type="radio" name="address" id="new" />
-        Registrar una nueva
+        <input onClick={handleChange} type="radio" name="address" id="new" />
+        Cambiar dirección
       </label>
       <div className="new-address shipping--border">
         <h4>Direccion de envio</h4>
@@ -110,7 +137,17 @@ const Shipping = () => {
           </div>
         </div>
         <button onClick={sendData} className="btn__changeAddress" type="button">
-          Cambiar direccion
+          {!isLoading && !showLoaderState ? (
+            'Cambiar direccion'
+          ) : !showLoaderState ? (
+            <img
+              className="loading"
+              src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
+              alt="loading content"
+            />
+          ) : (
+            <FaCheckCircle />
+          )}
         </button>
       </div>
     </section>

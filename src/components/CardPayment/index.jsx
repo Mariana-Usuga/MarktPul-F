@@ -33,8 +33,15 @@ const CardPayment = () => {
     { id: '20', year: '40' },
   ];
   const token = useSelector((state) => state.auth.token);
+  const aProduct = useSelector((state) => state.pay.aProduct);
+  const product = useSelector((state) => state.landing.product);
   const pay = useSelector((state) => state.pay.dataPay);
   const isLoading = useSelector((state) => state.pay.isLoading);
+  const estimatedTotal = useSelector(
+    (state) => state.cartReducer.estimatedTotal,
+  );
+  // console.log('token in cardpayment', token);
+  // console.log('product price', product.price);
   const [showLoaderState, setShowLoaderState] = useState(false);
   const dispatch = useDispatch();
   const [form, setForm] = useState({
@@ -54,10 +61,14 @@ const CardPayment = () => {
 
   const sendForm = async (e) => {
     e.preventDefault();
+    const numString = String(estimatedTotal);
+    const totalWithOutComma = numString
+      .replace(/[^\d,]/g, '')
+      .replace(/,/g, '');
     const paymentData = {
       docType: 'CC',
       docNumber: '10358519',
-      value: '116000',
+      value: aProduct ? product.price : totalWithOutComma,
       currency: 'COP',
       description: 'Product Payment',
       cardNumber: form.number,
@@ -83,18 +94,6 @@ const CardPayment = () => {
           src="https://res.cloudinary.com/db3njhxi0/image/upload/v1643132763/cards_makxmy.png"
           alt=""
         />
-      </div>
-      <div className="dataContainer">
-        <label className="dataContainer__label" htmlFor="holdersName">
-          Nombre del titular de la cuenta
-          <input
-            onChange={handleChange}
-            className="dataContainer__input"
-            id="name"
-            type="text"
-            name="holdersName"
-          />
-        </label>
       </div>
       <div className="dataContainer">
         <label className="dataContainer__label" htmlFor="number">
