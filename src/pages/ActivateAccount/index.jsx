@@ -34,7 +34,7 @@ const ActivateAcount = () => {
     activateAccount();
   }, []);
 
-  const [timer, setTimer] = useState(5);
+  const [timer, setTimer] = useState(10);
   useEffect(() => {
     if (timer <= 0) {
       setTimer(null);
