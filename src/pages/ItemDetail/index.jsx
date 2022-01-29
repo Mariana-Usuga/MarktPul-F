@@ -18,11 +18,13 @@ const ItemDetail = () => {
   const product = useSelector((state) => state.landing.product);
   const breakPoints = [{ width: 100, itemsToShow: 2 }];
   const { id } = useParams();
-  const price = product.price.toLocaleString('es-MX');
+  // console.log('producto', product);
 
   useEffect(() => {
     dispatch(fetchAproduct(id));
   }, []);
+  // const price = product.price.toLocaleString('es-MX');
+
   useEffect(() => {
     window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
   }, [cart]);
@@ -61,7 +63,9 @@ const ItemDetail = () => {
         <div className="container__info">
           <h2 className="container__info__title">{product.title}</h2>
           <p className="container__info__description">{product.description}</p>
-          <p className="container__info__price">{`$ ${price}`}</p>
+          <p className="container__info__price">
+            {`${product.price.toLocaleString('es-MX')}`}
+          </p>
           <button onClick={buyAproduct} className="btn__buy" type="button">
             <Link to="/pages/paymentProcess" className="btn__buy__link">
               Comprar
