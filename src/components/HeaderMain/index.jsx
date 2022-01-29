@@ -53,7 +53,7 @@ const HeaderMain = () => {
         <div className="header__info__des">
           <input className="header__info__des__input" type="text" />
           <div className="header__info__des__fa">
-            <Link to="/main/search">
+            <Link to="/pages/search">
               <FaSearch />
             </Link>
           </div>

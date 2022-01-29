@@ -18,7 +18,6 @@ const ShipmentSummary = () => {
   // eslint-disable-next-line prettier/prettier
   const reducer = (prevValue, currentValue) => prevValue + currentValue.price * currentValue.qty;
   const [cartPrice, setCartPrice] = useState(0);
-  const price = product.price.toLocaleString('es-MX');
 
   useEffect(() => {
     setCartPrice(cart.reduce(reducer, 0));
@@ -40,7 +39,9 @@ const ShipmentSummary = () => {
         <div className="totalShipping">
           <span className="totalShipping__total">Total Envio</span>
           <span className="totalShipping__price">
-            {aProduct ? price : priceFormat(cartPrice)}
+            {aProduct
+              ? product.price.toLocaleString('es-MX')
+              : priceFormat(cartPrice)}
           </span>
         </div>
       </div>
@@ -49,13 +50,3 @@ const ShipmentSummary = () => {
 };
 
 export default ShipmentSummary;
-//   <div className="saved-address shipping--border">
-//   <h4>Dirección de envio</h4>
-//   <div className="saved-address__container">
-//       <div className="saved-address__description">Direccion registrada</div>
-//       <div className="saved-address__address">{user.location?.address}</div>
-//       <div className="saved-address__place">
-//       {`${user.location?.city}, ${user.location?.country}`}
-//     </div>
-//     </div>
-// </div>;

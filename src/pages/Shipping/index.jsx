@@ -15,6 +15,7 @@ const Shipping = () => {
   const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.pay.isLoading);
+  const location = useSelector((state) => state.changeAddress.location);
   const [showLoaderState, setShowLoaderState] = useState(false);
   const user = useSelector((state) => state.user.user);
   const [form, setForm] = useState({
@@ -50,8 +51,8 @@ const Shipping = () => {
 
     if (!isLoading) {
       dispatch(showLoader());
-      const response = await dispatch(fetchAddress(locationN, user._id, token));
-      if (response) {
+      await dispatch(fetchAddress(locationN, user._id, token));
+      if (location) {
         setShowLoaderState(true);
         dispatch(hideLoader());
       }

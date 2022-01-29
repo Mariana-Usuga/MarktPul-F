@@ -40,10 +40,9 @@ const CardPayment = () => {
   const estimatedTotal = useSelector(
     (state) => state.cartReducer.estimatedTotal,
   );
-  // console.log('token in cardpayment', token);
-  // console.log('product price', product.price);
   const [showLoaderState, setShowLoaderState] = useState(false);
   const dispatch = useDispatch();
+
   const [form, setForm] = useState({
     holdersName: '',
     number: '',
@@ -65,6 +64,7 @@ const CardPayment = () => {
     const totalWithOutComma = numString
       .replace(/[^\d,]/g, '')
       .replace(/,/g, '');
+
     const paymentData = {
       docType: 'CC',
       docNumber: '10358519',
@@ -79,8 +79,8 @@ const CardPayment = () => {
 
     if (pay && !isLoading) {
       dispatch(showLoader());
-      const response = await dispatch(fetchDoPay(paymentData, token));
-      if (response) {
+      await dispatch(fetchDoPay(paymentData, token));
+      if (pay) {
         setShowLoaderState(true);
         dispatch(hideLoader());
       }
