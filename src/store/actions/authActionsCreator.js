@@ -3,10 +3,13 @@ import { postLogin } from '../services/LoginPageServices';
 
 export const loginUser = (token) => ({
   type: LOGIN,
-  payload: token.data,
+  payload: token,
 });
 export const fetchLogin = (email, password) => async (dispatch) => {
   const token = await postLogin(email, password);
-  localStorage.setItem('token', JSON.stringify(token.data.JWT));
-  dispatch(loginUser(token));
+  if (token.JWT) {
+    localStorage.setItem('token', JSON.stringify(token.JWT));
+    dispatch(loginUser(token));
+  }
+  console.log(token);
 };

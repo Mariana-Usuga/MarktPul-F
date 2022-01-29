@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchLogin } from '../../store/actions/authActionsCreator';
-// import LoginImage from '../../imgs/philippe-tinembart-AECyP4zx5Y0-unsplash.jpg';
 import SocialMediaButton from '../../components/SocialMediaButton';
 import './Login.scss';
 
@@ -12,13 +11,20 @@ const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({ error: '' });
   const token = useSelector((state) => state.auth.token);
+
   const navigate = useNavigate();
   const handlingForm = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     dispatch(fetchLogin(email, password));
-    localStorage.setItem('token', JSON.stringify(token.JWT));
-    navigate('/', { replace: true });
+    if (token) {
+      setErrors({ error: '' });
+      localStorage.setItem('token', JSON.stringify(token));
+      navigate('/', { replace: true });
+    } else {
+      setErrors({ ...errors, error: 'Email or password are wrong' });
+    }
   };
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
@@ -79,6 +85,11 @@ const Login = () => {
             />
             <label htmlFor="checkbox">Mostrar Contrasena</label>
           </div>
+          {errors.error.length ? (
+            <span style={{ color: 'red', fontWeight: 700 }}>
+              Hay un error con tu email o contraseña.
+            </span>
+          ) : null}
           <label>
             <input
               type="submit"
