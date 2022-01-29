@@ -6,7 +6,7 @@ import Carousel from 'react-elastic-carousel';
 import ProductPhoto from '../../components/ProductPhoto';
 import InterestPhoto from '../../components/InterestPhoto';
 import { fetchAPay } from '../../store/actions/payActionsCreator';
-// import { fetchAproduct } from '../../store/actions/landingPageActionsCreator';
+import { fetchAproduct } from '../../store/actions/landingPageActionsCreator';
 import './ItemDetail.scss';
 import {
   addProductToCart,
@@ -32,6 +32,7 @@ const ItemDetail = () => {
         setProduct(productUpdate);
       }
     }
+    dispatch(fetchAproduct(id));
   }, []);
 
   useEffect(() => {
