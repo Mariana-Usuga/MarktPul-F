@@ -13,18 +13,13 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({ error: '' });
   const token = useSelector((state) => state.auth.token);
+  const [isSubmit, setIsSubmit] = useState(false);
 
   const navigate = useNavigate();
   const handlingForm = (e) => {
     e.preventDefault();
     dispatch(fetchLogin(email, password));
-    if (token) {
-      setErrors({ error: '' });
-      localStorage.setItem('token', JSON.stringify(token));
-      navigate('/', { replace: true });
-    } else {
-      setErrors({ ...errors, error: 'Email or password are wrong' });
-    }
+    setIsSubmit(true);
   };
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
@@ -36,6 +31,17 @@ const Login = () => {
   const handlePassword = ({ target }) => {
     setPassword(target.value);
   };
+
+  useEffect(() => {
+    if (token) {
+      setErrors({ error: '' });
+      localStorage.setItem('token', JSON.stringify(token));
+      navigate('/', { replace: true });
+    } else {
+      setErrors({ ...errors, error: 'Email or password are wrong' });
+    }
+  }, [token]);
+
   return (
     <div className="login">
       <figure className="login__image">
@@ -85,7 +91,7 @@ const Login = () => {
             />
             <label htmlFor="checkbox">Mostrar Contrasena</label>
           </div>
-          {errors.error.length ? (
+          {errors.error.length && isSubmit ? (
             <span style={{ color: 'red', fontWeight: 700 }}>
               Hay un error con tu email o contraseña.
             </span>
