@@ -16,6 +16,7 @@ import store from './store/index';
 import ActivateAcount from './pages/ActivateAccount';
 import NotFound from './pages/NotFound';
 import About from './pages/About';
+import Terms from './pages/Terms';
 
 const Routing = () => (
   <BrowserRouter>
@@ -24,6 +25,9 @@ const Routing = () => (
       <Route path="*" element={<NotFound />} />
       <Route path="/about" element={<Layout />}>
         <Route path="" element={<About />} />
+      </Route>
+      <Route path="/terms" element={<Layout />}>
+        <Route path="" element={<Terms />} />
       </Route>
 
       <Route path="/main/" element={<Layout />}>

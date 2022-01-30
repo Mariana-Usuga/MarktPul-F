@@ -1,4 +1,6 @@
 /* eslint-disable consistent-return */
+/* eslint-disable */
+
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
@@ -21,8 +23,10 @@ const ActivateAcount = () => {
           },
         );
         setApiResponse(res.data);
+        console.log(res.data);
       } catch (error) {
-        setApiResponse({ message: 'token not found' });
+        console.log(error);
+        setApiResponse({ message: 'token expired or not found' });
       } finally {
         setLoading(false);
       }
@@ -32,7 +36,7 @@ const ActivateAcount = () => {
 
   const [timer, setTimer] = useState(5);
   useEffect(() => {
-    if (timer == 0) {
+    if (timer <= 0) {
       setTimer(null);
     }
     if (!timer && apiResponse.JWT) {
@@ -54,8 +58,8 @@ const ActivateAcount = () => {
     navigate('/login');
   };
 
-  const displayMsg = ({ JWT }) => {
-    if (JWT) {
+  const displayMsg = (response) => {
+    if (response?.JWT) {
       return (
         <div>
           <h1>¡Muchas Gracias por activar tu cuenta!</h1>
@@ -78,11 +82,11 @@ const ActivateAcount = () => {
         <p className="activate__redirect">
           Token inválido o ha expirado. Comprueba tu email o intenta iniciando
           sesión.
+          <span>{`${response.message}`}</span>
         </p>
       </div>
     );
   };
-
   return (
     <div className="ActivateAccount">
       {!loading ? (

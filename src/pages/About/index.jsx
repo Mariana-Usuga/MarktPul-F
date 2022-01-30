@@ -8,7 +8,7 @@ const About = () => (
     <article className="about__article">
       <div className="about__article--image">
         <img
-          src="https://s3.us-west-2.amazonaws.com/secure.notion-static.com/b8c337ca-16bf-4364-b4d0-1e3d10b6b9ad/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20220127%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20220127T034509Z&X-Amz-Expires=86400&X-Amz-Signature=fbb02a9baa5d826f2bb21645402d3818296be84b1ab84f80369ea61b211434f4&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject"
+          src="https://res.cloudinary.com/dgjg2y07o/image/upload/v1643420728/Untitled_dml2zn.png"
           alt="MarktPul"
         />
       </div>
