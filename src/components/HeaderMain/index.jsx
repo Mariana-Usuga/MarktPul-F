@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import JWTDecode from 'jwt-decode';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {
   FaUser,
   FaShoppingCart,
@@ -9,12 +9,19 @@ import {
   FaTimes,
 } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 
 import './HeaderMain.scss';
 
 const HeaderMain = () => {
+  const cart = useSelector((state) => state.cartReducer.cart);
+
   const [show, setShow] = useState(false);
+  useEffect(() => {
+    window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
+  }, [cart]);
+
   const showMenu = () => (!show ? setShow(true) : setShow(false));
   const token = getCurrentLocalStorage('token');
   const usernameFromToken = token ? JWTDecode(token).username : null;
@@ -33,10 +40,14 @@ const HeaderMain = () => {
           className={!show ? 'header__ul' : 'header__ul--show background--show'}
         >
           <li className="header__li">
-            <Link to="/">Inicio</Link>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              Inicio
+            </Link>
           </li>
           <li className="header__li">
-            <Link to="/register">Registro</Link>
+            <Link to="/register" style={{ textDecoration: 'none' }}>
+              Registro
+            </Link>
           </li>
           <li className="header__li">
             {username ? (
@@ -61,7 +72,7 @@ const HeaderMain = () => {
         <div className="header__info__des">
           <input className="header__info__des__input" type="text" />
           <div className="header__info__des__fa">
-            <Link to="/main/search">
+            <Link to="/pages/search">
               <FaSearch />
             </Link>
           </div>

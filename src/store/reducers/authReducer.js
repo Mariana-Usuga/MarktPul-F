@@ -4,6 +4,7 @@ import { getCurrentLocalStorage } from '../utils/LocalStorageUtils';
 const initialState = {
   token: getCurrentLocalStorage('token'),
 };
+
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_SUCCESSFUL:
