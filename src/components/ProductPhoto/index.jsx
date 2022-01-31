@@ -4,12 +4,13 @@ import './ProductPhoto.scss';
 
 const ProductPhoto = ({ image }) => (
   <div className="product">
-    <img clasName="product__img" src={image} alt="product" />
+    <img className="product__img" src={image} alt="product" />
   </div>
 );
 
 ProductPhoto.propTypes = {
-  image: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  image: PropTypes.string,
 };
 
 export default ProductPhoto;

@@ -1,4 +1,4 @@
-/* eslint-disable no-restricted-syntax */
+/* eslint-disable */
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -16,22 +16,11 @@ import {
 const ItemDetail = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer.cart);
-  const [product, setProduct] = useState({});
+  const product = useSelector((state) => state.landing.product);
   const breakPoints = [{ width: 100, itemsToShow: 2 }];
   const { id } = useParams();
-  const products = useSelector((state) => state.landing.products);
 
   useEffect(() => {
-    for (const productItem of products) {
-      if (id === productItem._id) {
-        const price = productItem.price.toLocaleString('es-MX');
-        const productUpdate = {
-          ...productItem,
-          price,
-        };
-        setProduct(productUpdate);
-      }
-    }
     dispatch(fetchAproduct(id));
   }, []);
 
@@ -43,13 +32,12 @@ const ItemDetail = () => {
     dispatch(fetchAPay());
   };
   /* eslint-disable */
-  const handleCarrito =  () => {
+  const handleCarrito = () => {
     const cartPrev = JSON.parse(localStorage.getItem('cartProduct')) || [];
     const exists = cartPrev.find((element) => element._id === product._id);
     if (exists) {
       dispatch(addQtyProductToCart(exists));
-    }
-    else {
+    } else {
       dispatch(addProductToCart(product));
     }
   };

@@ -10,7 +10,11 @@ const MarketCard = ({ market }) => (
 );
 
 MarketCard.propTypes = {
-  market: PropTypes.objectOf().isRequired,
+  market: PropTypes.shape({
+    image: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    place: PropTypes.string,
+  }).isRequired,
 };
 
 export default MarketCard;
