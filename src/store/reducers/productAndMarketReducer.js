@@ -3,6 +3,7 @@ import {
   CREATE_MARKET,
   LOAD_PRODUCTS,
   LOAD_MARKETS,
+  PRODUCT,
 } from '../types/productAndMarketTypes';
 
 const initialState = {
@@ -10,6 +11,7 @@ const initialState = {
   products: [],
   product: {},
   market: {},
+  productGet: {},
 };
 
 const productAndMarketReducer = (state = initialState, action) => {
@@ -22,6 +24,8 @@ const productAndMarketReducer = (state = initialState, action) => {
       return { ...state, product: action.payload };
     case CREATE_MARKET:
       return { ...state, market: action.payload };
+    case PRODUCT:
+      return { ...state, product: action.payload };
     default:
       return state;
   }

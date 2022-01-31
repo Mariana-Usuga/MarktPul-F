@@ -14,7 +14,9 @@ import Layout from './components/Layout';
 import CreateProduct from './pages/CreateProduct/index';
 import CreateMarket from './pages/CreateMarket/index';
 import Shipping from './pages/Shipping';
+import SuccesfulPurchase from './pages/SuccessfulPurchase/index';
 import store from './store/index';
+import PaymentProcess from './components/PaymentProcess/index';
 import ActivateAcount from './pages/ActivateAccount';
 
 const Routing = () => (
@@ -22,18 +24,18 @@ const Routing = () => (
     <Routes>
       <Route path="/" element={<LandingPage />} />
 
-      <Route path="/main/" element={<Layout />}>
+      <Route path="pages" element={<Layout />}>
         <Route path="search" element={<Search />} />
         <Route path="marketDetail/:id" element={<MarketDetail />} />
         <Route path="itemDetail/:id" element={<ItemDetail />} />
         <Route path="createProduct" element={<CreateProduct />} />
         <Route path="createMarket" element={<CreateMarket />} />
+        <Route path="paymentProcess" element={<PaymentProcess />} />
       </Route>
 
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/cart" element={<Cart />} />
-      <Route path="/ship" element={<Shipping />} />
       <Route path="/activate/:hash" element={<ActivateAcount />} />
     </Routes>
   </BrowserRouter>

@@ -4,7 +4,6 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchLogin } from '../../store/actions/authActionsCreator';
-// import LoginImage from '../../imgs/philippe-tinembart-AECyP4zx5Y0-unsplash.jpg';
 import SocialMediaButton from '../../components/SocialMediaButton';
 import './Login.scss';
 
@@ -14,8 +13,9 @@ const Login = () => {
   const [password, setPassword] = useState('');
   const token = useSelector((state) => state.auth.token);
   const navigate = useNavigate();
+
   const handlingForm = (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     dispatch(fetchLogin(email, password));
     localStorage.setItem('token', JSON.stringify(token.JWT));
     navigate('/', { replace: true });
@@ -30,6 +30,7 @@ const Login = () => {
   const handlePassword = ({ target }) => {
     setPassword(target.value);
   };
+
   return (
     <div className="login">
       <figure className="login__image">

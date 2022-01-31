@@ -13,6 +13,7 @@ import {
   // } from '../../store/actions/productAndMarketActions';
 } from '../../store/actions/productAndMarketActions';
 import { fetchUser } from '../../store/actions/userActionsCreator';
+
 import './LandingPage.scss';
 
 const LandingPage = () => {
@@ -22,12 +23,12 @@ const LandingPage = () => {
   // eslint-disable-next-line no-unused-vars
   const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.auth.token);
+  const cart = useSelector((state) => state.cartReducer.cart);
   const breakPoints = [
     { width: 400, itemsToShow: 1 },
     { width: 500, itemsToShow: 3 },
     { width: 1200, itemsToShow: 4 },
   ];
-  /* const getUser = () => {}; */
   useEffect(() => {
     dispatch(fetchMarkets());
     dispatch(fetchProducts());
@@ -37,6 +38,10 @@ const LandingPage = () => {
       dispatch(fetchUser(token.JWT));
     }
   }, [token.JWT]);
+
+  useEffect(() => {
+    window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
+  }, [cart]);
   return (
     <>
       <HeaderMain />
@@ -44,7 +49,7 @@ const LandingPage = () => {
       <Carousel className="carousel" breakPoints={breakPoints}>
         {markets.map((market) => (
           <Link
-            to={`/main/marketDetail/${market._id}`}
+            to={`/pages/marketDetail/${market._id}`}
             key={market._id}
             style={{ textDecoration: 'none' }}
           >
@@ -59,7 +64,7 @@ const LandingPage = () => {
           .slice(0, 5)
           .map((product) => (
             <Link
-              to={`/main/itemDetail/${product._id}`}
+              to={`/pages/itemDetail/${product._id}`}
               key={product._id}
               style={{ textDecoration: 'none' }}
             >
@@ -76,7 +81,7 @@ const LandingPage = () => {
           .slice(0, 5)
           .map((product) => (
             <Link
-              to={`/main/itemDetail/${product._id}`}
+              to={`/pages/itemDetail/${product._id}`}
               key={product._id}
               style={{ textDecoration: 'none' }}
             >

@@ -34,7 +34,6 @@ const MarketDetail = () => {
           <p className="market__item__desc">{market.description}</p>
           <p className="market__item__place">{market.place}</p>
           <p className="market__item__organizer">
-            {' '}
             Organizado por
             <span>{` ${market.organizer}`}</span>
           </p>

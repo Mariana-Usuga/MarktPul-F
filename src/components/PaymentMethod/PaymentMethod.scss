@@ -1,0 +1,19 @@
+.containerPay{
+  margin:0 5px 5px 5px;
+  border: 1px solid #CCCCCC;
+  background-color: #FCFCFC;
+  border-radius: 20px;
+  padding: 20px;
+  &__radio{
+    margin-right: 10px;
+  }
+}
+.hide{
+  transform:translate(-110%,0);
+  transition: transform .3s ease;
+  position: absolute;
+  display: none;
+}
+// .show{
+//   transition: transform .3s ease;
+// }
