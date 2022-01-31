@@ -21,3 +21,16 @@ export const postProduct = async (formProduct) => {
   );
   return reponseProduct.data;
 };
+
+export const getUser = (token) => {
+  const url = `${URL_BASE}/api/user/me`;
+  const config = {
+    method: 'get',
+    url,
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  };
+  return axios(config);
+};

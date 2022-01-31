@@ -32,9 +32,7 @@ export const createMarket = (market) => ({
 });
 
 export const fetchMarkets = () => async (dispatch) => {
-  console.log('entra en fetch');
   const markets = await getMarkets();
-  console.log('response', markets);
   dispatch(loadMarkets(markets));
 };
 

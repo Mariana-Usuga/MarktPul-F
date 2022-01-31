@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ProductItem from '../ProductItem';
-import { fetchMarkets } from '../../store/actions/landingPageActionsCreator';
+import { fetchMarkets } from '../../store/actions/productAndMarketActions';
 import './MainMarketGrid.scss';
 
 const MainProductGrid = () => {
   const dispatch = useDispatch();
-  const markets = useSelector((state) => state.landing.markets);
+  const markets = useSelector((state) => state.productAndMarket.markets);
   useEffect(() => {
     dispatch(fetchMarkets());
   }, []);
