@@ -1,4 +1,7 @@
+/* eslint-disable no-alert */
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   validateEmail,
   validatePassword,
@@ -20,6 +23,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [repassword, setRepassword] = useState('');
   const [errors, setErrors] = useState(formErrors);
+  const navigate = useNavigate();
 
   const handleEmail = ({ target }) => {
     if (!validateEmail(target.value)) {
@@ -83,7 +87,27 @@ const Register = () => {
       setErrors({ ...errors, repassword: '' });
     }
   }, [password, repassword]);
-
+  const handleSignUp = (e) => {
+    e.preventDefault();
+    const data = {
+      email,
+      password,
+      username,
+    };
+    const url = 'http://localhost:8080/api/user';
+    const config = {
+      method: 'post',
+      url,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data,
+    };
+    axios(config).then(() => {
+      alert('Gracias por registrarte! (este alert es feo y lo sabemos)');
+      navigate('/');
+    });
+  };
   return (
     <div className="register">
       <figure className="register__image">
@@ -95,7 +119,12 @@ const Register = () => {
       <section className="register__form">
         <h1 className="register__form--title">Regístrate</h1>
 
-        <form action="" method="post" className="register__form--form">
+        <form
+          /*  action=""
+          method="post" */
+          className="register__form--form"
+          onSubmit={handleSignUp}
+        >
           <label htmlFor="email">
             Correo electrónico
             <input
