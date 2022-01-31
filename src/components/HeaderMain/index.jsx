@@ -1,13 +1,25 @@
+/* eslint-disable no-unused-vars */
+import JWTDecode from 'jwt-decode';
 import { useState } from 'react';
-import { FaShoppingCart, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
+import {
+  FaUser,
+  FaShoppingCart,
+  FaSearch,
+  FaBars,
+  FaTimes,
+} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 
 import './HeaderMain.scss';
 
 const HeaderMain = () => {
   const [show, setShow] = useState(false);
-
   const showMenu = () => (!show ? setShow(true) : setShow(false));
+  const token = getCurrentLocalStorage('token');
+  const usernameFromToken = token ? JWTDecode(token).username : null;
+  const [username, setUsername] = useState(usernameFromToken);
+
   return (
     <header className="header">
       <nav className="header__nav">
@@ -27,7 +39,14 @@ const HeaderMain = () => {
             <Link to="/register">Registro</Link>
           </li>
           <li className="header__li">
-            <Link to="/login">Mi cuenta</Link>
+            {username ? (
+              <div>
+                <FaUser />
+                <Link to="/login">{` ${username}`}</Link>
+              </div>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
           </li>
           <li className="header__li">
             <FaShoppingCart />

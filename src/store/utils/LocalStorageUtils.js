@@ -3,7 +3,7 @@ const getCurrentLocalStorage = (item) => {
     const localItem = JSON.parse(localStorage.getItem(`${item}`)) ?? '';
     return localItem;
   } catch {
-    return '';
+    return null;
   }
 };
 
