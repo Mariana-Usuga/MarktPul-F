@@ -3,8 +3,15 @@ import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
-import { fetchMarketFilter } from '../../store/actions/searchActionsCreator';
-import { fetchMarkets } from '../../store/actions/landingPageActionsCreator';
+import { FaSearch } from 'react-icons/fa';
+import {
+  fetchMarketFilter,
+  fetchProductFilter,
+} from '../../store/actions/searchActionsCreator';
+import {
+  fetchMarkets,
+  fetchProducts,
+} from '../../store/actions/landingPageActionsCreator';
 import CartPreview from '../CartPreview';
 import { fetchCart } from '../../store/actions/cartActions';
 import './Header.scss';
@@ -15,22 +22,28 @@ const Header = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.landing.markets);
+  const products = useSelector((state) => state.landing.products);
   const cart = useSelector((state) => state.cartReducer.cart);
   // const marketsFilter = useSelector((state) => state.search.markets_filter);
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState('');
   const { q = '' } = queryString.parse(location.search);
-
   useEffect(() => {
     dispatch(fetchMarkets());
+    dispatch(fetchProducts());
     // dispatch(fetchMarketFilter(markets, q));
   }, []);
   useEffect(() => {
     dispatch(fetchMarketFilter(markets.items, q));
+    // dispatch(fetchProductFilter(products.items, q));
   }, [markets.loaded]);
+  useEffect(() => {
+    dispatch(fetchProductFilter(products.items, q));
+  }, [products.loaded]);
 
   const handleFilter = (e) => {
     e.preventDefault();
+    dispatch(fetchProductFilter(products.items, search));
     dispatch(fetchMarketFilter(markets.items, search));
     navigate(`../main/search/?q=${search}`);
     e.target.value = '';
@@ -72,9 +85,10 @@ const Header = () => {
               value={search}
               onChange={handleSearch}
             />
+            <Link to={`/main/search/?q=${search}`}>
+              <FaSearch />
+            </Link>
           </form>
-
-          <i className="search-header__des__d__fa fas fa-search" />
         </div>
         <ul className={!show ? 'search-header__ul' : 'search-header__ul--show'}>
           <li className="search-header__li">

@@ -2,7 +2,7 @@ import { LOAD_MARKETS, LOAD_PRODUCTS } from '../types/landingPageTypes';
 
 const initialState = {
   markets: { items: [], loaded: false },
-  products: [],
+  products: { items: [], loaded: false },
 };
 
 const landingPageReducer = (state = initialState, action) => {
@@ -10,8 +10,7 @@ const landingPageReducer = (state = initialState, action) => {
     case LOAD_MARKETS:
       return { ...state, markets: { items: action.payload, loaded: true } };
     case LOAD_PRODUCTS:
-      return { ...state, products: action.payload };
-
+      return { ...state, products: { items: action.payload, loaded: true } };
     default:
       return state;
   }

@@ -1,1 +1,3 @@
 export const LOAD_MARKETS_FILTER = '[Search] LOAD_MARKETS_FILTER';
+export const LOAD_PRODUCTS_FILTER = '[Search] LOAD_PRODUCTS_FILTER';
+export const LOAD_SEARCH_QUERY = '[Search] LOAD_SEARCH_QUERY';
