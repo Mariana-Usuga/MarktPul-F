@@ -18,7 +18,7 @@ export const postLogin = async (email, password) => {
   };
   try {
     const res = await axios(config);
-    return res.data;
+    return res;
   } catch (error) {
     return error;
   }
