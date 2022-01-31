@@ -43,7 +43,6 @@ export const fetchCart = () => async (dispatch) => {
 };
 export const addProductToCart = (product) => async (dispatch) => {
   const products = await getProduct(product);
-  console.log(products);
   const producto = { ...products.data, qty: 1 };
   dispatch(addToCart(producto));
 };

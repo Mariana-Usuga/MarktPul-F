@@ -8,10 +8,9 @@ export const getCart = () => {
     : [];
   return cart;
 };
-// eslint-disable-next-line prettier/prettier
+
 export const getProduct = async (product) => {
   const { _id: id } = product;
-  console.log(id);
   try {
     const res = await axios.get(`${URL_BASE}/api/product/${id}`);
     return res.data;
