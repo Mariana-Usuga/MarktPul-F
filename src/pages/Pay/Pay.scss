@@ -1,0 +1,64 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Nunito Sans', sans-serif;
+}
+.notRegistered {
+  background-color: #bcf8b7;
+  position: absolute;
+  padding: 8px;
+  border: 1px solid #efefef;
+  border-radius: 10px;
+  position: relative;
+  z-index: -1;
+  margin: 0 5px 5px 5px;
+}
+.paymentMethod {
+  z-index: -1;
+  text-align: center;
+  font-weight: bolder;
+  margin: 0 5px 5px 5px;
+  background-color: #efefef;
+  position: relative;
+  padding: 10px;
+  border: 1px solid #efefef;
+  box-sizing: border-box;
+}
+.btnPay {
+  margin: 0 5px 5px 5px;
+  text-align: center;
+  width: 270px;
+  height: 50px;
+  border: none;
+  font-family: Nunito;
+  font-size: 20px;
+  color: #ffffff;
+  background: #4c3dff;
+  border-radius: 10px;
+  &__link {
+    color: white;
+    text-decoration: none;
+  }
+}
+.orderSummary {
+  margin-top: 20px;
+}
+.titleOrder {
+  background-color: rgba(239, 239, 239, 1);
+  padding-top: 10px;
+  text-align: center;
+  padding-bottom: 10px;
+}
+@media (min-width: 992px) {
+  .payContainer {
+    display: grid;
+    grid-template-columns: 60% 40%;
+    margin: 10px 50px;
+  }
+  .btnPay {
+    margin: 0 250px;
+  }
+}

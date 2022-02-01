@@ -8,6 +8,7 @@ export const postLogin = (email, password) => {
     password,
   };
   const url = `${URL_BASE}/auth/local/login`;
+
   const config = {
     method: 'post',
     url,

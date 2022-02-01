@@ -4,6 +4,7 @@ const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
 
 export const getMarkets = () => axios.get(`${URL_BASE}/api/market`);
 export const getProducts = () => axios.get(`${URL_BASE}/api/product`);
+export const getProduct = (id) => axios.get(`${URL_BASE}/api/product/${id}`);
 
 export const getUser = (token) => {
   const url = `${URL_BASE}/api/user/me`;

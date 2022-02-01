@@ -108,7 +108,7 @@ const Header = () => {
           >
             <Link to="/cart">
               <i className="search-header__mobile-cart fas fa-shopping-cart">
-                <div className="header--cartLength">{cart.length}</div>
+                {/* <div className="header--cartLength">{cart.length}</div> */}
               </i>
             </Link>
             <div className="header--cartPrev" id="cartPrev">

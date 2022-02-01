@@ -7,16 +7,11 @@ import HeaderMain from '../../components/HeaderMain';
 import MarketCard from '../../components/MarketCard';
 import ProductCard from '../../components/ProductCard';
 import Footer from '../../components/Footer';
-// import { fetchMarkets } from '../utils/landingPageServices';
 import {
   fetchMarkets,
   fetchProducts,
 } from '../../store/actions/landingPageActionsCreator';
 import { fetchUser } from '../../store/actions/userActionsCreator';
-// import {
-//   loadMarkets,
-//   loadProducts,
-// } from '../store/actions/landingPageActionsCreator';
 
 import './LandingPage.scss';
 
@@ -24,15 +19,13 @@ const LandingPage = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.landing.markets);
   const products = useSelector((state) => state.landing.products.items);
-  // eslint-disable-next-line no-unused-vars
-  const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.auth.token);
+  const cart = useSelector((state) => state.cartReducer.cart);
   const breakPoints = [
     { width: 400, itemsToShow: 1 },
     { width: 500, itemsToShow: 3 },
     { width: 1200, itemsToShow: 4 },
   ];
-  /* const getUser = () => {}; */
   useEffect(() => {
     dispatch(fetchMarkets());
     dispatch(fetchProducts());
@@ -42,6 +35,10 @@ const LandingPage = () => {
       dispatch(fetchUser(token.JWT));
     }
   }, [token.JWT]);
+
+  useEffect(() => {
+    window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
+  }, [cart]);
   return (
     <>
       <HeaderMain />
@@ -49,7 +46,7 @@ const LandingPage = () => {
       <Carousel className="carousel" breakPoints={breakPoints}>
         {markets.items.map((market) => (
           <Link
-            to={`/main/marketDetail/${market._id}`}
+            to={`/pages/marketDetail/${market._id}`}
             key={market._id}
             style={{ textDecoration: 'none' }}
           >
@@ -64,7 +61,7 @@ const LandingPage = () => {
           .slice(0, 5)
           .map((product) => (
             <Link
-              to={`/main/itemDetail/${product._id}`}
+              to={`/pages/itemDetail/${product._id}`}
               key={product._id}
               style={{ textDecoration: 'none' }}
             >
@@ -81,7 +78,7 @@ const LandingPage = () => {
           .slice(0, 5)
           .map((product) => (
             <Link
-              to={`/main/itemDetail/${product._id}`}
+              to={`/pages/itemDetail/${product._id}`}
               key={product._id}
               style={{ textDecoration: 'none' }}
             >

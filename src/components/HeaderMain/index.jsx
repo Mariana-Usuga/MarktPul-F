@@ -8,12 +8,13 @@ import { fetchCart } from '../../store/actions/cartActions';
 import './HeaderMain.scss';
 
 const HeaderMain = () => {
+  const cart = useSelector((state) => state.cartReducer.cart);
+
   const [show, setShow] = useState(false);
   const [search, setSearch] = useState('');
   const generateKey = (pre) => `${pre}_${new Date().getTime()}`;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const cart = useSelector((state) => state.cartReducer.cart);
   const showMenu = () => (!show ? setShow(true) : setShow(false));
   useEffect(() => {
     window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
@@ -49,13 +50,19 @@ const HeaderMain = () => {
           className={!show ? 'header__ul' : 'header__ul--show background--show'}
         >
           <li className="header__li">
-            <Link to="/">Inicio</Link>
+            <Link to="/" style={{ textDecoration: 'none' }}>
+              Inicio
+            </Link>
           </li>
           <li className="header__li">
-            <Link to="/register">Registro</Link>
+            <Link to="/register" style={{ textDecoration: 'none' }}>
+              Registro
+            </Link>
           </li>
           <li className="header__li">
-            <Link to="/login">Mi cuenta</Link>
+            <Link to="/login" style={{ textDecoration: 'none' }}>
+              Mi cuenta
+            </Link>
           </li>
           <li
             className="header__li"

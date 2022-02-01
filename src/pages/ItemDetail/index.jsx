@@ -1,10 +1,12 @@
-import { useParams } from 'react-router-dom';
-import axios from 'axios';
+/* eslint-disable no-restricted-syntax */
+import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-elastic-carousel';
 import ProductPhoto from '../../components/ProductPhoto';
 import InterestPhoto from '../../components/InterestPhoto';
+import { fetchAPay } from '../../store/actions/payActionsCreator';
+import { fetchAproduct } from '../../store/actions/landingPageActionsCreator';
 import './ItemDetail.scss';
 import {
   addProductToCart,
@@ -17,19 +19,29 @@ const ItemDetail = () => {
   const [product, setProduct] = useState({});
   const breakPoints = [{ width: 100, itemsToShow: 2 }];
   const { id } = useParams();
+  const products = useSelector((state) => state.landing.products);
 
   useEffect(() => {
-    const getProduct = async () => {
-      const res = await axios.get(
-        `https://marktpul-bk.herokuapp.com/api/product/${id}`,
-      );
-      setProduct(res.data);
-    };
-    getProduct();
+    for (const productItem of products) {
+      if (id === productItem._id) {
+        const price = productItem.price.toLocaleString('es-MX');
+        const productUpdate = {
+          ...productItem,
+          price,
+        };
+        setProduct(productUpdate);
+      }
+    }
+    dispatch(fetchAproduct(id));
   }, []);
+
   useEffect(() => {
     window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
   }, [cart]);
+  const buyAproduct = (e) => {
+    e.preventDefault();
+    dispatch(fetchAPay());
+  };
   /* eslint-disable */
   const handleCarrito = () => {
     const cartPrev = JSON.parse(localStorage.getItem('cartProduct')) || [];
@@ -60,9 +72,11 @@ const ItemDetail = () => {
         <div className="container__info">
           <h2 className="container__info__title">{product.title}</h2>
           <p className="container__info__description">{product.description}</p>
-          <p className="container__info__price">{`$ ${product.price}`}</p>
-          <button className="btn__buy" type="button">
-            Comprar
+          <p className="container__info__price">{product.price}</p>
+          <button onClick={buyAproduct} className="btn__buy" type="button">
+            <Link to="/pages/paymentProcess" className="btn__buy__link">
+              Comprar
+            </Link>
           </button>
           <button
             className="btn__addCart"

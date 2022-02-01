@@ -1,5 +1,7 @@
-$main-color: #4c3dff;
+// $main-color: #4c3dff;
+$main-color: #efefef;
 $main-font-color: #000;
+// $main-font-color: black;
 $secondary-color: #c0c0c0;
 $font-color: #555;
 
@@ -17,7 +19,7 @@ $font-color: #555;
   &--thead {
     border: 1px solid $main-color;
     background-color: $main-color;
-    color: #fff;
+    color: black;
     font-weight: 800;
     font-size: 1.3rem;
     th {
@@ -77,6 +79,18 @@ $font-color: #555;
     }
   }
 }
+.shopping-cart__btnPay {
+  left: 45%;
+  color: #fff;
+  border: none;
+  font-weight: bolder;
+  letter-spacing: 1.5px;
+  position: relative;
+  background: #4c3dff;
+  width: 200px;
+  height: 40px;
+  border-radius: 10px;
+}
 
 //Cart Summary
 
@@ -89,7 +103,7 @@ $font-color: #555;
   }
   &--title {
     background-color: $main-color;
-    color: #fff;
+    color: black;
     padding-bottom: 0.5rem;
     h1 {
       margin: 0 auto;
