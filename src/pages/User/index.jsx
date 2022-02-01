@@ -1,14 +1,17 @@
 /*eslint-disable*/
-import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import UserSectionAccount from '../../components/UserSectionAccount';
 import UserSectionPicture from '../../components/UserSectionPicture';
+import { logout } from '../../store/actions/authActionsCreator';
 
 import 'react-phone-number-input/style.css';
 import './User.scss';
-
-const user = {
+import UserSectionAdress from '../../components/UserSectionAdress';
+const currentUser = {
   _id: {
     $oid: '61f5b8ff506fd791801b17cd',
   },
@@ -35,14 +38,78 @@ const user = {
 };
 
 const User = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [optionState, setOptionState] = useState({
+    current: 'account',
+  });
+  const [user, setUser] = useState(currentUser);
+  const [currentComponent, setCurrentComponent] = useState(
+    <UserSectionAccount user={user} />,
+  );
+
+  const handleClick = ({ target }) => {
+    const { name } = target;
+    setOptionState({ current: name });
+  };
+
+  const handleClickLogout = (e) => {
+    e.preventDefault();
+    dispatch(logout());
+    navigate('/', { replace: true });
+  };
+
+  useEffect(() => {
+    let options = {
+      account: <UserSectionAccount user={user} />,
+      adress: <UserSectionAdress user={user} />,
+    };
+
+    setCurrentComponent(options[optionState.current]);
+  }, [optionState]);
+
   return (
     <div className="user-page">
       <Header />
       <div className="user-container">
-        <h1>Mis datos</h1>
+        <h1 className="user-container__title">Mis datos</h1>
         <div className="user-container__data">
-          <UserSectionPicture user={user} />
-          <UserSectionAccount user={user} />
+          <div className="user-container__data--sidebar">
+            <UserSectionPicture user={user} />
+            <ul className="user-container__data--sidebar-options">
+              <li>
+                <button
+                  className={'user-container__data--sidebar-options-btn'}
+                  name="account"
+                  onClick={handleClick}
+                  type="button"
+                >
+                  Cuenta
+                </button>
+              </li>
+              <li>
+                <button
+                  className={'user-container__data--sidebar-options-btn'}
+                  name="adress"
+                  onClick={handleClick}
+                  type="button"
+                >
+                  Adress
+                </button>
+              </li>
+              <li>
+                <button
+                  className={'user-container__data--sidebar-options-btn'}
+                  name="logout"
+                  onClick={handleClickLogout}
+                  type="button"
+                >
+                  Cerrar sesión
+                </button>
+              </li>
+            </ul>
+          </div>
+          {currentComponent}
         </div>
       </div>
       <Footer />

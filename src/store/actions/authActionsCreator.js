@@ -28,7 +28,7 @@ export const fetchLogin = (email, password) => async (dispatch) => {
   return null;
 };
 
-export const logout = (dispatch) => {
+export const logout = () => (dispatch) => {
   localStorage.removeItem('token');
   localStorage.removeItem('user');
   dispatch(logoutUser());

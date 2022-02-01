@@ -6,23 +6,31 @@ body {
   font-weight: bolder;
 }
 .user-page {
-  display: flex;
   height: 100vh;
+  width: 100vw;
+  display: flex;
   flex: 1;
-  flex-flow: column;
-  align-items: space-between;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .user-container {
   display: flex;
+  width: 100vw;
+  max-width: 900px;
+  flex-basis: auto;
+  align-self: center;
   flex-direction: column;
-  justify-content: flex-start;
-  margin: auto;
-  flex: 1;
   border: 1px solid red;
-  width: auto;
+  flex: 1;
+  &__title {
+    text-align: left;
+    padding-left: 20px;
+  }
+
   &__data {
     display: flex;
     align-items: space-around;
+    justify-content: space-around;
     flex-flow: row wrap;
     &--hero {
       display: inline-block;
@@ -42,16 +50,17 @@ body {
     }
     &--form {
       margin-left: 25px;
+      width: 600px;
+      flex-basis: auto;
       &-section {
         background-color: #f0f0f0;
-        max-width: 400px;
         border-radius: 10px;
         padding: 15px;
         margin-top: 15px;
         & > label {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          line-height: 25px;
+          line-height: 30px;
           &:not(:first-child) {
             margin-top: 10px;
           }
@@ -59,7 +68,7 @@ body {
         &-input {
           font-family: 'Nunito Sans', sans-serif;
           background-color: white;
-          width: 200px;
+          width: 300px;
           text-align: center;
           border: 1px #c0c0c0 solid;
           border-radius: 20px;
@@ -83,6 +92,35 @@ body {
           margin-top: 2em;
           margin-bottom: 2em;
           line-height: 25px;
+        }
+      }
+    }
+    &--sidebar {
+      &-options {
+        margin-top: 20px;
+        & > li {
+          list-style-type: none;
+          background-color: #f0f0f0;
+          text-align: center;
+
+          &:first-child {
+            border-radius: 20px 20px 0 0;
+          }
+          &:last-child {
+            border-radius: 0 0 20px 20px;
+            background-color: #4c3dff;
+            color: white;
+            font-weight: bolder;
+          }
+        }
+        &-btn {
+          width: 150px;
+          background-color: transparent;
+          border: none;
+          padding: 5px;
+          font-weight: 700;
+          cursor: pointer;
+          color: inherit;
         }
       }
     }
