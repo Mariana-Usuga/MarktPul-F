@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import { PersistGate } from 'redux-persist/integration/react';
 import LandingPage from './pages/LandingPage';
 import MarketDetail from './pages/MarketDetail';
 import ItemDetail from './pages/ItemDetail';
@@ -13,11 +14,11 @@ import Cart from './pages/Cart';
 import Layout from './components/Layout';
 import CreateProduct from './pages/CreateProduct/index';
 import CreateMarket from './pages/CreateMarket/index';
-import Shipping from './pages/Shipping';
-import SuccesfulPurchase from './pages/SuccessfulPurchase/index';
-import store from './store/index';
 import PaymentProcess from './components/PaymentProcess/index';
 import ActivateAcount from './pages/ActivateAccount';
+import configureStore from './store/index';
+
+const { store, persistor } = configureStore();
 
 const Routing = () => (
   <BrowserRouter>
@@ -44,7 +45,9 @@ const Routing = () => (
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Routing />
+      <PersistGate loading={null} persistor={persistor}>
+        <Routing />
+      </PersistGate>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

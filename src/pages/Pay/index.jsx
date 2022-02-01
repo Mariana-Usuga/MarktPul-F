@@ -10,9 +10,6 @@ const Pay = () => {
   return (
     <div className="payContainer">
       <div className="payContainer__item">
-        <div className="notRegistered">
-          <h3>¿No estas registrado? ¡Registrate!</h3>
-        </div>
         <div className="paymentMethod">
           <h3>Elige tu medio de pago</h3>
         </div>

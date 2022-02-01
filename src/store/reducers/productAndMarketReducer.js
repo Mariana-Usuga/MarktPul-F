@@ -10,8 +10,8 @@ const initialState = {
   markets: [],
   products: [],
   product: {},
-  market: {},
-  productGet: {},
+  // market: {},
+  // productGet: {},
 };
 
 const productAndMarketReducer = (state = initialState, action) => {
@@ -25,7 +25,7 @@ const productAndMarketReducer = (state = initialState, action) => {
     case CREATE_MARKET:
       return { ...state, market: action.payload };
     case PRODUCT:
-      return { ...state, product: action.payload };
+      return { ...state, productGet: action.payload };
     default:
       return state;
   }

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import './BuyAproduct.scss';
 
 const BuyAproduct = () => {
-  const product = useSelector((state) => state.landing.product);
+  const product = useSelector((state) => state.productAndMarket.product);
 
   return (
     <div className="containerBuyProduct">

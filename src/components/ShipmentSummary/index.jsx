@@ -14,7 +14,8 @@ const ShipmentSummary = () => {
   const aProduct = useSelector((state) => state.pay.aProduct);
   const user = useSelector((state) => state.user.user);
   const cart = useSelector((state) => state.cartReducer.cart);
-  const product = useSelector((state) => state.landing.product);
+  const product = useSelector((state) => state.productAndMarket.product);
+  console.log('product', product);
   // eslint-disable-next-line prettier/prettier
   const reducer = (prevValue, currentValue) => prevValue + currentValue.price * currentValue.qty;
   const [cartPrice, setCartPrice] = useState(0);
@@ -40,7 +41,7 @@ const ShipmentSummary = () => {
           <span className="totalShipping__total">Total Envio</span>
           <span className="totalShipping__price">
             {aProduct
-              ? product.price.toLocaleString('es-MX')
+              ? product.price?.toLocaleString('es-MX')
               : priceFormat(cartPrice)}
           </span>
         </div>

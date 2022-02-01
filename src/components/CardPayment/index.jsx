@@ -34,7 +34,7 @@ const CardPayment = () => {
   ];
   const token = useSelector((state) => state.auth.token);
   const aProduct = useSelector((state) => state.pay.aProduct);
-  const product = useSelector((state) => state.landing.product);
+  const product = useSelector((state) => state.productAndMarket.product);
   const pay = useSelector((state) => state.pay.dataPay);
   const isLoading = useSelector((state) => state.pay.isLoading);
   const estimatedTotal = useSelector(

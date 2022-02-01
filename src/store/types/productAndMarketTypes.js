@@ -3,4 +3,3 @@ export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const CREATE_MARKET = 'CREATE_MARKET';
 export const PRODUCT = 'PRODUCT';
-

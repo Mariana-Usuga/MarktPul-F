@@ -1,40 +1,40 @@
-.createProductContainer{
+.createProductContainer {
   margin-top: 0;
   display: flex;
-  justify-content:space-evenly;
+  justify-content: space-evenly;
   flex-wrap: wrap;
-  &__item{
-    &__images{
+  &__item {
+    &__images {
       margin-top: 20px;
       text-align: center;
-      &__container{
+      &__container {
         display: flex;
         flex-wrap: wrap;
-        img{
+        img {
           width: 200px;
           margin-right: 10px;
         }
       }
-      &__update{
+      &__update {
         border-bottom: 1px solid blue;
         color: blue;
         margin-bottom: 50px;
-        font-size: 18px;
+        // font-size: 18px;
       }
-      &__inputImg{
+      &__inputImg {
         width: 0;
         height: 30px;
       }
     }
-    &__img{
+    &__img {
       text-align: center;
     }
-    &__img img{
-        width: 270px;
+    &__img img {
+      width: 270px;
     }
-    &__data{
+    &__data {
       margin-top: 20px;
-      &__title{
+      &__title {
         margin-bottom: 20px;
         text-align: left;
         margin-left: 10px;
@@ -43,107 +43,133 @@
   }
 }
 
-.form{
-  &__input{
+.formProduct {
+  &__input {
     margin: 10px;
     padding: 10px;
-    width: 260px;
-    // height: 260px;
-    background: #F0F0F0;
+    background: #f0f0f0;
     border-radius: 25px;
   }
-  &__btn{
+  &__btn {
     font-weight: bolder;
-    font-size: 1.2rem ;
+    font-size: 1.2rem;
     margin-top: 20px;
     color: white;
     border: none;
     width: 200px;
     height: 50px;
-    background: #4C3DFF;
+    background: #4c3dff;
     border-radius: 10px;
   }
 }
 
-.inputProduct{
+.inputProduct {
   margin-top: 10px;
   margin-left: 20px;
-  &__category{
+  &__select__markets {
+    margin-top: 10px;
+    border: 1px solid #c7c5c5;
+    border-radius: 15px;
+    height: 30px;
+    width: 210px;
+  }
+  &__markets {
+    margin: 30px 0 0 20px;
+    width: 230px;
+  }
+  &__category {
     margin-left: 20px;
   }
-  &__label{
+  &__label {
     margin-right: 20px;
   }
-  &__input{
+  &__input {
     width: 150px;
     height: 30px;
-    background: #FFFFFF;
-    border: 1px solid #C7C5C5;
-    border-radius: 18px;
-    &__category{
+    background: #ffffff;
+    border: 1px solid #c7c5c5;
+    border-radius: 15px;
+    &__category {
       background-color: blueviolet;
       width: 90px;
       height: 30px;
-      background: #FFFFFF;
-      border: 1px solid #C7C5C5;
-      border-radius: 25px;
+      background: #ffffff;
+      border: 1px solid #c7c5c5;
+      border-radius: 15px;
     }
-    &__description{
+    &__description {
       width: 140px;
       height: 80px;
-      background: #FFFFFF;
-      border: 1px solid #C7C5C5;
-      border-radius: 25px;
+      background: #ffffff;
+      border: 1px solid #c7c5c5;
+      border-radius: 15px;
     }
   }
-  &__category{
+  &__category {
     margin-top: 10px;
   }
 }
-
-@media(min-width:992px){
-  .form{
-    &__input{
-      padding: 10px;
-      width: 800px;
-      height: 530px;
-    }
+.selectedMarket {
+  display: flex;
+  flex-wrap: wrap;
+  &__item {
+    margin: 10px;
   }
-  .inputProduct{
-      margin-top: 30px;
-    &__label{
-      font-size: 1.4rem;
-    }
-    &__input{
-      width: 550px;
-       height: 50px;
-      &__category{
-       height: 50px;
-        margin-top: 30px;
-        width: 200px;
-        margin-right: 360px;
-      }
-      &__description{
-        width: 550px;
-        height: 140px;
-      }
-    }
-  }
-  .createProductContainer{
-    &__item__data__title{
-      font-size: 2rem;
-    }
-  }
-  .createProductContainer{
-    &__item{
-      margin-top: 30px;
-    }
-    &__item__img img{
-      width: 400px;
-    }
-    &__item__images__update{
-      font-size: 1.5rem;
+  &__span {
+    margin-left: 3px;
+    &__cancel {
+      background-color: red;
+      border-radius: 40px;
+      color: white;
     }
   }
 }
-
+@media (min-width: 992px) {
+  .formProduct {
+    &__input {
+      padding: 10px;
+      width: 600px;
+      height: 600px;
+    }
+  }
+  .inputProduct {
+    margin-top: 30px;
+    &__label {
+      &__des {
+        position: relative;
+        margin-right: 20px;
+        bottom: 60px;
+      }
+    }
+    &__input {
+      width: 400px;
+      height: 40px;
+      &__category {
+        height: 40px;
+        margin-top: 30px;
+        width: 113px;
+        margin-right: 360px;
+      }
+      &__description {
+        width: 400px;
+        height: 100px;
+      }
+    }
+  }
+  .createProductContainer {
+    &__item__data__title {
+      // font-size: 2rem;
+    }
+  }
+  .createProductContainer {
+    &__item {
+      margin-top: 30px;
+    }
+    &__item__img img {
+      width: 400px;
+    }
+    &__item__images__update {
+      // font-size: 1.5rem;
+    }
+  }
+}

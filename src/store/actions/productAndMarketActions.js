@@ -58,7 +58,6 @@ export const sendMarket = (formMarket) => async (dispatch) => {
   dispatch(createMarket(responseMarket));
 };
 
-
 export const fetchAproduct = (id) => async (dispatch) => {
   const product = await getProduct(id);
   dispatch(loadAproduct(product));

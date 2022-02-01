@@ -2,20 +2,33 @@ import PropTypes from 'prop-types';
 
 const InputCreateProduct = ({ label, handleChange, name }) => (
   <div className="inputProduct">
-    <label className="inputProduct__label" htmlFor={label}>
-      {label}
-    </label>
-    <input
-      onChange={handleChange}
-      name={name}
+    <label
       className={
         label === 'Descripcion'
-          ? 'inputProduct__input__description'
-          : 'inputProduct__input'
+          ? 'inputProduct__label__des'
+          : 'inputProduct__label'
       }
-      type={label === 'Precio' ? 'number' : 'text'}
-      id={label}
-    />
+      htmlFor={label}
+    >
+      {label}
+    </label>
+    {label === 'Descripcion' ? (
+      <textarea
+        onChange={handleChange}
+        name={name}
+        className="inputProduct__input__description"
+        type="text"
+        id={label}
+      />
+    ) : (
+      <input
+        onChange={handleChange}
+        name={name}
+        className="inputProduct__input"
+        type={label === 'Precio' ? 'number' : 'text'}
+        id={label}
+      />
+    )}
   </div>
 );
 

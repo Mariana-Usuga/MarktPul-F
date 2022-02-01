@@ -1,16 +1,18 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import InputCreateProduct from '../../components/InputCreateProduct/index';
-import { sendProduct } from '../../store/actions/productAndMarketActions';
+// import { sendProduct } from '../../store/actions/productAndMarketActions';
 import ProductPictures from '../../components/ProductPictures/index';
+import ChooseMarket from '../../components/ChoosseMarket';
+import ChooseProductCategory from '../../components/ChooseProductCategory';
 
 import './CreateProduct.scss';
 
 const CreateProduct = () => {
   const [mainImage, setMainImage] = useState(null);
   const [images, setImages] = useState([]);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const [formProduct, setFormProduct] = useState({
     title: '',
@@ -19,12 +21,13 @@ const CreateProduct = () => {
     description: '',
     category: '',
     images: [],
+    marketId: [],
   });
   const handleChange = (e) => {
     const { name } = e.target;
     const { value } = e.target;
     const newState = { ...formProduct };
-    newState[name] = name === 'price' ? Number(value) : value;
+    newState[name] = value;
     setFormProduct(newState);
   };
   const onChangeFile = (e) => {
@@ -65,12 +68,11 @@ const CreateProduct = () => {
       formDataImages.append('images', file);
     }
     const responseImageMain = await axios.post(
-      'http://localhost:3002/api/upload/file',
+      'http://localhost:8080/api/upload/file',
       formDataImageMain,
     );
-    console.log('mainImage', responseImageMain.data.url);
     const responseImage = await axios.post(
-      'http://localhost:3002/api/upload/files',
+      'http://localhost:8080/api/upload/files',
       formDataImages,
     );
     const responseImages = [];
@@ -79,13 +81,15 @@ const CreateProduct = () => {
     }
     const newFormProduct = {
       title: formProduct.title,
-      price: formProduct.price,
+      price: formProduct.price.replace(/\./g, ''),
       imageMain: responseImageMain.data.url,
       description: formProduct.description,
       category: formProduct.category,
       images: responseImages,
+      marketId: formProduct.marketId,
     };
-    dispatch(sendProduct(newFormProduct));
+    console.log('new', newFormProduct);
+    // dispatch(sendProduct(newFormProduct));
   };
   return (
     <div className="createProductContainer">
@@ -122,8 +126,8 @@ const CreateProduct = () => {
         <h2 className="createProductContainer__item__data__title">
           Datos de mi producto
         </h2>
-        <form className="form">
-          <div className="form__input">
+        <form className="formProduct">
+          <div className="formProduct__input">
             <InputCreateProduct
               handleChange={handleChange}
               name="title"
@@ -134,31 +138,18 @@ const CreateProduct = () => {
               name="price"
               label="Precio"
             />
-            <div className="inputProduct__category">
-              <label className="inputProduct__label" htmlFor="category">
-                Categoria
-              </label>
-              <select
-                onChange={handleChange}
-                name="category"
-                className="inputProduct__input__category"
-                id="category"
-              >
-                <option value="ropa" selected>
-                  ropa
-                </option>
-                <option value="electrodomistico">electrodomistico</option>
-                <option value="hogar">hogar</option>
-                <option value="accesorio">accesorio</option>
-              </select>
-            </div>
+            <ChooseProductCategory handleChange={handleChange} />
             <InputCreateProduct
               handleChange={handleChange}
               name="description"
               label="Descripcion"
             />
+            <ChooseMarket
+              formProduct={formProduct}
+              setFormProduct={setFormProduct}
+            />
           </div>
-          <button onClick={onSubmit} className="form__btn" type="submit">
+          <button onClick={onSubmit} className="formProduct__btn" type="submit">
             Crear producto
           </button>
         </form>

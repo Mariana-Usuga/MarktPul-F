@@ -10,7 +10,6 @@ import Footer from '../../components/Footer';
 import {
   fetchProducts,
   fetchMarkets,
-  // } from '../../store/actions/productAndMarketActions';
 } from '../../store/actions/productAndMarketActions';
 import { fetchUser } from '../../store/actions/userActionsCreator';
 

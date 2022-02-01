@@ -6,7 +6,7 @@ import Carousel from 'react-elastic-carousel';
 import ProductPhoto from '../../components/ProductPhoto';
 import InterestPhoto from '../../components/InterestPhoto';
 import { fetchAPay } from '../../store/actions/payActionsCreator';
-import { fetchAproduct } from '../../store/actions/landingPageActionsCreator';
+import { fetchAproduct } from '../../store/actions/productAndMarketActions';
 import './ItemDetail.scss';
 import {
   addProductToCart,
@@ -19,7 +19,7 @@ const ItemDetail = () => {
   const [product, setProduct] = useState({});
   const breakPoints = [{ width: 100, itemsToShow: 2 }];
   const { id } = useParams();
-  const products = useSelector((state) => state.landing.products);
+  const products = useSelector((state) => state.productAndMarket.products);
 
   useEffect(() => {
     for (const productItem of products) {
