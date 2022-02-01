@@ -1,9 +1,9 @@
 /*eslint-disable*/
-import CountryDropdown from 'country-dropdown-with-flags-for-react';
-import PhoneInput from 'react-phone-number-input';
 import React, { useState } from 'react';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import UserSectionAccount from '../../components/UserSectionAccount';
+import UserSectionPicture from '../../components/UserSectionPicture';
 
 import 'react-phone-number-input/style.css';
 import './User.scss';
@@ -35,101 +35,14 @@ const user = {
 };
 
 const User = () => {
-  const hi = 'hi';
-  const [accountData, setAccountData] = useState({
-    name: user.name ?? '',
-    country: user.country ?? '',
-  });
-  const handleSubmitAccount = (e) => {
-    e.preventDefault();
-    console.log('Has hecho submit al account', e);
-  };
   return (
     <div className="user-page">
       <Header />
       <div className="user-container">
         <h1>Mis datos</h1>
         <div className="user-container__data">
-          <div className="user-container__data--hero">
-            <div className="user-container__data--hero-pic">
-              <img src={user.picture} alt={user.username} />
-            </div>
-            <div className="user-container__data--hero-username">
-              {`@${user.username}`}
-            </div>
-          </div>
-          <div className="user-container__data--form">
-            <h2>De la cuenta</h2>
-            <form
-              action="submit"
-              onSubmit={handleSubmitAccount}
-              method="post"
-              className="user-container__data--form-section"
-            >
-              <label htmlFor="email">
-                Email
-                <input
-                  value={user.email}
-                  data-testid="email-user"
-                  id="email"
-                  title="email registrado"
-                  className="user-container__data--form-section-input"
-                  disabled
-                />
-              </label>
-              <label htmlFor="username">
-                Usuario
-                <input
-                  value={user.username}
-                  data-testid="username-user"
-                  id="username"
-                  title="username registrado"
-                  className="user-container__data--form-section-input"
-                  disabled
-                />
-              </label>
-              <label htmlFor="firstname">
-                Nombre completo
-                <input
-                  value={user.name}
-                  data-testid="name-user"
-                  id="name"
-                  title="Nombre completo"
-                  className="user-container__data--form-section-input"
-                />
-              </label>
-              <label htmlFor="country">
-                Pais
-                <CountryDropdown
-                  id="country"
-                  data-testid="country-user"
-                  preferredCountries={['co', 'pe']}
-                  value={user.country}
-                  handleChange={(e) => console.log(e.target.value)}
-                  style={{ border: 'none' }}
-                  className="user-container__data--form-section-input"
-                ></CountryDropdown>
-              </label>
-              <label htmlFor="cell">
-                Celular
-                <PhoneInput
-                  country={user.country}
-                  international={true}
-                  value={user.cell}
-                  onChange={(e) => console.log(e)}
-                  className="user-container__data--form-section-input"
-                />
-              </label>
-              <label htmlFor="register__button">
-                <input
-                  type="submit"
-                  value="Actualizar datos"
-                  className="user-container__data--form-section-btn_submit"
-                  id="register__button"
-                />
-              </label>
-            </form>
-          </div>
+          <UserSectionPicture user={user} />
+          <UserSectionAccount user={user} />
         </div>
       </div>
       <Footer />

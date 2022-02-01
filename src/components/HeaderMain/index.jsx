@@ -25,7 +25,7 @@ const HeaderMain = () => {
   const showMenu = () => (!show ? setShow(true) : setShow(false));
   const token = getCurrentLocalStorage('token');
   const usernameFromToken = token ? JWTDecode(token).username : null;
-  const [username, setUsername] = useState(usernameFromToken);
+  const [username] = useState(usernameFromToken);
 
   return (
     <header className="header">
@@ -53,7 +53,7 @@ const HeaderMain = () => {
             {username ? (
               <div>
                 <FaUser />
-                <Link to="/login">{` ${username}`}</Link>
+                <Link to="/user">{` ${username}`}</Link>
               </div>
             ) : (
               <Link to="/login">Login</Link>

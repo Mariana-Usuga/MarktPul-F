@@ -15,15 +15,15 @@ body {
 .user-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  margin: auto;
   flex: 1;
   border: 1px solid red;
   width: auto;
   &__data {
     display: flex;
     align-items: space-around;
-    flex-flow: row nowrap;
+    flex-flow: row wrap;
     &--hero {
       display: inline-block;
       &-pic {
