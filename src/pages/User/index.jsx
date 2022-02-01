@@ -94,7 +94,7 @@ const User = () => {
                   onClick={handleClick}
                   type="button"
                 >
-                  Adress
+                  Direcciones
                 </button>
               </li>
               <li>
