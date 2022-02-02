@@ -15,6 +15,7 @@ import SuccesfulPurchase from './pages/SuccessfulPurchase/index';
 import store from './store/index';
 import PaymentProcess from './components/PaymentProcess/index';
 import ActivateAcount from './pages/ActivateAccount';
+import ReportMarket from './pages/ReportMarket/index';
 
 const Routing = () => (
   <BrowserRouter>
@@ -27,6 +28,7 @@ const Routing = () => (
         <Route path="itemDetail/:id" element={<ItemDetail />} />
         <Route path="succesfulPurchase" element={<SuccesfulPurchase />} />
         <Route path="paymentProcess" element={<PaymentProcess />} />
+        <Route path="marketReport" element={<ReportMarket />} />
       </Route>
 
       <Route path="/register" element={<Register />} />

@@ -7,6 +7,7 @@ import authReducer from './reducers/authReducer';
 import userReducer from './reducers/userReducer';
 import payReducer from './reducers/payReducer';
 import changeAddress from './reducers/changeAddressReducer';
+import reportMarket from './reducers/reportMarketPageReducer';
 
 const storeCombined = combineReducers({
   landing: landingPageReducer,
@@ -15,6 +16,7 @@ const storeCombined = combineReducers({
   pay: payReducer,
   changeAddress,
   cartReducer,
+  report: reportMarket,
 });
 
 const store = createStore(
