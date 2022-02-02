@@ -31,7 +31,6 @@ const Routing = () => (
         <Route path="paymentProcess" element={<PaymentProcess />} />
         <Route path="marketReport" element={<ReportMarket />} />
       </Route>
-
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/cart" element={<Cart />} />

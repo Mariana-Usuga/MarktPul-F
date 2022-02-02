@@ -5,17 +5,17 @@ import {
 } from '../types/landingPageTypes';
 
 const initialState = {
-  markets: [],
-  products: [],
+  markets: { items: [], loaded: false },
+  products: { items: [], loaded: false },
   product: {},
 };
 
 const landingPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_MARKETS:
-      return { ...state, markets: action.payload };
+      return { ...state, markets: { items: action.payload, loaded: true } };
     case LOAD_PRODUCTS:
-      return { ...state, products: action.payload };
+      return { ...state, products: { items: action.payload, loaded: true } };
     case PRODUCT:
       return { ...state, product: action.payload };
     default:

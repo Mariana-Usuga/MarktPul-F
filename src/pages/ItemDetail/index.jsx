@@ -32,8 +32,7 @@ const ItemDetail = () => {
     dispatch(fetchAPay());
   };
   /* eslint-disable */
-  const handleCarrito = (e) => {
-    e.preventDefault();
+  const handleCarrito = () => {
     const cartPrev = JSON.parse(localStorage.getItem('cartProduct')) || [];
     const exists = cartPrev.find((element) => element._id === product._id);
     if (exists) {

@@ -18,7 +18,7 @@ import './LandingPage.scss';
 const LandingPage = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.landing.markets);
-  const products = useSelector((state) => state.landing.products);
+  const products = useSelector((state) => state.landing.products.items);
   const token = useSelector((state) => state.auth.token);
   const cart = useSelector((state) => state.cartReducer.cart);
   const breakPoints = [
@@ -44,7 +44,7 @@ const LandingPage = () => {
       <HeaderMain />
       <h2 className="titleMarket">Mercados Destacados</h2>
       <Carousel className="carousel" breakPoints={breakPoints}>
-        {markets.map((market) => (
+        {markets.items.map((market) => (
           <Link
             to={`/pages/marketDetail/${market._id}`}
             key={market._id}

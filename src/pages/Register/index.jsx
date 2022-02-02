@@ -95,7 +95,7 @@ const Register = () => {
       password,
       username,
     };
-    const url = 'https://marktpul-bk.herokuapp.com/api/user';
+    const url = `${process.env.REACT_APP_API_URL_BASE}/api/user`; /* 'http://localhost:8080/api/user' */
     const config = {
       method: 'post',
       url,

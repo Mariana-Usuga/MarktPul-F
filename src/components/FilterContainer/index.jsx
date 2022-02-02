@@ -1,7 +1,15 @@
 import React, { useState } from 'react';
+import queryString from 'query-string';
+import { useLocation } from 'react-router-dom';
 import './FilterContainer.scss';
 
 const FilterContainer = () => {
+  const location = useLocation();
+  const parsed = queryString.parse(location.search);
+  console.log(
+    '🚀 ~ file: index.jsx ~ line 8 ~ FilterContainer ~ parsed',
+    parsed,
+  );
   const [showProducts, setShowProducts] = useState(false);
   const [showEvents, setShowEvents] = useState(false);
   const [showMarkets, setShowMarkets] = useState(false);
@@ -36,61 +44,67 @@ const FilterContainer = () => {
         <span>Filtrar por</span>
       </div>
       <div className="filter__container">
-        <ul className="slide">
-          <li className="sub-menu ">
-            <a href="/" className="sub-menu-list" onClick={desplegar}>
-              Productos
-            </a>
-            <i className="fas fa-angle-down"> </i>
-            <ul
-              className={!showProducts ? 'sub_menu__ul' : 'sub_menu__ul--show'}
-            >
-              <li>
-                <a href="/">Lorem Ipsum</a>
-              </li>
-              <li>
-                <a href="/">Lorem Ipsum</a>
-              </li>
-              <li>
-                <a href="/">Lorem Ipsum</a>
-              </li>
-            </ul>
-          </li>
-          <li className="sub-menu">
-            <a href="/" className="sub-menu-list" onClick={desplegar}>
-              Mercados
-            </a>
-            <i className="fas fa-angle-down"> </i>
-            <ul
-              className={!showMarkets ? 'sub_menu__ul' : 'sub_menu__ul--show'}
-            >
-              <li>
-                <a href="/">Fisicos</a>
-              </li>
-              <li>
-                <a href="/">Digitales</a>
-              </li>
-            </ul>
-          </li>
-          <li className="sub-menu">
-            <a href="/" className="sub-menu-list" onClick={desplegar}>
-              Eventos
-              <i className="fas fa-angle-down" />
-            </a>
+        <form action=" ">
+          <ul className="slide">
+            <li className="sub-menu ">
+              <a href="/" className="sub-menu-list" onClick={desplegar}>
+                Productos
+              </a>
+              <i className="fas fa-angle-down"> </i>
+              <ul
+                className={
+                  !showProducts ? 'sub_menu__ul' : 'sub_menu__ul--show'
+                }
+              >
+                <li>
+                  <a href="/">Lorem Ipsum</a>
+                </li>
+                <li>
+                  <a href="/">Lorem Ipsum</a>
+                </li>
+                <li>
+                  <a href="/">Lorem Ipsum</a>
+                </li>
+              </ul>
+            </li>
+            <li className="sub-menu">
+              <a href="/" className="sub-menu-list" onClick={desplegar}>
+                Mercados
+              </a>
+              <i className="fas fa-angle-down"> </i>
+              <ul
+                className={!showMarkets ? 'sub_menu__ul' : 'sub_menu__ul--show'}
+              >
+                <li>
+                  <a href="/main/search/?q=mariana">Fisicos</a>
+                </li>
+                <li>
+                  <a href="/">Digitales</a>
+                </li>
+              </ul>
+            </li>
+            <li className="sub-menu">
+              <a href="/" className="sub-menu-list" onClick={desplegar}>
+                Eventos
+                <i className="fas fa-angle-down" />
+              </a>
 
-            <ul className={!showEvents ? 'sub_menu__ul' : 'sub_menu__ul--show'}>
-              <li>
-                <a href="/">Lorem Ipsum</a>
-              </li>
-              <li>
-                <a href="/">Lorem Ipsum</a>
-              </li>
-              <li>
-                <a href="/">Lorem Ipsum</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+              <ul
+                className={!showEvents ? 'sub_menu__ul' : 'sub_menu__ul--show'}
+              >
+                <li>
+                  <a href="/">Lorem Ipsum</a>
+                </li>
+                <li>
+                  <a href="/">Lorem Ipsum</a>
+                </li>
+                <li>
+                  <a href="/">Lorem Ipsum</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </form>
       </div>
     </div>
   );
