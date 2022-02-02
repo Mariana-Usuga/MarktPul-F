@@ -21,6 +21,12 @@ body {
     }
   }
 }
+#login {
+  display: flex;
+}
+#forget {
+  display: none;
+}
 
 @media (max-width: 600px) {
   .login__image > img {
@@ -90,6 +96,13 @@ body {
       right: 15%;
     }
   }
+}
+.login__forgot {
+  color: #4c3dff;
+  text-decoration: underline;
+}
+.login__forgot:hover {
+  cursor: pointer;
 }
 
 #login__form--registro {

@@ -15,6 +15,7 @@ import SuccesfulPurchase from './pages/SuccessfulPurchase/index';
 import store from './store/index';
 import PaymentProcess from './components/PaymentProcess/index';
 import ActivateAcount from './pages/ActivateAccount';
+import ResetPassword from './pages/ResetPassword';
 
 const Routing = () => (
   <BrowserRouter>
@@ -33,6 +34,7 @@ const Routing = () => (
       <Route path="/login" element={<Login />} />
       <Route path="/cart" element={<Cart />} />
       <Route path="/activate/:hash" element={<ActivateAcount />} />
+      <Route path="/resetPass/:hash" element={<ResetPassword />} />
     </Routes>
   </BrowserRouter>
 );
