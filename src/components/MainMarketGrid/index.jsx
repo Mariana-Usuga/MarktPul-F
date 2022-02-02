@@ -16,7 +16,7 @@ const MainProductGrid = () => {
       {markets.map((market) => {
         const { title, place, image, _id: id } = market;
         return (
-          <Link to={`/main/marketDetail/${id}`} key={id}>
+          <Link to={`/pages/marketDetail/${id}`} key={id}>
             <ProductItem title={title} place={place} image={image} />
           </Link>
         );

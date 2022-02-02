@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+// import { PersistGate } from 'redux-persist/integration/react';
 import LandingPage from './pages/LandingPage';
 import MarketDetail from './pages/MarketDetail';
 import ItemDetail from './pages/ItemDetail';
@@ -16,11 +16,13 @@ import CreateProduct from './pages/CreateProduct/index';
 import CreateMarket from './pages/CreateMarket/index';
 import PaymentProcess from './components/PaymentProcess/index';
 import ActivateAcount from './pages/ActivateAccount';
-import configureStore from './store/index';
+// import configureStore from './store/index';
 import UpdateMarket from './pages/UpdateMarket/index';
 import FetchProductsMyMarkets from './components/FetchProductsMyMarkets/index';
+import ReportMarket from './pages/ReportMarket/index';
+import store from './store/index';
 
-const { store, persistor } = configureStore();
+// const { store, persistor } = configureStore();
 
 const Routing = () => (
   <BrowserRouter>
@@ -36,6 +38,7 @@ const Routing = () => (
         <Route path="paymentProcess" element={<PaymentProcess />} />
         <Route path="updateMarket" element={<UpdateMarket />} />
         <Route path="productsMyMarkets" element={<FetchProductsMyMarkets />} />
+        <Route path="marketReport" element={<ReportMarket />} />
       </Route>
 
       <Route path="/register" element={<Register />} />
@@ -49,9 +52,7 @@ const Routing = () => (
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <Routing />
-      </PersistGate>
+      <Routing />
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

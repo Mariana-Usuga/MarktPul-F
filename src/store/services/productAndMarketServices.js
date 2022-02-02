@@ -5,7 +5,7 @@ const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
 export const getMarkets = async () => axios.get(`${URL_BASE}/api/market`);
 export const getProducts = () => axios.get(`${URL_BASE}/api/product`);
-export const patchMarket = () => axios.patch('http://localhost:8080/api/market');
+export const patchMarket = () => axios.patch('http://localhost:8080/api/market/');
 export const patchProduct = () => axios.patch('http://localhost:8080/api/product');
 export const getMarketProducts = async (id) => {
   const response = await axios.get(`http://localhost:8080/api/product/report/${id}`);
