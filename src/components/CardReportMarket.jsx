@@ -40,22 +40,3 @@ CardReportMarket.propTypes = {
   image: PropTypes.string.isRequired,
   _id: PropTypes.string.isRequired,
 };
-/* <tr className="market__table--row">
-    <td>{title}</td>
-    {description ? <td>{description}</td> : <td>-</td>}
-    <td>{place}</td>
-    <td>{organizer}</td>
-    <td className="market__table--item">
-      <img src={image} alt={title} className="market--image" />
-    </td>
-    <td>
-      <div>
-        <Link to={`/pages/marketDetail/${_id}`}>Ir a Productos</Link>
-        <br />
-        <Link to={`/pages/marketDetail/${_id}`}>
-          {'Editar Mercado '}
-          <FaRegEdit />
-        </Link>
-      </div>
-    </td>
-  </tr> */
