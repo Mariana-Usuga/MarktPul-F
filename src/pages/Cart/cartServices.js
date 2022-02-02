@@ -8,8 +8,16 @@ export const getCart = () => {
     : [];
   return cart;
 };
-// eslint-disable-next-line prettier/prettier
-export const getProduct = (product) => axios.get(`${URL_BASE}/api/product/${product._id}`);
+
+export const getProduct = async (product) => {
+  const { _id: id } = product;
+  try {
+    const res = await axios.get(`${URL_BASE}/api/product/${id}`);
+    return res;
+  } catch (error) {
+    return error;
+  }
+};
 
 export const updateProduct = (product) => {
   const cart = JSON.parse(localStorage.getItem('cartProduct'));

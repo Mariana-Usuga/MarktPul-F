@@ -1,7 +1,17 @@
+/* eslint-disable no-unused-vars */
+import JWTDecode from 'jwt-decode';
 import { useState, useEffect } from 'react';
-import { FaShoppingCart, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
+import {
+  FaUser,
+  FaShoppingCart,
+  FaSearch,
+  FaBars,
+  FaTimes,
+} from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
+
 import './HeaderMain.scss';
 
 const HeaderMain = () => {
@@ -13,6 +23,10 @@ const HeaderMain = () => {
   }, [cart]);
 
   const showMenu = () => (!show ? setShow(true) : setShow(false));
+  const token = getCurrentLocalStorage('token');
+  const usernameFromToken = token ? JWTDecode(token).username : null;
+  const [username] = useState(usernameFromToken);
+
   return (
     <header className="header">
       <nav className="header__nav">
@@ -36,9 +50,14 @@ const HeaderMain = () => {
             </Link>
           </li>
           <li className="header__li">
-            <Link to="/login" style={{ textDecoration: 'none' }}>
-              Mi cuenta
-            </Link>
+            {username ? (
+              <div>
+                <FaUser />
+                <Link to="/user">{` ${username}`}</Link>
+              </div>
+            ) : (
+              <Link to="login">Login</Link>
+            )}
           </li>
           <li className="header__li">
             <FaShoppingCart />

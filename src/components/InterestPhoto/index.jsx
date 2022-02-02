@@ -4,12 +4,13 @@ import './InterestPhoto.scss';
 
 const InterestPhoto = ({ image }) => (
   <div className="interest">
-    <img clasName="interest__img" src={image} alt="product" />
+    <img className="interest__img" src={image} alt="product" />
   </div>
 );
 
 InterestPhoto.propTypes = {
-  image: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/require-default-props
+  image: PropTypes.string,
 };
 
 export default InterestPhoto;

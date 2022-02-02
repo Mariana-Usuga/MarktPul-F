@@ -1,9 +1,12 @@
+import JWTDecode from 'jwt-decode';
+import { FaUser } from 'react-icons/fa';
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import './Header.scss';
 import { Link } from 'react-router-dom';
 import CartPreview from '../CartPreview';
 import { fetchCart } from '../../store/actions/cartActions';
+import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 
 const generateKey = (pre) => `${pre}_${new Date().getTime()}`;
 
@@ -12,6 +15,10 @@ const Header = () => {
   const [show, setShow] = useState(false);
   const cart = useSelector((state) => state.cartReducer.cart);
   const showMenu = () => (!show ? setShow(true) : setShow(false));
+  const token = getCurrentLocalStorage('token');
+  const usernameFromToken = token ? JWTDecode(token).username : null;
+  const [username] = useState(usernameFromToken);
+
   useEffect(() => {
     dispatch(fetchCart());
   }, []);
@@ -51,7 +58,14 @@ const Header = () => {
             <Link to="/register">Registro</Link>
           </li>
           <li className="search-header__li">
-            <Link to="/login">Mi cuenta</Link>
+            {username ? (
+              <div>
+                <FaUser />
+                <Link to="/user">{` ${username}`}</Link>
+              </div>
+            ) : (
+              <Link to="/login">Login</Link>
+            )}
           </li>
           <li
             className="search-header__li"
