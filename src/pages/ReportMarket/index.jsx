@@ -1,8 +1,10 @@
+/* eslint-disable */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import JWTDecode from 'jwt-decode';
 import { FetchMarketsUserBy } from '../../store/actions/reportMarketPageActionsCreator';
 import CardReportMarket from '../../components/CardReportMarket';
+import './ReportMarket.scss';
 
 const ReportMarket = () => {
   const dispatch = useDispatch();
@@ -16,30 +18,27 @@ const ReportMarket = () => {
   return (
     <>
       <h1>MERCADOS</h1>
-      <table>
-        <thead>
-          <tr>
-            <th>Market</th>
-            <th>Descripcion</th>
-            <th>Dirección</th>
-            <th>organizador</th>
-            <th>Imagen</th>
-          </tr>
-        </thead>
-        <tbody>
-          {markets.map((market) => (
-            <CardReportMarket
-              title={market.title}
-              description={market.description}
-              place={market.place}
-              organizer={market.organizer}
-              image={market.image}
-              _id={market._id}
-              key={market._id}
-            />
-          ))}
-        </tbody>
-      </table>
+      <div className="market--thead">
+        <div>Market</div>
+        <div>Descripcion</div>
+        <div>Dirección</div>
+        <div>Organizador</div>
+        <div>Imagen</div>
+        <div>Opciones</div>
+      </div>
+      <div className="market--tbody">
+        {markets.map((market) => (
+          <CardReportMarket
+            title={market.title}
+            description={market.description}
+            place={market.place}
+            organizer={market.organizer}
+            image={market.image}
+            _id={market._id}
+            key={market._id}
+          />
+        ))}
+      </div>
     </>
   );
 };
