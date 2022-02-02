@@ -110,7 +110,7 @@ const HeaderMain = () => {
               onChange={handleSearch}
             />
             <div className="header__info__des__fa">
-              <Link to={`/main/search/?q=${search}`}>
+              <Link to={`/pages/search/?q=${search}`}>
                 <FaSearch />
               </Link>
             </div>

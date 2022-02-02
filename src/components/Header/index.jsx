@@ -45,7 +45,7 @@ const Header = () => {
     e.preventDefault();
     dispatch(fetchProductFilter(products.items, search));
     dispatch(fetchMarketFilter(markets.items, search));
-    navigate(`../main/search/?q=${search}`);
+    navigate(`../pages/search/?q=${search}`);
     e.target.value = '';
   };
   const handleSearch = ({ target }) => {
@@ -85,7 +85,7 @@ const Header = () => {
               value={search}
               onChange={handleSearch}
             />
-            <Link to={`/main/search/?q=${search}`}>
+            <Link to={`/pages/search/?q=${search}`}>
               <FaSearch />
             </Link>
           </form>

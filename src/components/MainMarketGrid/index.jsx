@@ -15,7 +15,7 @@ const MainProductGrid = () => {
       {marketsFilter.map((market) => {
         const { title, place, image, _id: id } = market;
         return (
-          <Link to={`/main/marketDetail/${id}`} key={id}>
+          <Link to={`/pages/marketDetail/${id}`} key={id}>
             <MarketItem title={title} place={place} image={image} />
           </Link>
         );
@@ -23,7 +23,7 @@ const MainProductGrid = () => {
       {productsFilter.map((product) => {
         const { title, imageMain, _id: id } = product;
         return (
-          <Link to={`/main/itemDetail/${id}`} key={id}>
+          <Link to={`/pages/itemDetail/${id}`} key={id}>
             <ProductItem title={title} imageMain={imageMain} />
           </Link>
         );
