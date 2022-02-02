@@ -75,7 +75,9 @@ const Header = () => {
     <header>
       <nav className="search-header__nav">
         <div className="search-header__main">
-          <h2 className="search-header__main-logo">MarktPul</h2>
+          <h2 className="search-header__main-logo">
+            <Link to="/">MarktPul</Link>
+          </h2>
           {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
           <i
             className="search-header__main-bars fas fa-bars"

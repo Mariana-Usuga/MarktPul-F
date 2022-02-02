@@ -54,7 +54,9 @@ const HeaderMain = () => {
     <header className="header">
       <nav className="header__nav">
         <div className="header__main">
-          <h2 className="header__main-logo">MarktPul</h2>
+          <h2 className="header__main-logo">
+            <Link to="/">MarktPul</Link>
+          </h2>
           <button type="button" className="header__bars" onClick={showMenu}>
             {!show ? <FaBars /> : <FaTimes />}
           </button>
