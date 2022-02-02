@@ -17,6 +17,8 @@ import CreateMarket from './pages/CreateMarket/index';
 import PaymentProcess from './components/PaymentProcess/index';
 import ActivateAcount from './pages/ActivateAccount';
 import configureStore from './store/index';
+import UpdateMarket from './pages/UpdateMarket/index';
+import FetchProductsMyMarkets from './components/FetchProductsMyMarkets/index';
 
 const { store, persistor } = configureStore();
 
@@ -32,6 +34,8 @@ const Routing = () => (
         <Route path="createProduct" element={<CreateProduct />} />
         <Route path="createMarket" element={<CreateMarket />} />
         <Route path="paymentProcess" element={<PaymentProcess />} />
+        <Route path="updateMarket" element={<UpdateMarket />} />
+        <Route path="productsMyMarkets" element={<FetchProductsMyMarkets />} />
       </Route>
 
       <Route path="/register" element={<Register />} />

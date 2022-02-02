@@ -1,18 +1,20 @@
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import InputCreateProduct from '../../components/InputCreateProduct/index';
-// import { sendProduct } from '../../store/actions/productAndMarketActions';
+import { sendProduct } from '../../store/actions/productAndMarketActions';
 import ProductPictures from '../../components/ProductPictures/index';
 import ChooseMarket from '../../components/ChoosseMarket';
 import ChooseProductCategory from '../../components/ChooseProductCategory';
 
 import './CreateProduct.scss';
 
+// const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
+
 const CreateProduct = () => {
   const [mainImage, setMainImage] = useState(null);
   const [images, setImages] = useState([]);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const [formProduct, setFormProduct] = useState({
     title: '',
@@ -68,10 +70,12 @@ const CreateProduct = () => {
       formDataImages.append('images', file);
     }
     const responseImageMain = await axios.post(
+      // `${URL_BASE}/api/upload/file`,
       'http://localhost:8080/api/upload/file',
       formDataImageMain,
     );
     const responseImage = await axios.post(
+      // `${URL_BASE}/api/upload/files`,
       'http://localhost:8080/api/upload/files',
       formDataImages,
     );
@@ -88,8 +92,7 @@ const CreateProduct = () => {
       images: responseImages,
       marketId: formProduct.marketId,
     };
-    console.log('new', newFormProduct);
-    // dispatch(sendProduct(newFormProduct));
+    dispatch(sendProduct(newFormProduct));
   };
   return (
     <div className="createProductContainer">

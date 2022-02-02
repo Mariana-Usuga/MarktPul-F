@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
-import { sendMarket } from '../../store/actions/productAndMarketActions';
+import { fetchUpdateMarket } from '../../store/actions/productAndMarketActions';
 import ProductPictures from '../../components/ProductPictures/index';
-// import IsVirtual from '../../components/IsVirtual/index';
 import FormMarket from '../../components/FormMarket/index';
 
-import './CreateMarket.scss';
+import '../CreateProduct/CreateProduct.scss';
 
-const CreateMarket = () => {
+const UpdateMarket = () => {
   const [mainImage, setMainImage] = useState(null);
   const dispatch = useDispatch();
 
@@ -63,28 +62,29 @@ const CreateMarket = () => {
       description: formMarket.description,
       category: formMarket.category,
     };
-    dispatch(sendMarket(newFormMarket));
+    dispatch(fetchUpdateMarket(newFormMarket));
   };
   return (
-    <div className="createMarketContainer">
-      <div className="createMarketContainer__item">
+    <div className="createProductContainer">
+      <div className="createProductContainer__item">
         <ProductPictures
           onChangeFile={onChangeFile}
           img={mainImage}
           title="Subir foto del mercado"
         />
       </div>
-      <div className="createMarketContainer__item__data">
-        <h2 className="createMarketContainer__item__data__title">
-          Datos de mi mercado
+      <div className="createProductContainer__item__data">
+        <h2 className="createProductContainer__item__data__title">
+          Editar mi mercado
         </h2>
+        <div>Llena los campos que deseas editar</div>
         <FormMarket handleChange={handleChange} onSubmit={onSubmit} />
         <button onClick={onSubmit} className="formMarket__btn" type="submit">
-          Crear mercado
+          Actualizar mercado
         </button>
       </div>
     </div>
   );
 };
 
-export default CreateMarket;
+export default UpdateMarket;

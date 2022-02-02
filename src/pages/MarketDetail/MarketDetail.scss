@@ -1,51 +1,85 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
 $primary-color: white;
-$secondary-color:#4C3DFF;
-.market{
+$secondary-color: #4c3dff;
+.market {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  &__item{
+  &__item {
     margin-top: 30px;
   }
 }
-.market__itemI{
-text-align: center;
-&__img{
-  width: 280px;
+.market__itemI {
+  text-align: center;
+  &__img {
+    width: 280px;
+  }
 }
-}
-.market__item{
+.market__item {
   text-align: right;
   margin-right: 10px;
-  &__organizer span, &__place{
+  &__organizer span,
+  &__place {
     margin-top: 10px;
     font-size: 1.4rem;
   }
-  &__desc, &__organizer, &__btn{
+  &__desc,
+  &__organizer,
+  &__btn {
     margin-top: 10px;
     font-size: 1.2rem;
   }
-  &__title{
+  &__title {
     margin-top: 20px;
     margin-bottom: 10px;
   }
-  &__btn{
+  &__btn {
     margin-top: 20px;
     background-color: $secondary-color;
     color: $primary-color;
-    border:2px solid $primary-color;
+    border: 2px solid $primary-color;
     padding: 10px;
     border-radius: 10px;
     font-family: 'Nunito Sans', sans-serif;
     font-weight: bolder;
   }
 }
-@media(min-width:992px){
-  .market__itemI{
-    &__img{
+
+.marketProducts {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 35px 260px 0 260px;
+  border-bottom: 1px solid grey;
+  &__noProducts {
+    font-size: 1.2rem;
+    margin-left: 140px;
+  }
+  &__title {
+    margin: 35px 0 0 150px;
+  }
+  &__item {
+    &__img {
+      margin-right: 40px;
+    }
+    &__img img {
+      width: 100px;
+    }
+    &__info {
+      width: 500px;
+    }
+    &__title {
+      margin-bottom: 10px;
+      font-weight: bolder;
+      font-size: 1.3rem;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .market__itemI {
+    &__img {
       width: 400px;
     }
-   margin-top: 30px;
-}
+    margin-top: 30px;
+  }
 }

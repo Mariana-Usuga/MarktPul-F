@@ -3,15 +3,18 @@ import {
   CREATE_MARKET,
   LOAD_PRODUCTS,
   LOAD_MARKETS,
-  PRODUCT,
+  GET_ID_PRODUCT,
+  UPDATE_PRODUCT,
+  UPDATE_MARKET,
+  MARKET_PRODUCTS,
 } from '../types/productAndMarketTypes';
 
 const initialState = {
   markets: [],
   products: [],
-  product: {},
-  // market: {},
-  // productGet: {},
+  idProduct: '',
+  idMarket: '',
+  marketProducts: [],
 };
 
 const productAndMarketReducer = (state = initialState, action) => {
@@ -24,8 +27,14 @@ const productAndMarketReducer = (state = initialState, action) => {
       return { ...state, product: action.payload };
     case CREATE_MARKET:
       return { ...state, market: action.payload };
-    case PRODUCT:
-      return { ...state, productGet: action.payload };
+    case GET_ID_PRODUCT:
+      return { ...state, idProduct: action.payload };
+    case UPDATE_PRODUCT:
+      return { ...state, idProduct: action.payload };
+    case UPDATE_MARKET:
+      return { ...state, idProduct: action.payload };
+    case MARKET_PRODUCTS:
+      return { ...state, marketProducts: action.payload };
     default:
       return state;
   }

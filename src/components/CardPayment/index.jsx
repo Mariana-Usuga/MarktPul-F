@@ -1,5 +1,5 @@
 /* eslint-disable no-nested-ternary */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaCheckCircle } from 'react-icons/fa';
 import {
@@ -32,9 +32,7 @@ const CardPayment = () => {
     { id: '19', year: '39' },
     { id: '20', year: '40' },
   ];
-  const token = useSelector((state) => state.auth.token);
   const aProduct = useSelector((state) => state.pay.aProduct);
-  const product = useSelector((state) => state.productAndMarket.product);
   const pay = useSelector((state) => state.pay.dataPay);
   const isLoading = useSelector((state) => state.pay.isLoading);
   const estimatedTotal = useSelector(
@@ -42,6 +40,18 @@ const CardPayment = () => {
   );
   const [showLoaderState, setShowLoaderState] = useState(false);
   const dispatch = useDispatch();
+  const [product, setProduct] = useState();
+  const products = useSelector((state) => state.productAndMarket.products);
+  const id = useSelector((state) => state.productAndMarket.idProduct);
+
+  useEffect(() => {
+    for (const productItem of products) {
+      if (id === productItem._id) {
+        setProduct(productItem);
+        return;
+      }
+    }
+  }, []);
 
   const [form, setForm] = useState({
     holdersName: '',
@@ -76,10 +86,9 @@ const CardPayment = () => {
       cardExpMonth: form.month,
       cardCVC: form.cvc,
     };
-
     if (pay && !isLoading) {
       dispatch(showLoader());
-      await dispatch(fetchDoPay(paymentData, token));
+      dispatch(fetchDoPay(paymentData));
       if (pay) {
         setShowLoaderState(true);
         dispatch(hideLoader());
@@ -170,3 +179,5 @@ const CardPayment = () => {
 };
 
 export default CardPayment;
+
+/*  */

@@ -27,14 +27,16 @@ const Shipping = () => {
   const handleChange = (e) => {
     if (e.target.id === 'exists') {
       dispatch(existingAddressTrue());
-    } else if (e.target.id === 'new') {
-      dispatch(existingAddressFalse());
+      return;
     }
-    const { name } = e.target;
-    const { value } = e.target;
-    const newState = { ...form };
-    newState[name] = value;
-    setForm(newState);
+    if (e.target.id === 'new') {
+      dispatch(existingAddressFalse());
+      const { name } = e.target;
+      const { value } = e.target;
+      const newState = { ...form };
+      newState[name] = value;
+      setForm(newState);
+    }
   };
   const sendData = async (e) => {
     e.preventDefault();

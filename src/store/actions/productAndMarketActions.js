@@ -3,14 +3,18 @@ import {
   LOAD_PRODUCTS,
   CREATE_MARKET,
   CREATE_PRODUCT,
-  PRODUCT,
+  GET_ID_PRODUCT,
+  GET_ID_MARKET,
+  UPDATE_MARKET,
+  UPDATE_PRODUCT,
 } from '../types/productAndMarketTypes';
 import {
   getMarkets,
   getProducts,
   postMarket,
   postProduct,
-  getProduct,
+  patchMarket,
+  patchProduct,
 } from '../services/productAndMarketServices';
 
 export const loadMarkets = (markets) => ({
@@ -33,10 +37,39 @@ export const createMarket = (market) => ({
   payload: market,
 });
 
-export const loadAproduct = (product) => ({
-  type: PRODUCT,
-  payload: product.data,
+export const updateProduct = (product) => ({
+  type: UPDATE_PRODUCT,
+  payload: product,
 });
+
+export const updateMarket = (product) => ({
+  type: UPDATE_MARKET,
+  payload: product,
+});
+
+export const fetchUpdateMarket = (market) => async (dispatch) => {
+  const updateMarket = await patchMarket(market);
+  dispatch(updateMarket(updateMarket));
+};
+
+export const fetchUpdateProduct = (product) => async (dispatch) => {
+  const updateProduct = await patchProduct(product);
+  dispatch(updateProduct(updateProduct));
+};
+
+export const fetchIdProduct = (id) => async (dispatch) => {
+  dispatch({
+    type: GET_ID_PRODUCT,
+    payload: id,
+  });
+};
+
+export const fetchIdMarket = (id) => async (dispatch) => {
+  dispatch({
+    type: GET_ID_MARKET,
+    payload: id,
+  });
+};
 
 export const fetchMarkets = () => async (dispatch) => {
   const markets = await getMarkets();
@@ -56,9 +89,4 @@ export const sendProduct = (formProduct) => async (dispatch) => {
 export const sendMarket = (formMarket) => async (dispatch) => {
   const responseMarket = await postMarket(formMarket);
   dispatch(createMarket(responseMarket));
-};
-
-export const fetchAproduct = (id) => async (dispatch) => {
-  const product = await getProduct(id);
-  dispatch(loadAproduct(product));
 };

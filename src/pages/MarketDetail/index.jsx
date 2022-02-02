@@ -1,22 +1,27 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import axios from 'axios';
-import InterestPhoto from '../../components/InterestPhoto';
-
+import ProductsOfTheMarkets from '../../components/ProductsOfTheMarkets/index';
 import './MarketDetail.scss';
 
 const MarketDetail = () => {
+  const [products, setProducts] = useState();
+  const markets = useSelector((state) => state.productAndMarket.markets);
   const [market, setMarket] = useState({});
   const { id } = useParams();
 
-  useEffect(() => {
-    const getMarketshow = async () => {
-      const getMarket = await axios.get(
-        `https://marktpul-bk.herokuapp.com/api/market/${id}`,
-      );
-      setMarket(getMarket.data);
-    };
-    getMarketshow();
+  useEffect(async () => {
+    const response = await axios.get(
+      `http://localhost:8080/api/product/report/${id}`,
+    );
+    setProducts(response.data);
+
+    for (const mar of markets) {
+      if (id === mar._id) {
+        setMarket(mar);
+      }
+    }
   }, []);
 
   return (
@@ -40,18 +45,11 @@ const MarketDetail = () => {
           <button className="market__item__btn" type="button">
             Contactar al organizador
           </button>
+          {/* <button>Editar mercado</button> */}
         </div>
       </div>
-      <div>
-        <h2 className="titleInterest">Tambien te podria interesar</h2>
-        <div className="interestPhotos">
-          <InterestPhoto image={market.image} />
-          <InterestPhoto image={market.image} />
-          <InterestPhoto image={market.image} />
-          <InterestPhoto image={market.image} />
-          <InterestPhoto image={market.image} />
-        </div>
-      </div>
+      <h2 className="marketProducts__title">Productos de este mercado</h2>
+      <ProductsOfTheMarkets products={products} />
     </>
   );
 };

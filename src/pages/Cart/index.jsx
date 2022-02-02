@@ -10,6 +10,7 @@ import { fetchBuyCart } from '../../store/actions/payActionsCreator';
 import './shoppingCart.scss';
 
 const Cart = () => {
+  const token = JSON.parse(localStorage.getItem('token'));
   const dispatch = useDispatch();
 
   const buyShoppingCart = () => {
@@ -22,7 +23,10 @@ const Cart = () => {
         <ShoppingCart />
         <CartSummary />
       </main>
-      <Link to="/pages/paymentProcess" style={{ textDecoration: 'none' }}>
+      <Link
+        to={token ? '/pages/paymentProcess' : '/login'}
+        style={{ textDecoration: 'none' }}
+      >
         <button
           onClick={buyShoppingCart}
           className="shopping-cart__btnPay"

@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import AddressMarket from '../AddressMarket/index';
+// import '../../pages/CreateProduct/CreateProduct.scss';
 
-import './IsVirtual.scss';
+// import './IsVirtual.scss';
 
 const IsVirtual = ({ handleChange }) => {
   const [showPlace, setShowPlace] = useState('');
@@ -31,9 +32,9 @@ const IsVirtual = ({ handleChange }) => {
         </div>
       </div>
       <div className="location">
-        <label className="containerPay__label" htmlFor="fisico">
+        <label className="location__label" htmlFor="fisico">
           <input
-            className="containerPay__radio"
+            className="location__radio"
             id="fisico"
             type="radio"
             name="fisico"

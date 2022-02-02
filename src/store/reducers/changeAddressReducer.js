@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   location: {},
-  existingAddress: false,
+  existingAddress: 'nosee',
 };
 
 const chageAddress = (state = initialState, action) => {

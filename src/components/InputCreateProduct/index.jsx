@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import './InputCreateProduct.scss';
 
 const InputCreateProduct = ({ label, handleChange, name }) => (
   <div className="inputProduct">

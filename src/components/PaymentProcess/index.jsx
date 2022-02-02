@@ -14,6 +14,8 @@ import Shipping from '../../pages/Shipping';
 import './PaymentProcess.scss';
 
 const StepperPay = () => {
+  const [nose, setNose] = useState(false);
+  const pay = useSelector((state) => state.pay.dataPay);
   const existingAddress = useSelector(
     (state) => state.changeAddress.existingAddress,
   );
@@ -23,6 +25,7 @@ const StepperPay = () => {
     if (activeStep < 2) {
       setActiveStep((currentStep) => currentStep + 1);
     }
+    setNose(true);
   };
   const previousStep = () => {
     if (activeStep !== -1) {
@@ -57,7 +60,30 @@ const StepperPay = () => {
           </Button>
         </div>
         <div className="btnStepper__previous">
-          {changeAddress.location || existingAddress ? (
+          {(changeAddress.location && !nose) || (existingAddress && !nose) ? (
+            <Button
+              onClick={nextStep}
+              className={
+                activeStep === 2 ? 'btnStepper__previous__btn__hide' : null
+              }
+            >
+              Proceder al pago 1
+            </Button>
+          ) : pay?.number && nose ? (
+            <Button
+              onClick={nextStep}
+              className={
+                activeStep === 2 ? 'btnStepper__previous__btn__hide' : null
+              }
+            >
+              Proceder al pago 2
+            </Button>
+          ) : (
+            <button type="button" className="btnStepper__previous__btn__hide">
+              Proceder al pago aqui
+            </button>
+          )}
+          {/* {(changeAddress.location && !nose) || (existingAddress && !nose) ? (
             <Button
               onClick={nextStep}
               className={
@@ -70,7 +96,7 @@ const StepperPay = () => {
             <button type="button" className="btnStepper__previous__btn__hide">
               Proceder al pago
             </button>
-          )}
+          )} */}
         </div>
         {activeStep === 2 ? (
           <button type="button" className="back_landing">

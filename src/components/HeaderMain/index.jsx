@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import './HeaderMain.scss';
 
 const HeaderMain = () => {
+  const token = JSON.parse(localStorage.getItem('token'));
   const cart = useSelector((state) => state.cartReducer.cart);
 
   const [show, setShow] = useState(false);
@@ -59,13 +60,19 @@ const HeaderMain = () => {
           </div>
         </div>
         <div className="header__info__sell">
-          <Link to="/pages/createProduct" style={{ textDecoration: 'none' }}>
+          <Link
+            to={token ? '/pages/createProduct' : '/login'}
+            style={{ textDecoration: 'none' }}
+          >
             Quiero vender
           </Link>
         </div>
         <div className="header__info__buy">Quiero comprar</div>
         <div className="header__info__market">
-          <Link to="/pages/createMarket" style={{ textDecoration: 'none' }}>
+          <Link
+            to={token ? '/pages/createMarket' : '/login'}
+            style={{ textDecoration: 'none' }}
+          >
             Quiero realizar un mercado
           </Link>
         </div>

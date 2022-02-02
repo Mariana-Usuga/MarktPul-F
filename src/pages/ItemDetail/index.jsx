@@ -1,12 +1,11 @@
-/* eslint-disable no-restricted-syntax */
+/* eslint-disable prettier/prettier */
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-elastic-carousel';
-import ProductPhoto from '../../components/ProductPhoto';
-import InterestPhoto from '../../components/InterestPhoto';
 import { fetchAPay } from '../../store/actions/payActionsCreator';
-import { fetchAproduct } from '../../store/actions/productAndMarketActions';
+import { fetchIdProduct } from '../../store/actions/productAndMarketActions';
+import ProductPhoto from '../../components/ProductPhoto';
 import './ItemDetail.scss';
 import {
   addProductToCart,
@@ -14,10 +13,11 @@ import {
 } from '../../store/actions/cartActions';
 
 const ItemDetail = () => {
+  const token = JSON.parse(localStorage.getItem('token'));
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer.cart);
   const [product, setProduct] = useState({});
-  const breakPoints = [{ width: 100, itemsToShow: 2 }];
+  const breakPoints = [{ width: 100, itemsToShow: 1 }];
   const { id } = useParams();
   const products = useSelector((state) => state.productAndMarket.products);
 
@@ -32,7 +32,7 @@ const ItemDetail = () => {
         setProduct(productUpdate);
       }
     }
-    dispatch(fetchAproduct(id));
+    dispatch(fetchIdProduct(id));
   }, []);
 
   useEffect(() => {
@@ -53,6 +53,12 @@ const ItemDetail = () => {
       dispatch(addProductToCart(product));
     }
   };
+  const see = () => {
+    console.log('see ', products)
+    for(const product of products){
+      console.log('product', product.imageMain)
+    }
+  }
   /* eslint-enable */
   return (
     <>
@@ -64,10 +70,11 @@ const ItemDetail = () => {
             alt="product"
           />
           <Carousel className="carousel" breakPoints={breakPoints}>
-            <ProductPhoto image={product.imageMain} />
-            <ProductPhoto image={product.imageMain} />
-            <ProductPhoto image={product.imageMain} />
-            <ProductPhoto image={product.imageMain} />
+            {product.images === 0 ? (
+              <div>no hay mas fotos</div>
+            ) : (
+              product?.images?.map((img) => <ProductPhoto image={img} />)
+            )}
           </Carousel>
         </div>
         <div className="container__info">
@@ -75,7 +82,10 @@ const ItemDetail = () => {
           <p className="container__info__description">{product.description}</p>
           <p className="container__info__price">{product.price}</p>
           <button onClick={buyAproduct} className="btn__buy" type="button">
-            <Link to="/pages/paymentProcess" className="btn__buy__link">
+            <Link
+              to={token ? '/pages/paymentProcess' : '/login'}
+              className="btn__buy__link"
+            >
               Comprar
             </Link>
           </button>
@@ -86,7 +96,7 @@ const ItemDetail = () => {
           >
             Añadir al carrito
           </button>
-          <button className="btn__seller" type="button">
+          <button onClick={see} className="btn__seller" type="button">
             Contactar al vendedor
           </button>
         </div>
@@ -94,11 +104,19 @@ const ItemDetail = () => {
       <div>
         <h2 className="titleInterest">Tambien te podria interesar</h2>
         <div className="interestPhotos">
-          <InterestPhoto image={product.imageMain} />
-          <InterestPhoto image={product.imageMain} />
-          <InterestPhoto image={product.imageMain} />
-          <InterestPhoto image={product.imageMain} />
-          <InterestPhoto image={product.imageMain} />
+          {products
+            .filter((p) => p.category == product.category)
+            .filter((pro) => product.title !== pro.title)
+            .slice(0, 5)
+            .map((product) => (
+              <div className="interest">
+                <img
+                  clasName="interest__img"
+                  src={product.imageMain}
+                  alt="product"
+                />
+              </div>
+            ))}
         </div>
       </div>
     </>
