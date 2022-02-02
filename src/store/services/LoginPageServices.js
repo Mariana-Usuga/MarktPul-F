@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
 
-export const postLogin = (email, password) => {
+export const postLogin = async (email, password) => {
   const data = {
     email,
     password,
@@ -17,17 +17,10 @@ export const postLogin = (email, password) => {
     },
     data,
   };
-  return axios(config);
-  /* .then((response) => {
-      console.log(
-        '🚀 ~ file: index.jsx ~ line 106 ~ .then ~ response',
-        response.data.JW,
-      );
-      // console.log(JSON.stringify(response.data));
-      // setAlert('Te has registrado Satisfactoriamente, dirígete a Login');
-    })
-    .catch((error) => {
-      console.log(error.response.data);
-      // setAlert(error.response.data.message);
-    }); */
+  try {
+    const res = await axios(config);
+    return res;
+  } catch (error) {
+    return error;
+  }
 };
