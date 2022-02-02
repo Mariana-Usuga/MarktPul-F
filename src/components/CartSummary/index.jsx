@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchEstimatedTotal } from '../../store/actions/cartActions';
 
 const priceFormat = (amount) => {
   const price = new Intl.NumberFormat('es-CO', {
@@ -10,6 +11,7 @@ const priceFormat = (amount) => {
 };
 
 const CartSummary = () => {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer.cart);
   const discount = 0;
   const [cartPrice, setCartPrice] = useState(0);
@@ -18,6 +20,9 @@ const CartSummary = () => {
   useEffect(() => {
     setCartPrice(cart.reduce(reducer, 0));
   }, [cart]);
+  if (cartPrice > 0) {
+    dispatch(fetchEstimatedTotal(cartPrice - discount));
+  }
   return (
     <aside className="cart__summary">
       <div className="cart__summary--title">
@@ -47,9 +52,6 @@ const CartSummary = () => {
           </label>
           <input type="button" value="Aplicar" id="aplicar" />
         </div>
-        <button type="button" className="cart__summary--button">
-          Pagar
-        </button>
       </div>
     </aside>
   );
