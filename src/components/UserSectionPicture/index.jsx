@@ -1,18 +1,16 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-param-reassign */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/prop-types */
+/* eslint-disable */
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import Avatar from 'react-avatar-edit';
 import { Modal, Button } from '@mantine/core';
 
-const UserSectionPicture = ({ user }) => {
+const UserSectionPicture = () => {
+  const user = useSelector((state) => state.user.user);
   const defaultPicture =
     'https://user-images.githubusercontent.com/13368066/151895402-67d28c80-17a8-4a35-8bab-b0be177cbfda.png';
 
   const [opened, setOpened] = useState(false);
-  const img = user.picture ?? defaultPicture;
+  const img = user?.picture ?? defaultPicture;
   const handleImgClick = () => {
     setOpened(true);
   };
@@ -67,7 +65,7 @@ const UserSectionPicture = ({ user }) => {
               <div className="user-container__data--hero-pic">
                 <img
                   src={previewState.preview}
-                  alt={user.username}
+                  alt={user?.username}
                   onClick={handleImgClick}
                 />
               </div>

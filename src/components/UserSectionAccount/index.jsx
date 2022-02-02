@@ -2,9 +2,17 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
 import PhoneInput from 'react-phone-number-input';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
+import { fetchUser } from '../../store/actions/userActionsCreator';
 
-const UserSectionAccount = ({ user }) => {
+const UserSectionAccount = () => {
+  const token = getCurrentLocalStorage('token');
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
+
   const [userAccount, setUserAccount] = useState({
     name: user.name,
     country: user.country,
@@ -12,6 +20,12 @@ const UserSectionAccount = ({ user }) => {
     email: user.email,
     username: user.username,
   });
+
+  // useEffect(() => {
+  //   if (token) {
+  //     dispatch(fetchUser(token));
+  //   }
+  // }, []);
 
   const handleChange = ({ target }) => {
     const { name: inputName, value } = target;
@@ -22,6 +36,7 @@ const UserSectionAccount = ({ user }) => {
     e.preventDefault();
     console.log('Has hecho submit al account', e);
   };
+
   return (
     <div className="user-container__data--form">
       <h2>De la cuenta</h2>

@@ -1,7 +1,8 @@
 import { useState } from 'react';
-
+import { useSelector } from 'react-redux';
 /*eslint-disable*/
-const UserSectionAdress = ({ user }) => {
+const UserSectionAdress = () => {
+  const user = useSelector((state) => state.user.user);
   const location = user?.location ?? '';
 
   const [userAdress, setUserAdress] = useState({
@@ -17,6 +18,7 @@ const UserSectionAdress = ({ user }) => {
     e.preventDefault();
     console.log('Has hecho submit a las direcciones', e);
   };
+
   return (
     <div className="user-container__data--form">
       <h2>Mis direcciones</h2>

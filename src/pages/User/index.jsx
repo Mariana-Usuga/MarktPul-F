@@ -6,11 +6,14 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import UserSectionAccount from '../../components/UserSectionAccount';
 import UserSectionPicture from '../../components/UserSectionPicture';
+import UserSectionAdress from '../../components/UserSectionAdress';
 import { logout } from '../../store/actions/authActionsCreator';
+import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
+import { fetchUser } from '../../store/actions/userActionsCreator';
 
 import 'react-phone-number-input/style.css';
 import './User.scss';
-import UserSectionAdress from '../../components/UserSectionAdress';
+
 const currentUser = {
   _id: {
     $oid: '61f5b8ff506fd791801b17cd',
@@ -43,10 +46,19 @@ const User = () => {
   const [optionState, setOptionState] = useState({
     current: 'account',
   });
-  const [user, setUser] = useState(currentUser);
-  const [currentComponent, setCurrentComponent] = useState(
-    <UserSectionAccount user={user} />,
-  );
+
+  const renderOptions = (option) => {
+    switch (option) {
+      case 'account':
+        return <UserSectionAccount />;
+      case 'address':
+        return <UserSectionAdress />;
+      default:
+        return <UserSectionAccount />;
+    }
+  };
+
+  const token = getCurrentLocalStorage('token');
 
   const handleClick = ({ target }) => {
     const { name } = target;
@@ -60,13 +72,10 @@ const User = () => {
   };
 
   useEffect(() => {
-    let options = {
-      account: <UserSectionAccount user={user} />,
-      adress: <UserSectionAdress user={user} />,
-    };
-
-    setCurrentComponent(options[optionState.current]);
-  }, [optionState]);
+    if (token) {
+      dispatch(fetchUser(token));
+    }
+  }, []);
 
   return (
     <div className="user-page">
@@ -75,7 +84,7 @@ const User = () => {
         <h1 className="user-container__title">Mis datos</h1>
         <div className="user-container__data">
           <div className="user-container__data--sidebar">
-            <UserSectionPicture user={user} />
+            <UserSectionPicture />
             <ul className="user-container__data--sidebar-options">
               <li>
                 <button
@@ -90,7 +99,7 @@ const User = () => {
               <li>
                 <button
                   className={'user-container__data--sidebar-options-btn'}
-                  name="adress"
+                  name="address"
                   onClick={handleClick}
                   type="button"
                 >
@@ -109,7 +118,7 @@ const User = () => {
               </li>
             </ul>
           </div>
-          {currentComponent}
+          {renderOptions(optionState.current)}
         </div>
       </div>
       <Footer />

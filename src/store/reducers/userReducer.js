@@ -1,7 +1,8 @@
 import { LOAD_USER } from '../types/userTypes';
+import { getCurrentLocalStorage } from '../utils/LocalStorageUtils';
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem('user')) || {},
+  user: getCurrentLocalStorage('user') || {},
 };
 
 const userReducer = (state = initialState, action) => {

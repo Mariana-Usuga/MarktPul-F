@@ -1,3 +1,4 @@
+/* eslint-disable*/
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import './ShipmentSummary.scss';
@@ -15,8 +16,10 @@ const ShipmentSummary = () => {
   const user = useSelector((state) => state.user.user);
   const cart = useSelector((state) => state.cartReducer.cart);
   const product = useSelector((state) => state.landing.product);
-  // eslint-disable-next-line prettier/prettier
-  const reducer = (prevValue, currentValue) => prevValue + currentValue.price * currentValue.qty;
+
+  const reducer = (prevValue, currentValue) => {
+    prevValue + currentValue.price * currentValue.qty;
+  };
   const [cartPrice, setCartPrice] = useState(0);
 
   useEffect(() => {
