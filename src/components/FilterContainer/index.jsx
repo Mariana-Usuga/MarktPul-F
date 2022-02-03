@@ -76,7 +76,7 @@ const FilterContainer = () => {
                 className={!showMarkets ? 'sub_menu__ul' : 'sub_menu__ul--show'}
               >
                 <li>
-                  <a href="/main/search/?q=mariana">Fisicos</a>
+                  <a href="/pages/search/?q=mariana">Fisicos</a>
                 </li>
                 <li>
                   <a href="/">Digitales</a>

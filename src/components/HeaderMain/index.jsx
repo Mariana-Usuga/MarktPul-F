@@ -47,7 +47,7 @@ const HeaderMain = () => {
   const handleFilter = (e) => {
     e.preventDefault();
     // dispatch(fetchMarketFilter(markets.items, search));
-    navigate(`../main/search/?q=${search}`);
+    navigate(`../pages/search/?q=${search}`);
     e.target.value = '';
   };
   return (
