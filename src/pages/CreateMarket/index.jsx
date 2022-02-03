@@ -8,6 +8,7 @@ import FormMarket from '../../components/FormMarket/index';
 
 import './CreateMarket.scss';
 
+const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 const CreateMarket = () => {
   const [mainImage, setMainImage] = useState(null);
   const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const CreateMarket = () => {
     const formDataImageMain = new FormData();
     formDataImageMain.append('imageMain', formMarket.image);
     const responseImageMain = await axios.post(
-      'http://localhost:8080/api/upload/file',
+      `${URL_BASE}/api/upload/file`,
       formDataImageMain,
     );
 

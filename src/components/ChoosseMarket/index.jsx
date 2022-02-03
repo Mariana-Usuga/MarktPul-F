@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/interactive-supports-focus */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { FaRegTimesCircle } from 'react-icons/fa';
@@ -6,7 +5,7 @@ import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 
-const ChooseMarket = ({ setFormProduct, formProduct }) => {
+const ChooseMarket = ({ setFormProduct }) => {
   const [marketsSelected, setMarketsSelected] = useState([]);
   const [userMarkets, setUserMarkets] = useState([]);
   const user = useSelector((state) => state.user.user);
@@ -48,18 +47,10 @@ const ChooseMarket = ({ setFormProduct, formProduct }) => {
     }));
   };
 
-  const result = () => {
-    console.log('form market', formProduct.marketId);
-    console.log('markets', marketsSelected);
-  };
   return (
     <>
       <div className="inputProduct__markets">
-        <label
-          className="inputProduct__markets__label"
-          htmlFor="category"
-          onClick={result}
-        >
+        <label className="inputProduct__markets__label" htmlFor="category">
           ¿En cual mercado quieres que este tu producto?
         </label>
         <select
@@ -97,7 +88,6 @@ const ChooseMarket = ({ setFormProduct, formProduct }) => {
 };
 ChooseMarket.propTypes = {
   setFormProduct: PropTypes.string.isRequired,
-  formProduct: PropTypes.string.isRequired,
 };
 
 export default ChooseMarket;

@@ -9,23 +9,24 @@ const CardReportMarket = ({
   organizer,
   image,
   _id,
-}) => (
-  <tr className="cart__table--row">
-    <td>{title}</td>
-    <td>{description}</td>
-    <td>{place}</td>
-    <td>{organizer}</td>
-    <td className="cart__table--item">
-      <img src={image} alt={title} className="cart--image" />
-    </td>
-    <td>
-      <Link to={`/pages/marketDetail/${_id}`}>Ir a Productos</Link>
-      <br />
-      <Link to={`/pages/marketDetail/${_id}`}>Editar Mercados</Link>
-    </td>
-  </tr>
-);
-
+}) => {
+  return (
+    <tr className="cart__table--row">
+      <td>{title}</td>
+      <td>{description}</td>
+      <td>{place}</td>
+      <td>{organizer}</td>
+      <td className="cart__table--item">
+        <img src={image} alt={title} className="cart--image" />
+      </td>
+      <td>
+        <Link to={`/pages/productsMyMarkets/${_id}`}>Ir a Productos</Link>
+        <br />
+        <Link to={`/pages/updateMarket/${_id}`}>Editar Mercados</Link>
+      </td>
+    </tr>
+  );
+};
 export default CardReportMarket;
 CardReportMarket.propTypes = {
   title: PropTypes.string.isRequired,

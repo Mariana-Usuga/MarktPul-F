@@ -8,11 +8,10 @@ const ReportMarket = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.report.marketsUser);
   const token = useSelector((state) => state.auth.token);
-  const userIdFromToken = token ? JWTDecode(token)._id : null;
+  const userIdFromToken = token ? JWTDecode(token.JWT)._id : null;
   useEffect(() => {
     dispatch(FetchMarketsUserBy(token, userIdFromToken));
   }, []);
-
   return (
     <>
       <h1>MERCADOS</h1>

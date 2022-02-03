@@ -9,7 +9,7 @@ import ChooseProductCategory from '../../components/ChooseProductCategory';
 
 import './CreateProduct.scss';
 
-// const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
+const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
 
 const CreateProduct = () => {
   const [mainImage, setMainImage] = useState(null);
@@ -70,13 +70,11 @@ const CreateProduct = () => {
       formDataImages.append('images', file);
     }
     const responseImageMain = await axios.post(
-      // `${URL_BASE}/api/upload/file`,
-      'http://localhost:8080/api/upload/file',
+      `${URL_BASE}/api/upload/file`,
       formDataImageMain,
     );
     const responseImage = await axios.post(
-      // `${URL_BASE}/api/upload/files`,
-      'http://localhost:8080/api/upload/files',
+      `${URL_BASE}/api/upload/files`,
       formDataImages,
     );
     const responseImages = [];

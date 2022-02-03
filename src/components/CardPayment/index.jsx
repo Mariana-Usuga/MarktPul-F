@@ -7,6 +7,7 @@ import {
   showLoader,
   hideLoader,
 } from '../../store/actions/payActionsCreator';
+import { postPay } from '../../store/services/payServices';
 import './CardPayment.scss';
 
 const CardPayment = () => {
@@ -33,7 +34,6 @@ const CardPayment = () => {
     { id: '20', year: '40' },
   ];
   const aProduct = useSelector((state) => state.pay.aProduct);
-  const pay = useSelector((state) => state.pay.dataPay);
   const isLoading = useSelector((state) => state.pay.isLoading);
   const estimatedTotal = useSelector(
     (state) => state.cartReducer.estimatedTotal,
@@ -86,10 +86,10 @@ const CardPayment = () => {
       cardExpMonth: form.month,
       cardCVC: form.cvc,
     };
-    if (pay && !isLoading) {
+    if (!isLoading) {
       dispatch(showLoader());
       dispatch(fetchDoPay(paymentData));
-      if (pay) {
+      if (postPay) {
         setShowLoaderState(true);
         dispatch(hideLoader());
       }

@@ -20,7 +20,7 @@ const LandingPage = () => {
   const markets = useSelector((state) => state.productAndMarket.markets);
   const products = useSelector((state) => state.productAndMarket.products);
   // eslint-disable-next-line no-unused-vars
-  const user = useSelector((state) => state.user);
+  // const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.auth.token);
   const cart = useSelector((state) => state.cartReducer.cart);
   const breakPoints = [

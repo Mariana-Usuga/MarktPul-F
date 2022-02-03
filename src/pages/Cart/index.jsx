@@ -1,21 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import ShoppingCart from '../ShoppingCart';
 import CartSummary from '../../components/CartSummary';
-import { fetchBuyCart } from '../../store/actions/payActionsCreator';
 
 import './shoppingCart.scss';
 
 const Cart = () => {
   const token = JSON.parse(localStorage.getItem('token'));
-  const dispatch = useDispatch();
 
-  const buyShoppingCart = () => {
-    dispatch(fetchBuyCart());
-  };
   return (
     <>
       <Header />
@@ -28,7 +22,7 @@ const Cart = () => {
         style={{ textDecoration: 'none' }}
       >
         <button
-          onClick={buyShoppingCart}
+          // onClick={buyShoppingCart}
           className="shopping-cart__btnPay"
           type="button"
         >

@@ -1,15 +1,26 @@
+/* eslint-disable no-nested-ternary */
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
-import { fetchUpdateMarket } from '../../store/actions/productAndMarketActions';
+import { useParams } from 'react-router-dom';
+import { FaCheckCircle } from 'react-icons/fa';
+import {
+  fetchUpdateMarket,
+  showLoader,
+  hideLoader,
+} from '../../store/actions/productAndMarketActions';
 import ProductPictures from '../../components/ProductPictures/index';
 import FormMarket from '../../components/FormMarket/index';
+import { patchMarket } from '../../store/services/productAndMarketServices';
 
 import '../CreateProduct/CreateProduct.scss';
 
 const UpdateMarket = () => {
   const [mainImage, setMainImage] = useState(null);
+  const [showLoaderState, setShowLoaderState] = useState(false);
+  const isLoading = useSelector((state) => state.productAndMarket.isLoading);
   const dispatch = useDispatch();
+  const { id } = useParams();
 
   const [formMarket, setFormMarket] = useState({
     title: '',
@@ -44,12 +55,16 @@ const UpdateMarket = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const formDataImageMain = new FormData();
-    formDataImageMain.append('imageMain', formMarket.image);
-    const responseImageMain = await axios.post(
-      'http://localhost:8080/api/upload/file',
-      formDataImageMain,
-    );
+    let imageMain;
+    if (formMarket.image) {
+      const formDataImageMain = new FormData();
+      formDataImageMain.append('imageMain', formMarket.image);
+      const responseImageMain = await axios.post(
+        'http://localhost:8080/api/upload/file',
+        formDataImageMain,
+      );
+      imageMain = responseImageMain;
+    }
 
     const newFormMarket = {
       virtual: formMarket.virtual,
@@ -58,11 +73,19 @@ const UpdateMarket = () => {
       city: formMarket.city,
       moreDetails: formMarket.moreDetails,
       title: formMarket.title,
-      image: responseImageMain.data.url,
+      image: imageMain?.data.url,
       description: formMarket.description,
       category: formMarket.category,
     };
-    dispatch(fetchUpdateMarket(newFormMarket));
+
+    if (!isLoading) {
+      dispatch(showLoader());
+      dispatch(fetchUpdateMarket(newFormMarket, id));
+      if (patchMarket) {
+        setShowLoaderState(true);
+        dispatch(hideLoader());
+      }
+    }
   };
   return (
     <div className="createProductContainer">
@@ -80,7 +103,19 @@ const UpdateMarket = () => {
         <div>Llena los campos que deseas editar</div>
         <FormMarket handleChange={handleChange} onSubmit={onSubmit} />
         <button onClick={onSubmit} className="formMarket__btn" type="submit">
-          Actualizar mercado
+          {!isLoading && !showLoaderState ? (
+            ' Actualizar mercado'
+          ) : !showLoaderState ? (
+            <img
+              className="loading"
+              src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
+              alt="loading content"
+            />
+          ) : (
+            <div>
+              <FaCheckCircle />
+            </div>
+          )}
         </button>
       </div>
     </div>

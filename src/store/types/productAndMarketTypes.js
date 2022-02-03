@@ -7,3 +7,7 @@ export const GET_ID_MARKET = 'GET_ID_MARKET';
 export const UPDATE_MARKET = 'UPDATE_MARKET';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const MARKET_PRODUCTS = 'MARKET_PRODUCTS';
+export const GET_PRODUCT = 'GET_PRODUCT';
+export const PATCH_MARKET = 'PATCH_MARKET';
+export const HIDE_LOADER = 'HIDE_LOADER';
+export const SHOW_LOADER = 'SHOW_LOADER';

@@ -1,27 +1,23 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import axios from 'axios';
 import ProductsOfTheMarkets from '../../components/ProductsOfTheMarkets/index';
+import {
+  getMarket,
+  getMarketProducts,
+} from '../../store/services/productAndMarketServices';
+
 import './MarketDetail.scss';
 
 const MarketDetail = () => {
   const [products, setProducts] = useState();
-  const markets = useSelector((state) => state.productAndMarket.markets);
   const [market, setMarket] = useState({});
   const { id } = useParams();
 
   useEffect(async () => {
-    const response = await axios.get(
-      `http://localhost:8080/api/product/report/${id}`,
-    );
-    setProducts(response.data);
-
-    for (const mar of markets) {
-      if (id === mar._id) {
-        setMarket(mar);
-      }
-    }
+    const prod = await getMarket(id);
+    setMarket(prod);
+    const prods = await getMarketProducts(id);
+    setProducts(prods.data);
   }, []);
 
   return (

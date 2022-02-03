@@ -6,18 +6,15 @@
     border-radius: 10px;
     font-size: 1rem;
   }
-  &__previous {
-    &__btn {
-      color: black;
-      background-color: white;
-      height: 37px;
-      font-weight: bolder;
-      width: 170px;
-      border: none;
-      &__hide {
-        // opacity: 0;
-      }
-    }
+  &__previous__btn {
+    background-color: hotpink;
+    border: 4px solid #4c3dff;
+    color: black;
+    background-color: white;
+    height: 45px;
+    font-weight: bolder;
+    width: 180px;
+    border-radius: 10px;
   }
 }
 .back_landing {
