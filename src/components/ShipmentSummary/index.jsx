@@ -1,6 +1,4 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable*/
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
@@ -42,7 +40,7 @@ const ShipmentSummary = ({ id }) => {
         <div className="totalShipping">
           <span className="totalShipping__total">Total Envio</span>
           <span className="totalShipping__price">
-            {id ? (product.price)?.toLocaleString('en-US') : priceFormat(total)}
+            {id ? product.price?.toLocaleString('en-US') : priceFormat(total)}
           </span>
         </div>
       </div>
