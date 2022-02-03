@@ -1,15 +1,7 @@
 import React, { useState } from 'react';
-import queryString from 'query-string';
-import { useLocation } from 'react-router-dom';
 import './FilterContainer.scss';
 
 const FilterContainer = () => {
-  const location = useLocation();
-  const parsed = queryString.parse(location.search);
-  console.log(
-    '🚀 ~ file: index.jsx ~ line 8 ~ FilterContainer ~ parsed',
-    parsed,
-  );
   const [showProducts, setShowProducts] = useState(false);
   const [showEvents, setShowEvents] = useState(false);
   const [showMarkets, setShowMarkets] = useState(false);
