@@ -1,5 +1,4 @@
-/* eslint-disable max-len */
-/* eslint-disable prettier/prettier */
+/* eslint-disable */
 import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -32,7 +31,9 @@ const ItemDetail = () => {
     e.preventDefault();
     dispatch(fetchAPay());
   };
-  const handleCarrito = () => {
+  /* eslint-disable */
+  const handleCarrito = (e) => {
+    e.preventDefault();
     const cartPrev = JSON.parse(localStorage.getItem('cartProduct')) || [];
     const exists = cartPrev.find((element) => element._id === product._id);
     if (exists) {
@@ -61,7 +62,9 @@ const ItemDetail = () => {
         <div className="container__info">
           <h2 className="container__info__title">{product?.title}</h2>
           <p className="container__info__description">{product?.description}</p>
-          <p className="container__info__price">{product?.price.toLocaleString('es-MX')}</p>
+          <p className="container__info__price">
+            {product?.price.toLocaleString('es-MX')}
+          </p>
           <button onClick={buyAproduct} className="btn__buy" type="button">
             <Link
               to={token ? `/pages/paymentProcess/${id}` : '/login'}

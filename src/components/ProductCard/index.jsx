@@ -19,7 +19,11 @@ const ProductCard = ({ product }) => {
   );
 };
 ProductCard.propTypes = {
-  product: PropTypes.objectOf(PropTypes.string).isRequired,
+  product: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
+    imageMain: PropTypes.string.isRequired,
+  }).isRequired,
 };
 
 export default ProductCard;

@@ -1,14 +1,19 @@
-import { LOGIN, LOGOUT } from '../types/authTypes';
+import { LOGIN_FAILURE, LOGIN_SUCCESSFUL, LOGOUT } from '../types/authTypes';
+import { getCurrentLocalStorage } from '../utils/LocalStorageUtils';
 
 const initialState = {
-  token: JSON.parse(localStorage.getItem('token')) || '',
+  token: getCurrentLocalStorage('token'),
 };
 
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGIN:
+    case LOGIN_SUCCESSFUL:
       return {
         token: action.payload,
+      };
+    case LOGIN_FAILURE:
+      return {
+        token: null,
       };
     case LOGOUT:
       return {};

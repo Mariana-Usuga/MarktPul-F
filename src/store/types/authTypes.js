@@ -1,2 +1,3 @@
-export const LOGIN = '[Auth] Login';
-export const LOGOUT = '[Auth] Logout';
+export const LOGIN_SUCCESSFUL = 'LOGIN_SUCCESSFUL';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const LOGOUT = 'LOGOUT';
