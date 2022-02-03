@@ -2,8 +2,6 @@
 import axios from 'axios';
 
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
-console.log('url', URL_BASE);
-// const URL_BASE = 'https://marktpul-bk.herokuapp.com';
 
 export const getMarkets = async () => axios.get(`${URL_BASE}/api/market`);
 
