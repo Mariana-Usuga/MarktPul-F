@@ -1,12 +1,16 @@
-import { LOAD_USER } from '../types/userTypes';
+import { LOAD_USER, UPDATE_USER } from '../types/userTypes';
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem('user')) || {},
+  user: {},
 };
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_USER:
+      return {
+        user: action.payload,
+      };
+    case UPDATE_USER:
       return {
         user: action.payload,
       };

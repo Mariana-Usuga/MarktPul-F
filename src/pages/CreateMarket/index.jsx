@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { sendMarket } from '../../store/actions/productAndMarketActions';
 import ProductPictures from '../../components/ProductPictures/index';
@@ -10,6 +10,7 @@ import './CreateMarket.scss';
 
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 const CreateMarket = () => {
+  const user = useSelector((state) => state.user.user);
   const [mainImage, setMainImage] = useState(null);
   const dispatch = useDispatch();
 
@@ -64,7 +65,7 @@ const CreateMarket = () => {
       description: formMarket.description,
       category: formMarket.category,
     };
-    dispatch(sendMarket(newFormMarket));
+    dispatch(sendMarket(newFormMarket, user.marketId));
   };
   return (
     <div className="createMarketContainer">

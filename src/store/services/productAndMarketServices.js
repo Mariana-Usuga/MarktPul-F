@@ -36,7 +36,20 @@ export const patchProduct = async (newProduct, id) => {
   );
   return responseProduct.data;
 };
-
+export const patchUser = async (newUser, id) => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  const responseUser = await axios.patch(
+    `${URL_BASE}/api/user/${id}`,
+    newUser,
+    {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    },
+  );
+  return responseUser.data;
+};
 export const getMarketProducts = async (id) => {
   const response = await axios.get(`${URL_BASE}/api/product/report/${id}`);
   return response;
@@ -69,16 +82,12 @@ export const postMarket = async (formMarket) => {
 
 export const postProduct = async (formProduct) => {
   const token = JSON.parse(localStorage.getItem('token'));
-  const response = await axios.post(
-    `${URL_BASE}/api/product`,
-    formProduct,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
+  const response = await axios.post(`${URL_BASE}/api/product`, formProduct, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
     },
-  );
+  });
   return response;
 };
 

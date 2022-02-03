@@ -111,7 +111,12 @@ export const sendProduct = (formProduct) => async (dispatch) => {
   dispatch(createProduct(responseProduct));
 };
 
-export const sendMarket = (formMarket) => async (dispatch) => {
+export const sendMarket = (formMarket, marketArray) => async (dispatch) => {
   const responseMarket = await postMarket(formMarket);
+  marketArray.push(responseMarket._id);
+  console.log(
+    '🚀 ~ file: productAndMarketActions.js ~ line 115 ~ sendMarket ~ marketArray',
+    marketArray,
+  );
   dispatch(createMarket(responseMarket));
 };

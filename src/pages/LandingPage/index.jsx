@@ -22,7 +22,7 @@ const LandingPage = () => {
     (state) => state.productAndMarket.products.items,
   );
   // eslint-disable-next-line no-unused-vars
-  // const user = useSelector((state) => state.user);
+
   const token = useSelector((state) => state.auth.token);
   const cart = useSelector((state) => state.cartReducer.cart);
   const breakPoints = [
@@ -36,7 +36,7 @@ const LandingPage = () => {
   }, []);
   useEffect(() => {
     if (token?.JWT) {
-      dispatch(fetchUser(token.JWT));
+      dispatch(fetchUser(token));
     }
   }, [token]);
 

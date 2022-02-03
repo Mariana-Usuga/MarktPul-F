@@ -35,7 +35,13 @@ const productAndMarketReducer = (state = initialState, action) => {
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
     case CREATE_MARKET:
-      return { ...state, markets: [...state.markets, action.payload] };
+      return {
+        ...state,
+        markets: {
+          items: [...state.markets.items, action.payload],
+          loaded: true,
+        },
+      };
     case UPDATE_PRODUCT: {
       const newData = state.products.items.map((el) =>
         el._id === action.payload.id ? action.payload : el,
