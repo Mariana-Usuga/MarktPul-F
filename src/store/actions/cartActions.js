@@ -6,7 +6,7 @@ import {
   DELETE_FROM_CART,
   ESTIMATED_TOTAL,
 } from '../types/cartTypes';
-import { getCart, getProduct } from '../../pages/Cart/cartServices';
+import { getCart /* , getProduct */ } from '../../pages/Cart/cartServices';
 
 export const loadCart = (cart) => ({
   type: LOAD_CART,
@@ -42,8 +42,9 @@ export const fetchCart = () => async (dispatch) => {
   dispatch(loadCart(cart));
 };
 export const addProductToCart = (product) => async (dispatch) => {
-  const products = await getProduct(product);
-  const producto = { ...products.data, qty: 1 };
+  /* const products = await getProduct(product);
+  const producto = { ...products.data, qty: 1 }; */
+  const producto = { ...product, qty: 1 };
   dispatch(addToCart(producto));
 };
 

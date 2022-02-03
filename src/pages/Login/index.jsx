@@ -1,5 +1,6 @@
 /* eslint-disable */
-import React, { useState } from 'react';
+/* eslint-disable jsx-a11y/label-has-associated-control */
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchLogin } from '../../store/actions/authActionsCreator';
@@ -11,14 +12,16 @@ const Login = () => {
   const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({ error: '' });
   const token = useSelector((state) => state.auth.token);
+  const [isSubmit, setIsSubmit] = useState(false);
+
   const navigate = useNavigate();
 
   const handlingForm = (e) => {
     e.preventDefault();
     dispatch(fetchLogin(email, password));
-    localStorage.setItem('token', JSON.stringify(token.JWT));
-    navigate('/', { replace: true });
+    setIsSubmit(true);
   };
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePasswordVisiblity = () => {
@@ -36,6 +39,16 @@ const Login = () => {
     login.style.display = 'none';
     forget.style.display = 'flex';
   };
+
+  useEffect(() => {
+    if (token) {
+      setErrors({ error: '' });
+      localStorage.setItem('token', JSON.stringify(token));
+      navigate('/', { replace: true });
+    } else {
+      setErrors({ ...errors, error: 'Email or password are wrong' });
+    }
+  }, [token]);
 
   return (
     <div className="login">
@@ -86,6 +99,11 @@ const Login = () => {
             />
             <label htmlFor="checkbox">Mostrar Contrasena</label>
           </div>
+          {errors.error.length && isSubmit ? (
+            <span style={{ color: 'red', fontWeight: 700 }}>
+              Hay un error con tu email o contraseña.
+            </span>
+          ) : null}
           <label>
             <input
               type="submit"

@@ -5,15 +5,15 @@ import InterestPhoto from '../../components/InterestPhoto';
 
 import './MarketDetail.scss';
 
+const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
+
 const MarketDetail = () => {
   const [market, setMarket] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
     const getMarketshow = async () => {
-      const getMarket = await axios.get(
-        `https://marktpul-bk.herokuapp.com/api/market/${id}`,
-      );
+      const getMarket = await axios.get(`${URL_BASE}/api/market/${id}`);
       setMarket(getMarket.data);
     };
     getMarketshow();

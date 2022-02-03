@@ -16,6 +16,8 @@ import store from './store/index';
 import PaymentProcess from './components/PaymentProcess/index';
 import ActivateAcount from './pages/ActivateAccount';
 import ResetPassword from './pages/ResetPassword';
+import ReportMarket from './pages/ReportMarket';
+import User from './pages/User';
 
 const Routing = () => (
   <BrowserRouter>
@@ -28,11 +30,13 @@ const Routing = () => (
         <Route path="itemDetail/:id" element={<ItemDetail />} />
         <Route path="succesfulPurchase" element={<SuccesfulPurchase />} />
         <Route path="paymentProcess" element={<PaymentProcess />} />
+        <Route path="marketReport" element={<ReportMarket />} />
       </Route>
 
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="/user" element={<User />} />
       <Route path="/activate/:hash" element={<ActivateAcount />} />
       <Route path="/resetPass/:hash" element={<ResetPassword />} />
     </Routes>

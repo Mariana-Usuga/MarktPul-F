@@ -31,10 +31,10 @@ const LandingPage = () => {
     dispatch(fetchProducts());
   }, []);
   useEffect(() => {
-    if (token.JWT) {
+    if (token?.JWT) {
       dispatch(fetchUser(token.JWT));
     }
-  }, [token.JWT]);
+  }, [token]);
 
   useEffect(() => {
     window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);

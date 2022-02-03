@@ -18,7 +18,7 @@ const ResetPassword = () => {
     const verifyHash = async () => {
       try {
         const res = await axios.post(
-          'http://localhost:8080/auth/local/reset-password',
+          `${process.env.REACT_APP_API_URL_BASE}/auth/local/reset-password`,
           {
             hash: `${hash}`,
           },
@@ -52,7 +52,7 @@ const ResetPassword = () => {
     setLoading(true);
     try {
       const res = await axios.post(
-        'http://localhost:8080/auth/local/update-password',
+        `${process.env.REACT_APP_API_URL_BASE}/auth/local/update-password`,
         {
           email: `${reemail}`,
           password: `${password}`,
