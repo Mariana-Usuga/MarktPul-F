@@ -25,3 +25,17 @@ export const patchUser = async (data, id, token) => {
     return error;
   }
 };
+
+export const uploadSingleFile = async (data, token) => {
+  try {
+    const reponseData = await axios.post(`${URL_BASE}/api/upload/file`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    return reponseData;
+  } catch (error) {
+    return error;
+  }
+};

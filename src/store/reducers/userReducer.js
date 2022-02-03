@@ -2,6 +2,7 @@ import {
   LOAD_USER,
   UPDATE_USER_SUCESSFUL,
   UPDATE_USER_FAILURE,
+  UPLOAD_USER_PICTURE,
 } from '../types/userTypes';
 import { getCurrentLocalStorage } from '../utils/LocalStorageUtils';
 
@@ -19,6 +20,10 @@ const userReducer = (state = initialState, action) => {
     case UPDATE_USER_FAILURE:
       return {
         user: state.user,
+      };
+    case UPLOAD_USER_PICTURE:
+      return {
+        user: { ...state.user, picture: action.payload },
       };
     default:
       return state;

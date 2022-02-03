@@ -26,12 +26,6 @@ const UserSectionAccount = () => {
   });
 
   useEffect(() => {
-    if (token) {
-      dispatch(fetchUser(token));
-    }
-  }, []);
-
-  useEffect(() => {
     setUserAccount({
       ...user,
       name: user.name ?? '',
@@ -41,6 +35,12 @@ const UserSectionAccount = () => {
       username: user.username ?? '',
     });
   }, [user]);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUser(token));
+    }
+  }, []);
 
   const handleChange = ({ target }) => {
     const { id: inputName, value } = target;
