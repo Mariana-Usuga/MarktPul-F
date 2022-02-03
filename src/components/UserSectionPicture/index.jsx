@@ -8,8 +8,8 @@ import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 import { fetchUser } from '../../store/actions/userActionsCreator';
 
 const UserSectionPicture = () => {
-  const user = useSelector((state) => state.user.user);
   const token = getCurrentLocalStorage('token');
+  const user = useSelector((state) => state.user.user);
   const dispatch = useDispatch();
   const defaultPicture =
     'https://user-images.githubusercontent.com/13368066/151895402-67d28c80-17a8-4a35-8bab-b0be177cbfda.png';
@@ -23,17 +23,28 @@ const UserSectionPicture = () => {
   const [avatar, setAvatar] = useState(user?.picture ?? defaultPicture);
   const [previewState, setPreviewState] = useState({ preview: null });
 
-  useEffect(() => {
-    if (token) {
-      dispatch(fetchUser(token));
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (token) {
+  //     dispatch(fetchUser(token));
+  //   }
+  // }, []);
 
   // useEffect(() => {
-  //   setAvatar(user?.picture ?? defaultPicture);
+  //   return () => {
+  //     console.log('useffect user cambie imagen a ', user?.picture);
+  //     setAvatar(user?.picture ?? defaultPicture);
+  //   };
   // }, [user]);
 
-  console.log(user);
+  useEffect(() => {
+    setAvatar(user.picture);
+    console.log(
+      '🚀 ~ file: index.jsx ~ line 41 ~ useEffect ~ user.picture',
+      user.picture,
+    );
+  }, [user]);
+
+  // console.log(user);
   const onCrop = (preview) => {
     setPreviewState({ preview });
   };
@@ -56,12 +67,9 @@ const UserSectionPicture = () => {
   const handleChangePicture = () => {
     const data = { folder: 'user/avatars', image: previewState.preview };
 
-    // console.log(
-    //   '🚀 ~ file: index.jsx ~ line 46 ~ handleChangePicture ~ data',
-    //   data,
-    // );
     dispatch(fetchUpdateAvatarUser(data, user._id, token));
-    setAvatar(previewState.preview);
+
+    console.log('handle change picture cambie imagen a nueva');
     handleCloseModal();
   };
 
@@ -111,19 +119,11 @@ const UserSectionPicture = () => {
         </div>
       </Modal>
       <div className="user-container__data--hero-pic">
-        {user?.picture ? (
-          <img
-            src={user.picture}
-            alt={user.username}
-            onClick={handleImgClick}
-          />
-        ) : (
-          <img src={avatar} alt={user.username} onClick={handleImgClick} />
-        )}
+        <img src={avatar} alt={user?.username} onClick={handleImgClick} />
       </div>
 
       <div className="user-container__data--hero-username">
-        {`@${user.username}`}
+        {`@${user?.username}`}
       </div>
     </div>
   );

@@ -36,6 +36,7 @@ export const fetchUser = (token) => async (dispatch) => {
 export const fetchUpdateUser = (data, id, token) => async (dispatch) => {
   const user = await patchUser(data, id, token);
   if (user.statusText === 'OK') {
+    console.log('1', user);
     dispatch(updateUserSucess(user));
   } else {
     dispatch(updateUserFailure());
@@ -46,7 +47,7 @@ export const fetchUpdateAvatarUser = (data, id, token) => async (dispatch) => {
   const upload = await uploadSingleFile(data, token);
   if (upload.statusText === 'Created' || upload.status === 201) {
     const { url: picture } = upload.data;
-    dispatch(updateUserProfile(picture));
+    // dispatch(updateUserProfile(picture));
     dispatch(fetchUpdateUser({ picture }, id, token));
   } else {
     dispatch(updateUserFailure());
