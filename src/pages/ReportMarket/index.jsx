@@ -3,16 +3,18 @@ import { useSelector, useDispatch } from 'react-redux';
 import JWTDecode from 'jwt-decode';
 import { FetchMarketsUserBy } from '../../store/actions/reportMarketPageActionsCreator';
 import CardReportMarket from '../../components/CardReportMarket';
+import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 
 const ReportMarket = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.report.marketsUser);
   const token = useSelector((state) => state.auth.token);
-  const userIdFromToken = token ? JWTDecode(token)._id : null;
+  const userIdFromToken = token
+    ? JWTDecode(getCurrentLocalStorage('token'))?._id
+    : null;
   useEffect(() => {
     dispatch(FetchMarketsUserBy(token, userIdFromToken));
   }, []);
-
   return (
     <>
       <h1>MERCADOS</h1>
