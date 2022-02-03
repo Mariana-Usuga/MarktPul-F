@@ -4,8 +4,8 @@ import {
   UPDATE_USER_FAILURE,
   UPLOAD_USER_PICTURE,
 } from '../types/userTypes';
-import { getUser } from '../services/landingPageServices';
 import { patchUser, uploadSingleFile } from '../services/UserPageServices';
+import { getUser } from '../services/productAndMarketServices';
 
 export const loadUser = (user) => ({
   type: LOAD_USER,
@@ -36,7 +36,6 @@ export const fetchUser = (token) => async (dispatch) => {
 export const fetchUpdateUser = (data, id, token) => async (dispatch) => {
   const user = await patchUser(data, id, token);
   if (user.statusText === 'OK') {
-    console.log('1', user);
     dispatch(updateUserSucess(user));
   } else {
     dispatch(updateUserFailure());

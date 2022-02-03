@@ -1,23 +1,19 @@
 /* eslint-disable indent */
 /* eslint-disable no-nested-ternary */
 import Stepper from '@material-ui/core/Stepper';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import { useState } from 'react';
 import { Button } from '@material-ui/core';
-import { useSelector } from 'react-redux';
 import Pay from '../../pages/Pay';
 import SuccessfulPurchase from '../../pages/SuccessfulPurchase';
 import Shipping from '../../pages/Shipping';
 
 import './PaymentProcess.scss';
 
-const StepperPay = () => {
-  const existingAddress = useSelector(
-    (state) => state.changeAddress.existingAddress,
-  );
-  const changeAddress = useSelector((state) => state.changeAddress.location);
+const PaymentProcess = () => {
+  const { id } = useParams();
   const [activeStep, setActiveStep] = useState(0);
   const nextStep = () => {
     if (activeStep < 2) {
@@ -46,9 +42,9 @@ const StepperPay = () => {
       {activeStep === 0 ? (
         <Shipping />
       ) : activeStep === 1 ? (
-        <Pay />
+        <Pay id={id || null} />
       ) : (
-        <SuccessfulPurchase />
+        <SuccessfulPurchase id={id || null} />
       )}
       <div className="btnStepper">
         <div className="btnStepper__next">
@@ -56,24 +52,13 @@ const StepperPay = () => {
             Paso anterior
           </Button>
         </div>
-        <div className="btnStepper__previous">
-          {changeAddress.location || existingAddress ? (
-            <Button
-              onClick={nextStep}
-              className={
-                activeStep === 2 ? 'btnStepper__previous__btn__hide' : null
-              }
-            >
-              Proceder al pago
-            </Button>
-          ) : (
-            <button type="button" className="btnStepper__previous__btn__hide">
-              Proceder al pago
-            </button>
-          )}
+        <div className="btnStepper">
+          <div className="btnStepper__previous__btn">
+            <Button onClick={nextStep}>Proceder al pago</Button>
+          </div>
         </div>
         {activeStep === 2 ? (
-          <button type="button" className="back_landing">
+          <button type="button" className="back_landing hide">
             <Link to="/" style={{ textDecoration: 'none', color: 'black' }}>
               VOLVER AL COMERCIO
             </Link>
@@ -84,4 +69,4 @@ const StepperPay = () => {
   );
 };
 
-export default StepperPay;
+export default PaymentProcess;

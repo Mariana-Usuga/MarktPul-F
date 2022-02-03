@@ -1,0 +1,69 @@
+.hide {
+  transform: translate(-110%, 0);
+  transition: transform 0.3s ease;
+  position: absolute;
+  display: none;
+}
+.virtual {
+  &__label {
+    margin-left: 20px;
+  }
+}
+.location {
+  &__label {
+    margin-left: 20px;
+  }
+}
+.formAddressMarket {
+  border: 1px solid rgb(207, 205, 205);
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  &__div {
+    margin-top: 7px;
+    display: inline-block;
+  }
+  &__input,
+  &__input__moreDetail {
+    background: #ffffff;
+    border: 1px solid #c7c5c5;
+    border-radius: 18px;
+    &__moreDetail {
+      height: 50px;
+    }
+  }
+  &__input {
+    height: 30px;
+  }
+  &__label {
+    margin-right: 10px;
+  }
+}
+.location {
+  margin-top: 8px;
+}
+
+@media (min-width: 992px) {
+  .formAddressMarket {
+    // font-size: 1.2rem;
+    &__input {
+      // width: 300px;
+      // height: 40px;
+      &__moreDetail {
+        // height: 100px;
+      }
+    }
+  }
+  .virtual {
+    // font-size: 1.3rem;
+  }
+  .location {
+    // font-size: 1.3rem;
+  }
+  .form__input {
+    // height: 600px;
+  }
+}

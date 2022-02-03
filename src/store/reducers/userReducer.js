@@ -2,7 +2,6 @@ import {
   LOAD_USER,
   UPDATE_USER_SUCESSFUL,
   UPDATE_USER_FAILURE,
-  // UPLOAD_USER_PICTURE,
 } from '../types/userTypes';
 import { getCurrentLocalStorage } from '../utils/LocalStorageUtils';
 

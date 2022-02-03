@@ -1,0 +1,74 @@
+.inputProduct {
+  margin-top: 10px;
+  margin-left: 20px;
+  &__select__markets {
+    margin-top: 10px;
+    border: 1px solid #c7c5c5;
+    border-radius: 15px;
+    height: 30px;
+    width: 210px;
+  }
+  &__markets {
+    margin: 30px 0 0 20px;
+    width: 230px;
+  }
+  &__category {
+    margin-left: 20px;
+  }
+  &__label {
+    margin-right: 20px;
+  }
+  &__input {
+    width: 150px;
+    height: 30px;
+    background: #ffffff;
+    border: 1px solid #c7c5c5;
+    border-radius: 15px;
+    &__category {
+      background-color: blueviolet;
+      width: 90px;
+      height: 30px;
+      background: #ffffff;
+      border: 1px solid #c7c5c5;
+      border-radius: 15px;
+    }
+    &__description {
+      width: 140px;
+      height: 80px;
+      background: #ffffff;
+      border: 1px solid #c7c5c5;
+      border-radius: 15px;
+    }
+  }
+  &__category {
+    margin-top: 10px;
+  }
+}
+.formMarket {
+  margin: 10px;
+  padding: 10px;
+  background: #f0f0f0;
+  border-radius: 25px;
+}
+.inputMarket {
+  &__category {
+    margin-left: 20px;
+  }
+  &__label {
+    margin-right: 20px;
+  }
+  &__input__category {
+    background-color: blueviolet;
+    width: 90px;
+    height: 30px;
+    background: #ffffff;
+    border: 1px solid #c7c5c5;
+    border-radius: 15px;
+  }
+}
+@media (min-width: 992px) {
+  .inputMarket__input__category {
+    width: 100px;
+    height: 35px;
+  }
+}

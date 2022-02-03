@@ -10,8 +10,8 @@ export const changeAddress = (update) => ({
   payload: update.data,
 });
 
-export const fetchAddress = (form, id, token) => async (dispatch) => {
-  const update = await postChangeAddress(form, id, token);
+export const fetchAddress = (form, id) => async (dispatch) => {
+  const update = await postChangeAddress(form, id);
   dispatch(changeAddress(update));
   return update;
 };
