@@ -33,7 +33,13 @@ const productAndMarketReducer = (state = initialState, action) => {
     case LOAD_MARKETS:
       return { ...state, markets: { items: action.payload, loaded: true } };
     case CREATE_PRODUCT:
-      return { ...state, products: [...state.products, action.payload] };
+      return {
+        ...state,
+        products: {
+          items: [...state.markets.items, action.payload],
+          loaded: true,
+        },
+      };
     case CREATE_MARKET:
       return {
         ...state,
