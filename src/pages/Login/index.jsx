@@ -1,10 +1,11 @@
-/* eslint-disable no-unused-vars */
+/* eslint-disable */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { fetchLogin } from '../../store/actions/authActionsCreator';
 import SocialMediaButton from '../../components/SocialMediaButton';
+import ForgetPassword from '../../components/ForgetPassword';
 import './Login.scss';
 
 const Login = () => {
@@ -32,6 +33,12 @@ const Login = () => {
   const handlePassword = ({ target }) => {
     setPassword(target.value);
   };
+  const handleForgot = () => {
+    const login = document.getElementById('login');
+    const forget = document.getElementById('forget');
+    login.style.display = 'none';
+    forget.style.display = 'flex';
+  };
 
   useEffect(() => {
     if (token) {
@@ -51,7 +58,7 @@ const Login = () => {
           alt="Flea Market"
         />
       </figure>
-      <section className="login__form">
+      <section className="login__form" id="login">
         <h1 className="login__form--title">Inicio de sesión</h1>
         <form
           action="submit"
@@ -105,6 +112,9 @@ const Login = () => {
             />
           </label>
         </form>
+        <p className="login__forgot" onClick={handleForgot}>
+          ¿Olvido su contraseña?
+        </p>
         <h4>
           ¿No tienes cuenta?,
           <a href="/login" id="login__form--registro">
@@ -117,6 +127,8 @@ const Login = () => {
           <SocialMediaButton media="Facebook" />
         </div>
       </section>
+
+      <ForgetPassword />
     </div>
   );
 };
