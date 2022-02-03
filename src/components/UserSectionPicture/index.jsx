@@ -23,28 +23,10 @@ const UserSectionPicture = () => {
   const [avatar, setAvatar] = useState(user?.picture ?? defaultPicture);
   const [previewState, setPreviewState] = useState({ preview: null });
 
-  // useEffect(() => {
-  //   if (token) {
-  //     dispatch(fetchUser(token));
-  //   }
-  // }, []);
-
-  // useEffect(() => {
-  //   return () => {
-  //     console.log('useffect user cambie imagen a ', user?.picture);
-  //     setAvatar(user?.picture ?? defaultPicture);
-  //   };
-  // }, [user]);
-
   useEffect(() => {
     setAvatar(user.picture);
-    console.log(
-      '🚀 ~ file: index.jsx ~ line 41 ~ useEffect ~ user.picture',
-      user.picture,
-    );
   }, [user]);
 
-  // console.log(user);
   const onCrop = (preview) => {
     setPreviewState({ preview });
   };
@@ -66,10 +48,7 @@ const UserSectionPicture = () => {
   // todo cloudinary
   const handleChangePicture = () => {
     const data = { folder: 'user/avatars', image: previewState.preview };
-
     dispatch(fetchUpdateAvatarUser(data, user._id, token));
-
-    console.log('handle change picture cambie imagen a nueva');
     handleCloseModal();
   };
 
