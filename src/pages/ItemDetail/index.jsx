@@ -19,7 +19,9 @@ const ItemDetail = () => {
   const cart = useSelector((state) => state.cartReducer.cart);
   const breakPoints = [{ width: 100, itemsToShow: 1 }];
   const { id } = useParams();
-  const products = useSelector((state) => state.productAndMarket.products);
+  const products = useSelector(
+    (state) => state.productAndMarket.products.items,
+  );
 
   useEffect(async () => {
     const prod = await getProduct(id);
@@ -32,8 +34,7 @@ const ItemDetail = () => {
     dispatch(fetchAPay());
   };
   /* eslint-disable */
-  const handleCarrito = (e) => {
-    e.preventDefault();
+  const handleCarrito = () => {
     const cartPrev = JSON.parse(localStorage.getItem('cartProduct')) || [];
     const exists = cartPrev.find((element) => element._id === product._id);
     if (exists) {

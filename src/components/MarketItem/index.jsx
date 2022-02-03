@@ -11,9 +11,6 @@ const MarketItem = ({ title, image, place }) => (
         {'Direccion: '}
         {place}
       </p>
-      {/* <a className="card-body__tag" href="/">
-{tagMercado[0]}
-</a> */}
     </div>
   </div>
 );

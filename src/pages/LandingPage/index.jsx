@@ -18,7 +18,9 @@ import './LandingPage.scss';
 const LandingPage = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.productAndMarket.markets);
-  const products = useSelector((state) => state.productAndMarket.products);
+  const products = useSelector(
+    (state) => state.productAndMarket.products.items,
+  );
   // eslint-disable-next-line no-unused-vars
   // const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.auth.token);
@@ -46,7 +48,7 @@ const LandingPage = () => {
       <HeaderMain />
       <h2 className="titleMarket">Mercados Destacados</h2>
       <Carousel className="carousel" breakPoints={breakPoints}>
-        {markets.map((market) => (
+        {markets.items.map((market) => (
           <Link
             to={`/pages/marketDetail/${market._id}`}
             key={market._id}
