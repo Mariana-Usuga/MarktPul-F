@@ -13,7 +13,7 @@ export const getProduct = async (product) => {
   const { _id: id } = product;
   try {
     const res = await axios.get(`${URL_BASE}/api/product/${id}`);
-    return res.data;
+    return res;
   } catch (error) {
     return error;
   }

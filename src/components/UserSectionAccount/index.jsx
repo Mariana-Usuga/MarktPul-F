@@ -21,15 +21,15 @@ const UserSectionAccount = () => {
     username: user.username,
   });
 
-  // useEffect(() => {
-  //   if (token) {
-  //     dispatch(fetchUser(token));
-  //   }
-  // }, []);
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUser(token));
+    }
+  }, []);
 
   const handleChange = ({ target }) => {
     const { name: inputName, value } = target;
-    setUserAccount({ ...userAccount, [inputName]: value });
+    setUserAccount({ ...user, [inputName]: value });
   };
 
   const handleSubmitAccount = (e) => {
@@ -49,7 +49,7 @@ const UserSectionAccount = () => {
         <label htmlFor="email">
           Email
           <input
-            value={userAccount.email}
+            value={user.email}
             data-testid="email-user"
             id="email"
             title="email registrado"
@@ -60,7 +60,7 @@ const UserSectionAccount = () => {
         <label htmlFor="username">
           Usuario
           <input
-            value={userAccount.username}
+            value={user.username}
             data-testid="username-user"
             id="username"
             title="username registrado"
@@ -71,7 +71,7 @@ const UserSectionAccount = () => {
         <label htmlFor="fullname">
           Nombre completo
           <input
-            value={userAccount.name}
+            value={user.name}
             onChange={handleChange}
             data-testid="name-user"
             id="name"
@@ -87,7 +87,7 @@ const UserSectionAccount = () => {
             data-testid="country-user"
             preferredCountries={['co', 'pe']}
             name="country"
-            value={userAccount.country}
+            value={user.country}
             handleChange={(e) => console.log(e.target.value)}
             style={{ border: 'none' }}
             className="user-container__data--form-section-input"
@@ -96,7 +96,7 @@ const UserSectionAccount = () => {
         <label htmlFor="cell">
           Celular
           <PhoneInput
-            country={userAccount.country}
+            country={user.country}
             international
             name="cell"
             value={user.cell}

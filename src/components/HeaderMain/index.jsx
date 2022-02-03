@@ -56,7 +56,7 @@ const HeaderMain = () => {
                 <Link to="/user">{` ${username}`}</Link>
               </div>
             ) : (
-              <Link to="/login">Login</Link>
+              <Link to="login">Login</Link>
             )}
           </li>
           <li className="header__li">
