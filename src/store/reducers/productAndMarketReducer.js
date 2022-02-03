@@ -1,3 +1,4 @@
+/* eslint-disable*/
 /* eslint-disable no-case-declarations */
 /* eslint-disable prettier/prettier */
 /* eslint-disable implicit-arrow-linebreak */
@@ -17,8 +18,8 @@ import {
 } from '../types/productAndMarketTypes';
 
 const initialState = {
-  markets: [],
-  products: [],
+  markets: { items: [], loaded: false },
+  products: { items: [], loaded: false },
   idProduct: '',
   idMarket: '',
   marketProducts: [],
@@ -28,24 +29,26 @@ const initialState = {
 const productAndMarketReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_PRODUCTS:
-      return { ...state, products: action.payload };
+      return { ...state, products: { items: action.payload, loaded: true } };
     case LOAD_MARKETS:
-      return { ...state, markets: action.payload };
+      return { ...state, markets: { items: action.payload, loaded: true } };
     case CREATE_PRODUCT:
       return { ...state, products: [...state.products, action.payload] };
     case CREATE_MARKET:
       return { ...state, markets: [...state.markets, action.payload] };
     case UPDATE_PRODUCT: {
-      const newData = state.products.map((el) =>
-        (el._id === action.payload.id ? action.payload : el));
+      const newData = state.products.items.map((el) =>
+        el._id === action.payload.id ? action.payload : el,
+      );
       return {
         ...state,
         markets: newData,
       };
     }
     case UPDATE_MARKET: {
-      const newData = state.markets.map((el) =>
-        (el._id === action.payload.id ? action.payload : el));
+      const newData = state.markets.items.map((el) =>
+        el._id === action.payload.id ? action.payload : el,
+      );
       return {
         ...state,
         markets: newData,
