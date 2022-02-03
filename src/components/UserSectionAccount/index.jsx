@@ -6,7 +6,10 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
-import { fetchUpdateUser } from '../../store/actions/userActionsCreator';
+import {
+  fetchUser,
+  fetchUpdateUser,
+} from '../../store/actions/userActionsCreator';
 
 const UserSectionAccount = () => {
   const token = getCurrentLocalStorage('token');
@@ -40,7 +43,6 @@ const UserSectionAccount = () => {
   const handleSubmitAccount = (e) => {
     e.preventDefault();
     const { name, country, cell } = userAccount;
-    console.log(name, country, cell);
     dispatch(fetchUpdateUser({ name, country, cell }, user._id, token));
   };
 
