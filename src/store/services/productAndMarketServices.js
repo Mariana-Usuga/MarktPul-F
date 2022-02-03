@@ -36,11 +36,12 @@ export const patchProduct = async (newProduct, id) => {
   );
   return responseProduct.data;
 };
-export const patchUser = async (newUser, id) => {
+export const patchUser = async (marketArray, id) => {
+  const marketupdate = { marketId: marketArray };
   const token = JSON.parse(localStorage.getItem('token'));
   const responseUser = await axios.patch(
     `${URL_BASE}/api/user/${id}`,
-    newUser,
+    marketupdate,
     {
       headers: {
         Authorization: `Bearer ${token}`,

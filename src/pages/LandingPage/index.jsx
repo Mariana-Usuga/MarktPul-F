@@ -35,7 +35,7 @@ const LandingPage = () => {
     dispatch(fetchProducts());
   }, []);
   useEffect(() => {
-    if (token?.JWT) {
+    if (token) {
       dispatch(fetchUser(token));
     }
   }, [token]);

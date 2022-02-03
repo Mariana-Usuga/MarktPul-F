@@ -14,7 +14,7 @@ export const fetchUser = (token) => async (dispatch) => {
   // localStorage.setItem('user', JSON.stringify(user.data));
   dispatch(loadUser(user));
 };
-export const fetchUpdateUser = (user) => async (dispatch) => {
-  const userUpdate = await patchUser(user);
+export const fetchUpdateUser = (user, id) => async (dispatch) => {
+  const userUpdate = await patchUser(user, id);
   dispatch(updateUser(userUpdate));
 };

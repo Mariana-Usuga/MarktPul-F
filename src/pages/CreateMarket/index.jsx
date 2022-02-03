@@ -64,8 +64,9 @@ const CreateMarket = () => {
       image: responseImageMain.data.url,
       description: formMarket.description,
       category: formMarket.category,
+      organizer: user.username,
     };
-    dispatch(sendMarket(newFormMarket, user.marketId));
+    dispatch(sendMarket(newFormMarket, user.marketId, user._id));
   };
   return (
     <div className="createMarketContainer">

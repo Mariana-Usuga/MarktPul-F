@@ -9,12 +9,7 @@ const ChooseMarket = ({ setFormProduct }) => {
   const [marketsSelected, setMarketsSelected] = useState([]);
   const [userMarkets, setUserMarkets] = useState([]);
   const user = useSelector((state) => state.user.user);
-  console.log('🚀 ~ file: index.jsx ~ line 12 ~ ChooseMarket ~ user', user);
   const markets = useSelector((state) => state.productAndMarket.markets.items);
-  console.log(
-    '🚀 ~ file: index.jsx ~ line 13 ~ ChooseMarket ~ markets',
-    markets,
-  );
 
   useEffect(() => {
     for (const market of markets) {

@@ -19,7 +19,9 @@ import {
   patchMarket,
   patchProduct,
   getProduct,
+  patchUser,
 } from '../services/productAndMarketServices';
+// import { fetchUpdateUser } from './userActionsCreator';
 
 export const showLoader = () => ({
   type: SHOW_LOADER,
@@ -111,12 +113,9 @@ export const sendProduct = (formProduct) => async (dispatch) => {
   dispatch(createProduct(responseProduct));
 };
 
-export const sendMarket = (formMarket, marketArray) => async (dispatch) => {
+export const sendMarket = (formMarket, marketArray, id) => async (dispatch) => {
   const responseMarket = await postMarket(formMarket);
   marketArray.push(responseMarket._id);
-  console.log(
-    '🚀 ~ file: productAndMarketActions.js ~ line 115 ~ sendMarket ~ marketArray',
-    marketArray,
-  );
+  patchUser(marketArray, id);
   dispatch(createMarket(responseMarket));
 };
