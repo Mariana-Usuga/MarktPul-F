@@ -11,3 +11,17 @@ export const postChangeAddress = async (form, id, token) => {
   });
   return reponseData;
 };
+
+export const patchUser = async (data, id, token) => {
+  try {
+    const reponseData = await axios.patch(`${URL_BASE}/api/user/${id}`, data, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    return reponseData;
+  } catch (error) {
+    return error;
+  }
+};

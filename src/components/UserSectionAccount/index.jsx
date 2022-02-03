@@ -6,7 +6,10 @@ import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
-import { fetchUser } from '../../store/actions/userActionsCreator';
+import {
+  fetchUser,
+  fetchUpdateUser,
+} from '../../store/actions/userActionsCreator';
 
 const UserSectionAccount = () => {
   const token = getCurrentLocalStorage('token');
@@ -14,11 +17,12 @@ const UserSectionAccount = () => {
   const dispatch = useDispatch();
 
   const [userAccount, setUserAccount] = useState({
-    name: user.name,
-    country: user.country,
-    cell: user.cell,
-    email: user.email,
-    username: user.username,
+    ...user,
+    name: user.name ?? '',
+    country: user.country ?? '',
+    cell: user.cell ?? '',
+    email: user.email ?? '',
+    username: user.username ?? '',
   });
 
   useEffect(() => {
@@ -27,14 +31,26 @@ const UserSectionAccount = () => {
     }
   }, []);
 
+  useEffect(() => {
+    setUserAccount({
+      ...user,
+      name: user.name ?? '',
+      country: user.country ?? '',
+      cell: user.cell ?? '',
+      email: user.email ?? '',
+      username: user.username ?? '',
+    });
+  }, [user]);
+
   const handleChange = ({ target }) => {
-    const { name: inputName, value } = target;
-    setUserAccount({ ...user, [inputName]: value });
+    const { id: inputName, value } = target;
+    setUserAccount({ ...userAccount, [inputName]: value });
   };
 
   const handleSubmitAccount = (e) => {
     e.preventDefault();
-    console.log('Has hecho submit al account', e);
+    const { name, country, cell } = userAccount;
+    dispatch(fetchUpdateUser({ name, country, cell }, user._id, token));
   };
 
   return (
@@ -49,7 +65,8 @@ const UserSectionAccount = () => {
         <label htmlFor="email">
           Email
           <input
-            value={user.email}
+            value={userAccount.email}
+            onChange={handleChange}
             data-testid="email-user"
             id="email"
             title="email registrado"
@@ -60,7 +77,8 @@ const UserSectionAccount = () => {
         <label htmlFor="username">
           Usuario
           <input
-            value={user.username}
+            value={userAccount.username}
+            onChange={handleChange}
             data-testid="username-user"
             id="username"
             title="username registrado"
@@ -71,7 +89,7 @@ const UserSectionAccount = () => {
         <label htmlFor="fullname">
           Nombre completo
           <input
-            value={user.name}
+            value={userAccount.name}
             onChange={handleChange}
             data-testid="name-user"
             id="name"
@@ -87,8 +105,8 @@ const UserSectionAccount = () => {
             data-testid="country-user"
             preferredCountries={['co', 'pe']}
             name="country"
-            value={user.country}
-            handleChange={(e) => console.log(e.target.value)}
+            value={userAccount.country}
+            handleChange={handleChange}
             style={{ border: 'none' }}
             className="user-container__data--form-section-input"
           />
@@ -96,11 +114,13 @@ const UserSectionAccount = () => {
         <label htmlFor="cell">
           Celular
           <PhoneInput
-            country={user.country}
+            defaultCountry={'CO'}
             international
             name="cell"
-            value={user.cell}
-            onChange={(e) => console.log(e)}
+            value={userAccount.cell}
+            onChange={(value) =>
+              setUserAccount({ ...userAccount, cell: value })
+            }
             className="user-container__data--form-section-input"
           />
         </label>
