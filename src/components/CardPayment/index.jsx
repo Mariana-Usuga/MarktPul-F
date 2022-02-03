@@ -1,3 +1,6 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable keyword-spacing */
+/* eslint-disable no-plusplus */
 /* eslint-disable no-nested-ternary */
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -45,9 +48,9 @@ const CardPayment = () => {
   const id = useSelector((state) => state.productAndMarket.idProduct);
 
   useEffect(() => {
-    for (const productItem of products) {
-      if (id === productItem._id) {
-        setProduct(productItem);
+    for(let i = 0; i < products.length; i++) {
+      if (id === products[i]) {
+        setProduct(products[i]);
         return;
       }
     }

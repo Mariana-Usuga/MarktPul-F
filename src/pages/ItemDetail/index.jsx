@@ -3,7 +3,6 @@ import { useParams, Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Carousel from 'react-elastic-carousel';
-import { fetchAPay } from '../../store/actions/payActionsCreator';
 import ProductPhoto from '../../components/ProductPhoto';
 import './ItemDetail.scss';
 import {
@@ -27,10 +26,6 @@ const ItemDetail = () => {
     window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
   }, [cart]);
 
-  const buyAproduct = (e) => {
-    e.preventDefault();
-    dispatch(fetchAPay());
-  };
   /* eslint-disable */
   const handleCarrito = (e) => {
     e.preventDefault();
@@ -65,7 +60,7 @@ const ItemDetail = () => {
           <p className="container__info__price">
             {product?.price.toLocaleString('es-MX')}
           </p>
-          <button onClick={buyAproduct} className="btn__buy" type="button">
+          <button className="btn__buy" type="button">
             <Link
               to={token ? `/pages/paymentProcess/${id}` : '/login'}
               className="btn__buy__link"
