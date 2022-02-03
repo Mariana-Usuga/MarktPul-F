@@ -1,6 +1,4 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable*/
 import { useSelector } from 'react-redux';
 import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
@@ -20,6 +18,12 @@ const ShipmentSummary = ({ id }) => {
   const [product, setProduct] = useState({});
   const total = useSelector((state) => state.cartReducer.estimatedTotal);
   const user = useSelector((state) => state.user.user);
+  const cart = useSelector((state) => state.cartReducer.cart);
+
+  const reducer = (prevValue, currentValue) => {
+    prevValue + currentValue.price * currentValue.qty;
+  };
+  const [cartPrice, setCartPrice] = useState(0);
 
   useEffect(async () => {
     const product = await getProduct(id);
@@ -42,7 +46,7 @@ const ShipmentSummary = ({ id }) => {
         <div className="totalShipping">
           <span className="totalShipping__total">Total Envio</span>
           <span className="totalShipping__price">
-            {id ? (product.price)?.toLocaleString('en-US') : priceFormat(total)}
+            {id ? product.price?.toLocaleString('en-US') : priceFormat(total)}
           </span>
         </div>
       </div>

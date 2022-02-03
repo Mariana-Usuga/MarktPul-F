@@ -2,26 +2,57 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
 import PhoneInput from 'react-phone-number-input';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
+import {
+  fetchUser,
+  fetchUpdateUser,
+} from '../../store/actions/userActionsCreator';
 
-const UserSectionAccount = ({ user }) => {
+const UserSectionAccount = () => {
+  const token = getCurrentLocalStorage('token');
+  const user = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
+
   const [userAccount, setUserAccount] = useState({
-    name: user.name,
-    country: user.country,
-    cell: user.cell,
-    email: user.email,
-    username: user.username,
+    ...user,
+    name: user.name ?? '',
+    country: user.country ?? '',
+    cell: user.cell ?? '',
+    email: user.email ?? '',
+    username: user.username ?? '',
   });
 
+  useEffect(() => {
+    setUserAccount({
+      ...user,
+      name: user.name ?? '',
+      country: user.country ?? '',
+      cell: user.cell ?? '',
+      email: user.email ?? '',
+      username: user.username ?? '',
+    });
+  }, [user]);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUser(token));
+    }
+  }, []);
+
   const handleChange = ({ target }) => {
-    const { name: inputName, value } = target;
+    const { id: inputName, value } = target;
     setUserAccount({ ...userAccount, [inputName]: value });
   };
 
   const handleSubmitAccount = (e) => {
     e.preventDefault();
-    console.log('Has hecho submit al account', e);
+    const { name, country, cell } = userAccount;
+    dispatch(fetchUpdateUser({ name, country, cell }, user._id, token));
   };
+
   return (
     <div className="user-container__data--form">
       <h2>De la cuenta</h2>
@@ -35,6 +66,7 @@ const UserSectionAccount = ({ user }) => {
           Email
           <input
             value={userAccount.email}
+            onChange={handleChange}
             data-testid="email-user"
             id="email"
             title="email registrado"
@@ -46,6 +78,7 @@ const UserSectionAccount = ({ user }) => {
           Usuario
           <input
             value={userAccount.username}
+            onChange={handleChange}
             data-testid="username-user"
             id="username"
             title="username registrado"
@@ -73,7 +106,7 @@ const UserSectionAccount = ({ user }) => {
             preferredCountries={['co', 'pe']}
             name="country"
             value={userAccount.country}
-            handleChange={(e) => console.log(e.target.value)}
+            handleChange={handleChange}
             style={{ border: 'none' }}
             className="user-container__data--form-section-input"
           />
@@ -81,11 +114,13 @@ const UserSectionAccount = ({ user }) => {
         <label htmlFor="cell">
           Celular
           <PhoneInput
-            country={userAccount.country}
+            defaultCountry={'CO'}
             international
             name="cell"
-            value={user.cell}
-            onChange={(e) => console.log(e)}
+            value={userAccount.cell}
+            onChange={(value) =>
+              setUserAccount({ ...userAccount, cell: value })
+            }
             className="user-container__data--form-section-input"
           />
         </label>

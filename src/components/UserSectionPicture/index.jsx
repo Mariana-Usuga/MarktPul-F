@@ -1,24 +1,39 @@
-/* eslint-disable no-alert */
-/* eslint-disable no-param-reassign */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable react/prop-types */
-import { useState } from 'react';
+/* eslint-disable */
+import { useDispatch, useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
 import Avatar from 'react-avatar-edit';
 import { Modal, Button } from '@mantine/core';
+import { fetchUpdateAvatarUser } from '../../store/actions/userActionsCreator';
+import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
+import { fetchUser } from '../../store/actions/userActionsCreator';
 
-const UserSectionPicture = ({ user }) => {
+const UserSectionPicture = () => {
+  const user = useSelector((state) => state.user.user);
+  const token = getCurrentLocalStorage('token');
+  const dispatch = useDispatch();
   const defaultPicture =
     'https://user-images.githubusercontent.com/13368066/151895402-67d28c80-17a8-4a35-8bab-b0be177cbfda.png';
 
   const [opened, setOpened] = useState(false);
-  const img = user.picture ?? defaultPicture;
+
   const handleImgClick = () => {
     setOpened(true);
   };
 
-  const [avatar, setAvatar] = useState(img);
-  const [previewState, setPreviewState] = useState({ preview: null, img });
+  const [avatar, setAvatar] = useState(user?.picture ?? defaultPicture);
+  const [previewState, setPreviewState] = useState({ preview: null });
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUser(token));
+    }
+  }, []);
+
+  // useEffect(() => {
+  //   setAvatar(user?.picture ?? defaultPicture);
+  // }, [user]);
+
+  console.log(user);
   const onCrop = (preview) => {
     setPreviewState({ preview });
   };
@@ -39,6 +54,13 @@ const UserSectionPicture = ({ user }) => {
 
   // todo cloudinary
   const handleChangePicture = () => {
+    const data = { folder: 'user/avatars', image: previewState.preview };
+
+    // console.log(
+    //   '🚀 ~ file: index.jsx ~ line 46 ~ handleChangePicture ~ data',
+    //   data,
+    // );
+    dispatch(fetchUpdateAvatarUser(data, user._id, token));
     setAvatar(previewState.preview);
     handleCloseModal();
   };
@@ -67,7 +89,7 @@ const UserSectionPicture = ({ user }) => {
               <div className="user-container__data--hero-pic">
                 <img
                   src={previewState.preview}
-                  alt={user.username}
+                  alt={user?.username}
                   onClick={handleImgClick}
                 />
               </div>
@@ -89,7 +111,15 @@ const UserSectionPicture = ({ user }) => {
         </div>
       </Modal>
       <div className="user-container__data--hero-pic">
-        <img src={avatar} alt={user.username} onClick={handleImgClick} />
+        {user?.picture ? (
+          <img
+            src={user.picture}
+            alt={user.username}
+            onClick={handleImgClick}
+          />
+        ) : (
+          <img src={avatar} alt={user.username} onClick={handleImgClick} />
+        )}
       </div>
 
       <div className="user-container__data--hero-username">
