@@ -1,5 +1,5 @@
 import { LOAD_USER } from '../types/userTypes';
-import { getUser } from '../services/landingPageServices';
+import { getUser } from '../services/productAndMarketServices';
 
 export const loadUser = (user) => ({
   type: LOAD_USER,

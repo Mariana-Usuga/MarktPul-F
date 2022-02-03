@@ -1,0 +1,15 @@
+.createMarketContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  &__item {
+    &__data {
+      width: 500px;
+    }
+  }
+}
+@media (min-width: 992px) {
+  .createMarketContainer__item__data {
+    width: 610px;
+  }
+}

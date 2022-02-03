@@ -12,7 +12,7 @@ import {
 import {
   fetchMarkets,
   fetchProducts,
-} from '../../store/actions/landingPageActionsCreator';
+} from '../../store/actions/productAndMarketActions';
 import CartPreview from '../CartPreview';
 import { fetchCart } from '../../store/actions/cartActions';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
@@ -23,8 +23,8 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useDispatch();
-  const markets = useSelector((state) => state.landing.markets);
-  const products = useSelector((state) => state.landing.products);
+  const markets = useSelector((state) => state.productAndMarket.markets);
+  const products = useSelector((state) => state.productAndMarket.products);
   const cart = useSelector((state) => state.cartReducer.cart);
   // const marketsFilter = useSelector((state) => state.search.markets_filter);
   const [show, setShow] = useState(false);

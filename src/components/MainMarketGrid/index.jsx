@@ -1,15 +1,20 @@
 /* eslint-disable  */
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import MarketItem from '../MarketItem';
 import ProductItem from '../ProductItem';
-import { fetchMarkets } from '../../store/actions/landingPageActionsCreator';
+import { fetchMarkets } from '../../store/actions/productAndMarketActions';
 import './MainMarketGrid.scss';
 
 const MainProductGrid = () => {
   const marketsFilter = useSelector((state) => state.search.markets_filter);
   const productsFilter = useSelector((state) => state.search.products_filter);
+  const dispatch = useDispatch();
+  const markets = useSelector((state) => state.productAndMarket.markets);
+  useEffect(() => {
+    dispatch(fetchMarkets());
+  }, []);
   return (
     <div className="container">
       {marketsFilter.map((market) => {

@@ -20,9 +20,9 @@ const CardReportMarket = ({
       <img src={image} alt={title} className="market--image" />
     </div>
     <div className="market--options">
-      <Link to={`/pages/marketDetail/${_id}`}>Ir a Productos</Link>
+      <Link to={`/pages/productsMyMarkets/${_id}`}>Ir a Productos</Link>
       <br />
-      <Link to={`/pages/marketDetail/${_id}`}>
+      <Link to={`/pages/updateMarket/${_id}`}>
         {'Editar Mercado '}
         <FaRegEdit />
       </Link>

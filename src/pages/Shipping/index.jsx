@@ -12,7 +12,6 @@ import { showLoader, hideLoader } from '../../store/actions/payActionsCreator';
 import './shipping.scss';
 
 const Shipping = () => {
-  const token = useSelector((state) => state.auth.token);
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.pay.isLoading);
   const location = useSelector((state) => state.changeAddress.location);
@@ -28,14 +27,16 @@ const Shipping = () => {
   const handleChange = (e) => {
     if (e.target.id === 'exists') {
       dispatch(existingAddressTrue());
-    } else if (e.target.id === 'new') {
-      dispatch(existingAddressFalse());
+      return;
     }
-    const { name } = e.target;
-    const { value } = e.target;
-    const newState = { ...form };
-    newState[name] = value;
-    setForm(newState);
+    if (e.target.id === 'new') {
+      dispatch(existingAddressFalse());
+      const { name } = e.target;
+      const { value } = e.target;
+      const newState = { ...form };
+      newState[name] = value;
+      setForm(newState);
+    }
   };
   const sendData = async (e) => {
     e.preventDefault();
@@ -51,7 +52,7 @@ const Shipping = () => {
 
     if (!isLoading) {
       dispatch(showLoader());
-      await dispatch(fetchAddress(locationN, user._id, token));
+      dispatch(fetchAddress(locationN, user._id));
       if (location) {
         setShowLoaderState(true);
         dispatch(hideLoader());
