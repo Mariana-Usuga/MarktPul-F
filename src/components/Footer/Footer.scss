@@ -1,12 +1,13 @@
-.footer{
-    border-top: 1px solid black;
-    padding: 20px 20px 5px 10px;
-    display: grid;
-    grid-template-columns: 60% auto auto auto;
-    margin-top: 20px;
-    &__item{
-        font-size: 33px;
-        color:#2714f8;
-        font-weight: bolder;
-    }
+.footer {
+  border-top: 1px solid black;
+  padding: 20px 20px 5px 10px;
+  display: grid;
+  grid-template-columns: 60% auto auto auto;
+  margin-top: 20px;
+  width: 100%;
+  &__item {
+    font-size: 33px;
+    color: #2714f8;
+    font-weight: bolder;
+  }
 }

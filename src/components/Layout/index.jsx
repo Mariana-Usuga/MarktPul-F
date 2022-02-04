@@ -6,7 +6,7 @@ const Layout = () => (
   <div>
     <Header />
     <Outlet />
-    <Footer />
+    <Footer style={{ top: 95 }} />
   </div>
 );
 
