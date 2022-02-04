@@ -17,17 +17,16 @@ const UserSectionAccount = () => {
   const dispatch = useDispatch();
 
   const [userAccount, setUserAccount] = useState({
-    ...user,
-    name: user.name ?? '',
-    country: user.country ?? '',
-    cell: user.cell ?? '',
-    email: user.email ?? '',
-    username: user.username ?? '',
+    name: '',
+    country: '',
+    cell: '',
+    email: '',
+    username: '',
   });
 
   useEffect(() => {
     setUserAccount({
-      ...user,
+      ...userAccount,
       name: user.name ?? '',
       country: user.country ?? '',
       cell: user.cell ?? '',
@@ -35,12 +34,6 @@ const UserSectionAccount = () => {
       username: user.username ?? '',
     });
   }, [user]);
-
-  useEffect(() => {
-    if (token) {
-      dispatch(fetchUser(token));
-    }
-  }, []);
 
   const handleChange = ({ target }) => {
     const { id: inputName, value } = target;

@@ -1,6 +1,7 @@
 /*eslint-disable*/
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -12,7 +13,7 @@ import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 import { fetchUser } from '../../store/actions/userActionsCreator';
 
 import 'react-phone-number-input/style.css';
-import './user.scss';
+import './User.scss';
 
 const User = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ const User = () => {
   const [optionState, setOptionState] = useState({
     current: 'account',
   });
+  // const user = useSelector((state) => state.user.user);
 
   const renderOptions = (option) => {
     switch (option) {
@@ -31,6 +33,13 @@ const User = () => {
         return <UserSectionAccount />;
     }
   };
+  const [renderOption, setRenderOption] = useState(
+    renderOptions(optionState.current),
+  );
+
+  // useEffect(() => {
+  //   setRenderOption(renderOptions(optionState.current));
+  // }, [user, optionState]);
 
   const token = getCurrentLocalStorage('token');
 
@@ -93,6 +102,7 @@ const User = () => {
             </ul>
           </div>
           {renderOptions(optionState.current)}
+          {/* {renderOption} */}
         </div>
       </div>
       <Footer />
