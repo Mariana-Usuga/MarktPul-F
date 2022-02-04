@@ -22,6 +22,9 @@ import FetchProductsMyMarkets from './components/FetchProductsMyMarkets';
 import ResetPassword from './pages/ResetPassword';
 import ReportMarket from './pages/ReportMarket';
 import User from './pages/User';
+import NotFound from './pages/NotFound';
+import About from './pages/About';
+import Terms from './pages/Terms';
 
 import './index.scss';
 
@@ -31,6 +34,13 @@ const Routing = () => (
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<LandingPage />} />
+      <Route path="*" element={<NotFound />} />
+      <Route path="/about" element={<Layout />}>
+        <Route path="" element={<About />} />
+      </Route>
+      <Route path="/terms" element={<Layout />}>
+        <Route path="" element={<Terms />} />
+      </Route>
 
       <Route path="pages" element={<Layout />}>
         <Route path="search" element={<Search />} />
