@@ -13,6 +13,6 @@ export const getProductFilter = (products, search = '') => {
   }
   const name = search.toLowerCase();
   return products.filter((product) =>
-    product.title.toLowerCase().includes(name),
+    product.title?.toLowerCase().includes(name),
   );
 };
