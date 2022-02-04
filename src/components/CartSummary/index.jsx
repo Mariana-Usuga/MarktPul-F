@@ -2,14 +2,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchEstimatedTotal } from '../../store/actions/cartActions';
 
-const priceFormat = (amount) => {
-  const price = new Intl.NumberFormat('es-CO', {
-    style: 'currency',
-    currency: 'COP',
-  }).format(amount);
-  return price;
-};
-
 const CartSummary = () => {
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cartReducer.cart);
@@ -23,6 +15,7 @@ const CartSummary = () => {
   if (cartPrice > 0) {
     dispatch(fetchEstimatedTotal(cartPrice - discount));
   }
+
   return (
     <aside className="cart__summary">
       <div className="cart__summary--title">
@@ -32,15 +25,15 @@ const CartSummary = () => {
       <div className="cart__summary--total">
         <div className="cart__summary--value">
           <h4>Sub Total</h4>
-          <p>{priceFormat(cartPrice)}</p>
+          <p>{`$${cartPrice.toLocaleString('en-US')}`}</p>
         </div>
         <div className="cart__summary--value" id="descuento">
           <h4>Descuento</h4>
-          <p>{priceFormat(discount)}</p>
+          <p>{`$${discount.toLocaleString('en-US')}`}</p>
         </div>
         <div className="cart__summary--value">
           <h4>Total Estimado</h4>
-          <p>{priceFormat(cartPrice - discount)}</p>
+          <p>{`$${(cartPrice - discount).toLocaleString('en-US')}`}</p>
         </div>
         <p className="cart__summary--terms">
           * Compra sujeta a los Terminos y Condiciones de la web

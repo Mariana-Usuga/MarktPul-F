@@ -1,47 +1,49 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
 $primary-color: white;
-$secondary-color:#4C3DFF;
-body{
+$secondary-color: #4c3dff;
+body {
   font-family: 'Nunito Sans', sans-serif;
   font-weight: bolder;
 }
-.container{
+.container {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   margin-top: 70px;
 }
-.container__main{
+.container__main {
   text-align: center;
-  &__img{
+  &__img {
     width: 280px;
   }
 }
-.container__info{
+.container__info {
   text-align: right;
   width: 500px;
-  &__price{
+  &__price {
     font-size: 1.5rem;
     margin-top: 20px;
   }
-  &__title{
+  &__title {
     margin-bottom: 10px;
     margin-top: 20px;
   }
 }
-.btn__buy{
+.btn__buy {
   background-color: $secondary-color;
   color: $primary-color;
   display: block;
   margin: 30px 0 20px 110px;
   width: 150px;
-  &__link{
+  &__link {
     color: white;
     text-decoration: none;
   }
 }
-.btn__addCart, .btn__seller, .btn__buy{
-  border:2px solid $primary-color;
+.btn__addCart,
+.btn__seller,
+.btn__buy {
+  border: 2px solid $primary-color;
   padding: 10px;
   border-radius: 10px;
   text-align: center;
@@ -50,21 +52,38 @@ body{
   font-weight: bolder;
   margin-top: 20px;
 }
+.interestPhotos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.interest img {
+  border-radius: 20%;
+  text-align: center;
+  width: 160px;
+  height: 170px;
+}
+.titleInterest {
+  margin: 20px 10px;
+}
 
-@media(min-width:992px){
-  .container{
-    margin:30px 150px;
-      &__info{
+@media (min-width: 992px) {
+  .container {
+    margin: 30px 150px;
+    &__info {
       margin-left: 100px;
-      &__price{
+      &__price {
         font-size: 2rem;
       }
-      &__info{
+      &__info {
         width: 500px;
       }
     }
   }
-  .btn__buy{
+  .btn__buy {
     margin-left: 350px;
+  }
+  .titleInterest {
+    margin: 20px 90px;
   }
 }

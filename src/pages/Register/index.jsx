@@ -23,6 +23,7 @@ const Register = () => {
   const [password, setPassword] = useState('');
   const [repassword, setRepassword] = useState('');
   const [errors, setErrors] = useState(formErrors);
+  const [signUpError, setSignUpError] = useState('');
   const navigate = useNavigate();
 
   const handleEmail = ({ target }) => {
@@ -94,7 +95,7 @@ const Register = () => {
       password,
       username,
     };
-    const url = 'http://localhost:8080/api/user';
+    const url = `${process.env.REACT_APP_API_URL_BASE}/api/user`; /* 'http://localhost:8080/api/user' */
     const config = {
       method: 'post',
       url,
@@ -103,10 +104,15 @@ const Register = () => {
       },
       data,
     };
-    axios(config).then(() => {
-      alert('Gracias por registrarte! (este alert es feo y lo sabemos)');
-      navigate('/');
-    });
+    axios(config)
+      .then(() => {
+        setSignUpError('');
+        alert('Gracias por registrarte! (este alert es feo y lo sabemos)');
+        navigate('/');
+      })
+      .catch((error) => {
+        setSignUpError(error);
+      });
   };
   return (
     <div className="register">
@@ -213,6 +219,14 @@ const Register = () => {
               style={{ color: 'red', fontSize: '6' }}
             >
               {`${errors.repassword}`}
+            </span>
+          ) : null}
+          {signUpError?.length ? (
+            <span
+              data-testid="error-signup"
+              style={{ color: 'red', fontSize: '6' }}
+            >
+              {`${signUpError}`}
             </span>
           ) : null}
 

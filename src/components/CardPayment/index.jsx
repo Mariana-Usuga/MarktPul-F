@@ -1,5 +1,8 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable keyword-spacing */
+/* eslint-disable no-plusplus */
 /* eslint-disable no-nested-ternary */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaCheckCircle } from 'react-icons/fa';
 import {
@@ -7,6 +10,7 @@ import {
   showLoader,
   hideLoader,
 } from '../../store/actions/payActionsCreator';
+import { postPay } from '../../store/services/payServices';
 import './CardPayment.scss';
 
 const CardPayment = () => {
@@ -32,16 +36,25 @@ const CardPayment = () => {
     { id: '19', year: '39' },
     { id: '20', year: '40' },
   ];
-  const token = useSelector((state) => state.auth.token);
   const aProduct = useSelector((state) => state.pay.aProduct);
-  const product = useSelector((state) => state.landing.product);
-  const pay = useSelector((state) => state.pay.dataPay);
   const isLoading = useSelector((state) => state.pay.isLoading);
   const estimatedTotal = useSelector(
     (state) => state.cartReducer.estimatedTotal,
   );
   const [showLoaderState, setShowLoaderState] = useState(false);
   const dispatch = useDispatch();
+  const [product, setProduct] = useState();
+  const products = useSelector((state) => state.productAndMarket.products);
+  const id = useSelector((state) => state.productAndMarket.idProduct);
+
+  useEffect(() => {
+    for(let i = 0; i < products.length; i++) {
+      if (id === products[i]) {
+        setProduct(products[i]);
+        return;
+      }
+    }
+  }, []);
 
   const [form, setForm] = useState({
     holdersName: '',
@@ -76,11 +89,10 @@ const CardPayment = () => {
       cardExpMonth: form.month,
       cardCVC: form.cvc,
     };
-
-    if (pay && !isLoading) {
+    if (!isLoading) {
       dispatch(showLoader());
-      await dispatch(fetchDoPay(paymentData, token));
-      if (pay) {
+      dispatch(fetchDoPay(paymentData));
+      if (postPay) {
         setShowLoaderState(true);
         dispatch(hideLoader());
       }
@@ -170,3 +182,5 @@ const CardPayment = () => {
 };
 
 export default CardPayment;
+
+/*  */

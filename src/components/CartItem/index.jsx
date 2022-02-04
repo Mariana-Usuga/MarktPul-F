@@ -30,18 +30,8 @@ const CartItem = ({ product, src, producto, cantidad, precioUnitario = 0 }) => {
         <p>{cantidad}</p>
         <FaPlus onClick={handleAdd} />
       </td>
-      <td>
-        {new Intl.NumberFormat('es-CO', {
-          style: 'currency',
-          currency: 'COP',
-        }).format(precioUnitario)}
-      </td>
-      <td>
-        {new Intl.NumberFormat('es-CO', {
-          style: 'currency',
-          currency: 'COP',
-        }).format(cantidad * precioUnitario)}
-      </td>
+      <td>{precioUnitario.toLocaleString('en-US')}</td>
+      <td>{(cantidad * precioUnitario).toLocaleString('en-US')}</td>
     </tr>
   );
 };
