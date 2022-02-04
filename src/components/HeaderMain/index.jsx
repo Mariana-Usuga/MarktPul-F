@@ -138,21 +138,21 @@ const HeaderMain = () => {
           </form>
         </div>
         <div className="header__info__sell">
-          {/* <Link
+          <Link
             to={token ? '/pages/createProduct' : '/login'}
             style={{ textDecoration: 'none' }}
-          > */}
-          Quiero vender
-          {/* </Link> */}
+          >
+            Quiero vender
+          </Link>
         </div>
         <div className="header__info__buy">Quiero comprar</div>
         <div className="header__info__market">
-          {/* <Link
+          <Link
             to={token ? '/pages/createMarket' : '/login'}
             style={{ textDecoration: 'none' }}
-          > */}
-          Quiero realizar un mercado
-          {/* </Link> */}
+          >
+            Quiero realizar un mercado
+          </Link>
         </div>
       </div>
     </header>

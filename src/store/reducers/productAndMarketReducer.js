@@ -7,12 +7,12 @@ import {
   CREATE_MARKET,
   LOAD_PRODUCTS,
   LOAD_MARKETS,
-  GET_ID_PRODUCT,
+  // GET_ID_PRODUCT,
   UPDATE_PRODUCT,
   UPDATE_MARKET,
   MARKET_PRODUCTS,
   GET_PRODUCT,
-  PATCH_MARKET,
+  // PATCH_MARKET,
   SHOW_LOADER,
   HIDE_LOADER,
 } from '../types/productAndMarketTypes';
@@ -20,8 +20,8 @@ import {
 const initialState = {
   markets: { items: [], loaded: false },
   products: { items: [], loaded: false },
-  idProduct: '',
-  idMarket: '',
+  // idProduct: '',
+  // idMarket: '',
   marketProducts: [],
   isLoading: false,
 };
@@ -33,7 +33,7 @@ const productAndMarketReducer = (state = initialState, action) => {
     case LOAD_MARKETS:
       return { ...state, markets: { items: action.payload, loaded: true } };
     case CREATE_PRODUCT:
-      return { ...state, products: [...state.products, action.payload] };
+      return { ...state, products: { items : [...state.products.items, action.payload] }  };
     case CREATE_MARKET:
       return { ...state, markets: [...state.markets, action.payload] };
     case UPDATE_PRODUCT: {
@@ -56,15 +56,15 @@ const productAndMarketReducer = (state = initialState, action) => {
     }
     case MARKET_PRODUCTS:
       return { ...state, marketProducts: action.payload };
-    case GET_ID_PRODUCT:
-      return { ...state, idProduct: action.payload };
+    // case GET_ID_PRODUCT:
+    //   return { ...state, idProduct: action.payload };
     case SHOW_LOADER:
     case HIDE_LOADER:
       return { ...state, isLoading: action.payload };
     case GET_PRODUCT:
       return { ...state, product: action.payload };
-    case PATCH_MARKET:
-      return { ...state, product: action.payload };
+    // case PATCH_MARKET:
+    //   return { ...state, product: action.payload };
     default:
       return state;
   }

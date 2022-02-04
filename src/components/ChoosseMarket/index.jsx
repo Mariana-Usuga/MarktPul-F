@@ -9,7 +9,7 @@ const ChooseMarket = ({ setFormProduct }) => {
   const [marketsSelected, setMarketsSelected] = useState([]);
   const [userMarkets, setUserMarkets] = useState([]);
   const user = useSelector((state) => state.user.user);
-  const markets = useSelector((state) => state.productAndMarket.markets);
+  const markets = useSelector((state) => state.productAndMarket.markets.items);
 
   useEffect(() => {
     for (const market of markets) {
@@ -19,7 +19,7 @@ const ChooseMarket = ({ setFormProduct }) => {
         }
       }
     }
-  }, [markets]);
+  }, []);
 
   const showMarkets = (e) => {
     const { value } = e.target;
@@ -59,13 +59,16 @@ const ChooseMarket = ({ setFormProduct }) => {
           id="markets"
         >
           {userMarkets.map((market) => (
-            <option
-              className="inputProduct__input__markets"
-              value={market.title}
-              selected
-            >
-              {market.title}
-            </option>
+            <>
+              <option>Elige mercado</option>
+              <option
+                className="inputProduct__input__markets"
+                value={market.title}
+                selected
+              >
+                {market.title}
+              </option>
+            </>
           ))}
         </select>
       </div>

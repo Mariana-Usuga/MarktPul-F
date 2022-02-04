@@ -13,11 +13,7 @@ const ProductsOfTheMarkets = ({ products }) => (
           </div>
         ) : (
           products.map((product) => (
-            <Link
-              to={`/pages/itemDetail/${product._id}`}
-              key={product._id}
-              style={{ textDecoration: 'none', color: 'black' }}
-            >
+            <>
               <div className="marketProducts">
                 <div className="marketProducts__item__img">
                   <img src={product.imageMain} alt="" />
@@ -32,7 +28,21 @@ const ProductsOfTheMarkets = ({ products }) => (
                   {`$${product.price.toLocaleString('es-MX')}`}
                 </div>
               </div>
-            </Link>
+              <Link
+                to={`/pages/itemDetail/${product._id}`}
+                key={product._id}
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <button type="button">Ver producto</button>
+              </Link>
+              <Link
+                to={`/pages/updateProduct/${product._id}`}
+                key={product._id}
+                style={{ textDecoration: 'none', color: 'black' }}
+              >
+                <button type="button">Editar producto</button>
+              </Link>
+            </>
           ))
         )
       ) : null}

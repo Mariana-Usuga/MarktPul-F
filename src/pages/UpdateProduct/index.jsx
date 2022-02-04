@@ -1,31 +1,42 @@
-/* eslint-disable prettier/prettier */
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import { useParams } from 'react-router-dom';
 import InputCreateProduct from '../../components/InputCreateProduct/index';
-import { sendProduct } from '../../store/actions/productAndMarketActions';
+import { fetchUpdateProduct } from '../../store/actions/productAndMarketActions';
 import ProductPictures from '../../components/ProductPictures/index';
 import ChooseMarket from '../../components/ChoosseMarket';
 import ChooseProductCategory from '../../components/ChooseProductCategory';
+import { getProduct } from '../../store/services/productAndMarketServices';
 
-import './CreateProduct.scss';
+// import './CreateProduct.scss';
 
 const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
 
 const CreateProduct = () => {
+  const [product, setProduct] = useState();
+  const { id } = useParams();
   const [mainImage, setMainImage] = useState(null);
   const [images, setImages] = useState([]);
   const dispatch = useDispatch();
 
+  useEffect(async () => {
+    const prod = await getProduct(id);
+    setProduct(prod);
+  }, []);
+
   const [formProduct, setFormProduct] = useState({
-    title: '',
-    price: '',
-    mainImage: '',
-    description: '',
-    category: '',
-    images: [],
-    marketId: [],
+    title: product.title,
+    price: product.price,
+    mainImage: product.mainImage,
+    description: product.description,
+    category: product.category,
+    images: product.images,
+    marketId: product.marketId,
   });
+
+  // const [formProduct, setFormProduct] = useState({})
+
   const handleChange = (e) => {
     const { name } = e.target;
     const { value } = e.target;
@@ -64,34 +75,42 @@ const CreateProduct = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const formDataImageMain = new FormData();
-    const formDataImages = new FormData();
-    formDataImageMain.append('imageMain', formProduct.mainImage);
-    for (const file of formProduct.images) {
-      formDataImages.append('images', file);
+    // let imageMain;
+    let imagesArray;
+    if (formProduct.mainImage) {
+      const formDataImageMain = new FormData();
+      formDataImageMain.append('imageMain', formProduct.mainImage);
+      // const responseImageMain = await axios.post(
+      // `${URL_BASE}/api/upload/file`,
+      // formDataImageMain,
+      // );
+      // imageMain = responseImageMain;
     }
-    const responseImageMain = await axios.post(
-      `${URL_BASE}/api/upload/file`,
-      formDataImageMain,
-    );
-    const responseImage = await axios.post(
-      `${URL_BASE}/api/upload/files`,
-      formDataImages,
-    );
-    const responseImages = [];
-    for (const image of responseImage.data) {
-      responseImages.push(image.url);
+    if (formProduct.images) {
+      const formDataImages = new FormData();
+      for (const file of formProduct.images) {
+        formDataImages.append('images', file);
+      }
+      const responseImage = await axios.post(
+        `${URL_BASE}/api/upload/files`,
+        formDataImages,
+      );
+      imagesArray = [];
+      for (const image of responseImage.data) {
+        imagesArray.push(image.url);
+      }
     }
     const newFormProduct = {
       title: formProduct.title,
       price: formProduct.price.replace(/\./g, ''),
-      imageMain: responseImageMain.data.url,
+      // imageMain: imageMain.data.url,
       description: formProduct.description,
       category: formProduct.category,
-      images: responseImages,
+      images: imagesArray,
       marketId: formProduct.marketId,
     };
-    dispatch(sendProduct(newFormProduct));
+    console.log('form', newFormProduct);
+    dispatch(fetchUpdateProduct(newFormProduct, id));
   };
   return (
     <div className="createProductContainer">
@@ -126,7 +145,7 @@ const CreateProduct = () => {
       </div>
       <div className="createProductContainer__item__data">
         <h2 className="createProductContainer__item__data__title">
-          Datos de mi producto
+          Editar mi producto
         </h2>
         <form className="formProduct">
           <div className="formProduct__input">
@@ -152,7 +171,7 @@ const CreateProduct = () => {
             />
           </div>
           <button onClick={onSubmit} className="formProduct__btn" type="submit">
-            Crear producto
+            Editar mi producto
           </button>
         </form>
       </div>

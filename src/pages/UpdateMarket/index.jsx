@@ -15,6 +15,8 @@ import { patchMarket } from '../../store/services/productAndMarketServices';
 
 import '../CreateProduct/CreateProduct.scss';
 
+const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
+
 const UpdateMarket = () => {
   const [mainImage, setMainImage] = useState(null);
   const [showLoaderState, setShowLoaderState] = useState(false);
@@ -60,7 +62,7 @@ const UpdateMarket = () => {
       const formDataImageMain = new FormData();
       formDataImageMain.append('imageMain', formMarket.image);
       const responseImageMain = await axios.post(
-        'http://localhost:8080/api/upload/file',
+        `${URL_BASE}/api/upload/file`,
         formDataImageMain,
       );
       imageMain = responseImageMain;

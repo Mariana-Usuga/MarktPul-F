@@ -22,6 +22,7 @@ import FetchProductsMyMarkets from './components/FetchProductsMyMarkets';
 import ResetPassword from './pages/ResetPassword';
 import ReportMarket from './pages/ReportMarket';
 import User from './pages/User';
+import UpdateProduct from './pages/UpdateProduct';
 
 import './index.scss';
 
@@ -41,6 +42,7 @@ const Routing = () => (
         <Route path="paymentProcess" element={<PaymentProcess />} />
         <Route path="paymentProcess/:id" element={<PaymentProcess />} />
         <Route path="updateMarket/:id" element={<UpdateMarket />} />
+        <Route path="updateProduct/:id" element={<UpdateProduct />} />
         <Route
           path="productsMyMarkets/:id"
           element={<FetchProductsMyMarkets />}

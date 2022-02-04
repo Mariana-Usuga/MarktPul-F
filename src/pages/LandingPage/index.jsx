@@ -18,12 +18,9 @@ import './LandingPage.scss';
 const LandingPage = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.productAndMarket.markets);
-  // const products = useSelector((state) => state.productAndMarket.products);
   const products = useSelector(
     (state) => state.productAndMarket.products.items,
   );
-  // eslint-disable-next-line no-unused-vars
-  // const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.auth.token);
   const cart = useSelector((state) => state.cartReducer.cart);
   const breakPoints = [
@@ -36,8 +33,8 @@ const LandingPage = () => {
     dispatch(fetchProducts());
   }, []);
   useEffect(() => {
-    if (token?.JWT) {
-      dispatch(fetchUser(token.JWT));
+    if (token) {
+      dispatch(fetchUser(token));
     }
   }, [token]);
 

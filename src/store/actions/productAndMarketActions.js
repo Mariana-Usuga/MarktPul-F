@@ -3,8 +3,8 @@ import {
   LOAD_PRODUCTS,
   CREATE_MARKET,
   CREATE_PRODUCT,
-  GET_ID_PRODUCT,
-  GET_ID_MARKET,
+  // GET_ID_PRODUCT,
+  // GET_ID_MARKET,
   UPDATE_MARKET,
   UPDATE_PRODUCT,
   GET_PRODUCT,
@@ -66,24 +66,24 @@ export const fetchUpdateMarket = (newMarket, id) => async (dispatch) => {
   dispatch(updateMarket(responseMarket));
 };
 
-export const fetchUpdateProduct = (product) => async (dispatch) => {
-  const updateProduct = await patchProduct(product);
-  dispatch(updateProduct(updateProduct));
+export const fetchUpdateProduct = (product, id) => async (dispatch) => {
+  const productRes = await patchProduct(product, id);
+  dispatch(updateProduct(productRes));
 };
 
-export const fetchIdProduct = (id) => async (dispatch) => {
-  dispatch({
-    type: GET_ID_PRODUCT,
-    payload: id,
-  });
-};
+// export const fetchIdProduct = (id) => async (dispatch) => {
+//   dispatch({
+//     type: GET_ID_PRODUCT,
+//     payload: id,
+//   });
+// };
 
-export const fetchIdMarket = (id) => async (dispatch) => {
-  dispatch({
-    type: GET_ID_MARKET,
-    payload: id,
-  });
-};
+// export const fetchIdMarket = (id) => async (dispatch) => {
+//   dispatch({
+//     type: GET_ID_MARKET,
+//     payload: id,
+//   });
+// };
 
 export const loadProduct = (product) => async (dispatch) => {
   dispatch({
