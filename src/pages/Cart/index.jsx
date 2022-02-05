@@ -1,7 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
 import ShoppingCart from '../ShoppingCart';
 import CartSummary from '../../components/CartSummary';
 
@@ -12,7 +10,6 @@ const Cart = () => {
 
   return (
     <>
-      <Header />
       <main id="shopping-cart">
         <ShoppingCart />
         <CartSummary />
@@ -29,7 +26,6 @@ const Cart = () => {
           Proceder al Pago
         </button>
       </Link>
-      <Footer />
     </>
   );
 };

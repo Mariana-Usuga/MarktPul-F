@@ -22,8 +22,8 @@ export const hideLoader = () => ({
   payload: false,
 });
 
-export const fetchDoPay = (paymentData) => async (dispatch) => {
-  const pay = await postPay(paymentData);
+export const fetchDoPay = (paymentData, token) => async (dispatch) => {
+  const pay = await postPay(paymentData, token);
   dispatch(doPay(pay));
   return pay;
 };
