@@ -21,7 +21,6 @@ const User = () => {
   const [optionState, setOptionState] = useState({
     current: 'account',
   });
-  // const user = useSelector((state) => state.user.user);
 
   const renderOptions = (option) => {
     switch (option) {
@@ -33,13 +32,6 @@ const User = () => {
         return <UserSectionAccount />;
     }
   };
-  const [renderOption, setRenderOption] = useState(
-    renderOptions(optionState.current),
-  );
-
-  // useEffect(() => {
-  //   setRenderOption(renderOptions(optionState.current));
-  // }, [user, optionState]);
 
   const token = getCurrentLocalStorage('token');
 
@@ -111,7 +103,6 @@ const User = () => {
             </ul>
           </div>
           {renderOptions(optionState.current)}
-          {/* {renderOption} */}
         </div>
       </div>
       <Footer />

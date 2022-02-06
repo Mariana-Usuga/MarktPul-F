@@ -49,6 +49,9 @@ const Routing = () => (
       </Route>
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
+      <Route path="" element={<Layout />}>
+        <Route path="/cart" element={<Cart />} />
+      </Route>
       <Route path="/cart" element={<Cart />} />
       <Route path="/user" element={<User />} />
       <Route path="/activate/:hash" element={<ActivateAcount />} />

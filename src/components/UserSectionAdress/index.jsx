@@ -25,7 +25,6 @@ const UserSectionAdress = () => {
     setUserAdress({ ...userAdress, [inputName]: value });
   };
 
-  console.log(userAdress);
   const handleSubmitAccount = (e) => {
     e.preventDefault();
     const { country, address, city } = userAdress;
@@ -37,8 +36,6 @@ const UserSectionAdress = () => {
       ),
     );
   };
-
-  console.log(userAdress);
 
   return (
     <div className="user-container__data--form">

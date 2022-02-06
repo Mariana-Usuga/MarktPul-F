@@ -40,7 +40,7 @@ const ShipmentSummary = ({ id }) => {
         <div className="itemDiv">
           <span className="itemDiv__address">{user.location?.address}</span>
           <span className="itemDiv__cityAndCountry">
-            {`${user.location?.city}, ${user.location?.country}`}
+            {`${user.location?.city}`}
           </span>
         </div>
         <div className="totalShipping">
