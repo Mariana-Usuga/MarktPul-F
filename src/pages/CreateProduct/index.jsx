@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import InputCreateProduct from '../../components/InputCreateProduct/index';
 import { sendProduct } from '../../store/actions/productAndMarketActions';
@@ -12,6 +13,7 @@ import './CreateProduct.scss';
 const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
 
 const CreateProduct = () => {
+  const navigate = useNavigate();
   const [mainImage, setMainImage] = useState(null);
   const [images, setImages] = useState([]);
   const dispatch = useDispatch();
@@ -65,7 +67,8 @@ const CreateProduct = () => {
     e.preventDefault();
     const formDataImageMain = new FormData();
     const formDataImages = new FormData();
-    formDataImageMain.append('imageMain', formProduct.mainImage);
+    formDataImageMain.append('image', formProduct.mainImage);
+    formDataImageMain.append('folder', 'product/image');
     for (const file of formProduct.images) {
       formDataImages.append('images', file);
     }
@@ -73,24 +76,26 @@ const CreateProduct = () => {
       `${URL_BASE}/api/upload/file`,
       formDataImageMain,
     );
-    const responseImage = await axios.post(
+    /* const responseImage = await axios.post(
       `${URL_BASE}/api/upload/files`,
       formDataImages,
     );
     const responseImages = [];
     for (const image of responseImage.data) {
       responseImages.push(image.url);
-    }
+    } */
     const newFormProduct = {
       title: formProduct.title,
       price: formProduct.price.replace(/\./g, ''),
       imageMain: responseImageMain.data.url,
       description: formProduct.description,
       category: formProduct.category,
-      images: responseImages,
+      /*  images: responseImages, */
       marketId: formProduct.marketId,
     };
     dispatch(sendProduct(newFormProduct));
+    alert('Se realizo la creación del producto');
+    navigate('/');
   };
   return (
     <div className="createProductContainer">

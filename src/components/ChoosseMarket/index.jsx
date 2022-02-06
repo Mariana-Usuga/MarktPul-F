@@ -3,14 +3,23 @@
 import { FaRegTimesCircle } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchUser } from '../../store/actions/userActionsCreator';
 
 const ChooseMarket = ({ setFormProduct }) => {
+  const dispatch = useDispatch();
   const [marketsSelected, setMarketsSelected] = useState([]);
   const [userMarkets, setUserMarkets] = useState([]);
+  console.log(
+    '🚀 ~ file: index.jsx ~ line 13 ~ ChooseMarket ~ userMarkets',
+    userMarkets,
+  );
   const user = useSelector((state) => state.user.user);
+  const token = useSelector((state) => state.auth.token);
   const markets = useSelector((state) => state.productAndMarket.markets.items);
-
+  useEffect(() => {
+    dispatch(fetchUser(token));
+  }, []);
   useEffect(() => {
     for (const market of markets) {
       for (const marketUser of user.marketId) {
@@ -19,7 +28,7 @@ const ChooseMarket = ({ setFormProduct }) => {
         }
       }
     }
-  }, [markets]);
+  }, []);
 
   const showMarkets = (e) => {
     const { value } = e.target;

@@ -82,6 +82,10 @@ export const postMarket = async (formMarket) => {
 };
 
 export const postProduct = async (formProduct) => {
+  console.log(
+    '🚀 ~ file: productAndMarketServices.js ~ line 85 ~ postProduct ~ formProduct',
+    formProduct,
+  );
   const token = JSON.parse(localStorage.getItem('token'));
   const response = await axios.post(`${URL_BASE}/api/product`, formProduct, {
     headers: {
@@ -89,6 +93,10 @@ export const postProduct = async (formProduct) => {
       'Content-Type': 'application/json',
     },
   });
+  console.log(
+    '🚀 ~ file: productAndMarketServices.js ~ line 92 ~ postProduct ~ response',
+    response,
+  );
   return response;
 };
 

@@ -10,6 +10,10 @@ import './ReportMarket.scss';
 const ReportMarket = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.report.marketsUser);
+  console.log(
+    '🚀 ~ file: index.jsx ~ line 13 ~ ReportMarket ~ markets',
+    markets,
+  );
   const token = useSelector((state) => state.auth.token);
   const userIdFromToken = token
     ? JWTDecode(getCurrentLocalStorage('token'))?._id
@@ -29,7 +33,7 @@ const ReportMarket = () => {
         <div>Opciones</div>
       </div>
       <div className="market--tbody">
-        {markets.map((market) => (
+        {markets?.map((market) => (
           <CardReportMarket
             title={market.title}
             description={market.description}

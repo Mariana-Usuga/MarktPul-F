@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { sendMarket } from '../../store/actions/productAndMarketActions';
 import ProductPictures from '../../components/ProductPictures/index';
@@ -10,6 +11,7 @@ import './CreateMarket.scss';
 
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 const CreateMarket = () => {
+  const navigate = useNavigate();
   const user = useSelector((state) => state.user.user);
   const [mainImage, setMainImage] = useState(null);
   const dispatch = useDispatch();
@@ -48,7 +50,8 @@ const CreateMarket = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     const formDataImageMain = new FormData();
-    formDataImageMain.append('imageMain', formMarket.image);
+    formDataImageMain.append('image', formMarket.image);
+    formDataImageMain.append('folder', 'market/image');
     const responseImageMain = await axios.post(
       `${URL_BASE}/api/upload/file`,
       formDataImageMain,
@@ -67,6 +70,8 @@ const CreateMarket = () => {
       organizer: user.username,
     };
     dispatch(sendMarket(newFormMarket, user.marketId, user._id));
+    alert('Se realizo la creación del producto');
+    navigate('/');
   };
   return (
     <div className="createMarketContainer">

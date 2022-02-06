@@ -7,5 +7,9 @@ export const loadMarketsUserBy = (markets) => ({
 });
 export const FetchMarketsUserBy = (token, id) => async (dispatch) => {
   const product = await getMarketsByUser(token, id);
+  console.log(
+    '🚀 ~ file: reportMarketPageActionsCreator.js ~ line 10 ~ FetchMarketsUserBy ~ product',
+    product,
+  );
   dispatch(loadMarketsUserBy(product));
 };
