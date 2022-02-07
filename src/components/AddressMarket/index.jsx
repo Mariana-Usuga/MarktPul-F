@@ -56,7 +56,7 @@ const AddressMarket = ({ handleChange }) => (
 );
 
 AddressMarket.propTypes = {
-  handleChange: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default AddressMarket;
