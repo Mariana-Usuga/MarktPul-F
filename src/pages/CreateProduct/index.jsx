@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import InputCreateProduct from '../../components/InputCreateProduct/index';
 import { sendProduct } from '../../store/actions/productAndMarketActions';
 import ProductPictures from '../../components/ProductPictures/index';
@@ -62,7 +64,7 @@ const CreateProduct = () => {
       images: e.target.files,
     }));
   };
-
+  const MySwal = withReactContent(Swal);
   const onSubmit = async (e) => {
     e.preventDefault();
     const formDataImageMain = new FormData();
@@ -94,7 +96,12 @@ const CreateProduct = () => {
       marketId: formProduct.marketId,
     };
     dispatch(sendProduct(newFormProduct));
-    navigate('/');
+    await MySwal.fire({
+      title: <strong>Buen trabajo!</strong>,
+      html: <i>Mercado Creado!</i>,
+      icon: 'success',
+    });
+    navigate('/user');
   };
   return (
     <div className="createProductContainer">

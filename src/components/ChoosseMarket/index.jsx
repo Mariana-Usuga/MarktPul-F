@@ -92,7 +92,7 @@ const ChooseMarket = ({ setFormProduct }) => {
   );
 };
 ChooseMarket.propTypes = {
-  setFormProduct: PropTypes.string.isRequired,
+  setFormProduct: PropTypes.func.isRequired,
 };
 
 export default ChooseMarket;

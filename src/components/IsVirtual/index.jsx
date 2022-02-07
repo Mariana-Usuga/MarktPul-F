@@ -51,7 +51,7 @@ const IsVirtual = ({ handleChange }) => {
 };
 
 IsVirtual.propTypes = {
-  handleChange: PropTypes.string.isRequired,
+  handleChange: PropTypes.func.isRequired,
 };
 
 export default IsVirtual;

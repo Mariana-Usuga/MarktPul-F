@@ -2,6 +2,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import {
   validateEmail,
   validatePassword,
@@ -18,6 +20,7 @@ const formErrors = {
 };
 
 const Register = () => {
+  const MySwal = withReactContent(Swal);
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -107,7 +110,11 @@ const Register = () => {
     axios(config)
       .then(() => {
         setSignUpError('');
-        alert('Gracias por registrarte! (este alert es feo y lo sabemos)');
+        MySwal.fire({
+          title: <strong>Gracias por registrarte!!</strong>,
+          html: <strong>Revise su bandeja de entrada</strong>,
+          icon: 'success',
+        });
         navigate('/');
       })
       .catch((error) => {
