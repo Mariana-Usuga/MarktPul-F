@@ -10,10 +10,6 @@ const ChooseMarket = ({ setFormProduct }) => {
   const dispatch = useDispatch();
   const [marketsSelected, setMarketsSelected] = useState([]);
   const [userMarkets, setUserMarkets] = useState([]);
-  console.log(
-    '🚀 ~ file: index.jsx ~ line 13 ~ ChooseMarket ~ userMarkets',
-    userMarkets,
-  );
   const user = useSelector((state) => state.user.user);
   const token = useSelector((state) => state.auth.token);
   const markets = useSelector((state) => state.productAndMarket.markets.items);

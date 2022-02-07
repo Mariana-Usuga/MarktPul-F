@@ -10,10 +10,6 @@ import './ReportMarket.scss';
 const ReportMarket = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.report.marketsUser);
-  console.log(
-    '🚀 ~ file: index.jsx ~ line 13 ~ ReportMarket ~ markets',
-    markets,
-  );
   const token = useSelector((state) => state.auth.token);
   const userIdFromToken = token
     ? JWTDecode(getCurrentLocalStorage('token'))?._id

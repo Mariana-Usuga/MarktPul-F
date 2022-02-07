@@ -10,6 +10,7 @@ import {
   GET_PRODUCT,
   SHOW_LOADER,
   HIDE_LOADER,
+  DELETE_MARKET,
 } from '../types/productAndMarketTypes';
 import {
   getMarkets,
@@ -20,6 +21,7 @@ import {
   patchProduct,
   getProduct,
   patchUser,
+  deletedMarket,
 } from '../services/productAndMarketServices';
 // import { fetchUpdateUser } from './userActionsCreator';
 
@@ -62,7 +64,10 @@ export const updateMarket = (product) => ({
   type: UPDATE_MARKET,
   payload: product,
 });
-
+export const deleteMarket = (market) => ({
+  type: DELETE_MARKET,
+  payload: market,
+});
 export const fetchUpdateMarket = (newMarket, id) => async (dispatch) => {
   const responseMarket = await patchMarket(newMarket, id);
   dispatch(updateMarket(responseMarket));
@@ -107,7 +112,10 @@ export const fetchProducts = () => async (dispatch) => {
 export const fetchProduct = (id) => () => {
   return getProduct(id);
 };
-
+export const fetchDeleteMarket = (id) => async (dispatch) => {
+  const markets = await deletedMarket(id);
+  dispatch(deleteMarket(markets));
+};
 export const sendProduct = (formProduct) => async (dispatch) => {
   const responseProduct = await postProduct(formProduct);
   dispatch(createProduct(responseProduct));

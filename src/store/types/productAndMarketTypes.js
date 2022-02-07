@@ -9,5 +9,6 @@ export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const MARKET_PRODUCTS = 'MARKET_PRODUCTS';
 export const GET_PRODUCT = 'GET_PRODUCT';
 export const PATCH_MARKET = 'PATCH_MARKET';
+export const DELETE_MARKET = 'DELETE_MARKET';
 export const HIDE_LOADER = 'HIDE_LOADER';
 export const SHOW_LOADER = 'SHOW_LOADER';

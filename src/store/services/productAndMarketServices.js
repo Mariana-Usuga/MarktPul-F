@@ -82,10 +82,6 @@ export const postMarket = async (formMarket) => {
 };
 
 export const postProduct = async (formProduct) => {
-  console.log(
-    '🚀 ~ file: productAndMarketServices.js ~ line 85 ~ postProduct ~ formProduct',
-    formProduct,
-  );
   const token = JSON.parse(localStorage.getItem('token'));
   const response = await axios.post(`${URL_BASE}/api/product`, formProduct, {
     headers: {
@@ -93,10 +89,6 @@ export const postProduct = async (formProduct) => {
       'Content-Type': 'application/json',
     },
   });
-  console.log(
-    '🚀 ~ file: productAndMarketServices.js ~ line 92 ~ postProduct ~ response',
-    response,
-  );
   return response;
 };
 
@@ -112,4 +104,14 @@ export const getUser = async (token) => {
   };
   const response = await axios(config);
   return response;
+};
+export const deletedMarket = async (id) => {
+  const token = JSON.parse(localStorage.getItem('token'));
+  const responseMarket = await axios.delete(`${URL_BASE}/api/market/${id}`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      'Content-Type': 'application/json',
+    },
+  });
+  return responseMarket.data;
 };
