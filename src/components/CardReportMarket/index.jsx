@@ -16,7 +16,6 @@ const CardReportMarket = ({
   const dispatch = useDispatch();
   const onSubmit = () => {
     dispatch(fetchDeleteMarket(_id));
-    alert('Se realizo la eliminacion del mercado');
   };
   return (
     <>

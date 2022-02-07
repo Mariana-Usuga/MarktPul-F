@@ -94,7 +94,6 @@ const CreateProduct = () => {
       marketId: formProduct.marketId,
     };
     dispatch(sendProduct(newFormProduct));
-    alert('Se realizo la creación del producto');
     navigate('/');
   };
   return (

@@ -70,7 +70,6 @@ const CreateMarket = () => {
       organizer: user.username,
     };
     dispatch(sendMarket(newFormMarket, user.marketId, user._id));
-    alert('Se realizo la creación del producto');
     navigate('/');
   };
   return (
