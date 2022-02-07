@@ -43,7 +43,6 @@ const CardPayment = ({ setCanProceed, id }) => {
   ];
   // const aProduct = useSelector((state) => state.pay.aProduct);
   const isLoading = useSelector((state) => state.pay.isLoading);
-  console.log('loading', isLoading);
   const estimatedTotal = useSelector(
     (state) => state.cartReducer.estimatedTotal,
   );
