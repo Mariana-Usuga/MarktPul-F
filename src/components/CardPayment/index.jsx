@@ -1,9 +1,12 @@
-/* eslint-disable */
+/* eslint-disable no-plusplus */
+/* eslint-disable no-nested-ternary */
+import PropTypes from 'prop-types';
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaCheckCircle } from 'react-icons/fa';
 import {
-  fetchDoPay,
+  // fetchDoPay,
   showLoader,
   hideLoader,
 } from '../../store/actions/payActionsCreator';
@@ -11,8 +14,11 @@ import { postPay } from '../../store/services/payServices';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 
 import './CardPayment.scss';
+// canProceed, setCanProceed
 
-const CardPayment = ({ canProceed, setCanProceed }) => {
+const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
+
+const CardPayment = ({ setCanProceed, id }) => {
   const months = [
     { id: '1', month: '01', year: '21' },
     { id: '2', month: '02', year: '22' },
@@ -35,27 +41,22 @@ const CardPayment = ({ canProceed, setCanProceed }) => {
     { id: '19', year: '39' },
     { id: '20', year: '40' },
   ];
-  const aProduct = useSelector((state) => state.pay.aProduct);
+  // const aProduct = useSelector((state) => state.pay.aProduct);
   const isLoading = useSelector((state) => state.pay.isLoading);
+  console.log('loading', isLoading);
   const estimatedTotal = useSelector(
     (state) => state.cartReducer.estimatedTotal,
   );
-  const [showLoaderState, setShowLoaderState] = useState(false);
+  const [showLoaderState, setShowLoaderState] = useState(null);
   const dispatch = useDispatch();
   const [product, setProduct] = useState();
-  const products = useSelector((state) => state.productAndMarket.products);
-  const id = useSelector((state) => state.productAndMarket.idProduct);
   const token = getCurrentLocalStorage('token');
   const [paymentSuccess, setPaymentSuccess] = useState(null);
   const [paymentError, setPaymentError] = useState(null);
-  useEffect(() => {
+  useEffect(async () => {
     setCanProceed(false);
-    for (let i = 0; i < products.length; i++) {
-      if (id === products[i]) {
-        setProduct(products[i]);
-        return;
-      }
-    }
+    const product = await axios.get(`${URL_BASE}/api/product/${id}`);
+    setProduct(product.data);
   }, []);
 
   useEffect(() => {
@@ -104,7 +105,7 @@ const CardPayment = ({ canProceed, setCanProceed }) => {
     const paymentData = {
       docType: 'CC',
       docNumber: '10358519',
-      value: aProduct ? product.price : totalWithOutComma,
+      value: id ? product.price : totalWithOutComma,
       currency: 'COP',
       description: 'Product Payment',
       cardNumber: form.number,
@@ -113,6 +114,7 @@ const CardPayment = ({ canProceed, setCanProceed }) => {
       cardCVC: form.cvc,
     };
     dispatch(showLoader());
+    setShowLoaderState(true);
     const resPay = await postPay(paymentData, token);
     if (resPay.status === 200) {
       setPaymentSuccess(true);
@@ -187,7 +189,7 @@ const CardPayment = ({ canProceed, setCanProceed }) => {
           </select>
         </label>
       </div>
-      {paymentError ? <span> {paymentError}</span> : null}
+      {paymentError ? <span>{paymentError}</span> : null}
       <button
         className="btnCard"
         style={{ marginTop: 20, marginLeft: 100 }}
@@ -212,6 +214,8 @@ const CardPayment = ({ canProceed, setCanProceed }) => {
   );
 };
 
+CardPayment.propTypes = {
+  setCanProceed: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
+};
 export default CardPayment;
-
-/*  */

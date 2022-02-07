@@ -24,6 +24,7 @@ const Pay = ({ id, canProceed, setCanProceed }) => {
           <h3>Elige tu medio de pago</h3>
         </div>
         <PaymentMethod
+          id={id}
           method="Pago Tarjeta débito o crédito"
           canProceed={canProceed}
           setCanProceed={setCanProceed}
