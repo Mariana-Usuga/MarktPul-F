@@ -33,13 +33,13 @@ const ActivateAcount = () => {
     activateAccount();
   }, []);
 
-  const [timer, setTimer] = useState(10);
+  const [timer, setTimer] = useState(5);
   useEffect(() => {
     if (timer <= 0) {
       setTimer(null);
     }
-    if (!timer && apiResponse.JWT) {
-      setLoading(true);
+    if (!timer || apiResponse?.JWT) {
+      setLoading(false);
       return navigate('/login');
     }
 
@@ -93,6 +93,7 @@ const ActivateAcount = () => {
       ) : (
         <div>
           <h1>Validando...</h1>
+          <p>En unos momentos será redirigido al inicio de sesión...</p>
         </div>
       )}
     </div>
