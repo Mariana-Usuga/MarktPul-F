@@ -1,7 +1,4 @@
-/* eslint-disable prettier/prettier */
-/* eslint-disable keyword-spacing */
-/* eslint-disable no-plusplus */
-/* eslint-disable no-nested-ternary */
+/* eslint-disable */
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaCheckCircle } from 'react-icons/fa';
@@ -11,9 +8,11 @@ import {
   hideLoader,
 } from '../../store/actions/payActionsCreator';
 import { postPay } from '../../store/services/payServices';
+import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
+
 import './CardPayment.scss';
 
-const CardPayment = () => {
+const CardPayment = ({ canProceed, setCanProceed }) => {
   const months = [
     { id: '1', month: '01', year: '21' },
     { id: '2', month: '02', year: '22' },
@@ -46,15 +45,26 @@ const CardPayment = () => {
   const [product, setProduct] = useState();
   const products = useSelector((state) => state.productAndMarket.products);
   const id = useSelector((state) => state.productAndMarket.idProduct);
-
+  const token = getCurrentLocalStorage('token');
+  const [paymentSuccess, setPaymentSuccess] = useState(null);
+  const [paymentError, setPaymentError] = useState(null);
   useEffect(() => {
-    for(let i = 0; i < products.length; i++) {
+    setCanProceed(false);
+    for (let i = 0; i < products.length; i++) {
       if (id === products[i]) {
         setProduct(products[i]);
         return;
       }
     }
   }, []);
+
+  useEffect(() => {
+    if (paymentSuccess) {
+      setCanProceed(true);
+    } else {
+      setCanProceed(false);
+    }
+  }, [paymentSuccess]);
 
   const [form, setForm] = useState({
     holdersName: '',
@@ -63,6 +73,7 @@ const CardPayment = () => {
     year: '',
     cvc: '',
   });
+
   const handleChange = (e) => {
     const { name } = e.target;
     const { value } = e.target;
@@ -70,6 +81,18 @@ const CardPayment = () => {
     newState[name] = value;
     setForm(newState);
   };
+
+  const [formComplete, setFormComplete] = useState(false);
+  useEffect(() => {
+    const { number, year, month, cvc } = form;
+    const data = [number, year, month, cvc];
+    const val = data.reduce((acc, curr) => {
+      return !curr.length ? acc + 1 : acc;
+    }, 0);
+    if (val === 0) {
+      setFormComplete(true);
+    }
+  }, [form]);
 
   const sendForm = async (e) => {
     e.preventDefault();
@@ -89,14 +112,16 @@ const CardPayment = () => {
       cardExpMonth: form.month,
       cardCVC: form.cvc,
     };
-    if (!isLoading) {
-      dispatch(showLoader());
-      dispatch(fetchDoPay(paymentData));
-      if (postPay) {
-        setShowLoaderState(true);
-        dispatch(hideLoader());
-      }
+    dispatch(showLoader());
+    const resPay = await postPay(paymentData, token);
+    if (resPay.status === 200) {
+      setPaymentSuccess(true);
+      setPaymentError(null);
+    } else {
+      setPaymentSuccess(false);
+      setPaymentError('Ha ocurrido un error con el pago intenta denuevo');
     }
+    dispatch(hideLoader());
   };
 
   return (
@@ -162,9 +187,15 @@ const CardPayment = () => {
           </select>
         </label>
       </div>
-      <button className="btnCard" type="submit">
+      {paymentError ? <span> {paymentError}</span> : null}
+      <button
+        className="btnCard"
+        style={{ marginTop: 20, marginLeft: 100 }}
+        type="submit"
+        disabled={!formComplete}
+      >
         {!isLoading && !showLoaderState ? (
-          'Usar esta tarjeta'
+          'Pagar con esta tarjeta'
         ) : !showLoaderState ? (
           <img
             className="loading"

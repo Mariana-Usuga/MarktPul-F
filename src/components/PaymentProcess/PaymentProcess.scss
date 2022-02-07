@@ -1,6 +1,10 @@
 .btnStepper {
   display: flex;
   justify-content: space-around;
+  margin-top: 40px;
+  &-btn:disabled {
+    background-color: grey;
+  }
   &__next {
     border: 4px solid #4c3dff;
     border-radius: 10px;

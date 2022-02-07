@@ -20,11 +20,11 @@ const UserSectionPicture = () => {
     setOpened(true);
   };
 
-  const [avatar, setAvatar] = useState(user?.picture ?? defaultPicture);
+  const [avatar, setAvatar] = useState(defaultPicture);
   const [previewState, setPreviewState] = useState({ preview: null });
 
   useEffect(() => {
-    setAvatar(user.picture);
+    setAvatar(user.picture ?? defaultPicture);
   }, [user]);
 
   const onCrop = (preview) => {
