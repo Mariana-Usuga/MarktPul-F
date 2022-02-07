@@ -1,24 +1,35 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500;700&family=Questrial&display=swap');
 $primary-color: white;
 $secondary-color: #4c3dff;
 .market {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  &__item {
-    margin-top: 30px;
-  }
+  position: relative;
+  height: 300px;
 }
 .market__itemI {
   text-align: center;
   &__img {
-    width: 280px;
+    left: 0;
+    position: absolute;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
   }
 }
 .market__item {
+  font-family: 'Fira Sans', sans-serif;
+  height: 100%;
+  position: absolute;
+  right: 0;
+  color: white;
   max-width: 400px;
   text-align: right;
-  margin-right: 10px;
+  padding-right: 15px;
+  z-index: 2;
+  background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
   &__organizer span,
   &__place {
     margin-top: 10px;
@@ -27,12 +38,15 @@ $secondary-color: #4c3dff;
   &__desc,
   &__organizer,
   &__btn {
+    font-family: 'Questrial', sans-serif;
     margin-top: 10px;
     font-size: 1.2rem;
+    font-weight: 300;
   }
   &__title {
     margin-top: 20px;
     margin-bottom: 10px;
+    font-weight: 700;
   }
   &__btn {
     margin-top: 20px;
@@ -46,41 +60,75 @@ $secondary-color: #4c3dff;
   }
 }
 
+.marketProducts__container {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
 .marketProducts {
   display: flex;
+  //margin: 35px 260px 0 260px;
   flex-wrap: wrap;
-  margin: 35px 260px 0 260px;
-  border-bottom: 1px solid grey;
+  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  width: 70%;
+  margin: 1rem 0;
+  //border-bottom: 1px solid grey;
+  &__info--container{
+    padding: 1rem;
+    font-family: 'Nunito Sans', sans-serif;
+  }
   &__noProducts {
     font-size: 1.2rem;
     margin-left: 140px;
   }
   &__title {
-    margin: 35px 0 0 150px;
+    margin: 1rem 0;
+    text-align: center;
+    font-weight: 700;
+    font-size: 28px;
   }
   &__item {
     &__img {
-      margin-right: 40px;
+      width: 100%;
     }
     &__img img {
-      width: 100px;
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+      height: 150px;
+      object-fit: cover;
     }
     &__info {
-      width: 500px;
+      margin-bottom: 1rem;
     }
     &__title {
       margin-bottom: 10px;
-      font-weight: bolder;
-      font-size: 1.3rem;
+      font-weight: 700;
+      font-size: 1.5rem;
     }
   }
 }
 
+@media (min-width: 768px) {
+  .marketProducts{
+    flex-wrap: nowrap;
+  }
+  .marketProducts__item__info {
+    width: 400px;
+  }
+  .marketProducts__item__img img{
+    border-radius: 10px 0 0 10px;
+  }
+}
+
 @media (min-width: 992px) {
-  .market__itemI {
-    &__img {
-      width: 400px;
-    }
+  .market{
     margin-top: 30px;
+  }
+  .marketProducts__info--container{
+    margin-left: 1rem;
+  }
+  .marketProducts__item__info {
+    width: 700px;
   }
 }

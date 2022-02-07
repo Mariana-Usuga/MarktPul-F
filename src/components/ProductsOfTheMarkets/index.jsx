@@ -18,18 +18,22 @@ const ProductsOfTheMarkets = ({ products }) => (
               key={product._id}
               style={{ textDecoration: 'none', color: 'black' }}
             >
-              <div className="marketProducts">
-                <div className="marketProducts__item__img">
-                  <img src={product.imageMain} alt="" />
-                </div>
-                <div className="marketProducts__item__info">
-                  <div className="marketProducts__item__title">
-                    {product.title}
+              <div className="marketProducts__container">
+                <div className="marketProducts">
+                  <div className="marketProducts__item__img">
+                    <img src={product.imageMain} alt="" />
                   </div>
-                  {`${product.description.slice(0, 100)}...`}
-                </div>
-                <div className="marketProducts__item__price">
-                  {`$${product.price.toLocaleString('es-MX')}`}
+                  <div className="marketProducts__info--container">
+                    <div className="marketProducts__item__info">
+                      <div className="marketProducts__item__title">
+                        {product.title}
+                      </div>
+                      {`${product.description.slice(0, 100)}...`}
+                    </div>
+                    <div className="marketProducts__item__price">
+                      {`$${product.price.toLocaleString('es-MX')}`}
+                    </div>
+                  </div>
                 </div>
               </div>
             </Link>
