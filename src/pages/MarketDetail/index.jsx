@@ -38,9 +38,6 @@ const MarketDetail = () => {
             Organizado por
             <span>{` ${market.organizer}`}</span>
           </p>
-          <button className="market__item__btn" type="button">
-            Contactar al organizador
-          </button>
         </div>
       </div>
       <h2 className="marketProducts__title">Productos de este mercado</h2>

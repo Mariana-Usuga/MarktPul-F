@@ -78,9 +78,6 @@ const ItemDetail = () => {
           >
             Añadir al carrito
           </button>
-          <button className="btn__seller" type="button">
-            Contactar al vendedor
-          </button>
         </div>
       </div>
       <div>
@@ -93,12 +90,17 @@ const ItemDetail = () => {
           .slice(0, 5)
           .map((p) => (
             <div className="interest" key={p._id}>
-              <Link to={`/pages/itemDetail/${p._id}`}>
-                <img
-                  className="interest__img"
-                  src={p?.imageMain}
-                  alt="product"
-                />
+              <Link to={`/pages/itemDetail/${p._id}`} style={{ textDecoration: 'none' }}>
+                <div className="productCard__item">
+                  <img className="productCard__img" src={p.imageMain} alt="Product" />
+                  <div className="productCard__info">
+                    <h3 className="productCard__subtitle">{`${p.title.slice(0, 15)}...`}</h3>
+                    <p className="productCard__price">
+                      <small>$</small>
+                      <span>{p.price}</span>
+                    </p>
+                  </div>
+                </div>
               </Link>
             </div>
           ))}
