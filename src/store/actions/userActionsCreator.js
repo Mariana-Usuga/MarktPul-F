@@ -32,7 +32,6 @@ export const fetchUser = (token) => async (dispatch) => {
   // localStorage.setItem('user', JSON.stringify(user.data));
   dispatch(loadUser(user));
 };
-
 export const fetchUpdateUser = (data, id, token) => async (dispatch) => {
   const user = await patchUser(data, id, token);
   if (user.statusText === 'OK') {

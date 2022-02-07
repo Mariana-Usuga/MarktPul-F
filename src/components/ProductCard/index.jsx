@@ -4,7 +4,7 @@ import './ProductCard.scss';
 
 const ProductCard = ({ product }) => {
   const title = product.title.slice(0, 20);
-  const price = product.price.toLocaleString('es-MX');
+  const price = product?.price?.toLocaleString('es-MX');
   return (
     <div className="productCard__item">
       <img className="productCard__img" src={product.imageMain} alt="Product" />

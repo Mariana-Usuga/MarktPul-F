@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -80,6 +80,15 @@ const User = () => {
                 >
                   Direcciones
                 </button>
+              </li>
+              <li>
+                <Link to="/pages/createMarket">Crear Mercado</Link>
+              </li>
+              <li>
+                <Link to="/pages/createProduct">Crear Productos</Link>
+              </li>
+              <li>
+                <Link to="/pages/marketReport/">Ver Mercados</Link>
               </li>
               <li>
                 <button

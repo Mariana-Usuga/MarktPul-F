@@ -29,7 +29,7 @@ const ReportMarket = () => {
         <div>Opciones</div>
       </div>
       <div className="market--tbody">
-        {markets.map((market) => (
+        {markets?.map((market) => (
           <CardReportMarket
             title={market.title}
             description={market.description}

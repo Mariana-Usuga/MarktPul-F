@@ -15,6 +15,7 @@ import {
   PATCH_MARKET,
   SHOW_LOADER,
   HIDE_LOADER,
+  DELETE_MARKET,
 } from '../types/productAndMarketTypes';
 
 const initialState = {
@@ -33,9 +34,21 @@ const productAndMarketReducer = (state = initialState, action) => {
     case LOAD_MARKETS:
       return { ...state, markets: { items: action.payload, loaded: true } };
     case CREATE_PRODUCT:
-      return { ...state, products: [...state.products, action.payload] };
+      return {
+        ...state,
+        products: {
+          items: [...state.markets.items, action.payload],
+          loaded: true,
+        },
+      };
     case CREATE_MARKET:
-      return { ...state, markets: [...state.markets, action.payload] };
+      return {
+        ...state,
+        markets: {
+          items: [...state.markets.items, action.payload],
+          loaded: true,
+        },
+      };
     case UPDATE_PRODUCT: {
       const newData = state.products.items.map((el) =>
         el._id === action.payload.id ? action.payload : el,
@@ -65,6 +78,15 @@ const productAndMarketReducer = (state = initialState, action) => {
       return { ...state, product: action.payload };
     case PATCH_MARKET:
       return { ...state, product: action.payload };
+    case DELETE_MARKET: {
+      const newData = state.markets.items.map((el) =>
+        el._id === action.payload.id ? action.payload : el,
+      );
+      return {
+        ...state,
+        markets: newData,
+      };
+    }
     default:
       return state;
   }

@@ -18,6 +18,12 @@ const ShipmentSummary = ({ id }) => {
   const [product, setProduct] = useState({});
   const total = useSelector((state) => state.cartReducer.estimatedTotal);
   const user = useSelector((state) => state.user.user);
+  const cart = useSelector((state) => state.cartReducer.cart);
+
+  const reducer = (prevValue, currentValue) => {
+    prevValue + currentValue.price * currentValue.qty;
+  };
+  const [cartPrice, setCartPrice] = useState(0);
 
   useEffect(async () => {
     const product = await getProduct(id);
