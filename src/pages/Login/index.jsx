@@ -72,7 +72,6 @@ const Login = () => {
               type="email"
               name="email"
               id="email"
-              placeholder="email@direccion.com"
               required
               value={email}
               onChange={handleEmail}
@@ -84,7 +83,6 @@ const Login = () => {
               type={passwordShown ? 'text' : 'password'}
               name="password"
               id="password"
-              placeholder="&#9679;&#9679;&#9679;&#9679;&#9679; "
               minLength="8"
               required
               value={password}

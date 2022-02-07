@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Stick+No+Bills&display=swap');
+
+.notFound__container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Stick No Bills', sans-serif;
+
+  .notFound__404 {
+    font-size: 256px;
+    font-weight: 300;
+    color: #4c3dff;
+  }
+  .notFound__title {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 24px;
+  }
+  .notFound__button {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: rgba(101, 203, 111, 1);
+    color: white;
+    font-weight: bold;
+    line-height: 35px;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    margin-top: 2rem;
+    padding: 0.2rem 2rem;
+  }
+  .notFound__button:hover {
+    cursor: pointer;
+  }
+}
+@media screen and (max-width: 767px) {
+  .notFound__container {
+    .notFound__404 {
+      font-size: 96px;
+    }
+    .notFound__title {
+      font-size: 16px;
+      text-align: center;
+    }
+  }
+}

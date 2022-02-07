@@ -1,0 +1,45 @@
+.terms__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  .terms__header {
+    background-color: #4c3dff;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding: 3rem 0;
+  }
+  .terms__header--title {
+    color: white;
+    font-size: 3.5rem;
+  }
+}
+.terms {
+  width: 70%;
+  * {
+    margin: 1rem 0;
+  }
+  p {
+    font-size: 1.2rem;
+    font-weight: 300;
+  }
+  p strong {
+    margin-top: 0.5rem;
+    color: #4c3dff;
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-family: 'Questrial', sans-serif;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .terms__container {
+    .terms__header--title {
+      font-size: 2rem;
+    }
+  }
+  .terms {
+    width: 90%;
+  }
+}
