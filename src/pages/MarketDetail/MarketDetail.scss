@@ -29,7 +29,7 @@ $secondary-color: #4c3dff;
   text-align: right;
   padding-right: 15px;
   z-index: 2;
-  background: linear-gradient(to left, rgba(0,0,0,1), rgba(0,0,0,0));
+  background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
   &__organizer span,
   &__place {
     margin-top: 10px;
@@ -61,7 +61,7 @@ $secondary-color: #4c3dff;
 }
 
 .marketProducts__container {
-  width: 100vw;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -69,12 +69,13 @@ $secondary-color: #4c3dff;
   display: flex;
   //margin: 35px 260px 0 260px;
   flex-wrap: wrap;
-  box-shadow: 0px 0px 10px 5px rgba(0,0,0,0.1);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
   width: 70%;
+  max-width: 900px;
   margin: 1rem 0;
   //border-bottom: 1px solid grey;
-  &__info--container{
+  &__info--container {
     padding: 1rem;
     font-family: 'Nunito Sans', sans-serif;
   }
@@ -95,7 +96,7 @@ $secondary-color: #4c3dff;
     &__img img {
       width: 100%;
       border-radius: 10px 10px 0 0;
-      height: 150px;
+      height: 200px;
       object-fit: cover;
     }
     &__info {
@@ -110,25 +111,28 @@ $secondary-color: #4c3dff;
 }
 
 @media (min-width: 768px) {
-  .marketProducts{
+  .marketProducts {
     flex-wrap: nowrap;
   }
   .marketProducts__item__info {
     width: 400px;
   }
-  .marketProducts__item__img img{
+  .marketProducts__item__img img {
     border-radius: 10px 0 0 10px;
   }
 }
 
 @media (min-width: 992px) {
-  .market{
+  .market {
     margin-top: 30px;
   }
-  .marketProducts__info--container{
+  .marketProducts__info--container {
     margin-left: 1rem;
   }
   .marketProducts__item__info {
     width: 700px;
+  }
+  .marketProducts__item__img {
+    max-width: 200px;
   }
 }
