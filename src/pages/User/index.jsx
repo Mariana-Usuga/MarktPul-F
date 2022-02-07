@@ -1,5 +1,5 @@
 /*eslint-disable*/
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
@@ -21,7 +21,6 @@ const User = () => {
   const [optionState, setOptionState] = useState({
     current: 'account',
   });
-  // const user = useSelector((state) => state.user.user);
 
   const renderOptions = (option) => {
     switch (option) {
@@ -33,13 +32,6 @@ const User = () => {
         return <UserSectionAccount />;
     }
   };
-  const [renderOption, setRenderOption] = useState(
-    renderOptions(optionState.current),
-  );
-
-  // useEffect(() => {
-  //   setRenderOption(renderOptions(optionState.current));
-  // }, [user, optionState]);
 
   const token = getCurrentLocalStorage('token');
 
@@ -90,6 +82,15 @@ const User = () => {
                 </button>
               </li>
               <li>
+                <Link to="/pages/createMarket">Crear Mercado</Link>
+              </li>
+              <li>
+                <Link to="/pages/createProduct">Crear Productos</Link>
+              </li>
+              <li>
+                <Link to="/pages/marketReport/">Ver Mercados</Link>
+              </li>
+              <li>
                 <button
                   className={'user-container__data--sidebar-options-btn'}
                   name="logout"
@@ -102,7 +103,6 @@ const User = () => {
             </ul>
           </div>
           {renderOptions(optionState.current)}
-          {/* {renderOption} */}
         </div>
       </div>
       <Footer />

@@ -11,6 +11,7 @@ import {
   fetchProducts,
   fetchMarkets,
 } from '../../store/actions/productAndMarketActions';
+import Description from '../../components/Description';
 import { fetchUser } from '../../store/actions/userActionsCreator';
 
 import './LandingPage.scss';
@@ -18,12 +19,9 @@ import './LandingPage.scss';
 const LandingPage = () => {
   const dispatch = useDispatch();
   const markets = useSelector((state) => state.productAndMarket.markets);
-  // const products = useSelector((state) => state.productAndMarket.products);
   const products = useSelector(
     (state) => state.productAndMarket.products.items,
   );
-  // eslint-disable-next-line no-unused-vars
-  // const user = useSelector((state) => state.user);
   const token = useSelector((state) => state.auth.token);
   const cart = useSelector((state) => state.cartReducer.cart);
   const breakPoints = [
@@ -36,8 +34,8 @@ const LandingPage = () => {
     dispatch(fetchProducts());
   }, []);
   useEffect(() => {
-    if (token?.JWT) {
-      dispatch(fetchUser(token.JWT));
+    if (token) {
+      dispatch(fetchUser(token));
     }
   }, [token]);
 
@@ -47,6 +45,7 @@ const LandingPage = () => {
   return (
     <>
       <HeaderMain />
+      <Description />
       <h2 className="titleMarket">Mercados Destacados</h2>
       <Carousel className="carousel" breakPoints={breakPoints}>
         {markets.items.map((market) => (
