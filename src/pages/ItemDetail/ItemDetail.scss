@@ -66,6 +66,11 @@ body {
 .titleInterest {
   margin: 20px 10px;
 }
+.product {
+  &__img {
+    width: 150px;
+  }
+}
 
 @media (min-width: 992px) {
   .container {

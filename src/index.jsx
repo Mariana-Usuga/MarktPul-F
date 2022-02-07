@@ -36,6 +36,7 @@ const Routing = () => (
         <Route path="search" element={<Search />} />
         <Route path="marketDetail/:id" element={<MarketDetail />} />
         <Route path="itemDetail/:id" element={<ItemDetail />} />
+        {/* <Route path="itemDetailN/:id" element={<ItemDetail />} /> */}
         <Route path="createProduct" element={<CreateProduct />} />
         <Route path="createMarket" element={<CreateMarket />} />
         <Route path="paymentProcess" element={<PaymentProcess />} />
