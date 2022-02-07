@@ -77,7 +77,7 @@ const CreateMarket = () => {
       html: <i>Mercado Creado!</i>,
       icon: 'success',
     });
-    navigate('/');
+    navigate('/user');
   };
   return (
     <div className="createMarketContainer">
