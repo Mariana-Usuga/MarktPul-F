@@ -7,7 +7,7 @@ import CardPayment from '../CardPayment/index';
 
 import './PaymentMethod.scss';
 
-const PaymentMethod = ({ method, canProceed, setCanProceed }) => {
+const PaymentMethod = ({ method, canProceed, setCanProceed, id }) => {
   const [showMethod, setShowMethod] = useState('');
   const [show, setShow] = useState(false);
   const showCardPay = () => {
@@ -50,7 +50,11 @@ const PaymentMethod = ({ method, canProceed, setCanProceed }) => {
           showMethod === 'Pago Tarjeta débito o crédito' && show ? null : 'hide'
         }
       >
-        <CardPayment canProceed={canProceed} setCanProceed={setCanProceed} />
+        <CardPayment
+          id={id}
+          canProceed={canProceed}
+          setCanProceed={setCanProceed}
+        />
       </div>
       <div className={showMethod === 'Paypal' && show ? 'show' : 'hide'}>
         {/* <Paypal /> */}
@@ -65,6 +69,7 @@ PaymentMethod.propTypes = {
   method: PropTypes.string.isRequired,
   canProceed: PropTypes.bool.isRequired,
   setCanProceed: PropTypes.func.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default PaymentMethod;
