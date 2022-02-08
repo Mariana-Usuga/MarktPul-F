@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import { PersistGate } from 'redux-persist/integration/react';
+// import { PersistGate } from 'redux-persist/integration/react';
 import LandingPage from './pages/LandingPage';
 import MarketDetail from './pages/MarketDetail';
 import ItemDetail from './pages/ItemDetail';
@@ -28,7 +28,7 @@ import Terms from './pages/Terms';
 
 import './index.scss';
 
-const { store, persistor } = configureStore();
+const { store } = configureStore();
 
 const Routing = () => (
   <BrowserRouter>
@@ -74,9 +74,9 @@ const Routing = () => (
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <Routing />
-      </PersistGate>
+      {/* <PersistGate loading={null} persistor={persistor}> */}
+      <Routing />
+      {/* </PersistGate> */}
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),

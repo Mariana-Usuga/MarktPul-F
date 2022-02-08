@@ -70,6 +70,8 @@ export const deleteMarket = (market) => ({
 });
 export const fetchUpdateMarket = (newMarket, id) => async (dispatch) => {
   const responseMarket = await patchMarket(newMarket, id);
+  console.log('🚀 market', responseMarket);
+
   dispatch(updateMarket(responseMarket));
 };
 

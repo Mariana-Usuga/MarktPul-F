@@ -3,12 +3,19 @@ import axios from 'axios';
 
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
-export const getMarkets = async () => axios.get(`${URL_BASE}/api/market`);
+export const getMarkets = async () => {
+  const response = await axios.get(`${URL_BASE}/api/market`);
+  return response;
+};
 
-export const getProducts = () => axios.get(`${URL_BASE}/api/product`);
+export const getProducts = async () => {
+  const response = await axios.get(`${URL_BASE}/api/product`);
+  return response;
+};
 
 export const patchMarket = async (newMarket, id) => {
   const token = JSON.parse(localStorage.getItem('token'));
+  console.log(id);
   const responseProduct = await axios.patch(
     `${URL_BASE}/api/market/${id}`,
     newMarket,
@@ -19,6 +26,11 @@ export const patchMarket = async (newMarket, id) => {
       },
     },
   );
+  console.log(
+    '🚀 ~ file: productAndMarketServices.js ~ line 23 ~ patchMarket ~ responseProduct',
+    responseProduct.data,
+  );
+
   return responseProduct.data;
 };
 

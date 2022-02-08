@@ -53,18 +53,30 @@ const productAndMarketReducer = (state = initialState, action) => {
       const newData = state.products.items.map((el) =>
         el._id === action.payload.id ? action.payload : el,
       );
+      // console.log(newData);
       return {
         ...state,
-        markets: newData,
+        markets: {
+          items: newData,
+          loaded: true,
+        },
       };
     }
     case UPDATE_MARKET: {
-      const newData = state.markets.items.map((el) =>
-        el._id === action.payload.id ? action.payload : el,
-      );
+      const newData = state.markets.items.map((el) => {
+        if (el._id === action.payload._id) {
+          console.log(el.title, action.payload.title);
+          return action.payload;
+        }
+        return el;
+      });
+
       return {
         ...state,
-        markets: newData,
+        markets: {
+          items: newData,
+          loaded: true,
+        },
       };
     }
     case MARKET_PRODUCTS:
