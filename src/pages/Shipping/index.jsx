@@ -75,10 +75,6 @@ const Shipping = ({ canProceed, setCanProceed }) => {
     }
   }, [user]);
 
-  // useEffect(() => {
-  //   setCanProceed(false);
-  // }, []);
-
   return (
     <section className="shipping">
       {!token ? (
