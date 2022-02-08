@@ -153,7 +153,6 @@ const UpdateMarket = () => {
                 value={formMarket.title}
               />
             </div>
-
             <div className="virtual">
               <label className="virtual__label" htmlFor="virtual">
                 <input
