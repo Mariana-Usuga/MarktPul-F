@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { sendMarket } from '../../store/actions/productAndMarketActions';
 import ProductPictures from '../../components/ProductPictures/index';
 // import IsVirtual from '../../components/IsVirtual/index';
@@ -46,7 +48,7 @@ const CreateMarket = () => {
       image: e.target.files[0],
     }));
   };
-
+  const MySwal = withReactContent(Swal);
   const onSubmit = async (e) => {
     e.preventDefault();
     const formDataImageMain = new FormData();
@@ -70,7 +72,12 @@ const CreateMarket = () => {
       organizer: user.username,
     };
     dispatch(sendMarket(newFormMarket, user.marketId, user._id));
-    navigate('/');
+    await MySwal.fire({
+      title: <strong>Buen trabajo!</strong>,
+      html: <i>Mercado Creado!</i>,
+      icon: 'success',
+    });
+    navigate('/user');
   };
   return (
     <div className="createMarketContainer">
