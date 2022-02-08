@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 import { fetchUpdateUser } from '../../store/actions/userActionsCreator';
-// import { patchUser } from '../../services/UserPageServices';
+
 const UserSectionAdress = () => {
   const token = getCurrentLocalStorage('token');
   const user = useSelector((state) => state.user.user);

@@ -1,4 +1,3 @@
-/* eslint-disable indent */
 /* eslint-disable no-nested-ternary */
 import Stepper from '@material-ui/core/Stepper';
 import { Link, useParams } from 'react-router-dom';

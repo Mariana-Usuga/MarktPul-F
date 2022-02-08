@@ -1,4 +1,3 @@
-/* eslint-disable  */
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -11,7 +10,7 @@ const MainProductGrid = () => {
   const marketsFilter = useSelector((state) => state.search.markets_filter);
   const productsFilter = useSelector((state) => state.search.products_filter);
   const dispatch = useDispatch();
-  const markets = useSelector((state) => state.productAndMarket.markets);
+  // const markets = useSelector((state) => state.productAndMarket.markets);
   useEffect(() => {
     dispatch(fetchMarkets());
   }, []);

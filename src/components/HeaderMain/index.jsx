@@ -1,13 +1,6 @@
-/* eslint-disable no-unused-vars */
 import JWTDecode from 'jwt-decode';
 import { useState, useEffect } from 'react';
-import {
-  FaUser,
-  FaShoppingCart,
-  FaSearch,
-  FaBars,
-  FaTimes,
-} from 'react-icons/fa';
+import { FaUser, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
