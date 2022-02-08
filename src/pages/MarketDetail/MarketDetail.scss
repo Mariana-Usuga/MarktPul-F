@@ -21,15 +21,23 @@ $secondary-color: #4c3dff;
 }
 .market__item {
   font-family: 'Fira Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 100%;
   position: absolute;
   right: 0;
   color: white;
-  max-width: 400px;
+  max-width: 90%;
   text-align: right;
   padding-right: 15px;
   z-index: 2;
-  background: linear-gradient(to left, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 1),
+    rgba(0, 0, 0, 0.7),
+    rgba(0, 0, 0, 0)
+  );
   &__organizer span,
   &__place {
     margin-top: 10px;
@@ -111,6 +119,10 @@ $secondary-color: #4c3dff;
 }
 
 @media (min-width: 768px) {
+  .market__item {
+    padding-left: 150px;
+    max-width: 50%;
+  }
   .marketProducts {
     flex-wrap: nowrap;
   }
@@ -125,6 +137,10 @@ $secondary-color: #4c3dff;
 @media (min-width: 992px) {
   .market {
     margin-top: 30px;
+  }
+  .market__item {
+    padding-left: 250px;
+    max-width: 50%;
   }
   .marketProducts__info--container {
     margin-left: 1rem;
