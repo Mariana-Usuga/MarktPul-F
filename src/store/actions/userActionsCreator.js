@@ -32,14 +32,15 @@ export const fetchUser = (token) => async (dispatch) => {
   // localStorage.setItem('user', JSON.stringify(user.data));
   dispatch(loadUser(user));
 };
-export const fetchUpdateUser = async (data, id, token) => {
+export const fetchUpdateUser = (data, id, token) => async (dispatch) => {
   const user = await patchUser(data, id, token);
   if (user.statusText === 'OK') {
+    dispatch(updateUserSucess(user));
     return 'OK';
-    // dispatch(updateUserSucess(user));
   }
+  dispatch(updateUserFailure());
   return 'error';
-  // dispatch(updateUserFailure());
+  //
 };
 
 export const fetchUpdateAvatarUser = (data, id, token) => async (dispatch) => {

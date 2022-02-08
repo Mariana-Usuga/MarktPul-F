@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 import { fetchUpdateUser } from '../../store/actions/userActionsCreator';
 // import { patchUser } from '../../services/UserPageServices';
 const UserSectionAdress = () => {
   const token = getCurrentLocalStorage('token');
   const user = useSelector((state) => state.user.user);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const location = user?.location ?? {};
   const [loading, setLoading] = useState(null);
   const [userAdress, setUserAdress] = useState({ location });
@@ -28,10 +28,12 @@ const UserSectionAdress = () => {
     e.preventDefault();
     const { country, address, city } = userAdress;
     setLoading(true);
-    const userResponse = await fetchUpdateUser(
-      { location: { country, address, city } },
-      user._id,
-      token,
+    const userResponse = await dispatch(
+      fetchUpdateUser(
+        { location: { country, address, city } },
+        user._id,
+        token,
+      ),
     );
     if (userResponse === 'OK') {
       setLoading(false);
