@@ -70,8 +70,6 @@ export const deleteMarket = (market) => ({
 });
 export const fetchUpdateMarket = (newMarket, id) => async (dispatch) => {
   const responseMarket = await patchMarket(newMarket, id);
-  console.log('🚀 market', responseMarket);
-
   dispatch(updateMarket(responseMarket));
 };
 
@@ -125,6 +123,7 @@ export const sendProduct = (formProduct) => async (dispatch) => {
 
 export const sendMarket = (formMarket, marketArray, id) => async (dispatch) => {
   const responseMarket = await postMarket(formMarket);
+  console.log(marketArray);
   marketArray.push(responseMarket._id);
   patchUser(marketArray, id);
   dispatch(createMarket(responseMarket));

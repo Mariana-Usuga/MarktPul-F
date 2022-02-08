@@ -89,6 +89,9 @@
   height: 50px;
   background: #4c3dff;
   border-radius: 10px;
+  &:disabled {
+    background: gray;
+  }
 }
 
 @media (min-width: 992px) {
