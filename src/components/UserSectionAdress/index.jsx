@@ -1,15 +1,14 @@
 import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 import { fetchUpdateUser } from '../../store/actions/userActionsCreator';
-
-/*eslint-disable*/
+// import { patchUser } from '../../services/UserPageServices';
 const UserSectionAdress = () => {
   const token = getCurrentLocalStorage('token');
   const user = useSelector((state) => state.user.user);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const location = user?.location ?? {};
-
+  const [loading, setLoading] = useState(null);
   const [userAdress, setUserAdress] = useState({ location });
 
   useEffect(() => {
@@ -25,16 +24,18 @@ const UserSectionAdress = () => {
     setUserAdress({ ...userAdress, [inputName]: value });
   };
 
-  const handleSubmitAccount = (e) => {
+  const handleSubmitAccount = async (e) => {
     e.preventDefault();
     const { country, address, city } = userAdress;
-    dispatch(
-      fetchUpdateUser(
-        { location: { country, address, city } },
-        user._id,
-        token,
-      ),
+    setLoading(true);
+    const userResponse = await fetchUpdateUser(
+      { location: { country, address, city } },
+      user._id,
+      token,
     );
+    if (userResponse === 'OK') {
+      setLoading(false);
+    }
   };
 
   return (
@@ -71,15 +72,28 @@ const UserSectionAdress = () => {
             onChange={handleChange}
           />
         </label>
-
-        <label htmlFor="adress__button">
+        <button
+          type="submit"
+          className="user-container__data--form-section-btn_submit"
+        >
+          {loading ? (
+            <img
+              className="loading"
+              src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
+              alt="loading content"
+            />
+          ) : (
+            'Actualizar mi dirección'
+          )}
+        </button>
+        {/* <label htmlFor="adress__button">
           <input
             type="submit"
             value="Actualizar mi dirección"
             className="user-container__data--form-section-btn_submit"
             id="adress_button"
           />
-        </label>
+        </label> */}
       </form>
     </div>
   );
