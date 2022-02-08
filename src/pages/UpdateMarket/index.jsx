@@ -152,103 +152,96 @@ const UpdateMarket = () => {
                 value={formMarket.title}
               />
             </div>
-            <>
-              <div className="virtual">
-                <label className="virtual__label" htmlFor="virtual">
+
+            <div className="virtual">
+              <label className="virtual__label" htmlFor="virtual">
+                <input
+                  className="virtual__radio"
+                  id="virtual"
+                  type="radio"
+                  name="choosePaymentMethod"
+                  checked={formMarket.virtual}
+                  onChange={() =>
+                    setFormMarket({ ...formMarket, virtual: true })
+                  }
+                />
+                {'  Virtual'}
+              </label>
+            </div>
+            <div className="location">
+              <label className="location__label" htmlFor="fisico">
+                <input
+                  className="location__radio"
+                  id="fisico"
+                  type="radio"
+                  name="fisico"
+                  checked={!formMarket.virtual}
+                  onChange={() =>
+                    setFormMarket({ ...formMarket, virtual: false })
+                  }
+                />
+                {'  Físico'}
+              </label>
+              <div
+                className={!formMarket.virtual ? 'formAddressMarket' : 'hide'}
+              >
+                <div className="formAddressMarket__div">
+                  <label className="formAddressMarket__label" htmlFor="adress">
+                    Dirección
+                  </label>
                   <input
-                    className="virtual__radio"
-                    id="virtual"
-                    type="radio"
-                    name="choosePaymentMethod"
-                    checked={formMarket.virtual}
-                    onChange={() =>
-                      setFormMarket({ ...formMarket, virtual: true })
-                    }
+                    onChange={handleChange}
+                    className="formAddressMarket__input"
+                    id="address"
+                    type="text"
+                    name="address"
+                    value={formMarket?.address}
                   />
-                  Virtual
-                </label>
-              </div>
-              <div className="location">
-                <label className="location__label" htmlFor="fisico">
+                </div>
+                <div className="formAddressMarket__div">
+                  <label className="formAddressMarket__label" htmlFor="country">
+                    Pais
+                  </label>
                   <input
-                    className="location__radio"
-                    id="fisico"
-                    type="radio"
-                    name="fisico"
-                    checked={!formMarket.virtual}
-                    onChange={() =>
-                      setFormMarket({ ...formMarket, virtual: false })
-                    }
+                    onChange={handleChange}
+                    className="formAddressMarket__input"
+                    id="country"
+                    type="text"
+                    name="country"
+                    value={formMarket?.country}
                   />
-                  Fisico
-                </label>
-                <div
-                  className={!formMarket.virtual ? 'formAddressMarket' : 'hide'}
-                >
-                  <div className="formAddressMarket__div">
-                    <label
-                      className="formAddressMarket__label"
-                      htmlFor="adress"
-                    >
-                      Dirección
-                    </label>
-                    <input
-                      onChange={handleChange}
-                      className="formAddressMarket__input"
-                      id="address"
-                      type="text"
-                      name="address"
-                      value={formMarket?.address}
-                    />
-                  </div>
-                  <div className="formAddressMarket__div">
-                    <label
-                      className="formAddressMarket__label"
-                      htmlFor="country"
-                    >
-                      Pais
-                    </label>
-                    <input
-                      onChange={handleChange}
-                      className="formAddressMarket__input"
-                      id="country"
-                      type="text"
-                      name="country"
-                      value={formMarket?.country}
-                    />
-                  </div>
-                  <div className="formAddressMarket__div">
-                    <label className="formAddressMarket__label" htmlFor="city">
-                      Ciudad
-                    </label>
-                    <input
-                      onChange={handleChange}
-                      className="formAddressMarket__input"
-                      id="city"
-                      type="text"
-                      name="city"
-                      value={formMarket?.city}
-                    />
-                  </div>
-                  <div className="formAddressMarket__div">
-                    <label
-                      className="formAddressMarket__label"
-                      htmlFor="moreDetails"
-                    >
-                      Mas Detalles
-                    </label>
-                    <input
-                      onChange={handleChange}
-                      className="formAddressMarket__input__moreDetail"
-                      id="moreDetails"
-                      type="text"
-                      name="moreDetails"
-                      value={formMarket?.moreDetails}
-                    />
-                  </div>
+                </div>
+                <div className="formAddressMarket__div">
+                  <label className="formAddressMarket__label" htmlFor="city">
+                    Ciudad
+                  </label>
+                  <input
+                    onChange={handleChange}
+                    className="formAddressMarket__input"
+                    id="city"
+                    type="text"
+                    name="city"
+                    value={formMarket?.city}
+                  />
+                </div>
+                <div className="formAddressMarket__div">
+                  <label
+                    className="formAddressMarket__label"
+                    htmlFor="moreDetails"
+                  >
+                    Mas Detalles
+                  </label>
+                  <input
+                    onChange={handleChange}
+                    className="formAddressMarket__input__moreDetail"
+                    id="moreDetails"
+                    type="text"
+                    name="moreDetails"
+                    value={formMarket?.moreDetails}
+                  />
                 </div>
               </div>
-            </>
+            </div>
             <div className="inputMarket__category">
               <label className="inputMarket__label" htmlFor="category">
                 Categoria
