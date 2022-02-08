@@ -1,3 +1,4 @@
+/*eslint-disable */
 import PropTypes from 'prop-types';
 
 const ProductPictures = ({ onChangeFile, img, title }) => (
@@ -24,11 +25,11 @@ const ProductPictures = ({ onChangeFile, img, title }) => (
   </>
 );
 
-ProductPictures.propTypes = {
-  onChangeFile: PropTypes.func.isRequired,
-  // eslint-disable-next-line react/require-default-props
-  img: PropTypes.string,
-  title: PropTypes.string.isRequired,
-};
+// ProductPictures.propTypes = {
+//   onChangeFile: PropTypes.func.isRequired,
+//   // eslint-disable-next-line react/require-default-props
+//   img: PropTypes.string,
+//   title: PropTypes.string.isRequired,
+// };
 
 export default ProductPictures;

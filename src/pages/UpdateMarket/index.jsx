@@ -82,18 +82,19 @@ const UpdateMarket = () => {
     reader.onloadend = async () => {
       setMainImage(reader.result);
     };
-    setFormMarket((formMarket) => ({
+    setFormMarket({
       ...formMarket,
       image: e.target.files[0],
-    }));
+    });
   };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     let imageMain;
+    console.log(formMarket.image);
     if (formMarket.image && formMarket.image !== currentMarket.image) {
       const formDataImageMain = new FormData();
-      formDataImageMain.append('imageMain', formMarket.image);
+      formDataImageMain.append('image', formMarket.image);
       const responseImageMain = await axios.post(
         `${process.env.REACT_APP_API_URL_BASE}/api/upload/file`,
         formDataImageMain,
@@ -128,7 +129,7 @@ const UpdateMarket = () => {
       <div className="createProductContainer__item">
         <ProductPictures
           onChangeFile={onChangeFile}
-          img={mainImage}
+          img={mainImage || formMarket?.image}
           title="Subir foto del mercado"
         />
       </div>
