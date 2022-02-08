@@ -38,13 +38,6 @@ const CartSummary = () => {
         <p className="cart__summary--terms">
           * Compra sujeta a los Terminos y Condiciones de la web
         </p>
-        <div className="cupon">
-          <label htmlFor="descuento">
-            <p>Cupon de Descuento</p>
-            <input type="text" name="" id="descuento" />
-          </label>
-          <input type="button" value="Aplicar" id="aplicar" />
-        </div>
       </div>
     </aside>
   );
