@@ -1,4 +1,5 @@
 /* eslint-disable */
+import Swal from 'sweetalert2';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';

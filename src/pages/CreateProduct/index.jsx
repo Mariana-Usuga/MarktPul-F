@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -9,15 +9,19 @@ import { sendProduct } from '../../store/actions/productAndMarketActions';
 import ProductPictures from '../../components/ProductPictures/index';
 import ChooseMarket from '../../components/ChoosseMarket';
 import ChooseProductCategory from '../../components/ChooseProductCategory';
+import { fetchUser } from '../../store/actions/userActionsCreator';
+import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 
 import './CreateProduct.scss';
 
 const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
 
 const CreateProduct = () => {
+  const token = getCurrentLocalStorage('token');
   const navigate = useNavigate();
   const [mainImage, setMainImage] = useState(null);
   const [images, setImages] = useState([]);
+  const [formErrors, setFormErrors] = useState('');
   const dispatch = useDispatch();
 
   const [formProduct, setFormProduct] = useState({
@@ -64,6 +68,29 @@ const CreateProduct = () => {
       images: e.target.files,
     }));
   };
+
+  useEffect(() => {
+    const { title, price, description, category, marketId } = formProduct;
+    if (
+      !title ||
+      !price ||
+      !description ||
+      !category ||
+      !marketId ||
+      !mainImage
+    ) {
+      setFormErrors('Los campos deben estar completos');
+    } else {
+      setFormErrors('');
+    }
+  }, [formProduct, mainImage]);
+
+  useEffect(() => {
+    if (token) {
+      dispatch(fetchUser(token));
+    }
+  }, []);
+
   const MySwal = withReactContent(Swal);
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -161,7 +188,12 @@ const CreateProduct = () => {
               setFormProduct={setFormProduct}
             />
           </div>
-          <button onClick={onSubmit} className="formProduct__btn" type="submit">
+          <button
+            onClick={onSubmit}
+            disabled={formErrors.length}
+            className="formMarket__btn"
+            type="submit"
+          >
             Crear producto
           </button>
         </form>
