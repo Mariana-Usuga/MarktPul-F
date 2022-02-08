@@ -6,7 +6,6 @@ import { fetchUpdateUser } from '../../store/actions/userActionsCreator';
 const UserSectionAdress = () => {
   const token = getCurrentLocalStorage('token');
   const user = useSelector((state) => state.user.user);
-  console.log('user', user._id);
   // const dispatch = useDispatch();
   const location = user?.location ?? {};
   const [loading, setLoading] = useState(null);

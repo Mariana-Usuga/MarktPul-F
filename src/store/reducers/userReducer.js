@@ -10,7 +10,6 @@ const initialState = {
 };
 
 const userReducer = (state = initialState, action) => {
-  console.log('reducer', action.payload);
   switch (action.type) {
     case UPDATE_USER_SUCESSFUL:
       return {
