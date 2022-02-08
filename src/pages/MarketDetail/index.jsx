@@ -33,7 +33,9 @@ const MarketDetail = () => {
         <div className="market__item">
           <h2 className="market__item__title">{market.title}</h2>
           <p className="market__item__desc">{market.description}</p>
-          <p className="market__item__place">{market.place}</p>
+          <p className="market__item__place">
+            {market?.place ?? (market?.address || '')}
+          </p>
           <p className="market__item__organizer">
             Organizado por
             <span>{` ${market.organizer}`}</span>

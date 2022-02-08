@@ -62,7 +62,7 @@ const UpdateMarket = () => {
       address: currentMarket?.address ?? '',
       country: currentMarket?.country ?? '',
       city: currentMarket?.city ?? '',
-      moreDetails: '',
+      moreDetails: currentMarket?.moreDetails,
       image: currentMarket?.image ?? '',
       description: currentMarket?.description ?? '',
       category: currentMarket?.category ?? '',
