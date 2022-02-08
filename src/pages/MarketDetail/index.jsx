@@ -34,7 +34,9 @@ const MarketDetail = () => {
           <h2 className="market__item__title">{market.title}</h2>
           <p className="market__item__desc">{market.description}</p>
           <p className="market__item__place">
-            {market?.place ?? (market?.address || '')}
+            {market.virtual
+              ? 'Virtual'
+              : market?.place ?? (market?.address || ' ')}
           </p>
           <p className="market__item__organizer">
             Organizado por

@@ -33,7 +33,11 @@ const ReportMarket = () => {
           <CardReportMarket
             title={market.title}
             description={market.description}
-            place={market?.place ?? (market?.address || ' ')}
+            place={
+              market.virtual
+                ? 'Virtual'
+                : market?.place ?? (market?.address || ' ')
+            }
             organizer={market.organizer}
             image={market.image}
             _id={market._id}
