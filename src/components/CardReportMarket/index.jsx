@@ -1,6 +1,5 @@
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaRegEdit } from 'react-icons/fa';
 import PropTypes from 'prop-types';
@@ -39,7 +38,6 @@ const CardReportMarket = ({
     }
   };
 
-  useEffect(() => {}, []);
   return (
     <>
       <div>{title}</div>

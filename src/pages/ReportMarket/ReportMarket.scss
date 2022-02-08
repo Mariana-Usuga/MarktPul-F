@@ -8,12 +8,14 @@ h1 {
   text-align: center;
 }
 .market {
-  display: grid;
-
+  display: flex;
+  // flex-direction: column;
+  // justify-content: flex-start;
   &--thead {
     // justify-items: center;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    width: 100%;
     grid-column: 1 / 7;
     border: 1px solid $main-color;
     background-color: $main-color;
@@ -22,10 +24,12 @@ h1 {
     font-size: 1.3rem;
     margin-bottom: 20px;
     text-align: center;
+    height: 35px;
   }
   &--tbody {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    width: 100%;
     grid-column: 1 / 7;
     margin: 0px 10px;
     & > div {
@@ -36,7 +40,8 @@ h1 {
   &--image {
     margin: 0 2rem;
     max-width: 100px;
-    height: auto;
+    max-height: 100px;
+    object-fit: contain;
   }
   &--options {
     a {
