@@ -107,7 +107,7 @@ const CreateMarket = () => {
         html: <i>Mercado Creado!</i>,
         icon: 'success',
       });
-      navigate('/user');
+      navigate('/pages/marketReport/');
     } catch (error) {
       setFormError(error);
       await MySwal.fire({

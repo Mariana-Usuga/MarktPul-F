@@ -1,5 +1,6 @@
 /* eslint-disable */
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import JWTDecode from 'jwt-decode';
 import { FetchMarketsUserBy } from '../../store/actions/reportMarketPageActionsCreator';
@@ -9,6 +10,7 @@ import './ReportMarket.scss';
 
 const ReportMarket = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const markets = useSelector((state) => state.report.marketsUser);
   const token = useSelector((state) => state.auth.token);
   const userIdFromToken = token
@@ -17,35 +19,61 @@ const ReportMarket = () => {
   useEffect(() => {
     dispatch(FetchMarketsUserBy(token, userIdFromToken));
   }, []);
+  // useEffect(() => {
+  //   dispatch(FetchMarketsUserBy(token, userIdFromToken));
+  // }, [markets]);
+  const handleRedirect = (e) => {
+    e.preventDefault();
+    navigate('/pages/createMarket');
+  };
+
   return (
-    <>
-      <h1>MERCADOS</h1>
-      <div className="market--thead">
-        <div>Market</div>
-        <div>Descripcion</div>
-        <div>Dirección</div>
-        <div>Organizador</div>
-        <div>Imagen</div>
-        <div>Opciones</div>
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        margin: 'auto',
+      }}
+    >
+      <h1>Mercados</h1>
+      <div className="market">
+        <div className="market--thead">
+          <div>Market</div>
+          <div>Descripcion</div>
+          <div>Dirección</div>
+          <div>Organizador</div>
+          <div>Imagen</div>
+          <div>Opciones</div>
+        </div>
+        <div className="market--tbody">
+          {markets?.map((market) => (
+            <CardReportMarket
+              title={market.title}
+              description={market.description}
+              place={
+                market.virtual
+                  ? 'Virtual'
+                  : market?.place ?? (market?.address || ' ')
+              }
+              organizer={market.organizer}
+              image={market.image}
+              _id={market._id}
+              key={market._id}
+              user={{ token, userIdFromToken }}
+            />
+          ))}
+        </div>
       </div>
-      <div className="market--tbody">
-        {markets?.map((market) => (
-          <CardReportMarket
-            title={market.title}
-            description={market.description}
-            place={
-              market.virtual
-                ? 'Virtual'
-                : market?.place ?? (market?.address || ' ')
-            }
-            organizer={market.organizer}
-            image={market.image}
-            _id={market._id}
-            key={market._id}
-          />
-        ))}
-      </div>
-    </>
+      <button
+        onClick={handleRedirect}
+        className="formMarket__btn"
+        style={{ margin: 'auto' }}
+        type="button"
+      >
+        Crear nuevo mercado
+      </button>
+    </div>
   );
 };
 

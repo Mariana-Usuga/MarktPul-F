@@ -91,12 +91,23 @@ const productAndMarketReducer = (state = initialState, action) => {
     case PATCH_MARKET:
       return { ...state, product: action.payload };
     case DELETE_MARKET: {
-      const newData = state.markets.items.map((el) =>
-        el._id === action.payload.id ? action.payload : el,
+      console.log('action delete payload', action.payload);
+
+      const newData = state.markets.items.filter(
+        (el) => el._id !== action.payload._id,
+      );
+      console.log(
+        'newdata',
+        newData.length,
+        'old data',
+        state.markets.items.length,
       );
       return {
         ...state,
-        markets: newData,
+        markets: {
+          items: newData,
+          loaded: true,
+        },
       };
     }
     default:

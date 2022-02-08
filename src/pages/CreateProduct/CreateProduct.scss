@@ -89,8 +89,10 @@
   height: 50px;
   background: #4c3dff;
   border-radius: 10px;
+  cursor: pointer;
   &:disabled {
     background: gray;
+    cursor: default;
   }
 }
 
