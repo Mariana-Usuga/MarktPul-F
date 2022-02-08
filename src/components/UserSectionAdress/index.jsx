@@ -76,7 +76,15 @@ const UserSectionAdress = () => {
           type="submit"
           className="user-container__data--form-section-btn_submit"
         >
-          {loading ? 'cargando...' : 'Actualizar mi dirección'}
+          {loading ? (
+            <img
+              className="loading"
+              src="https://c.tenor.com/I6kN-6X7nhAAAAAj/loading-buffering.gif"
+              alt="loading content"
+            />
+          ) : (
+            'Actualizar mi dirección'
+          )}
         </button>
         {/* <label htmlFor="adress__button">
           <input
