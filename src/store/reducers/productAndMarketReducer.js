@@ -53,7 +53,6 @@ const productAndMarketReducer = (state = initialState, action) => {
       const newData = state.products.items.map((el) =>
         el._id === action.payload.id ? action.payload : el,
       );
-      // console.log(newData);
       return {
         ...state,
         markets: {
@@ -65,7 +64,6 @@ const productAndMarketReducer = (state = initialState, action) => {
     case UPDATE_MARKET: {
       const newData = state.markets.items.map((el) => {
         if (el._id === action.payload._id) {
-          console.log(el.title, action.payload.title);
           return action.payload;
         }
         return el;
@@ -91,16 +89,8 @@ const productAndMarketReducer = (state = initialState, action) => {
     case PATCH_MARKET:
       return { ...state, product: action.payload };
     case DELETE_MARKET: {
-      console.log('action delete payload', action.payload);
-
       const newData = state.markets.items.filter(
         (el) => el._id !== action.payload._id,
-      );
-      console.log(
-        'newdata',
-        newData.length,
-        'old data',
-        state.markets.items.length,
       );
       return {
         ...state,

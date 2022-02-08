@@ -24,7 +24,6 @@ const ActivateAcount = () => {
         );
         setApiResponse(res.data);
       } catch (error) {
-        console.log(error);
         setApiResponse({ message: 'token expired or not found' });
       } finally {
         setLoading(false);

@@ -26,7 +26,6 @@ const ReportMarket = () => {
     e.preventDefault();
     navigate('/pages/createMarket');
   };
-  console.log(markets);
   return (
     <div
       style={{

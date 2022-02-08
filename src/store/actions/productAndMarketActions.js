@@ -123,7 +123,6 @@ export const sendProduct = (formProduct) => async (dispatch) => {
 
 export const sendMarket = (formMarket, marketArray, id) => async (dispatch) => {
   const responseMarket = await postMarket(formMarket);
-  console.log(marketArray);
   marketArray.push(responseMarket._id);
   patchUser(marketArray, id);
   dispatch(createMarket(responseMarket));

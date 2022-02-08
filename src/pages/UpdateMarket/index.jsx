@@ -92,7 +92,6 @@ const UpdateMarket = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     let imageMain;
-    console.log(formMarket.image);
     if (formMarket.image && formMarket.image !== currentMarket.image) {
       const formDataImageMain = new FormData();
       formDataImageMain.append('image', formMarket.image);
