@@ -14,7 +14,12 @@ const FetchProductsMyMarkets = () => {
     setProducts(response.data);
   }, []);
 
-  return <ProductsOfTheMarkets products={products} />;
+  return (
+    <div>
+      <h1>Listado de productos del mercado</h1>
+      <ProductsOfTheMarkets products={products} />
+    </div>
+  );
 };
 
 export default FetchProductsMyMarkets;

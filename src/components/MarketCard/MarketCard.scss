@@ -1,14 +1,23 @@
-
-.carousel__item{
+.carousel__item {
   color: black;
 }
-.carousel__item, .carousel__item img{
+
+.carousel__item {
   width: 160px;
 }
+.carousel__img {
+  width: 160px;
+  height: 160px;
+  object-fit: scale-down;
+}
 
-@media(min-width:992px){
-  .carousel__item, .carousel__item img{
+.carousel__title {
+  text-transform: capitalize;
+}
+
+@media (min-width: 992px) {
+  .carousel__item,
+  .carousel__item img {
     width: 280px;
   }
-
 }

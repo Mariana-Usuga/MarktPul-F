@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import CardPayment from '../CardPayment/index';
-// import PaymentOnDelivery from './PaymentOnDelivery';
-// import Paypal from './Paypal';
-// import Epayco from './Epayco';
 
 import './PaymentMethod.scss';
 

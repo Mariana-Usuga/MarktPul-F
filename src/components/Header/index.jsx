@@ -1,7 +1,6 @@
 import JWTDecode from 'jwt-decode';
 import { FaUser, FaSearch } from 'react-icons/fa';
 import React, { useState, useEffect } from 'react';
-/* eslint-disable no-unused-vars */
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import queryString from 'query-string';

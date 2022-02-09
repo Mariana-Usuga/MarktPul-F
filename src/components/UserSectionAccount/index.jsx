@@ -1,15 +1,9 @@
-/*eslint-disable*/
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import CountryDropdown from 'country-dropdown-with-flags-for-react';
 import PhoneInput from 'react-phone-number-input';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
-import {
-  fetchUser,
-  fetchUpdateUser,
-} from '../../store/actions/userActionsCreator';
+import { fetchUpdateUser } from '../../store/actions/userActionsCreator';
 
 const UserSectionAccount = () => {
   const token = getCurrentLocalStorage('token');
@@ -44,6 +38,13 @@ const UserSectionAccount = () => {
     e.preventDefault();
     const { name, country, cell } = userAccount;
     dispatch(fetchUpdateUser({ name, country, cell }, user._id, token));
+  };
+
+  const handlePhoneChange = (value) => {
+    setUserAccount({
+      ...userAccount,
+      cell: value,
+    });
   };
 
   return (
@@ -107,13 +108,11 @@ const UserSectionAccount = () => {
         <label htmlFor="cell">
           Celular
           <PhoneInput
-            defaultCountry={'CO'}
+            defaultCountry="CO"
             international
             name="cell"
             value={userAccount.cell}
-            onChange={(value) =>
-              setUserAccount({ ...userAccount, cell: value })
-            }
+            onChange={handlePhoneChange}
             className="user-container__data--form-section-input"
           />
         </label>

@@ -55,16 +55,26 @@ const productAndMarketReducer = (state = initialState, action) => {
       );
       return {
         ...state,
-        markets: newData,
+        markets: {
+          items: newData,
+          loaded: true,
+        },
       };
     }
     case UPDATE_MARKET: {
-      const newData = state.markets.items.map((el) =>
-        el._id === action.payload.id ? action.payload : el,
-      );
+      const newData = state.markets.items.map((el) => {
+        if (el._id === action.payload._id) {
+          return action.payload;
+        }
+        return el;
+      });
+
       return {
         ...state,
-        markets: newData,
+        markets: {
+          items: newData,
+          loaded: true,
+        },
       };
     }
     case MARKET_PRODUCTS:
@@ -79,12 +89,15 @@ const productAndMarketReducer = (state = initialState, action) => {
     case PATCH_MARKET:
       return { ...state, product: action.payload };
     case DELETE_MARKET: {
-      const newData = state.markets.items.map((el) =>
-        el._id === action.payload.id ? action.payload : el,
+      const newData = state.markets.items.filter(
+        (el) => el._id !== action.payload._id,
       );
       return {
         ...state,
-        markets: newData,
+        markets: {
+          items: newData,
+          loaded: true,
+        },
       };
     }
     default:

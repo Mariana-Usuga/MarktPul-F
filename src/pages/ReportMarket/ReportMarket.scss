@@ -8,43 +8,52 @@ h1 {
   text-align: center;
 }
 .market {
+  display: flex;
+  // flex-direction: column;
+  // justify-content: flex-start;
   &--thead {
+    // justify-items: center;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    justify-items: center;
+    width: 100%;
+    grid-column: 1 / 7;
     border: 1px solid $main-color;
     background-color: $main-color;
     color: black;
     font-weight: 800;
     font-size: 1.3rem;
     margin-bottom: 20px;
+    text-align: center;
+    height: 35px;
   }
   &--tbody {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    justify-items: center;
-    align-items: center;
+    width: 100%;
+    grid-column: 1 / 7;
     margin: 0px 10px;
-    div {
+    & > div {
       padding: 10px;
-      text-align: justify;
+      text-align: center;
     }
   }
   &--image {
     margin: 0 2rem;
-    max-width: 12em;
+    max-width: 100px;
+    max-height: 100px;
+    object-fit: contain;
   }
   &--options {
     a {
       display: inline-block;
-      margin: 10px;
-      padding: 10px;
+      margin-bottom: 4px;
+      padding: 2px;
       border: 2px solid #4c3dff;
       border-radius: 80px;
       background-color: white;
       color: black;
       text-decoration: none;
-      width: 170px;
+      width: 150px;
       text-align: center;
     }
     a:hover {
@@ -52,9 +61,9 @@ h1 {
       color: #efefef;
     }
     button {
-      width: 170px;
-      margin: 10px;
-      padding: 10px;
+      width: 150px;
+      margin-bottom: 10px;
+      padding: 5px;
       border: 2px solid #4c3dff;
       border-radius: 80px;
       background-color: white;

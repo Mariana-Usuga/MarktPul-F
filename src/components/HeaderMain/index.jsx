@@ -1,13 +1,6 @@
-/* eslint-disable no-unused-vars */
 import JWTDecode from 'jwt-decode';
 import { useState, useEffect } from 'react';
-import {
-  FaUser,
-  FaShoppingCart,
-  FaSearch,
-  FaBars,
-  FaTimes,
-} from 'react-icons/fa';
+import { FaUser, FaSearch, FaBars, FaTimes } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
@@ -16,7 +9,7 @@ import { fetchCart } from '../../store/actions/cartActions';
 import './HeaderMain.scss';
 
 const HeaderMain = () => {
-  // const token = JSON.parse(localStorage.getItem('token'));
+  const token = getCurrentLocalStorage('token');
   const cart = useSelector((state) => state.cartReducer.cart);
 
   const [show, setShow] = useState(false);
@@ -28,8 +21,6 @@ const HeaderMain = () => {
   useEffect(() => {
     window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
   }, [cart]);
-
-  const token = getCurrentLocalStorage('token');
   const usernameFromToken = token ? JWTDecode(token).username : null;
   const [username] = useState(usernameFromToken);
 
@@ -145,7 +136,7 @@ const HeaderMain = () => {
             Quiero vender
           </Link>
         </div>
-        <div className="header__info__buy">Quiero comprar</div>
+        {/* <div className="header__info__buy">Quiero comprar</div> */}
         <div className="header__info__market">
           <Link
             to={token ? '/pages/createMarket' : '/login'}

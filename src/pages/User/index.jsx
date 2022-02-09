@@ -1,7 +1,5 @@
-/*eslint-disable*/
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -63,7 +61,7 @@ const User = () => {
             <ul className="user-container__data--sidebar-options">
               <li>
                 <button
-                  className={'user-container__data--sidebar-options-btn'}
+                  className="user-container__data--sidebar-options-btn"
                   name="account"
                   onClick={handleClick}
                   type="button"
@@ -73,7 +71,7 @@ const User = () => {
               </li>
               <li>
                 <button
-                  className={'user-container__data--sidebar-options-btn'}
+                  className="user-container__data--sidebar-options-btn"
                   name="address"
                   onClick={handleClick}
                   type="button"
@@ -92,7 +90,7 @@ const User = () => {
               </li>
               <li>
                 <button
-                  className={'user-container__data--sidebar-options-btn'}
+                  className="user-container__data--sidebar-options-btn"
                   name="logout"
                   onClick={handleClickLogout}
                   type="button"
