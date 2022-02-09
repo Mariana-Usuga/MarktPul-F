@@ -25,7 +25,7 @@ const CardReportMarket = ({
       dispatch(fetchDeleteMarket(_id));
       await MySwal.fire({
         title: <strong>Buen trabajo!</strong>,
-        html: <i>Mercado Creado!</i>,
+        html: <i>Mercado Eliminado!</i>,
         icon: 'success',
       });
       dispatch(FetchMarketsUserBy(token, userIdFromToken));
