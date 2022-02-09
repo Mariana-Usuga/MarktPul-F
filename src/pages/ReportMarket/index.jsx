@@ -33,10 +33,11 @@ const ReportMarket = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         margin: 'auto',
+        height: 'auto',
       }}
     >
       <h1>Mercados</h1>
-      <div className="market">
+      <div>
         <div className="market--thead">
           <div>Market</div>
           <div>Descripcion</div>
