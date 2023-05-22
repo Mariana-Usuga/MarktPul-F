@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200&display=swap');
 $primary-color: white;
 $secondary-color: #4c3dff;
 * {
@@ -7,7 +7,7 @@ $secondary-color: #4c3dff;
   box-sizing: border-box;
 }
 body {
-  font-family: 'Nunito Sans', sans-serif;
+  /*font-family: 'Nunito Sans', sans-serif;*/
 }
 .header {
   box-shadow: inset 10px 80px 80px 0 rgb(61, 61, 61);

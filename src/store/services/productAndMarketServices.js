@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import axios from 'axios';
+/* import axios from 'axios';
 
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
@@ -120,4 +120,4 @@ export const deletedMarket = async (id) => {
     },
   });
   return responseMarket.data;
-};
+}; */

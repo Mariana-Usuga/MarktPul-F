@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500;700&family=Questrial&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@200,700&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;500;700&family=Questrial&display=swap');
 $primary-color: white;
 $secondary-color: #4c3dff;
 .market {
@@ -20,7 +20,7 @@ $secondary-color: #4c3dff;
   }
 }
 .market__item {
-  font-family: 'Fira Sans', sans-serif;
+  /*font-family: 'Fira Sans', sans-serif;*/
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,7 +46,7 @@ $secondary-color: #4c3dff;
   &__desc,
   &__organizer,
   &__btn {
-    font-family: 'Questrial', sans-serif;
+    /*font-family: 'Questrial', sans-serif;*/
     margin-top: 10px;
     font-size: 1.2rem;
     font-weight: 300;
@@ -63,7 +63,7 @@ $secondary-color: #4c3dff;
     border: 2px solid $primary-color;
     padding: 10px;
     border-radius: 10px;
-    font-family: 'Nunito Sans', sans-serif;
+    /*font-family: 'Nunito Sans', sans-serif;*/
     font-weight: bolder;
   }
 }
@@ -85,7 +85,7 @@ $secondary-color: #4c3dff;
   //border-bottom: 1px solid grey;
   &__info--container {
     padding: 1rem;
-    font-family: 'Nunito Sans', sans-serif;
+    /*font-family: 'Nunito Sans', sans-serif;*/
   }
   &__noProducts {
     font-size: 1.2rem;
