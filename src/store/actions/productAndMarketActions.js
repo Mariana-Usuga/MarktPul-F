@@ -105,6 +105,7 @@ export const fetchMarkets = () => async (dispatch) => {
 };
 
 export const fetchProducts = () => async (dispatch) => {
+  console.log('entra en action');
   const products = await getProducts();
   dispatch(loadProducts(products));
 };

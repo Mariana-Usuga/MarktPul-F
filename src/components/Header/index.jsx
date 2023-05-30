@@ -8,10 +8,10 @@ import {
   fetchMarketFilter,
   fetchProductFilter,
 } from '../../store/actions/searchActionsCreator';
-import {
+/* import {
   fetchMarkets,
   fetchProducts,
-} from '../../store/actions/productAndMarketActions';
+} from '../../store/actions/productAndMarketActions'; */
 import CartPreview from '../CartPreview';
 import { fetchCart } from '../../store/actions/cartActions';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
@@ -32,11 +32,11 @@ const Header = () => {
   useEffect(() => {
     window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
   }, [cart]);
-  useEffect(() => {
+  /* useEffect(() => {
     dispatch(fetchMarkets());
     dispatch(fetchProducts());
     // dispatch(fetchMarketFilter(markets, q));
-  }, []);
+  }, []); */
   useEffect(() => {
     dispatch(fetchMarketFilter(markets.items, q));
     // dispatch(fetchProductFilter(products.items, q));

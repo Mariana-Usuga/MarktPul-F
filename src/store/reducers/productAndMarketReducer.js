@@ -30,6 +30,7 @@ const initialState = {
 const productAndMarketReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOAD_PRODUCTS:
+      console.log('entra en reducer')
       return { ...state, products: { items: action.payload, loaded: true } };
     case LOAD_MARKETS:
       return { ...state, markets: { items: action.payload, loaded: true } };
