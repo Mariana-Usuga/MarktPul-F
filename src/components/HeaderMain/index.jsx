@@ -18,11 +18,13 @@ const HeaderMain = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const showMenu = () => (!show ? setShow(true) : setShow(false));
-  useEffect(() => {
-    window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
-  }, [cart]);
   const usernameFromToken = token ? JWTDecode(token).username : null;
   const [username] = useState(usernameFromToken);
+  useEffect(() => {
+    window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
+    console.log('USER ', username);
+    console.log('usernameFromToken ', usernameFromToken);
+  }, [cart]);
 
   useEffect(() => {
     dispatch(fetchCart());
