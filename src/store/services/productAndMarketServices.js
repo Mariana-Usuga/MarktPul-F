@@ -5,13 +5,11 @@ const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
 export const getMarkets = async () => {
   const response = await axios.get('https://marktpul-backend-production.up.railway.app/api/market');
-  console.log('res ', response);
   return response;
 };
 
 export const getProducts = async () => {
   const response = await axios.get(`${URL_BASE}/api/product`);
-  console.log('res ', response);
   return response;
 };
 

@@ -12,7 +12,6 @@ const MarketDetail = () => {
   const [products, setProducts] = useState();
   const [market, setMarket] = useState({});
   const { id } = useParams();
-  console.log('ID ', id);
   useEffect(async () => {
     const prod = await getMarket(id);
     setMarket(prod);
