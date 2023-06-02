@@ -16,6 +16,7 @@ const ReportMarket = () => {
   const userIdFromToken = token
     ? JWTDecode(getCurrentLocalStorage('token'))?._id
     : null;
+    console.log('getCurrentLocalStorage ', JWTDecode(getCurrentLocalStorage('token')));
   useEffect(() => {
     dispatch(FetchMarketsUserBy(token, userIdFromToken));
   }, []);

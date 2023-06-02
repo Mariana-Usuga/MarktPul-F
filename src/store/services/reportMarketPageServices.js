@@ -4,6 +4,7 @@ const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
 
 export const getMarketsByUser = (token, id) => {
   const url = `${URL_BASE}/api/user/${id}`;
+  console.log('id ', id);
   const config = {
     method: 'get',
     url,
