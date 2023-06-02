@@ -24,7 +24,7 @@ const HeaderMain = () => {
     window.localStorage.setItem('cartProduct', [JSON.stringify(cart)]);
     console.log('USER ', username);
     console.log('usernameFromToken ', usernameFromToken);
-        console.log('usernameFromToken ', usernameFromToken);
+    console.log('usernameFromToken ', usernameFromToken);
   }, [cart]);
 
   useEffect(() => {
