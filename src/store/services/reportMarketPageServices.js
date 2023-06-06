@@ -12,5 +12,6 @@ export const getMarketsByUser = (token, id) => {
       'Content-Type': 'application/json',
     },
   };
+  
   return axios(config);
 };
