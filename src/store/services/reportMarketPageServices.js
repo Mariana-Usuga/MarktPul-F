@@ -13,6 +13,6 @@ export const getMarketsByUser = (token, id) => {
     },
   };
 
-  
+
   return axios(config);
 };
