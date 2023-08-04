@@ -18,6 +18,7 @@ import './LandingPage.scss';
 
 const LandingPage = () => {
   const dispatch = useDispatch();
+  // const markets = useSelector((state) => state.productAndMarket.markets);
   const markets = useSelector((state) => state.productAndMarket.markets);
   const products = useSelector(
     (state) => state.productAndMarket.products.items,

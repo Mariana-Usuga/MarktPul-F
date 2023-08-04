@@ -101,11 +101,13 @@ export const loadProduct = (product) => async (dispatch) => {
 
 export const fetchMarkets = () => async (dispatch) => {
   const markets = await getMarkets();
+  console.log('MARKETS ', markets);
   dispatch(loadMarkets(markets));
 };
 
 export const fetchProducts = () => async (dispatch) => {
   const products = await getProducts();
+  console.log('MARKETS ', products);
   dispatch(loadProducts(products));
 };
 

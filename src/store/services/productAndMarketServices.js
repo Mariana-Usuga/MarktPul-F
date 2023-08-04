@@ -4,7 +4,7 @@ import axios from 'axios';
 const URL_BASE = process.env.REACT_APP_API_URL_BASE;
 
 export const getMarkets = async () => {
-  const response = await axios.get('https://marktpul-backend-production.up.railway.app/api/market');
+  const response = await axios.get(`${URL_BASE}/api/market`);
   return response;
 };
 
