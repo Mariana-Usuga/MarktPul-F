@@ -23,7 +23,6 @@ import {
   patchUser,
   deletedMarket,
 } from '../services/productAndMarketServices';
-// import { fetchUpdateUser } from './userActionsCreator';
 
 export const showLoader = () => ({
   type: SHOW_LOADER,
