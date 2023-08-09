@@ -25,6 +25,3 @@ export const fetchProductFilter = (products, search) => (dispatch) => {
   const productFilter = getProductFilter(products, search);
   dispatch(loadProductsFilter(productFilter));
 };
-/* export const UpdateSearchQuery = (search)=>(dispatch)=>{
-  const searchQuery=
-} */
