@@ -14,7 +14,6 @@ import { postPay } from '../../store/services/payServices';
 import { getCurrentLocalStorage } from '../../store/utils/LocalStorageUtils';
 
 import './CardPayment.scss';
-// canProceed, setCanProceed
 
 const URL_BASE = process.env.REACT_APP_API_URL_BASE || 'http://localhost:8080';
 
